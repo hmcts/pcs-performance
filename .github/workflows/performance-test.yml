@@ -1,0 +1,32 @@
+name: Run JMeter Performance Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JMeter
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y openjdk-11-jdk wget unzip
+        wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+        tar -xzf apache-jmeter-5.6.3.tgz
+        sudo mv apache-jmeter-5.6.3 /opt/jmeter
+
+    - name: Run JMeter tests
+      run: bash run-tests.sh
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: jmeter-results
+        path: results/
