@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<sample t="484" it="12" lt="0" ct="90" ts="1754306178662" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4516" sby="588" ng="1" na="1">
+  <httpSample t="484" it="0" lt="484" ct="90" ts="1754306178663" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4516" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTcyNCIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJ0ZHN3M0ZiYlptbTJvc29fa1Z4TTNiRWExNmciLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MTc4LCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MTc4LCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNDk3OCwiaWF0IjoxNzU0MzA2MTc4LCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiZjBWUTVUclc1eHR3cG02SDlic3R5cUg0UV80In0.YMh4d7suAibWrvmrfdJI36w6Dg5Sd7sMsFzV3bpvgoRJ4MuOG66LIrCytRJ6e5MP282epysiFhNBkmJFB4bJ6FH2TAq5_JcOt_Gs7PqqMix-ymmulRTaNQDuBGVXSoV7HA5W2I71c5wIbz3SB6TTaCIYlwQQCqCimxDS2KfVbiZ0yqsDq-dRl4QNW3ZzzebwtHFEWX1FqBLoL5DSRWhFi2A2OrJoBm5DgOWgLG81Q1dzGseDlcZacESixVpYQ4cfp9uvKJaOD7BPPg4PR0sTi6DES58KkG9TRYHKI3TjxmH9mcWFSPKCsihKLtiID-zxA8bflzVtJ8xVE-DSG-aAug&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTcyNSIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoidGRzdzNGYmJabW0yb3NvX2tWeE0zYkVhMTZnIiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjE3OCwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjE3OCwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTA5NzgsImlhdCI6MTc1NDMwNjE3OCwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiJVYllTQjZLVVZOUVkzZUJqc01DcDNJZ1Y0UmcifQ.h8BgrTimtCHrwjuzab0raCvtOPnimVthawyPbmG-oH3_v5YN7_XVCrvkrMck11ddnOXKu_8_4751H0tvR4-tmqy81cqrNuC6vYKSDGfQD-IWZdopR9OCyl79TktVQyOBr_2LcggSaZg4n4BcJAaExldKyurHpuHv1wx7W1DSYNvKHVhiVTEkJQK4CCpfA_pOW30ythkLibrJ3rbeLsmcfJyBespHFMEYNd7SW-8E9628BkHiWFxu_bkj35Dmj8Bcd6w6v6VhbWZkiK5eMq_-Jrjd0pVWZC6ibx7JjCxaP3vgVtlGB4eEF_NMrV8hCk-tUf_VnxNsVTLwdhA4dkUxlg&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiaWpPNGloXy1zMjNFS19YSUlrUG15dyIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjFlMWU4ZGU4LTY1Y2MtNGYwMC05Zjk3LWU2NzRlZmZkOTFjZC0xMzk3MjYiLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MTc4LCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk3NzksInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MTc5LCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.d28pP6B0t7g0C0c-g4hFqOrPJ7zlp_Ci2hv-z-ttq2x55bD7iFJk4BGHW0YKW9UF9Awdp671H8i5wRYJwud45g1056POhPIOjFnZgm4gOJDBD1B90kjksvnC7kTWCATcz8sxw-EsC2qkUYiQfkDiZOB4NeKuro0aPu8shEHfw9hFMzQll5GCjt-AU0LvGoCZ8Q-heS7yISsKmuDtofk2yEV-BdFds69DIAT_vfGdgb09lNORIadxOdLrIPsiy0_n0wWlEwaMKznb4pxWMqBL9f-27eYcRrHgR4Sz38J8yXEYwnLCfDgISq7ooYYNS4Svc4ZhSkLuDQmbCzAbOnPV3Q&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28798&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="46" it="5" lt="0" ct="26" ts="1754306179159" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="46" it="0" lt="46" ct="26" ts="1754306179159" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNTc5fQ.P2M94xwd55rKZo6cteuC-Mq_xAiv6JjYFo0g8dAJx8qML0pk9wNSESkoHwohOIe9Sna8ISrXqXMMCY5I7oghHQ</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="654" it="2" lt="0" ct="37" ts="1754306179211" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4521" sby="588" ng="1" na="1">
+  <httpSample t="654" it="0" lt="653" ct="37" ts="1754306179211" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4521" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDAzMiIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJKMm9Ra05ZN0JjWmM1VFgwN3pYNXlrdnFYck0iLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MTc5LCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MTc5LCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNDk3OSwiaWF0IjoxNzU0MzA2MTc5LCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiempva2F6RGRiVGZJUHBnMmFHUktVQVZqLXNjIn0.iK4Xa9quHUFCcwcCVkh6vop_Daq3uBRZG51_JNZTBA_fCYHq_hJ3RZ-KQhAvjz7S9HEoQQmAXfCbzTnRNS6iSeEqNa226e3x-faq2zJaCJ2Fzab8Pt-493-DfDZu56SBShzPaIHryiOPbomwPelpTizSPbUi2vSlo72M8aoeJEUUNOfOgIBByK8kd2c_IYfrDF9o8e4_lFwJEsS2cCmJT3D0W3d8YtvC_MmOUmNleQQqbPI8PE2Ssts3No5QmUimqvNR0faywqUWfMTSYqZZTX6lt1fTSxM-h2Uwv-uDJ1mPnDzHBKnoIG5qOKittwCCZ2vpmW7HhUHgW9Xh6f-9vw&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDAzMyIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiSjJvUWtOWTdCY1pjNVRYMDd6WDV5a3ZxWHJNIiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjE3OSwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjE3OSwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTA5NzksImlhdCI6MTc1NDMwNjE3OSwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiJlczJiZG1NVnFlbzhiUTA1eGpOanJQZXNQaHMifQ.h4e_dFoEtGLcgNPSg9NjBt1T2jtSfNc0P_sU3uoZtBjMTXL2d7xvQGkq4-ugoaHxLU_tJ0BiitSXUwcjedf_kM75QCTsWN9KVd4OWjVKk4Hz3Mx3iRPW9BAagREmPJoV4eHcjg46BqCGoj8G6F3t-e-oPEWob_8OmZy4AO7tUn-Jh7MhSyxjurCmuweethf7VlBQx0RS2ACu6SixD3zziByUR05CumK1GC8A--LC3iTZKDEQemr94KHnRG7IHKuZV74OKOoHVYuHboYTLuyfNuFANn-xRquXbSOQlN_aRi1yVHFdfOnOVCKRmouIRnG6S__Qnev5DKs_J1MnOrtyLQ&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiUjJPUHhsMTJPVnNoVE50WVRfVkQ1dyIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjUzMzU5MGU4LWE1OWMtNDBhNS1iMDAzLTJjMTZmMjc1ZGEzZS0xNTAwMzQiLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MTc5LCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk3NzksInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MTc5LCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.Dvf7trW895kFXkPlF4LxuLbYgdIyT7VMFvkw9M4oby5WF9hNj0E6i7mVtCexnh73PVQKPV4rpvmeAWZLbT2Y0-S5qNXb5wynmMu4Fww4ulMboLMHQFV5lwSG9zsMXgpr-MgLX69170w_Q0l6QNsqSht32oU5XZIuR6czc03F9iVZgoDXJUjV-5H2vC2cnh9txUiEVVfdWOEVCQT5MB76s4eccFcCSJhkpKj9YztlhjRSqCZtXTM7NCvVVecJQ2bn3OgmiLWE1G0k91bol-9iJTUqLFzLn1ZLN4FQYxr_MJubtfHPfRpCq7uk6W6tfiUPU0k60vPp2uSLs42YCVAWNQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28799&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="15" it="2" lt="0" ct="0" ts="1754306179868" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="15" it="0" lt="15" ct="0" ts="1754306179869" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNTc5fQ.P2M94xwd55rKZo6cteuC-Mq_xAiv6JjYFo0g8dAJx8qML0pk9wNSESkoHwohOIe9Sna8ISrXqXMMCY5I7oghHQ</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="490" it="0" lt="0" ct="42" ts="1754306179886" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4516" sby="588" ng="1" na="1">
+  <httpSample t="490" it="0" lt="489" ct="42" ts="1754306179886" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4516" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTc0MiIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJmOHBHU3MzRWxtYURlRlhyQmk5VkVERFpwRTQiLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MTgwLCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MTgwLCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNDk4MCwiaWF0IjoxNzU0MzA2MTgwLCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiYjVUeW8zNnMzM3hoU3Q4NTJ1M0h0RGJjR3JVIn0.Om1x_BRzcOj0Bp_vmim63wVDxO6D-NeQub364mjwck9Rk4dKjpvzB2dny_ZlARwVw0UXI1ikSXF_hfCnr-pMKcmGzktLYuXquFrPyehp6ZYN4Xeu5UPn9QoJtY4wHlHPZ-dViSCZ6mxOqzdWkph7X7vNp7epO2E6HhLERXppmVmq7DqiJRx8ztYUV-Zj23yqf_MKLSbm7o9NL69rel_vCyvtTukiYSYmZkCB7HWNHd7ZfkUwU_l8XtxfYZCEJD9GY1pLqM84AOdCzfCaghU2lDtGCZzslGJyBGMydUpCUAsZcmfpXX5npFOUlI4Zp7eVEANQMJ96078luS5Fhj9wjw&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTc0MyIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiZjhwR1NzM0VsbWFEZUZYckJpOVZFRERacEU0IiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjE4MCwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjE4MCwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTA5ODAsImlhdCI6MTc1NDMwNjE4MCwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiJRQ1FhUl9IVVpjQzVHMUsxUGdKUVZJZU9tbjQifQ.POF9dHLRA1gHToDoTrNulsA4UNeRQ0J_RA22o4fzYFs1rJJW6oz1_BATqwWeMgaju9MyZ1UWQ9wQNBcd17J_IrLgK86Lq8OAlWQ24D0atINsiDJgoxb-XMHn4_fRERJh2wfKHFDO4HSgO2BYvZtFUZ0LRLbqY75O-VEeuFn7mZoYxMfdfsP8tiXWfwOdGB2RxCGFqdMtP1TaPFT6fde6rd2gBI_9sabeQBTc0cnDvsfcNoYLU1Rl8aAA5pBTe71iUd5yZ6Bx33dsrPTHBSCDgWSnNKwJWqHcH1vGoBNun8DHc53pe0qWbIhtBtPY9efgqeM5vMfh5qHDpMdN04AT4w&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiYUR1SlZPbldZcjJoc3VyWWRBZnQ2dyIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjFlMWU4ZGU4LTY1Y2MtNGYwMC05Zjk3LWU2NzRlZmZkOTFjZC0xMzk3NDQiLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MTgwLCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk3ODAsInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MTgwLCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.drMahtnCB0K3P-gSg_S1Mwizqj2oCV0b87csa1ochMMnBTtzQloX5Eb1W3DuTf1dZp5VKR8auhdztuRrFw8LhO6ssWuon4cvWp-XwuMM5ENQoLhAatZbhbR7Gza5CdjScodVmrZgMNyqwEIXgrpIM-RnA7t68quRACzJKBtnkI-grghIiLiUlfqfJp-_awnraNaM-tI6-K7YSsmVL0BadFcz9T265s_pVslqVDSzowCMMIqJWEPVuwOcRrB7P634O0CT_ZPs7__Pv0Eg4uToHY8BZ_Zb8SyFaHJK5PjTgJCQ-VgZPh-nZfuNp_iFsa0smiQcsW0bpRZDo4q6AmbYng&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28799&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="14" it="1" lt="0" ct="0" ts="1754306180376" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="14" it="0" lt="14" ct="0" ts="1754306180377" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNTgwfQ.fUWV2amfWGgXz9912hUkGBTOf4nom5-VB_b1ovXUX3ws3ekzQrPVOTEPaCELO0_JIZq-geps_F6iazUpTx8uRw</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="396" it="0" lt="0" ct="41" ts="1754306180391" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4516" sby="588" ng="1" na="1">
+  <httpSample t="396" it="0" lt="396" ct="41" ts="1754306180391" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4516" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTc2MCIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJYV3VybkVPQUdKbFVMa1NSZTZoZDUwWDBSdUkiLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MTgwLCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MTgwLCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNDk4MCwiaWF0IjoxNzU0MzA2MTgwLCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiejE3Um9pMnZmRmhwQk1vV1hKV1U1VmE4aTRnIn0.HrxwvW_PWDe_eJ9fcV7Vn3lwj6s8FFZXIdPR9cVV31Trw6gWM2QfvEtKcXg3HkSrsHPbv3n5p88iclz3Oq016YeEgp2iPdEfPHQm3xhIxOW45Bs-4aiIHhrLIMqhIGTSE86tU2z7xDfcVzEs674qme4yRwUMU4cY9rAX6LoP-_6iBdMVTs8MGLLOjRj7lHXVY8f9RIO06QejDaL3e7KtqyFOtX6nvF_M54ALWQB1n8i_Va2ynchRQ9gvDgEJiK9O5aLqi7djMphMY0iZEG2pPisn-DsXjhtIfZap8Ra0QBHgehBHbxYlZM7XhGxyFula_7dwxMLjeFZmwDII40J2CA&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMWUxZThkZTgtNjVjYy00ZjAwLTlmOTctZTY3NGVmZmQ5MWNkLTEzOTc2MSIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiWFd1cm5FT0FHSmxVTGtTUmU2aGQ1MFgwUnVJIiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjE4MCwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjE4MCwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTA5ODAsImlhdCI6MTc1NDMwNjE4MCwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiJlV0tXVFkyTUx3cVQ0Tm8teWJTQzZoVFdRS0UifQ.IEBjhHI8qkZpJcEIOJzQmFDL-YKYYaaelwu8T8BcnnIDUZ2K6D4uzOHsLK7zLcRJzOMxIKT1R9BQICl7qiDNOd6BzleJBS1Et1fffdXG0HRJbFdG08NAPXkvNK4IYs8HRCrA7N8A-RPXyJNHEyeRGwZ4SvsaxXVisBJtZKmUa9FNYzclhXR1PckV-Rlc7viCLAEuaUH5WVrZNSGi_O2ZC_PsOBglylyLmmYrdPZQ6nOfFEi0zfKhKH26bKAethnBeKMKttntyzDAIDsQxe_BtBZYwZPVaABaIkSxnQGORHqEqeHBZQ4-V9F7XVh1Xjd9hWRQBcp2_bwLUy8crH6SPw&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiakdFNWRQT2NCcmphSHVsY2ZOSzZBUSIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjFlMWU4ZGU4LTY1Y2MtNGYwMC05Zjk3LWU2NzRlZmZkOTFjZC0xMzk3NjIiLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MTgwLCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk3ODAsInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MTgwLCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.FcXL_Cdg7t1P21IRJffhcfq0hXpiSOrlDTm7qKHVBLR2CUi57pnZNYfVJT9qVN-uqLlOZVBw-aOFGSTi4awfByDiFb4jU0uctt0HGw6prylZAn3OJuDQMG6wfWYC51aurVVNMhecZAlDg-jCXcMNvlEScS5z5OTDWE_LzOZHZLVz5Lzg-9HVbLcsj_JWx2wlG-79g1tq02RdgzmrGRl1aqtGxSoDZbZVoFaXRO0EqDizfghRia0inrRkcGW1muefHYqtiumE4HWf5eEV8wDaaFOJkfjJXPCRCO1JkL2AiASO_zr2RVmUcW4EocMEb0EFcpaD7iTI8HOD8CvtOyn8YQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28799&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="15" it="0" lt="0" ct="0" ts="1754306180788" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="15" it="0" lt="15" ct="0" ts="1754306180788" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNTgwfQ.fUWV2amfWGgXz9912hUkGBTOf4nom5-VB_b1ovXUX3ws3ekzQrPVOTEPaCELO0_JIZq-geps_F6iazUpTx8uRw</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="392" it="1" lt="0" ct="37" ts="1754306180803" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4516" sby="588" ng="1" na="1">
+  <httpSample t="392" it="0" lt="392" ct="37" ts="1754306180803" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4516" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDA1MCIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJENWFOUzNIRTB3LThUdlY5OEdWdGtXME9jX2ciLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MTgxLCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MTgxLCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNDk4MSwiaWF0IjoxNzU0MzA2MTgxLCJleHBpcmVzX2luIjoyODgwMCwianRpIjoieGdEallkOFJYY0RQWWRDYkdENlVPZUxlZWI0In0.VkLDDKssw7ash__TAuwGNTDQYEgO4rqdxT8hrTglK_VETmxPKl0XhiMTXS4RZJLtXXrUCJwJ6kUZiMfCgjngVRhjl0bxaeO2LjBICIfVi6hTaeKOpNqN0_j_2dg6CA3T0W7nbc4FaqIF3kL5vKTYwfRhxkzPlnTD0EAxQlD_PX19mGj02l_ZwDUFQP156Lw6silDKIZAylL6-Gj6VQgk_ZPEXb2XDk_P_hjQxaEqTzr8zuT4PbwTfnakvOVmdtpZ_t4AddBKvdEpkrd3VkR8tmokfiS5DT39IUzoWjGZuxKVssnfKqu4tsuKjw9kj9x-ssgD9o6pwlG9xyul_DvKJA&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDA1MSIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiRDVhTlMzSEUwdy04VHZWOThHVnRrVzBPY19nIiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjE4MSwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjE4MSwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTA5ODEsImlhdCI6MTc1NDMwNjE4MSwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiJkY2ZqdFdncjBFODNSTm0ta0lqQU80MzM3YXcifQ.Df9YHTMYWKQormohDFsuCdWwjcptK0WcFTnaQCCG2suwM00DNSqcUekgRXPskXM6LBd3ruC-V2pebCdCnW0FqJdnj7uUi1dJkcFnANhynqM-h43dlpmMRibSoMA-Nt2B4lpTqn33z9tSdkZUA7KdbQ3Z5isMtRWYjGZ4FvMtwGtwkXhSusxZvpJo6X4wQQzQbu81VNGr8_HYo1YWw2P433Th9pKQxeyEU261YPPEpCMnUFp_sSmQJh4f922l022RQlPYmjGGMQWeyqaTuadBFbLJdsQm2qr7MSi_Nr5SqC1JzGxx1qmmjNSTwfr4rjr9LFrIFHZnrryNDrgRpCFAJw&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiVWlIUFIyRlo4TUlZMEZYVXJRRWJBUSIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjUzMzU5MGU4LWE1OWMtNDBhNS1iMDAzLTJjMTZmMjc1ZGEzZS0xNTAwNTIiLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MTgxLCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk3ODEsInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MTgxLCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.A3UxFaz_hSvvPbC7kZiXAp8jfrKctU-DIADcWicWR5SoTDTwHEZmBLrxVOwIO8ktXMLDYaoqmBrocvEaMPf6KNI5LsRBtFpFhqHBtZlFmDfgr08zhAhQdj76gEAPi3pwM3YEBKB1OeujFx7rZzmpK2T-HJPdBnBmlCURrk6ah0S8i6gC7iODGxAoW703x-svw5L9GLfvF4SsiSadzOVOZJjm5KWw7HWQz21njfYfyrq-OMW4FWuC9T5FWCxHkPV22qF1wHxKLJdHGTIcInZ9DO10akgedTBm8gcCjj1zWIzyQU8Q6ubL0GGezJ3QypeTyScdH_wlHzXFRz6owyU_Iw&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28799&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="15" it="0" lt="0" ct="0" ts="1754306181196" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="15" it="0" lt="15" ct="0" ts="1754306181196" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNTgxfQ.Bv7Bxqc0WOnHaN--lN-9A8DDK5ehS15-qwJ6UFacCTzhp8PzKyoZvO-K4uP9mDYxeS65l_LD0jn7PuiHqhrurg</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<httpSample t="552" it="0" lt="552" ct="27" ts="1754306181256" s="true" lb="GET/courts-B46DH" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="403" sby="1669" ng="1" na="1">
+  <assertionResult>
+    <name>ResponseCode Assertion-200</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>ResponseText Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseData class="java.lang.String">[{&quot;id&quot;:28736,&quot;name&quot;:&quot;Birmingham Civil And Family Justice Centre&quot;,&quot;epimId&quot;:231596}]</responseData>
+  <java.net.URL>http://pcs-api-perftest.service.core-compute-perftest.internal/courts?postcode=B46DH</java.net.URL>
+</httpSample>
+
+<sample t="367" it="6" lt="0" ct="44" ts="1754306208578" s="true" lb="TRX-IdamToken" rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="4516" sby="588" ng="1" na="1">
+  <httpSample t="367" it="0" lt="367" ct="44" ts="1754306208578" s="true" lb="Idam-AccessToken" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="4516" sby="588" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <assertionResult>
+      <name>ResponseText Assertion</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDEzNSIsInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYXV0aEdyYW50SWQiOiJxdGpQMXNrUlQ1LU9BVUd5YnFpZlV4X3VBa0EiLCJhdWQiOiJwY3MtYXBpIiwibmJmIjoxNzU0MzA2MjA4LCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiXSwiYXV0aF90aW1lIjoxNzU0MzA2MjA4LCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTc1NDMzNTAwOCwiaWF0IjoxNzU0MzA2MjA4LCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiMkdGRjRneHBoN1dGMTljTDlwNW8ybVJWelhrIn0.VIBHy3T9Q6FvpJFSBYkp6iUDFkBcg_DVQvKOnCVpIxt3U61VyLE00OzJO9t4uSMVCo4QCRzciMSXR8NO3TapLOClWByfTU-AMiGCQqulbU5-LIae4ypkRMZGG6UGSgRVtLrnaYpT8BV1993aY0Ks7YvG61QYhlN9whu7j8Phesxb8mEQF4DwgLJWsbTONW7IV7awV0M5kHPQmFrzgR5NKoNjYQuOkqzo3jXGCrpzKDkSSjyLdbwxA41oqElM1lPNeKfghE7mJJA6jqdMjQsqgqC6ifz-x-tRfrT1CACihbg5p0kw5PZVs7G0xA9ILitbK9UxObyNQ87KzJ5AVNFLMw&quot;,&quot;refresh_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNTMzNTkwZTgtYTU5Yy00MGE1LWIwMDMtMmMxNmYyNzVkYTNlLTE1MDEzNiIsInN1Ym5hbWUiOiI5MmYxNTQwOC1iOWIxLTQxZTAtYTBmYS1iZTEwM2YwNDA5Y2IiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJyZWZyZXNoX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoicXRqUDFza1JUNS1PQVVHeWJxaWZVeF91QWtBIiwiYXVkIjoicGNzLWFwaSIsIm5iZiI6MTc1NDMwNjIwOCwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIl0sImF1dGhfdGltZSI6MTc1NDMwNjIwOCwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQ5MTEwMDgsImlhdCI6MTc1NDMwNjIwOCwiZXhwaXJlc19pbiI6NjA0ODAwLCJqdGkiOiIzNjF6UWdFMnJfaHZiZURPWUlXTGpMRUhsVXMifQ.Q4wOgBHwCf96mcRpKjzdGjQrZkAIJwGx8sG6bQiX9GoKaXamDbbc-4X8ucTpCOoosY1Lm0Ik2dksD7RIBZr1zg5c7KykUIfW3GcwjLoUq910xxFl46lEFp1UPmAq1o4cvjgn_EE8Wkuhno-wrA_4VxXnVCpd38iV1hWuY1QFel07LclhgiJOY_cJa_3u6-YNZFygqCNjbtUSN0bkqO2dXLW8MviEpqAM2D1sIbyoK3kI5UbLt9RRtalv9cX7tA6hkmXjoMDhbn-tS4ZGDBvzzh2mFfLUNzyWcSPHQN1MHbdqrGOAsiAWmCVBTA08XLo5FpTwjij4sAGunqYf-SFxPg&quot;,&quot;scope&quot;:&quot;openid profile roles&quot;,&quot;id_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJraWQiOiI4cDJpajg2S0pTeENKeGcveUovV2w3TjcxMXM9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoid3FEQmZPdFFpMkdHSVRIeVJsbFhBUSIsInN1YiI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCIsImF1ZGl0VHJhY2tpbmdJZCI6IjUzMzU5MGU4LWE1OWMtNDBhNS1iMDAzLTJjMTZmMjc1ZGEzZS0xNTAxMzciLCJyb2xlcyI6WyJjYXNld29ya2VyLXBjcyIsInBjcy1zeXN0ZW0tdXBkYXRlIiwiaWRhbS1zZXJ2aWNlLWFjY291bnQiLCJjYXNld29ya2VyIl0sInN1Ym5hbWUiOiJwY3Mtc3lzdGVtLXVwZGF0ZUBobWN0cy5uZXQiLCJpc3MiOiJodHRwczovL2Zvcmdlcm9jay1hbS5zZXJ2aWNlLmNvcmUtY29tcHV0ZS1pZGFtLXBlcmZ0ZXN0LmludGVybmFsOjg0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvaG1jdHMiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImdpdmVuX25hbWUiOiJTZXJ2aWNlIiwiYXVkIjoicGNzLWFwaSIsInVpZCI6IjkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYiIsImF6cCI6InBjcy1hcGkiLCJpZGVudGl0eSI6ImlkPTkyZjE1NDA4LWI5YjEtNDFlMC1hMGZhLWJlMTAzZjA0MDljYixvdT11c2VyLG89aG1jdHMsb3U9c2VydmljZXMsb3U9YW0tY29uZmlnIiwiYXV0aF90aW1lIjoxNzU0MzA2MjA4LCJuYW1lIjoiU2VydmljZSBBY2NvdW50IiwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NTQzMDk4MDgsInRva2VuVHlwZSI6IkpXVFRva2VuIiwiaWF0IjoxNzU0MzA2MjA4LCJmYW1pbHlfbmFtZSI6IkFjY291bnQiLCJlbWFpbCI6InBjcy1zeXN0ZW0tdXBkYXRlQGhtY3RzLm5ldCJ9.gD2BVdBy9sywOZPXBVFjbCGakDM4F5Bee8aRbQVijB9p8GDLABkQ04ckVjGRyW6w1voU3rJKRlQWjsB8xitAA0xmdKAdH_x6NBp44lRJnjEXBHjUYFqSf_BukV2vkPWLhEtoBa_t6J2yO4uzn7aKETG0PgF2tjDVyyxNwdxCvchjn7ZflNeJhIj0RhLybqfL7ZWlBswF-KngI6nhzG6xyn9TSlHyOUV1BRcgf8TN0sP-vcsM1GDgokpQq2b5-74R5Xd32Sx_Cc2UbnnzWdiRfpz-UZPGYRe3xYNIP7YtJ5zjN6ha74qTVlFKQv3TxXtjLgd5oLXzqYEWYJjkC8X4HQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:&quot;28799&quot;}</responseData>
+    <java.net.URL>https://idam-api.perftest.platform.hmcts.net/o/token</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<sample t="24" it="4" lt="0" ct="9" ts="1754306208952" s="true" lb="TRX-S2S-Token " rc="200" rm="Number of samples in transaction : 1, number of failing samples : 0" tn="setUp Thread Group 1-1" dt="" by="295" sby="275" ng="1" na="1">
+  <httpSample t="24" it="0" lt="24" ct="9" ts="1754306208952" s="true" lb="S2S Token" rc="200" rm="OK" tn="setUp Thread Group 1-1" dt="text" by="295" sby="275" ng="1" na="1">
+    <assertionResult>
+      <name>ResponseCode Assertion-200</name>
+      <failure>false</failure>
+      <error>false</error>
+    </assertionResult>
+    <responseData class="java.lang.String">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwY3NfYXBpIiwiZXhwIjoxNzU0MzIwNjA5fQ.g5RhSfDE0p6DdQV91HY9AzluorBeFLHosmopk49_QoPlWBEsf7gVz_JGes7xttN_eovKPpMeRSeKh0BsrhupeQ</responseData>
+    <java.net.URL>http://rpe-service-auth-provider-perftest.service.core-compute-perftest.internal/testing-support/lease</java.net.URL>
+  </httpSample>
+  <responseData class="java.lang.String">Non-TEXT response data, cannot record: ()</responseData>
+</sample>
+<httpSample t="675" it="0" lt="675" ct="10" ts="1754306209017" s="true" lb="GET/courts-B46DH" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="403" sby="1669" ng="1" na="1">
+  <assertionResult>
+    <name>ResponseCode Assertion-200</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>ResponseText Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseData class="java.lang.String">[{&quot;id&quot;:28736,&quot;name&quot;:&quot;Birmingham Civil And Family Justice Centre&quot;,&quot;epimId&quot;:231596}]</responseData>
+  <java.net.URL>http://pcs-api-perftest.service.core-compute-perftest.internal/courts?postcode=B46DH</java.net.URL>
+</httpSample>
+<httpSample t="503" it="0" lt="502" ct="0" ts="1754306212743" s="true" lb="GET/courts-SO15" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="393" sby="1668" ng="1" na="1">
+  <assertionResult>
+    <name>ResponseCode Assertion-200</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>ResponseText Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseData class="java.lang.String">[{&quot;id&quot;:28592,&quot;name&quot;:&quot;Southampton Combined Court Centre&quot;,&quot;epimId&quot;:43104}]</responseData>
+  <java.net.URL>http://pcs-api-perftest.service.core-compute-perftest.internal/courts?postcode=SO15</java.net.URL>
+</httpSample>
+<httpSample t="600" it="0" lt="600" ct="0" ts="1754306216331" s="true" lb="GET/courts-SO152SA" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="393" sby="1671" ng="1" na="1">
+  <assertionResult>
+    <name>ResponseCode Assertion-200</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <assertionResult>
+    <name>ResponseText Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseData class="java.lang.String">[{&quot;id&quot;:28592,&quot;name&quot;:&quot;Southampton Combined Court Centre&quot;,&quot;epimId&quot;:43104}]</responseData>
+  <java.net.URL>http://pcs-api-perftest.service.core-compute-perftest.internal/courts?postcode=SO152SA</java.net.URL>
+</httpSample>
+
+</testResults>
