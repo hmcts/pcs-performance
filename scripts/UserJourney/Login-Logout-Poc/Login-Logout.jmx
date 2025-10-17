@@ -72,7 +72,7 @@
         <boolProp name="recycle">true</boolProp>
         <stringProp name="shareMode">shareMode.group</stringProp>
         <boolProp name="stopThread">false</boolProp>
-        <stringProp name="variableNames">username,__base64Decode(UGFzc3dvcmRAMjU=,</stringProp>
+        <stringProp name="variableNames">username,${__base64Decode(UGFzc3dvcmRAMjU=,),</stringProp>
       </CSVDataSet>
       <hashTree/>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
