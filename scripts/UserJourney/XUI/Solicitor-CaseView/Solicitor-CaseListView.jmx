@@ -61,129 +61,11 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
-        <collectionProp name="DNSCacheManager.servers"/>
-        <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
-        <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
-      </DNSCacheManager>
-      <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager-launch" enabled="true">
-        <collectionProp name="CookieManager.cookies">
-          <elementProp name="xui-webapp" elementType="Cookie" testname="xui-webapp">
-            <stringProp name="Cookie.value">s:8zlyA7RD9ppWgdm6vtm6zM6__5IrIIZx.SOxK8RkNQVshqsZNitorjHtXfbSb67v39LSqCXTXT78</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="XSRF-TOKEN" elementType="Cookie" testname="XSRF-TOKEN">
-            <stringProp name="Cookie.value">vMzF1KjY-06Lkf1IL-ULWjH1-SpKm3tSr8sg</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-        </collectionProp>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
-      <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager-Login" enabled="true">
-        <collectionProp name="CookieManager.cookies">
-          <elementProp name="seen_cookie_message" elementType="Cookie" testname="seen_cookie_message">
-            <stringProp name="Cookie.value">yes</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="cookies_preferences_set" elementType="Cookie" testname="cookies_preferences_set">
-            <stringProp name="Cookie.value">true</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="cookies_policy" elementType="Cookie" testname="cookies_policy">
-            <stringProp name="Cookie.value">{&quot;essential&quot;:true,&quot;analytics&quot;:true,&quot;apm&quot;:true}</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="xui-webapp" elementType="Cookie" testname="xui-webapp">
-            <stringProp name="Cookie.value">s:8zlyA7RD9ppWgdm6vtm6zM6__5IrIIZx.SOxK8RkNQVshqsZNitorjHtXfbSb67v39LSqCXTXT78</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="__userid__" elementType="Cookie" testname="__userid__">
-            <stringProp name="Cookie.value">undefined</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="__auth__" elementType="Cookie" testname="__auth__">
-            <stringProp name="Cookie.value">eyJ0eXAiOiJKV1QiLCJraWQiOiJkQnZ3ZTE5bkFQNjVmVzVGZzB5OUZZUm1Cenc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJwY3Mtc29saWNpdG9yMUB0ZXN0LmNvbSIsImN0cyI6Ik9BVVRIMl9TVEFURUxFU1NfR1JBTlQiLCJhdXRoX2xldmVsIjowLCJhdWRpdFRyYWNraW5nSWQiOiI4MWJjYWFlNi04OTJhLTRkNjktOWNlZS1mMDFkYjM5YWFhMTMtMzU3NjE0NSIsInN1Ym5hbWUiOiJwY3Mtc29saWNpdG9yMUB0ZXN0LmNvbSIsImlzcyI6Imh0dHBzOi8vZm9yZ2Vyb2NrLWFtLnNlcnZpY2UuY29yZS1jb21wdXRlLWlkYW0tYWF0Mi5pbnRlcm5hbDo4NDQzL29wZW5hbS9vYXV0aDIvcmVhbG1zL3Jvb3QvcmVhbG1zL2htY3RzIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoidlEya3ozT04xMDNZNF90UU1TZk52azllSTljIiwiYXVkIjoieHVpd2ViYXBwIiwibmJmIjoxNzYwNTE3OTYwLCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIiwiY3JlYXRlLXVzZXIiLCJtYW5hZ2UtdXNlciIsInNlYXJjaC11c2VyIl0sImF1dGhfdGltZSI6MTc2MDUxNzk2MCwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3NjA1NDY3NjAsImlhdCI6MTc2MDUxNzk2MCwiZXhwaXJlc19pbiI6Mjg4MDAsImp0aSI6Il9xYlM4UnVFcTVuYklIdG16eC1acDA1b2N4dyJ9.EzmfKe1ZiVPLtyHoa07ToKnqiAheIJuVJwjCi0GPYfGr-QGMLVzlBJgXCvx6ijSsmWD2nrw8U61z__MvDloHJ8tTPVnTXX9KHQRmNFU4WUEnY_UQ-ZrlYGkbB2M4YIO7rStP547BhZyt900pQeZBsfpZgvUD4KOKoMjxoEaJGAMKXC7YpQUemC15NxCTeTwPGffW4nofYIsdeA2inVa_sq0rQuxRq-j_GrCcvqjsnTBJd3gUW3k3mp7Jtuv4XW9juas8_a8juhq7tg2EQADn6z23MtHjkxhSWaFChPmkwbMgmyaa13Vlt9FmKS9gScpvdnFoPErH-0NMyusLBI-0Ww</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="exui-preferred-language" elementType="Cookie" testname="exui-preferred-language">
-            <stringProp name="Cookie.value">en</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="hmcts-exui-cookies-dc3f786d-4ad4-4b5d-a79f-6e35a6520ace-mc-accepted" elementType="Cookie" testname="hmcts-exui-cookies-dc3f786d-4ad4-4b5d-a79f-6e35a6520ace-mc-accepted">
-            <stringProp name="Cookie.value">true</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-          <elementProp name="XSRF-TOKEN" elementType="Cookie" testname="XSRF-TOKEN">
-            <stringProp name="Cookie.value">Rg5jbbTQ-PcFG62qRnTh9p2LOJEG2wNkctZE</stringProp>
-            <stringProp name="Cookie.domain"></stringProp>
-            <stringProp name="Cookie.path"></stringProp>
-            <boolProp name="Cookie.secure">false</boolProp>
-            <longProp name="Cookie.expires">0</longProp>
-            <boolProp name="Cookie.path_specified">true</boolProp>
-            <boolProp name="Cookie.domain_specified">true</boolProp>
-          </elementProp>
-        </collectionProp>
-        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
-        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
-      </CookieManager>
-      <hashTree/>
-      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
-        <collectionProp name="AuthManager.auth_list"/>
-        <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
-      </AuthManager>
       <hashTree/>
       <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
         <boolProp name="clearEachIteration">true</boolProp>
@@ -728,7 +610,7 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TRX-02-Login&amp;CaseList-${username}" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TRX-02-Login&amp;CaseList" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
@@ -1012,7 +894,7 @@
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="Login_Parallel Controller_01-${username}" enabled="true">
+          <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="Login_Parallel Controller_01" enabled="true">
             <intProp name="MAX_THREAD_NUMBER">6</intProp>
             <boolProp name="PARENT_SAMPLE">true</boolProp>
             <boolProp name="LIMIT_MAX_THREAD_NUMBER">false</boolProp>
@@ -1479,12 +1361,6 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler-2" enabled="true">
-            <boolProp name="displayJMeterProperties">false</boolProp>
-            <boolProp name="displayJMeterVariables">true</boolProp>
-            <boolProp name="displaySystemProperties">false</boolProp>
-          </DebugSampler>
-          <hashTree/>
           <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
