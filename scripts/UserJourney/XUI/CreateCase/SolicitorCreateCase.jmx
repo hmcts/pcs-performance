@@ -7434,7 +7434,7 @@
         &quot;id&quot;: &quot;resumePossessionClaim&quot;,&#xd;
         &quot;summary&quot;: &quot;&quot;&#xd;
     },&#xd;
-    &quot;event_token&quot;: &quot;eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJuZnM5dXJrY2VyZTJuZjFlMjEyajczM2Y5ZiIsInN1YiI6ImM4ZWZjNDdjLTA3YTctNDVlZC04NTE5LWYwZDUzYzk3MjVlNyIsImlhdCI6MTc2MzQxODUxMCwiY2FzZS1pZCI6IjU0IiwiZXZlbnQtaWQiOiJyZXN1bWVQb3NzZXNzaW9uQ2xhaW0iLCJjYXNlLXR5cGUtaWQiOiJQQ1MtMzE2IiwianVyaXNkaWN0aW9uLWlkIjoiUENTIiwiY2FzZS1zdGF0ZSI6IkFXQUlUSU5HX0ZVUlRIRVJfQ0xBSU1fREVUQUlMUyIsImNhc2UtdmVyc2lvbiI6IjMxMTk5Y2YzNzE0OWIxMjc1OTJhZTBhZGVjMDIxNGM0ZTdhZWMwNzgzYTk2OTliODJhOGQ5ZGFmNjhmYTk4OGIiLCJlbnRpdHktdmVyc2lvbiI6MiwiY2FzZS1yZXZpc2lvbiI6MX0.ZTT2-vHSoGBw3IiYY2i1vCIijng1FWBIdCSEHEAIUuw&quot;,&#xd;
+    &quot;event_token&quot;: &quot;${event_token}&quot;,&#xd;
     &quot;ignore_warning&quot;: false&#xd;
 }&#xd;
 &#xd;
