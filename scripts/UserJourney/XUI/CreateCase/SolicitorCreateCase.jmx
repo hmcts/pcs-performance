@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan-CREATE-CASE" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -11,7 +11,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager-new" enabled="true">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
@@ -21,11 +21,12 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">www.example.com</stringProp>
+        <stringProp name="HTTPSampler.domain"></stringProp>
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path"></stringProp>
+        <boolProp name="HTTPSampler.image_parser">true</boolProp>
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -52,7 +53,7 @@
           </elementProp>
           <elementProp name="resultFileName" elementType="Argument">
             <stringProp name="Argument.name">resultFileName</stringProp>
-            <stringProp name="Argument.value">CaseListView-Perf-${__time(yyyyMMdd-HHmmss)}</stringProp>
+            <stringProp name="Argument.value">CreateCase-Perf-${__time(yyyyMMdd-HHmmss)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Thinktime" elementType="Argument">
@@ -105,7 +106,7 @@
         <stringProp name="variableNames">username,password,</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -140,7 +141,7 @@
         <stringProp name="filename">~/TreeResult-${resultFileName}.xml</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -553,12 +554,6 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="Launch- Parallel Controller-01" enabled="false">
-            <intProp name="MAX_THREAD_NUMBER">6</intProp>
-            <boolProp name="PARENT_SAMPLE">true</boolProp>
-            <boolProp name="LIMIT_MAX_THREAD_NUMBER">false</boolProp>
-          </com.blazemeter.jmeter.controller.ParallelSampler>
-          <hashTree/>
         </hashTree>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment-Login&amp;CaseList" enabled="true"/>
@@ -623,7 +618,7 @@
                 <elementProp name="redirect_uri" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">redirect_uri</stringProp>
-                  <stringProp name="Argument.value">https%3A%2F%2F${PcsXUI}%2Foauth2%2Fcallback</stringProp>
+                  <stringProp name="Argument.value">https%3A%2F%2Fxui-pcs-api-pr-316.preview.platform.hmcts.net%2Foauth2%2Fcallback</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -733,7 +728,7 @@
                 </elementProp>
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://idam-web-public.aat.platform.hmcts.net/login?response_type=code&amp;redirect_uri=https%3A%2F%2F${PcsXUI}%2Foauth2%2Fcallback&amp;scope=profile%20openid%20roles%20manage-user%20create-user%20search-user&amp;state=${state}&amp;client_id=xuiwebapp</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.aat.platform.hmcts.net/login?response_type=code&amp;redirect_uri=https%3A%2F%2Fxui-pcs-api-pr-316.preview.platform.hmcts.net%2Foauth2%2Fcallback&amp;scope=profile%20openid%20roles%20manage-user%20create-user%20search-user&amp;state=${state}&amp;client_id=xuiwebapp</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
@@ -1195,7 +1190,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://xui-pcs-api-pr-316.preview.platform.hmcts.net/data/internal/searchCases?ctid=PCS-316&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://xui-pcs-api-pr-316.preview.platform.hmcts.net/data/internal/searchCases?ctid=PCS-316&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -1337,7 +1332,7 @@
           </hashTree>
         </hashTree>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment-CreateCase" enabled="true"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment-CreateCase-${username}" enabled="true"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TRX-03-CreateCase" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -1443,6 +1438,85 @@
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
           <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-/aggregated/caseworkers/:uid/jurisdictions" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="access" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">access</stringProp>
+                    <stringProp name="Argument.value">read</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/aggregated/caseworkers/:uid/jurisdictions</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-create/PCS/PCS-316/createPossessionClaim/createPossessionClaimstartTheService</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:143.0) Gecko/20100101 Firefox/143.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN2" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+                <stringProp name="RegexExtractor.refname">XSRF-TOKEN2</stringProp>
+                <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">XSRF-TOKEN2 notfound</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-/data/internal/case-types/PCS-316/event-triggers/createPossessionClaim" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
@@ -1530,7 +1604,7 @@
               </BoundaryExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-/aggregated/caseworkers/:uid/jurisdictions" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-/aggregated/caseworkers/:uid/jurisdictions" enabled="false">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="access" elementType="HTTPArgument">
@@ -3274,9 +3348,9 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1-PDF-UploadDocument-5mb-pdf" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="Files/CreateCase/5-mb.pdf" elementType="HTTPFileArg">
+                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/pdf</stringProp>
-                    <stringProp name="File.path">Files/CreateCase/5-mb.pdf</stringProp>
+                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3498,12 +3572,12 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2-JPEG-UploadDocument-1mb-jpeg" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2-JPEG-UploadDocument-50mb-jpeg" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="Files/CreateCase/jpeg/50mb.jpg" elementType="HTTPFileArg">
+                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/jpeg/50mb.jpg" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">image/jpeg</stringProp>
-                    <stringProp name="File.path">Files/CreateCase/jpeg/50mb.jpg</stringProp>
+                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/jpeg/50mb.jpg</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4042,12 +4116,12 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="13-CreateCase-GroundForPossession-1" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="13-NEW-CreateCase-GroundForPossession-1" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroundForPossession1-/validate?pageId=resumePossessionClaimgroundsForPossession" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroundForPossession1-/validate?pageId=resumePossessionClaimgroundsForPossession" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -4143,6 +4217,124 @@
                   </elementProp>
                 </collectionProp>
                 <stringProp name="TestPlan.comments">Created from cURL on 2025-11-10T17:59:09.760671</stringProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN17" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+                <stringProp name="RegexExtractor.refname">XSRF-TOKEN17</stringProp>
+                <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">XSRF-TOKEN17 notfound</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$._links.self.href</stringProp>
+                <stringProp name="EXPECTED_VALUE">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/case-types/PCS-316/validate?pageId=resumePossessionClaimgroundsForPossession</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">false</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;data&quot;:{&quot;claimDueToRentArrears&quot;:&quot;Yes&quot;},&quot;event&quot;:{&quot;id&quot;:&quot;resumePossessionClaim&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_data&quot;:{&quot;hasUnsubmittedCaseData&quot;:&quot;Yes&quot;,&quot;overrideResumedGrounds&quot;:&quot;Yes&quot;,&quot;resumeClaimKeepAnswers&quot;:&quot;Yes&quot;,&quot;legislativeCountry&quot;:&quot;England&quot;,&quot;claimantType&quot;:{&quot;value&quot;:{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},&quot;list_items&quot;:[{&quot;code&quot;:&quot;PRIVATE_LANDLORD&quot;,&quot;label&quot;:&quot;Private landlord&quot;},{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},{&quot;code&quot;:&quot;MORTGAGE_LENDER&quot;,&quot;label&quot;:&quot;Mortgage lender&quot;},{&quot;code&quot;:&quot;OTHER&quot;,&quot;label&quot;:&quot;Other&quot;}],&quot;valueCode&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;},&quot;claimAgainstTrespassers&quot;:&quot;NO&quot;,&quot;organisationName&quot;:&quot;Possession Claims Solicitor Org&quot;,&quot;isClaimantNameCorrect&quot;:&quot;YES&quot;,&quot;claimantContactEmail&quot;:&quot;pcs-solicitor2@test.com&quot;,&quot;isCorrectClaimantContactEmail&quot;:&quot;YES&quot;,&quot;formattedClaimantContactAddress&quot;:&quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&quot;isCorrectClaimantContactAddress&quot;:&quot;YES&quot;,&quot;claimantProvidePhoneNumber&quot;:&quot;NO&quot;,&quot;defendant1&quot;:{&quot;nameKnown&quot;:&quot;YES&quot;,&quot;firstName&quot;:&quot;Robin&quot;,&quot;lastName&quot;:&quot;Law&quot;,&quot;addressKnown&quot;:&quot;NO&quot;},&quot;addAnotherDefendant&quot;:&quot;NO&quot;,&quot;typeOfTenancyLicence&quot;:&quot;ASSURED_TENANCY&quot;,&quot;tenancyLicenceDate&quot;:&quot;2000-02-02&quot;,&quot;tenancyLicenceDocuments&quot;:[{&quot;id&quot;:&quot;${document-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${hashToken-pdf}&quot;}},{&quot;id&quot;:&quot;${document-id-jpeg}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-jpeg}&quot;,&quot;document_hash&quot;:&quot;${hashToken-jpeg}&quot;}},{&quot;id&quot;:&quot;${document-id-docx}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-doc}&quot;,&quot;document_hash&quot;:&quot;${hashToken-doc}&quot;}}],&quot;claimDueToRentArrears&quot;:&quot;Yes&quot;},&quot;event_token&quot;:&quot;${event_token}&quot;,&quot;ignore_warning&quot;:false,&quot;case_reference&quot;:&quot;${id}&quot;}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/data/case-types/PCS-316/validate?pageId=resumePossessionClaimgroundsForPossession</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-24T11:50:08.921739</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="accept" elementType="Header">
+                    <stringProp name="Header.name">accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="accept-language" elementType="Header">
+                    <stringProp name="Header.name">accept-language</stringProp>
+                    <stringProp name="Header.value">en-GB,en-US;q=0.9,en;q=0.8</stringProp>
+                  </elementProp>
+                  <elementProp name="client-context" elementType="Header">
+                    <stringProp name="Header.name">client-context</stringProp>
+                    <stringProp name="Header.value">eyJjbGllbnRfY29udGV4dCI6eyJ1c2VyX2xhbmd1YWdlIjp7Imxhbmd1YWdlIjoiZW4ifX19</stringProp>
+                  </elementProp>
+                  <elementProp name="content-type" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="experimental" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="origin" elementType="Header">
+                    <stringProp name="Header.name">origin</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
+                  </elementProp>
+                  <elementProp name="priority" elementType="Header">
+                    <stringProp name="Header.name">priority</stringProp>
+                    <stringProp name="Header.value">u=1, i</stringProp>
+                  </elementProp>
+                  <elementProp name="referer" elementType="Header">
+                    <stringProp name="Header.name">referer</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimgroundsForPossession</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua</stringProp>
+                    <stringProp name="Header.value">&quot;Chromium&quot;;v=&quot;142&quot;, &quot;Google Chrome&quot;;v=&quot;142&quot;, &quot;Not_A Brand&quot;;v=&quot;99&quot;</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua-mobile" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
+                    <stringProp name="Header.value">?0</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua-platform" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
+                    <stringProp name="Header.value">&quot;macOS&quot;</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-dest" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-mode" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-site" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="user-agent" elementType="Header">
+                    <stringProp name="Header.name">user-agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36</stringProp>
+                  </elementProp>
+                  <elementProp name="x-xsrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-xsrf-token</stringProp>
+                    <stringProp name="Header.value">${XSRF-TOKEN16}</stringProp>
+                  </elementProp>
+                </collectionProp>
+                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-24T11:50:08.922025</stringProp>
               </HeaderManager>
               <hashTree/>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN17" enabled="true">
@@ -4788,6 +4980,133 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PDF-NOTICE-UploadDocument-5mb-pdf" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
+                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.mimetype">application/pdf</stringProp>
+                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
+                    <stringProp name="File.paramname">files</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="classification" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">classification</stringProp>
+                    <stringProp name="Argument.value">PUBLIC</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="caseTypeId" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">caseTypeId</stringProp>
+                    <stringProp name="Argument.value">PCS-316</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="jurisdictionId" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">jurisdictionId</stringProp>
+                    <stringProp name="Argument.value">PCS</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/documentsv2</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimtenancyLicenceDetails</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                  <elementProp name="X-XSRF-TOKEN" elementType="Header">
+                    <stringProp name="Header.name">X-XSRF-TOKEN</stringProp>
+                    <stringProp name="Header.value">${XSRF-TOKEN21-a}</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:143.0) Gecko/20100101 Firefox/143.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Notice_filename-pdf" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">Notice_filename-pdf</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$[&apos;documents&apos;][0][&apos;originalDocumentName&apos;]</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Failed Notice_filename-pdf</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Notice-hashToken-pdf" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">Notice-hashToken-pdf</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$[&apos;documents&apos;][0][&apos;hashToken&apos;]</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Failed Notice-hashToken-pdf</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Notice_pdf" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">Notice_pdf</stringProp>
+                <stringProp name="RegexExtractor.regex">{&quot;self&quot;:{&quot;href&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/(.+?)&quot;}</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">document_pdf not found</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN21-b" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+                <stringProp name="RegexExtractor.refname">XSRF-TOKEN21-b</stringProp>
+                <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">XSRF-TOKEN21-b notfound</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PDF-NOTICE-UploadDocument-5mb-pdf" enabled="false">
+              <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+                <collectionProp name="HTTPFileArgs.files">
                   <elementProp name="Files/CreateCase/Notice-5-mb.pdf" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                     <stringProp name="File.path">Files/CreateCase/Notice-5-mb.pdf</stringProp>
@@ -5317,7 +5636,406 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="21-CreateCase-MoneyJudgement" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TRX-21-New-A-DetailsOfRentArrear" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1-RentDoc-PDF-5mb-pdf-/documentsv2" enabled="true">
+              <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+                <collectionProp name="HTTPFileArgs.files">
+                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.mimetype">application/pdf</stringProp>
+                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
+                    <stringProp name="File.paramname">files</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="classification" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">classification</stringProp>
+                    <stringProp name="Argument.value">PUBLIC</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="caseTypeId" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">caseTypeId</stringProp>
+                    <stringProp name="Argument.value">PCS-316</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="jurisdictionId" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">jurisdictionId</stringProp>
+                    <stringProp name="Argument.value">PCS</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/documentsv2</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimtenancyLicenceDetails</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                  <elementProp name="X-XSRF-TOKEN" elementType="Header">
+                    <stringProp name="Header.name">X-XSRF-TOKEN</stringProp>
+                    <stringProp name="Header.value">${XSRF-TOKEN24}</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:143.0) Gecko/20100101 Firefox/143.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RentDoc_pdf" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">RentDoc_pdf</stringProp>
+                <stringProp name="RegexExtractor.regex">{&quot;self&quot;:{&quot;href&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/(.+?)&quot;},</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">dRentDoc_pdf not found</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="RentDoc-hash-pdf" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">RentDoc-hash-pdf</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$[&apos;documents&apos;][0][&apos;hashToken&apos;]</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">RentDoc-hash-pdf not found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN24-a" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+                <stringProp name="RegexExtractor.refname">XSRF-TOKEN24-a</stringProp>
+                <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">XSRF-TOKEN24-a notfound</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DetailsOfRentArrear-validate?pageId=resumePossessionClaimrentArrears" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;showRentArrearsPage&quot;: &quot;Yes&quot;,&#xd;
+    &quot;rentStatementDocuments&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: null,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;5-mb.pdf&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${RentDoc-hash-pdf}&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;totalRentArrears&quot;: &quot;1643&quot;,&#xd;
+    &quot;thirdPartyPayments&quot;: &quot;NO&quot;&#xd;
+  },&#xd;
+  &quot;event&quot;: {&#xd;
+    &quot;id&quot;: &quot;resumePossessionClaim&quot;,&#xd;
+    &quot;summary&quot;: &quot;&quot;,&#xd;
+    &quot;description&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;event_data&quot;: {&#xd;
+    &quot;hasUnsubmittedCaseData&quot;: &quot;Yes&quot;,&#xd;
+    &quot;overrideResumedGrounds&quot;: &quot;No&quot;,&#xd;
+    &quot;resumeClaimKeepAnswers&quot;: &quot;Yes&quot;,&#xd;
+    &quot;legislativeCountry&quot;: &quot;England&quot;,&#xd;
+    &quot;claimantType&quot;: {&#xd;
+      &quot;value&quot;: {&#xd;
+        &quot;code&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&#xd;
+        &quot;label&quot;: &quot;Registered provider of social housing&quot;&#xd;
+      },&#xd;
+      &quot;list_items&quot;: [&#xd;
+        {&#xd;
+          &quot;code&quot;: &quot;PRIVATE_LANDLORD&quot;,&#xd;
+          &quot;label&quot;: &quot;Private landlord&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;code&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&#xd;
+          &quot;label&quot;: &quot;Registered provider of social housing&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;code&quot;: &quot;MORTGAGE_LENDER&quot;,&#xd;
+          &quot;label&quot;: &quot;Mortgage lender&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;code&quot;: &quot;OTHER&quot;,&#xd;
+          &quot;label&quot;: &quot;Other&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;valueCode&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;&#xd;
+    },&#xd;
+    &quot;claimAgainstTrespassers&quot;: &quot;NO&quot;,&#xd;
+    &quot;organisationName&quot;: &quot;Possession Claims Solicitor Org&quot;,&#xd;
+    &quot;isClaimantNameCorrect&quot;: &quot;YES&quot;,&#xd;
+    &quot;claimantContactEmail&quot;: &quot;pcs-solicitor2@test.com&quot;,&#xd;
+    &quot;isCorrectClaimantContactEmail&quot;: &quot;YES&quot;,&#xd;
+    &quot;formattedClaimantContactAddress&quot;: &quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&#xd;
+    &quot;isCorrectClaimantContactAddress&quot;: &quot;YES&quot;,&#xd;
+    &quot;claimantProvidePhoneNumber&quot;: &quot;NO&quot;,&#xd;
+    &quot;defendant1&quot;: {&#xd;
+      &quot;nameKnown&quot;: &quot;YES&quot;,&#xd;
+      &quot;firstName&quot;: &quot;Robin&quot;,&#xd;
+      &quot;lastName&quot;: &quot;Law&quot;,&#xd;
+      &quot;addressKnown&quot;: &quot;NO&quot;&#xd;
+    },&#xd;
+    &quot;addAnotherDefendant&quot;: &quot;NO&quot;,&#xd;
+    &quot;typeOfTenancyLicence&quot;: &quot;ASSURED_TENANCY&quot;,&#xd;
+    &quot;tenancyLicenceDate&quot;: &quot;2000-02-02&quot;,&#xd;
+    &quot;tenancyLicenceDocuments&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${document-id-pdf}&quot;,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;${document_filename-pdf}&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${hashToken-pdf}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${document-id-jpeg}&quot;,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;${document_filename-jpeg}&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${hashToken-jpeg}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${document-id-docx}&quot;,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;${document_filename-doc}&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${hashToken-doc}&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;claimDueToRentArrears&quot;: &quot;Yes&quot;,&#xd;
+    &quot;copyOfRentArrearsGrounds&quot;: [&#xd;
+      &quot;PERSISTENT_DELAY_GROUND11&quot;,&#xd;
+      &quot;RENT_ARREARS_GROUND10&quot;,&#xd;
+      &quot;SERIOUS_RENT_ARREARS_GROUND8&quot;&#xd;
+    ],&#xd;
+    &quot;rentArrearsGrounds&quot;: [&#xd;
+      &quot;PERSISTENT_DELAY_GROUND11&quot;,&#xd;
+      &quot;RENT_ARREARS_GROUND10&quot;,&#xd;
+      &quot;SERIOUS_RENT_ARREARS_GROUND8&quot;&#xd;
+    ],&#xd;
+    &quot;hasOtherAdditionalGrounds&quot;: &quot;No&quot;,&#xd;
+    &quot;preActionProtocolCompleted&quot;: &quot;YES&quot;,&#xd;
+    &quot;mediationAttempted&quot;: &quot;YES&quot;,&#xd;
+    &quot;mediationAttemptedDetails&quot;: &quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively.&quot;,&#xd;
+    &quot;settlementAttempted&quot;: &quot;YES&quot;,&#xd;
+    &quot;settlementAttemptedDetails&quot;: &quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively&quot;,&#xd;
+    &quot;noticeServed&quot;: &quot;Yes&quot;,&#xd;
+    &quot;noticeServiceMethod&quot;: &quot;FIRST_CLASS_POST&quot;,&#xd;
+    &quot;noticePostedDate&quot;: &quot;2000-04-04&quot;,&#xd;
+    &quot;noticeDocuments&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${Notice-id-pdf}&quot;,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;${Notice_filename-pdf}&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${Notice-hashToken-pdf}&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;currentRent&quot;: &quot;50000&quot;,&#xd;
+    &quot;rentFrequency&quot;: &quot;MONTHLY&quot;,&#xd;
+    &quot;calculatedDailyRentChargeAmount&quot;: &quot;1643&quot;,&#xd;
+    &quot;formattedCalculatedDailyRentChargeAmount&quot;: &quot;£16.43&quot;,&#xd;
+    &quot;rentPerDayCorrect&quot;: &quot;YES&quot;,&#xd;
+    &quot;showRentArrearsPage&quot;: &quot;Yes&quot;,&#xd;
+    &quot;rentStatementDocuments&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: null,&#xd;
+        &quot;value&quot;: {&#xd;
+          &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}&quot;,&#xd;
+          &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}/binary&quot;,&#xd;
+          &quot;document_filename&quot;: &quot;5-mb.pdf&quot;,&#xd;
+          &quot;document_hash&quot;: &quot;${RentDoc-hash-pdf}&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;totalRentArrears&quot;: &quot;1643&quot;,&#xd;
+    &quot;thirdPartyPayments&quot;: &quot;NO&quot;&#xd;
+  },&#xd;
+  &quot;event_token&quot;: &quot;${event_token}&quot;,&#xd;
+  &quot;ignore_warning&quot;: false,&#xd;
+  &quot;case_reference&quot;: &quot;${id}&quot;&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/data/case-types/PCS-316/validate?pageId=resumePossessionClaimrentArrears</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-25T18:19:36.720169</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="accept" elementType="Header">
+                    <stringProp name="Header.name">accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="accept-language" elementType="Header">
+                    <stringProp name="Header.name">accept-language</stringProp>
+                    <stringProp name="Header.value">en-GB,en-US;q=0.9,en;q=0.8</stringProp>
+                  </elementProp>
+                  <elementProp name="client-context" elementType="Header">
+                    <stringProp name="Header.name">client-context</stringProp>
+                    <stringProp name="Header.value">eyJjbGllbnRfY29udGV4dCI6eyJ1c2VyX2xhbmd1YWdlIjp7Imxhbmd1YWdlIjoiZW4ifX19</stringProp>
+                  </elementProp>
+                  <elementProp name="content-type" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="experimental" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="origin" elementType="Header">
+                    <stringProp name="Header.name">origin</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
+                  </elementProp>
+                  <elementProp name="priority" elementType="Header">
+                    <stringProp name="Header.name">priority</stringProp>
+                    <stringProp name="Header.value">u=1, i</stringProp>
+                  </elementProp>
+                  <elementProp name="referer" elementType="Header">
+                    <stringProp name="Header.name">referer</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/cases/case-details/PCS/PCS-316/1764093471249432/trigger/resumePossessionClaim/resumePossessionClaimrentArrears</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua</stringProp>
+                    <stringProp name="Header.value">&quot;Chromium&quot;;v=&quot;142&quot;, &quot;Google Chrome&quot;;v=&quot;142&quot;, &quot;Not_A Brand&quot;;v=&quot;99&quot;</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua-mobile" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
+                    <stringProp name="Header.value">?0</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-ch-ua-platform" elementType="Header">
+                    <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
+                    <stringProp name="Header.value">&quot;macOS&quot;</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-dest" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-mode" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="sec-fetch-site" elementType="Header">
+                    <stringProp name="Header.name">sec-fetch-site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="user-agent" elementType="Header">
+                    <stringProp name="Header.name">user-agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36</stringProp>
+                  </elementProp>
+                  <elementProp name="x-xsrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-xsrf-token</stringProp>
+                    <stringProp name="Header.value">${XSRF-TOKEN24-a}</stringProp>
+                  </elementProp>
+                </collectionProp>
+                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-25T18:19:36.720383</stringProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="RentDoc-id-pdf" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">RentDoc-id-pdf</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..rentStatementDocuments[0].id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">RentDoc-id-pdf not found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$._links.self.href</stringProp>
+                <stringProp name="EXPECTED_VALUE">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/case-types/PCS-316/validate?pageId=resumePossessionClaimrentArrears</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">false</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
+          </TestAction>
+          <hashTree/>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="22-CreateCase-MoneyJudgement" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5447,7 +6165,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="22-CreateCase-ClaimantCircumstances" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="23-CreateCase-ClaimantCircumstances" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5577,7 +6295,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="23-CreateCase-Defendant&apos;s Circumstances" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="24-CreateCase-Defendant&apos;s Circumstances" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5707,7 +6425,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="24-CreateCase-AlternativestoPossession" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="25-CreateCase-AlternativestoPossession" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5837,7 +6555,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="25-CreateCase-HousingAct" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="26-CreateCase-HousingAct" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5967,7 +6685,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="26-CreateCase-StatementOf expressTerms" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="27-CreateCase-StatementOf expressTerms" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6097,7 +6815,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="27-CreateCase-Reason for order" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="28-CreateCase-Reason for order" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6227,7 +6945,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="28-CreateCase-ClaimingCost" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="29-CreateCase-ClaimingCost" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6357,7 +7075,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="29-CreateCase-AdditionalReasonforPossession" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="30-CreateCase-AdditionalReasonforPossession" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6487,7 +7205,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="30-CreateCase-Underlessee or Mortgaee ClaimRelief" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="31-CreateCase-Underlessee or Mortgaee ClaimRelief" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6617,7 +7335,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="31-CreateCase-UploadAdditionalDocuments" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="32-CreateCase-UploadAdditionalDocuments" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6747,7 +7465,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="32-CreateCase-Applications" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="33-CreateCase-Applications" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -6877,7 +7595,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="33-CreateCase-LanguageUsed" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="34-CreateCase-LanguageUsed" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -7007,7 +7725,7 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="34-CreateCase-CompletingYourClaim" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="35-CreateCase-CompletingYourClaim" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -7137,23 +7855,23 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="35-CreateCase-StatementOfTruth" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="36-NEW-CreateCase-StatementOfTruth" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="StatementOfTruth-/validate?pageId=resumePossessionClaimstatementOfTruth" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NEWLY-ADDED-StatementOfTruth" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;data&quot;:{},&quot;event&quot;:{&quot;id&quot;:&quot;resumePossessionClaim&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_data&quot;:{&quot;hasUnsubmittedCaseData&quot;:&quot;Yes&quot;,&quot;overrideResumedGrounds&quot;:&quot;No&quot;,&quot;resumeClaimKeepAnswers&quot;:&quot;Yes&quot;,&quot;legislativeCountry&quot;:&quot;England&quot;,&quot;claimantType&quot;:{&quot;value&quot;:{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},&quot;list_items&quot;:[{&quot;code&quot;:&quot;PRIVATE_LANDLORD&quot;,&quot;label&quot;:&quot;Private landlord&quot;},{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},{&quot;code&quot;:&quot;MORTGAGE_LENDER&quot;,&quot;label&quot;:&quot;Mortgage lender&quot;},{&quot;code&quot;:&quot;OTHER&quot;,&quot;label&quot;:&quot;Other&quot;}],&quot;valueCode&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;},&quot;claimAgainstTrespassers&quot;:&quot;NO&quot;,&quot;organisationName&quot;:&quot;Possession Claims Solicitor Org&quot;,&quot;isClaimantNameCorrect&quot;:&quot;YES&quot;,&quot;claimantContactEmail&quot;:&quot;pcs-solicitor2@test.com&quot;,&quot;isCorrectClaimantContactEmail&quot;:&quot;YES&quot;,&quot;formattedClaimantContactAddress&quot;:&quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&quot;isCorrectClaimantContactAddress&quot;:&quot;YES&quot;,&quot;claimantProvidePhoneNumber&quot;:&quot;NO&quot;,&quot;defendant1&quot;:{&quot;nameKnown&quot;:&quot;YES&quot;,&quot;firstName&quot;:&quot;Robin&quot;,&quot;lastName&quot;:&quot;Law&quot;,&quot;addressKnown&quot;:&quot;NO&quot;,&quot;emailKnown&quot;:&quot;NO&quot;},&quot;typeOfTenancyLicence&quot;:&quot;ASSURED_TENANCY&quot;,&quot;tenancyLicenceDate&quot;:&quot;2000-02-02&quot;,&quot;groundsForPossession&quot;:&quot;Yes&quot;,&quot;tenancyLicenceDocuments&quot;: [{&quot;id&quot;:&quot;${document-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${hashToken-pdf}&quot;}},{&quot;id&quot;:&quot;${document-id-jpeg}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-jpeg}&quot;,&quot;document_hash&quot;:&quot;${hashToken-jpeg}&quot;}},{&quot;id&quot;:&quot;${document-id-docx}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-doc}&quot;,&quot;document_hash&quot;:&quot;${hashToken-doc}&quot;}}],&quot;copyOfRentArrearsGrounds&quot;:[&quot;PERSISTENT_DELAY_GROUND11&quot;,&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;],&quot;hasOtherAdditionalGrounds&quot;:&quot;No&quot;,&quot;preActionProtocolCompleted&quot;:&quot;YES&quot;,&quot;rentArrearsGrounds&quot;:[&quot;PERSISTENT_DELAY_GROUND11&quot;,&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;],&quot;mediationAttempted&quot;:&quot;YES&quot;,&quot;mediationAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively.&quot;,&quot;settlementAttempted&quot;:&quot;YES&quot;,&quot;settlementAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively&quot;,&quot;noticeServed&quot;:&quot;Yes&quot;,&quot;noticeServiceMethod&quot;:&quot;FIRST_CLASS_POST&quot;,&quot;noticePostedDate&quot;:&quot;2000-04-04&quot;,&quot;noticeDocuments&quot;:[{&quot;id&quot;:&quot;${Notice-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${Notice_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${Notice-hashToken-pdf}&quot;}}],&quot;currentRent&quot;:&quot;50000&quot;,&quot;rentFrequency&quot;:&quot;MONTHLY&quot;,&quot;calculatedDailyRentChargeAmount&quot;:&quot;1643&quot;,&quot;formattedCalculatedDailyRentChargeAmount&quot;:&quot;£16.43&quot;,&quot;rentPerDayCorrect&quot;:&quot;YES&quot;,&quot;arrearsJudgmentWanted&quot;:&quot;Yes&quot;,&quot;claimantNamePossessiveForm&quot;:null,&quot;claimantCircumstancesSelect&quot;:&quot;NO&quot;,&quot;hasDefendantCircumstancesInfo&quot;:&quot;NO&quot;,&quot;showSuspensionOfRightToBuyHousingActsPage&quot;:&quot;No&quot;,&quot;showDemotionOfTenancyHousingActsPage&quot;:&quot;No&quot;,&quot;suspensionToBuyDemotionOfTenancyPages&quot;:&quot;Yes&quot;,&quot;alternativesToPossession&quot;:[&quot;SUSPENSION_OF_RIGHT_TO_BUY&quot;,&quot;DEMOTION_OF_TENANCY&quot;],&quot;suspensionOfRightToBuyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;demotionOfTenancyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;statementOfExpressTermsServed&quot;:&quot;YES&quot;,&quot;statementOfExpressTermsDetails&quot;:&quot;A statement of express terms is a written summary of the specific conditions and details that form part of an employee’s contract of employment. It typically includes the full name of the employer and the employee, the date employment began, the job title or description of work, the place of employment, and whether the employee may be required to work at different locations. It also sets out details of pay including rate, method, and frequency of payment, as well as hours of work, holiday entitlement, notice periods, and information about sick pay and pension schemes. The statement may also include details about disciplinary and grievance procedures, the length of any probationary period, and whether the employment is for a fixed term or permanent. Together, these express terms define the agreed rights and obligations between the employer and the employee.&quot;,&quot;suspensionOrderReason&quot;:&quot;A suspension order may be issued when an employee is alleged to have committed misconduct, breached company policies, or acted in a way that could compromise an investigation if they remained at work.&quot;,&quot;demotionOrderReason&quot;:&quot;A demotion order may be issued when an employee’s performance consistently falls below the required standard, when they fail to meet the expectations or responsibilities of their current position.&quot;,&quot;claimingCostsWanted&quot;:&quot;YES&quot;,&quot;additionalReasonsForPossession&quot;:{&quot;hasReasons&quot;:&quot;NO&quot;},&quot;hasUnderlesseeOrMortgagee&quot;:&quot;NO&quot;,&quot;wantToUploadDocuments&quot;:&quot;NO&quot;,&quot;applicationWithClaim&quot;:&quot;YES&quot;,&quot;languageUsed&quot;:&quot;ENGLISH&quot;,&quot;completionNextStep&quot;:&quot;SUBMIT_AND_PAY_NOW&quot;},&quot;event_token&quot;:&quot;${event_token}&quot;,&quot;ignore_warning&quot;:false,&quot;case_reference&quot;:&quot;${id}&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;data&quot;:{&quot;statementOfTruth&quot;:{&quot;completedBy&quot;:&quot;LEGAL_REPRESENTATIVE&quot;,&quot;fullNameLegalRep&quot;:&quot;Solicitor&quot;,&quot;firmNameLegalRep&quot;:&quot;ABC-Firm&quot;,&quot;positionLegalRep&quot;:&quot;Solicitor&quot;,&quot;agreementLegalRep&quot;:[&quot;AGREED&quot;]}},&quot;event&quot;:{&quot;id&quot;:&quot;resumePossessionClaim&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_data&quot;:{&quot;hasUnsubmittedCaseData&quot;:&quot;Yes&quot;,&quot;overrideResumedGrounds&quot;:&quot;No&quot;,&quot;resumeClaimKeepAnswers&quot;:&quot;Yes&quot;,&quot;legislativeCountry&quot;:&quot;England&quot;,&quot;claimantType&quot;:{&quot;value&quot;:{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},&quot;list_items&quot;:[{&quot;code&quot;:&quot;PRIVATE_LANDLORD&quot;,&quot;label&quot;:&quot;Private landlord&quot;},{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},{&quot;code&quot;:&quot;MORTGAGE_LENDER&quot;,&quot;label&quot;:&quot;Mortgage lender&quot;},{&quot;code&quot;:&quot;OTHER&quot;,&quot;label&quot;:&quot;Other&quot;}],&quot;valueCode&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;},&quot;claimAgainstTrespassers&quot;:&quot;NO&quot;,&quot;organisationName&quot;:&quot;Possession Claims Solicitor Org&quot;,&quot;isClaimantNameCorrect&quot;:&quot;YES&quot;,&quot;claimantContactEmail&quot;:&quot;pcs-solicitor2@test.com&quot;,&quot;isCorrectClaimantContactEmail&quot;:&quot;YES&quot;,&quot;formattedClaimantContactAddress&quot;:&quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&quot;isCorrectClaimantContactAddress&quot;:&quot;YES&quot;,&quot;claimantProvidePhoneNumber&quot;:&quot;NO&quot;,&quot;defendant1&quot;:{&quot;nameKnown&quot;:&quot;YES&quot;,&quot;firstName&quot;:&quot;Robin&quot;,&quot;lastName&quot;:&quot;Law&quot;,&quot;addressKnown&quot;:&quot;NO&quot;},&quot;addAnotherDefendant&quot;:&quot;NO&quot;,&quot;typeOfTenancyLicence&quot;:&quot;ASSURED_TENANCY&quot;,&quot;tenancyLicenceDate&quot;:&quot;2000-02-02&quot;,&quot;tenancyLicenceDocuments&quot;:[{&quot;id&quot;:&quot;${document-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${hashToken-pdf}&quot;}},{&quot;id&quot;:&quot;${document-id-jpeg}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-jpeg}&quot;,&quot;document_hash&quot;:&quot;${hashToken-jpeg}&quot;}},{&quot;id&quot;:&quot;${document-id-docx}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-doc}&quot;,&quot;document_hash&quot;:&quot;${hashToken-doc}&quot;}}],&quot;claimDueToRentArrears&quot;:&quot;Yes&quot;,&quot;copyOfRentArrearsGrounds&quot;:[&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;,&quot;PERSISTENT_DELAY_GROUND11&quot;],&quot;rentArrearsGrounds&quot;:[&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;,&quot;PERSISTENT_DELAY_GROUND11&quot;],&quot;hasOtherAdditionalGrounds&quot;:&quot;No&quot;,&quot;preActionProtocolCompleted&quot;:&quot;YES&quot;,&quot;mediationAttempted&quot;:&quot;YES&quot;,&quot;mediationAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively.&quot;,&quot;settlementAttempted&quot;:&quot;YES&quot;,&quot;settlementAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively&quot;,&quot;noticeServed&quot;:&quot;Yes&quot;,&quot;noticeServiceMethod&quot;:&quot;FIRST_CLASS_POST&quot;,&quot;noticePostedDate&quot;:&quot;2000-04-04&quot;,&quot;noticeDocuments&quot;:[{&quot;id&quot;:&quot;${Notice-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${Notice_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${Notice-hashToken-pdf}&quot;}}],&quot;currentRent&quot;:&quot;50000&quot;,&quot;rentFrequency&quot;:&quot;MONTHLY&quot;,&quot;calculatedDailyRentChargeAmount&quot;:&quot;1643&quot;,&quot;formattedCalculatedDailyRentChargeAmount&quot;:&quot;£16.43&quot;,&quot;rentPerDayCorrect&quot;:&quot;YES&quot;,&quot;showRentArrearsPage&quot;:&quot;Yes&quot;,&quot;rentStatementDocuments&quot;:[{&quot;id&quot;:&quot;${RentDoc-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;5-mb.pdf&quot;,&quot;document_hash&quot;:&quot;RentDoc-hash-pdf&quot;}}],&quot;totalRentArrears&quot;:&quot;1643&quot;,&quot;thirdPartyPayments&quot;:&quot;NO&quot;,&quot;arrearsJudgmentWanted&quot;:&quot;YES&quot;,&quot;claimantNamePossessiveForm&quot;:null,&quot;claimantCircumstancesSelect&quot;:&quot;NO&quot;,&quot;hasDefendantCircumstancesInfo&quot;:&quot;NO&quot;,&quot;showSuspensionOfRightToBuyHousingActsPage&quot;:&quot;No&quot;,&quot;showDemotionOfTenancyHousingActsPage&quot;:&quot;No&quot;,&quot;suspensionToBuyDemotionOfTenancyPages&quot;:&quot;Yes&quot;,&quot;alternativesToPossession&quot;:[&quot;DEMOTION_OF_TENANCY&quot;,&quot;SUSPENSION_OF_RIGHT_TO_BUY&quot;],&quot;suspensionOfRightToBuyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;demotionOfTenancyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;statementOfExpressTermsServed&quot;:&quot;YES&quot;,&quot;statementOfExpressTermsDetails&quot;:&quot;A statement of express terms is a written summary of the specific conditions and details that form part of an employee’s contract of employment. It typically includes the full name of the employer and the employee, the date employment began, the job title or description of work, the place of employment, and whether the employee may be required to work at different locations. It also sets out details of pay including rate, method, and frequency of payment, as well as hours of work, holiday entitlement, notice periods, and information about sick pay and pension schemes. The statement may also include details about disciplinary and grievance procedures, the length of any probationary period, and whether the employment is for a fixed term or permanent. Together, these express terms define the agreed rights and obligations between the employer and the employee.&quot;,&quot;suspensionOrderReason&quot;:&quot;A suspension order may be issued when an employee is alleged to have committed misconduct, breached company policies, or acted in a way that could compromise an investigation if they remained at work.&quot;,&quot;demotionOrderReason&quot;:&quot;A demotion order may be issued when an employee’s performance consistently falls below the required standard, when they fail to meet the expectations or responsibilities of their current position.&quot;,&quot;claimingCostsWanted&quot;:&quot;YES&quot;,&quot;additionalReasonsForPossession&quot;:{&quot;hasReasons&quot;:&quot;NO&quot;},&quot;hasUnderlesseeOrMortgagee&quot;:&quot;NO&quot;,&quot;wantToUploadDocuments&quot;:&quot;NO&quot;,&quot;applicationWithClaim&quot;:&quot;YES&quot;,&quot;languageUsed&quot;:&quot;ENGLISH&quot;,&quot;completionNextStep&quot;:&quot;SUBMIT_AND_PAY_NOW&quot;,&quot;statementOfTruth&quot;:{&quot;completedBy&quot;:&quot;LEGAL_REPRESENTATIVE&quot;,&quot;fullNameLegalRep&quot;:&quot;Solicitor&quot;,&quot;firmNameLegalRep&quot;:&quot;ABC-Firm&quot;,&quot;positionLegalRep&quot;:&quot;Solicitor&quot;,&quot;agreementLegalRep&quot;:[&quot;AGREED&quot;]}},&quot;event_token&quot;:&quot;${event_token}&quot;,&quot;ignore_warning&quot;:false,&quot;case_reference&quot;:&quot;${id}&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.domain">xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -7167,7 +7885,7 @@
               <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-11T16:37:32.945333</stringProp>
+              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-27T12:31:19.925886</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager" enabled="true">
@@ -7194,7 +7912,7 @@
                   </elementProp>
                   <elementProp name="origin" elementType="Header">
                     <stringProp name="Header.name">origin</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
                   </elementProp>
                   <elementProp name="priority" elementType="Header">
                     <stringProp name="Header.name">priority</stringProp>
@@ -7202,11 +7920,11 @@
                   </elementProp>
                   <elementProp name="referer" elementType="Header">
                     <stringProp name="Header.name">referer</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimstatementOfTruth</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimstatementOfTruth</stringProp>
                   </elementProp>
                   <elementProp name="sec-ch-ua" elementType="Header">
                     <stringProp name="Header.name">sec-ch-ua</stringProp>
-                    <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;141&quot;, &quot;Not?A_Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;141&quot;</stringProp>
+                    <stringProp name="Header.value">&quot;Chromium&quot;;v=&quot;142&quot;, &quot;Google Chrome&quot;;v=&quot;142&quot;, &quot;Not_A Brand&quot;;v=&quot;99&quot;</stringProp>
                   </elementProp>
                   <elementProp name="sec-ch-ua-mobile" elementType="Header">
                     <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
@@ -7230,14 +7948,14 @@
                   </elementProp>
                   <elementProp name="user-agent" elementType="Header">
                     <stringProp name="Header.name">user-agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36</stringProp>
                   </elementProp>
                   <elementProp name="x-xsrf-token" elementType="Header">
                     <stringProp name="Header.name">x-xsrf-token</stringProp>
                     <stringProp name="Header.value">${XSRF-TOKEN38}</stringProp>
                   </elementProp>
                 </collectionProp>
-                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-11T16:37:32.9454</stringProp>
+                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-27T12:31:19.926028</stringProp>
               </HeaderManager>
               <hashTree/>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN39-new" enabled="true">
@@ -7267,183 +7985,23 @@
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="36-CreateCase-CheckYourAnswers" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="37-NEW-CreateCase-CheckYourAnswers-${username}" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CYA-data/cases/${id}/events Request Method " enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NEW-CYA-data/cases/${id}/events Request Method " enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-    &quot;data&quot;: {&#xd;
-        &quot;addAnotherDefendant&quot;: &quot;NO&quot;,&#xd;
-        &quot;additionalReasonsForPossession&quot;: {&#xd;
-            &quot;hasReasons&quot;: &quot;NO&quot;,&#xd;
-            &quot;reasons&quot;: null&#xd;
-        },&#xd;
-        &quot;alternativesToPossession&quot;: [&#xd;
-            &quot;DEMOTION_OF_TENANCY&quot;,&#xd;
-            &quot;SUSPENSION_OF_RIGHT_TO_BUY&quot;&#xd;
-        ],&#xd;
-        &quot;applicationWithClaim&quot;: &quot;YES&quot;,&#xd;
-        &quot;arrearsJudgmentWanted&quot;: &quot;YES&quot;,&#xd;
-        &quot;calculatedDailyRentChargeAmount&quot;: &quot;1643&quot;,&#xd;
-        &quot;claimAgainstTrespassers&quot;: &quot;NO&quot;,&#xd;
-        &quot;claimantCircumstancesSelect&quot;: &quot;NO&quot;,&#xd;
-        &quot;claimantContactEmail&quot;: &quot;pcs-solicitor2@test.com&quot;,&#xd;
-        &quot;claimantNamePossessiveForm&quot;: null,&#xd;
-        &quot;claimantProvidePhoneNumber&quot;: &quot;NO&quot;,&#xd;
-        &quot;claimantType&quot;: {&#xd;
-            &quot;list_items&quot;: [&#xd;
-                {&#xd;
-                    &quot;code&quot;: &quot;PRIVATE_LANDLORD&quot;,&#xd;
-                    &quot;label&quot;: &quot;Private landlord&quot;&#xd;
-                },&#xd;
-                {&#xd;
-                    &quot;code&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&#xd;
-                    &quot;label&quot;: &quot;Registered provider of social housing&quot;&#xd;
-                },&#xd;
-                {&#xd;
-                    &quot;code&quot;: &quot;MORTGAGE_LENDER&quot;,&#xd;
-                    &quot;label&quot;: &quot;Mortgage lender&quot;&#xd;
-                },&#xd;
-                {&#xd;
-                    &quot;code&quot;: &quot;OTHER&quot;,&#xd;
-                    &quot;label&quot;: &quot;Other&quot;&#xd;
-                }&#xd;
-            ],&#xd;
-            &quot;value&quot;: {&#xd;
-                &quot;code&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&#xd;
-                &quot;label&quot;: &quot;Registered provider of social housing&quot;&#xd;
-            },&#xd;
-            &quot;valueCode&quot;: &quot;PROVIDER_OF_SOCIAL_HOUSING&quot;&#xd;
-        },&#xd;
-        &quot;claimingCostsWanted&quot;: &quot;YES&quot;,&#xd;
-        &quot;completionNextStep&quot;: &quot;SUBMIT_AND_PAY_NOW&quot;,&#xd;
-        &quot;copyOfRentArrearsGrounds&quot;: [&#xd;
-            &quot;PERSISTENT_DELAY_GROUND11&quot;,&#xd;
-            &quot;RENT_ARREARS_GROUND10&quot;,&#xd;
-            &quot;SERIOUS_RENT_ARREARS_GROUND8&quot;&#xd;
-        ],&#xd;
-        &quot;currentRent&quot;: &quot;50000&quot;,&#xd;
-        &quot;defendant1&quot;: {&#xd;
-            &quot;addressKnown&quot;: &quot;NO&quot;,&#xd;
-            &quot;addressSameAsPossession&quot;: null,&#xd;
-            &quot;correspondenceAddress&quot;: {&#xd;
-                &quot;AddressLine1&quot;: null,&#xd;
-                &quot;AddressLine2&quot;: null,&#xd;
-                &quot;AddressLine3&quot;: null,&#xd;
-                &quot;Country&quot;: null,&#xd;
-                &quot;County&quot;: null,&#xd;
-                &quot;PostCode&quot;: null,&#xd;
-                &quot;PostTown&quot;: null&#xd;
-            },&#xd;
-            &quot;firstName&quot;: &quot;Robin&quot;,&#xd;
-            &quot;lastName&quot;: &quot;Law&quot;,&#xd;
-            &quot;nameKnown&quot;: &quot;YES&quot;&#xd;
-        },&#xd;
-        &quot;demotionOfTenancyActs&quot;: &quot;SECTION_82A_2&quot;,&#xd;
-        &quot;demotionOrderReason&quot;: &quot;A demotion order may be issued when an employee’s performance consistently falls below the required standard, when they fail to meet the expectations or responsibilities of their current position.&quot;,&#xd;
-        &quot;formattedCalculatedDailyRentChargeAmount&quot;: &quot;£16.43&quot;,&#xd;
-        &quot;formattedClaimantContactAddress&quot;: &quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&#xd;
-        &quot;groundsForPossession&quot;: &quot;Yes&quot;,&#xd;
-        &quot;hasDefendantCircumstancesInfo&quot;: &quot;NO&quot;,&#xd;
-        &quot;hasOtherAdditionalGrounds&quot;: &quot;No&quot;,&#xd;
-        &quot;hasUnderlesseeOrMortgagee&quot;: &quot;NO&quot;,&#xd;
-        &quot;hasUnsubmittedCaseData&quot;: &quot;Yes&quot;,&#xd;
-        &quot;isClaimantNameCorrect&quot;: &quot;YES&quot;,&#xd;
-        &quot;isCorrectClaimantContactAddress&quot;: &quot;YES&quot;,&#xd;
-        &quot;isCorrectClaimantContactEmail&quot;: &quot;YES&quot;,&#xd;
-        &quot;languageUsed&quot;: &quot;ENGLISH&quot;,&#xd;
-        &quot;legislativeCountry&quot;: &quot;England&quot;,&#xd;
-        &quot;mediationAttempted&quot;: &quot;YES&quot;,&#xd;
-        &quot;mediationAttemptedDetails&quot;: &quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively.&quot;,&#xd;
-        &quot;noticeDocuments&quot;: [&#xd;
-            {&#xd;
-                &quot;id&quot;: &quot;${Notice-id-pdf}&quot;,&#xd;
-                &quot;value&quot;: {&#xd;
-                    &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}/binary&quot;,&#xd;
-                    &quot;document_filename&quot;: &quot;${Notice_filename-pdf}&quot;,&#xd;
-                    &quot;document_hash&quot;: &quot;${Notice-hashToken-pdf}&quot;,&#xd;
-                    &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}&quot;&#xd;
-                }&#xd;
-            }&#xd;
-        ],&#xd;
-        &quot;noticePostedDate&quot;: &quot;2000-04-04&quot;,&#xd;
-        &quot;noticeServed&quot;: &quot;Yes&quot;,&#xd;
-        &quot;noticeServiceMethod&quot;: &quot;FIRST_CLASS_POST&quot;,&#xd;
-        &quot;organisationName&quot;: &quot;Possession Claims Solicitor Org&quot;,&#xd;
-        &quot;overrideResumedGrounds&quot;: &quot;No&quot;,&#xd;
-        &quot;preActionProtocolCompleted&quot;: &quot;YES&quot;,&#xd;
-        &quot;rentArrearsGrounds&quot;: [&#xd;
-            &quot;PERSISTENT_DELAY_GROUND11&quot;,&#xd;
-            &quot;RENT_ARREARS_GROUND10&quot;,&#xd;
-            &quot;SERIOUS_RENT_ARREARS_GROUND8&quot;&#xd;
-        ],&#xd;
-        &quot;rentFrequency&quot;: &quot;MONTHLY&quot;,&#xd;
-        &quot;rentPerDayCorrect&quot;: &quot;YES&quot;,&#xd;
-        &quot;resumeClaimKeepAnswers&quot;: &quot;Yes&quot;,&#xd;
-        &quot;settlementAttempted&quot;: &quot;YES&quot;,&#xd;
-        &quot;settlementAttemptedDetails&quot;: &quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively&quot;,&#xd;
-        &quot;showDemotionOfTenancyHousingActsPage&quot;: &quot;No&quot;,&#xd;
-        &quot;showSuspensionOfRightToBuyHousingActsPage&quot;: &quot;No&quot;,&#xd;
-        &quot;statementOfExpressTermsDetails&quot;: &quot;A statement of express terms is a written summary of the specific conditions and details that form part of an employee’s contract of employment. It typically includes the full name of the employer and the employee, the date employment began, the job title or description of work, the place of employment, and whether the employee may be required to work at different locations. It also sets out details of pay including rate, method, and frequency of payment, as well as hours of work, holiday entitlement, notice periods, and information about sick pay and pension schemes. The statement may also include details about disciplinary and grievance procedures, the length of any probationary period, and whether the employment is for a fixed term or permanent. Together, these express terms define the agreed rights and obligations between the employer and the employee.&quot;,&#xd;
-        &quot;statementOfExpressTermsServed&quot;: &quot;YES&quot;,&#xd;
-        &quot;suspensionOfRightToBuyActs&quot;: &quot;SECTION_82A_2&quot;,&#xd;
-        &quot;suspensionOrderReason&quot;: &quot;A suspension order may be issued when an employee is alleged to have committed misconduct, breached company policies, or acted in a way that could compromise an investigation if they remained at work.&quot;,&#xd;
-        &quot;suspensionToBuyDemotionOfTenancyPages&quot;: &quot;Yes&quot;,&#xd;
-        &quot;tenancyLicenceDate&quot;: &quot;2000-02-02&quot;,&#xd;
-        &quot;tenancyLicenceDocuments&quot;: [&#xd;
-            {&#xd;
-                &quot;id&quot;: &quot;${document-id-pdf}&quot;,&#xd;
-                &quot;value&quot;: {&#xd;
-                    &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&#xd;
-                    &quot;document_filename&quot;: &quot;${document_filename-pdf}&quot;,&#xd;
-                    &quot;document_hash&quot;: &quot;${hashToken-pdf}&quot;,&#xd;
-                    &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;&#xd;
-                }&#xd;
-            },&#xd;
-            {&#xd;
-                &quot;id&quot;: &quot;${document-id-jpeg}&quot;,&#xd;
-                &quot;value&quot;: {&#xd;
-                    &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&#xd;
-                    &quot;document_filename&quot;: &quot;${document_filename-jpeg}&quot;,&#xd;
-                    &quot;document_hash&quot;: &quot;${hashToken-jpeg}&quot;,&#xd;
-                    &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;&#xd;
-                }&#xd;
-            },&#xd;
-            {&#xd;
-                &quot;id&quot;: &quot;${document-id-docx}&quot;,&#xd;
-                &quot;value&quot;: {&#xd;
-                    &quot;document_binary_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&#xd;
-                    &quot;document_filename&quot;: &quot;${document_filename-doc}&quot;,&#xd;
-                    &quot;document_hash&quot;: &quot;${hashToken-doc}&quot;,&#xd;
-                    &quot;document_url&quot;: &quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;&#xd;
-                }&#xd;
-            }&#xd;
-        ],&#xd;
-        &quot;typeOfTenancyLicence&quot;: &quot;ASSURED_TENANCY&quot;,&#xd;
-        &quot;wantToUploadDocuments&quot;: &quot;NO&quot;&#xd;
-    },&#xd;
-    &quot;event&quot;: {&#xd;
-        &quot;description&quot;: &quot;&quot;,&#xd;
-        &quot;id&quot;: &quot;resumePossessionClaim&quot;,&#xd;
-        &quot;summary&quot;: &quot;&quot;&#xd;
-    },&#xd;
-    &quot;event_token&quot;: &quot;${event_token}&quot;,&#xd;
-    &quot;ignore_warning&quot;: false&#xd;
-}&#xd;
-&#xd;
-</stringProp>
+                    <stringProp name="Argument.value">{&quot;data&quot;:{&quot;hasUnsubmittedCaseData&quot;:&quot;Yes&quot;,&quot;overrideResumedGrounds&quot;:&quot;No&quot;,&quot;resumeClaimKeepAnswers&quot;:&quot;Yes&quot;,&quot;legislativeCountry&quot;:&quot;England&quot;,&quot;claimantType&quot;:{&quot;value&quot;:{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},&quot;list_items&quot;:[{&quot;code&quot;:&quot;PRIVATE_LANDLORD&quot;,&quot;label&quot;:&quot;Private landlord&quot;},{&quot;code&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;,&quot;label&quot;:&quot;Registered provider of social housing&quot;},{&quot;code&quot;:&quot;MORTGAGE_LENDER&quot;,&quot;label&quot;:&quot;Mortgage lender&quot;},{&quot;code&quot;:&quot;OTHER&quot;,&quot;label&quot;:&quot;Other&quot;}],&quot;valueCode&quot;:&quot;PROVIDER_OF_SOCIAL_HOUSING&quot;},&quot;claimAgainstTrespassers&quot;:&quot;NO&quot;,&quot;organisationName&quot;:&quot;Possession Claims Solicitor Org&quot;,&quot;isClaimantNameCorrect&quot;:&quot;YES&quot;,&quot;claimantContactEmail&quot;:&quot;pcs-solicitor2@test.com&quot;,&quot;isCorrectClaimantContactEmail&quot;:&quot;YES&quot;,&quot;formattedClaimantContactAddress&quot;:&quot;9 Second Avenue&lt;br&gt;London&lt;br&gt;W3 7RX&quot;,&quot;isCorrectClaimantContactAddress&quot;:&quot;YES&quot;,&quot;claimantProvidePhoneNumber&quot;:&quot;NO&quot;,&quot;defendant1&quot;:{&quot;nameKnown&quot;:&quot;YES&quot;,&quot;firstName&quot;:&quot;Robin&quot;,&quot;lastName&quot;:&quot;Law&quot;,&quot;addressKnown&quot;:&quot;NO&quot;,&quot;addressSameAsPossession&quot;:null,&quot;correspondenceAddress&quot;:{&quot;AddressLine1&quot;:null,&quot;AddressLine2&quot;:null,&quot;AddressLine3&quot;:null,&quot;PostTown&quot;:null,&quot;County&quot;:null,&quot;Country&quot;:null,&quot;PostCode&quot;:null}},&quot;addAnotherDefendant&quot;:&quot;NO&quot;,&quot;typeOfTenancyLicence&quot;:&quot;ASSURED_TENANCY&quot;,&quot;tenancyLicenceDate&quot;:&quot;2000-02-02&quot;,&quot;tenancyLicenceDocuments&quot;:[{&quot;id&quot;:&quot;${document-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${hashToken-pdf}&quot;}},{&quot;id&quot;:&quot;${document-id-jpeg}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_jpeg}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-jpeg}&quot;,&quot;document_hash&quot;:&quot;${hashToken-jpeg}&quot;}},{&quot;id&quot;:&quot;${document-id-docx}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${document_doc}/binary&quot;,&quot;document_filename&quot;:&quot;${document_filename-doc}&quot;,&quot;document_hash&quot;:&quot;${hashToken-doc}&quot;}}],&quot;claimDueToRentArrears&quot;:&quot;Yes&quot;,&quot;copyOfRentArrearsGrounds&quot;:[&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;,&quot;PERSISTENT_DELAY_GROUND11&quot;],&quot;rentArrearsGrounds&quot;:[&quot;SERIOUS_RENT_ARREARS_GROUND8&quot;,&quot;RENT_ARREARS_GROUND10&quot;,&quot;PERSISTENT_DELAY_GROUND11&quot;],&quot;hasOtherAdditionalGrounds&quot;:&quot;No&quot;,&quot;preActionProtocolCompleted&quot;:&quot;YES&quot;,&quot;mediationAttempted&quot;:&quot;YES&quot;,&quot;mediationAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively.&quot;,&quot;settlementAttempted&quot;:&quot;YES&quot;,&quot;settlementAttemptedDetails&quot;:&quot;Mediation and settlement are processes used to resolve disputes peacefully without going to court. Mediation involves a neutral third party, known as the mediator, who helps the disputing parties communicate effectively&quot;,&quot;noticeServed&quot;:&quot;Yes&quot;,&quot;noticeServiceMethod&quot;:&quot;FIRST_CLASS_POST&quot;,&quot;noticePostedDate&quot;:&quot;2000-04-04&quot;,&quot;noticeDocuments&quot;:[{&quot;id&quot;:&quot;${Notice-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${Notice_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;${Notice_filename-pdf}&quot;,&quot;document_hash&quot;:&quot;${Notice-hashToken-pdf}&quot;}}],&quot;currentRent&quot;:&quot;50000&quot;,&quot;rentFrequency&quot;:&quot;MONTHLY&quot;,&quot;calculatedDailyRentChargeAmount&quot;:&quot;1643&quot;,&quot;formattedCalculatedDailyRentChargeAmount&quot;:&quot;£16.43&quot;,&quot;rentPerDayCorrect&quot;:&quot;YES&quot;,&quot;showRentArrearsPage&quot;:&quot;Yes&quot;,&quot;rentStatementDocuments&quot;:[{&quot;id&quot;:&quot;${RentDoc-id-pdf}&quot;,&quot;value&quot;:{&quot;document_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}&quot;,&quot;document_binary_url&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/${RentDoc_pdf}/binary&quot;,&quot;document_filename&quot;:&quot;5-mb.pdf&quot;,&quot;document_hash&quot;:&quot;${RentDoc-hash-pdf}&quot;}}],&quot;totalRentArrears&quot;:&quot;1643&quot;,&quot;thirdPartyPayments&quot;:&quot;NO&quot;,&quot;arrearsJudgmentWanted&quot;:&quot;YES&quot;,&quot;claimantNamePossessiveForm&quot;:null,&quot;claimantCircumstancesSelect&quot;:&quot;NO&quot;,&quot;hasDefendantCircumstancesInfo&quot;:&quot;NO&quot;,&quot;showSuspensionOfRightToBuyHousingActsPage&quot;:&quot;No&quot;,&quot;showDemotionOfTenancyHousingActsPage&quot;:&quot;No&quot;,&quot;suspensionToBuyDemotionOfTenancyPages&quot;:&quot;Yes&quot;,&quot;alternativesToPossession&quot;:[&quot;DEMOTION_OF_TENANCY&quot;,&quot;SUSPENSION_OF_RIGHT_TO_BUY&quot;],&quot;suspensionOfRightToBuyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;demotionOfTenancyActs&quot;:&quot;SECTION_82A_2&quot;,&quot;statementOfExpressTermsServed&quot;:&quot;YES&quot;,&quot;statementOfExpressTermsDetails&quot;:&quot;A statement of express terms is a written summary of the specific conditions and details that form part of an employee’s contract of employment. It typically includes the full name of the employer and the employee, the date employment began, the job title or description of work, the place of employment, and whether the employee may be required to work at different locations. It also sets out details of pay including rate, method, and frequency of payment, as well as hours of work, holiday entitlement, notice periods, and information about sick pay and pension schemes. The statement may also include details about disciplinary and grievance procedures, the length of any probationary period, and whether the employment is for a fixed term or permanent. Together, these express terms define the agreed rights and obligations between the employer and the employee.&quot;,&quot;suspensionOrderReason&quot;:&quot;A suspension order may be issued when an employee is alleged to have committed misconduct, breached company policies, or acted in a way that could compromise an investigation if they remained at work.&quot;,&quot;demotionOrderReason&quot;:&quot;A demotion order may be issued when an employee’s performance consistently falls below the required standard, when they fail to meet the expectations or responsibilities of their current position.&quot;,&quot;claimingCostsWanted&quot;:&quot;YES&quot;,&quot;additionalReasonsForPossession&quot;:{&quot;hasReasons&quot;:&quot;NO&quot;,&quot;reasons&quot;:null},&quot;hasUnderlesseeOrMortgagee&quot;:&quot;NO&quot;,&quot;wantToUploadDocuments&quot;:&quot;NO&quot;,&quot;applicationWithClaim&quot;:&quot;YES&quot;,&quot;languageUsed&quot;:&quot;ENGLISH&quot;,&quot;completionNextStep&quot;:&quot;SUBMIT_AND_PAY_NOW&quot;,&quot;statementOfTruth&quot;:{&quot;completedBy&quot;:&quot;LEGAL_REPRESENTATIVE&quot;,&quot;fullNameClaimant&quot;:null,&quot;positionClaimant&quot;:null,&quot;fullNameLegalRep&quot;:&quot;Solicitor&quot;,&quot;firmNameLegalRep&quot;:&quot;ABC-Firm&quot;,&quot;positionLegalRep&quot;:&quot;Solicitor&quot;,&quot;agreementClaimant&quot;:[],&quot;agreementLegalRep&quot;:[&quot;AGREED&quot;]}},&quot;event&quot;:{&quot;id&quot;:&quot;resumePossessionClaim&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_token&quot;:&quot;${event_token}&quot;,&quot;ignore_warning&quot;:false}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.domain">xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -7457,7 +8015,7 @@
               <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-11T16:41:40.840906</stringProp>
+              <stringProp name="TestPlan.comments">Created from cURL on 2025-11-27T13:43:48.733679</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager" enabled="true">
@@ -7476,7 +8034,7 @@
                   </elementProp>
                   <elementProp name="content-type" elementType="Header">
                     <stringProp name="Header.name">content-type</stringProp>
-                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.create-event.v2+json;charset=UTF-8</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
                   </elementProp>
                   <elementProp name="experimental" elementType="Header">
                     <stringProp name="Header.name">experimental</stringProp>
@@ -7484,7 +8042,7 @@
                   </elementProp>
                   <elementProp name="origin" elementType="Header">
                     <stringProp name="Header.name">origin</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net</stringProp>
                   </elementProp>
                   <elementProp name="priority" elementType="Header">
                     <stringProp name="Header.name">priority</stringProp>
@@ -7492,11 +8050,11 @@
                   </elementProp>
                   <elementProp name="referer" elementType="Header">
                     <stringProp name="Header.name">referer</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/submit</stringProp>
+                    <stringProp name="Header.value">https://xui-pcs-api-pr-316.preview.platform.hmcts.net/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/submit</stringProp>
                   </elementProp>
                   <elementProp name="sec-ch-ua" elementType="Header">
                     <stringProp name="Header.name">sec-ch-ua</stringProp>
-                    <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;141&quot;, &quot;Not?A_Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;141&quot;</stringProp>
+                    <stringProp name="Header.value">&quot;Chromium&quot;;v=&quot;142&quot;, &quot;Google Chrome&quot;;v=&quot;142&quot;, &quot;Not_A Brand&quot;;v=&quot;99&quot;</stringProp>
                   </elementProp>
                   <elementProp name="sec-ch-ua-mobile" elementType="Header">
                     <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
@@ -7520,14 +8078,14 @@
                   </elementProp>
                   <elementProp name="user-agent" elementType="Header">
                     <stringProp name="Header.name">user-agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36</stringProp>
                   </elementProp>
                   <elementProp name="x-xsrf-token" elementType="Header">
                     <stringProp name="Header.name">x-xsrf-token</stringProp>
                     <stringProp name="Header.value">${XSRF-TOKEN39}</stringProp>
                   </elementProp>
                 </collectionProp>
-                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-11T16:41:40.84105</stringProp>
+                <stringProp name="TestPlan.comments">Created from cURL on 2025-11-27T13:43:48.733839</stringProp>
               </HeaderManager>
               <hashTree/>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN40-new" enabled="true">
@@ -7539,6 +8097,15 @@
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
                 <stringProp name="Sample.scope">all</stringProp>
               </RegexExtractor>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$.id</stringProp>
+                <stringProp name="EXPECTED_VALUE"></stringProp>
+                <boolProp name="JSONVALIDATION">false</boolProp>
+                <boolProp name="EXPECT_NULL">true</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CYA-data/internal/cases/${id}" enabled="true">
@@ -7635,7 +8202,7 @@
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CYA-api/role-access/roles/manageLabellingRoleAssignment/1762875747249747" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CYA-api/role-access/roles/manageLabellingRoleAssignment/${id}" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
@@ -8202,7 +8769,7 @@
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller-SignOut" enabled="true"/>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group-SCN2-CreateCase" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group-SCN2-CREATECASE" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8219,7 +8786,7 @@
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller-Launch" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="1132685963">Test Plan-CREATE-CASE</stringProp>
             <stringProp name="846325346">Test Fragment-Launch</stringProp>
             <stringProp name="1544573100">TRX-01-Launch</stringProp>
           </collectionProp>
@@ -8228,7 +8795,7 @@
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller-Login&amp;CaseView" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="1132685963">Test Plan-CREATE-CASE</stringProp>
             <stringProp name="1895391386">Test Fragment-Login&amp;CaseList</stringProp>
             <stringProp name="803716803">TRX-02-Login&amp;CaseList</stringProp>
           </collectionProp>
@@ -8237,8 +8804,8 @@
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller-CreateCase" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="1906214267">Test Fragment-CreateCase</stringProp>
+            <stringProp name="1132685963">Test Plan-CREATE-CASE</stringProp>
+            <stringProp name="1588020766">Test Fragment-CreateCase-${username}</stringProp>
             <stringProp name="-2056387197">TRX-03-CreateCase</stringProp>
           </collectionProp>
         </ModuleController>
@@ -8246,7 +8813,7 @@
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller-SignOut" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="764597751">Test Plan</stringProp>
+            <stringProp name="1132685963">Test Plan-CREATE-CASE</stringProp>
             <stringProp name="-1695041662">Test Fragment-SignOut</stringProp>
             <stringProp name="1643404187">TRX-04-Signout</stringProp>
           </collectionProp>
