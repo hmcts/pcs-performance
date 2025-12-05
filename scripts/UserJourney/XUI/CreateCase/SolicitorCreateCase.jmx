@@ -3348,9 +3348,9 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1-PDF-UploadDocument-5mb-pdf" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
+                  <elementProp name="Files/CreateCase/5-mb.pdf" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/pdf</stringProp>
-                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
+                    <stringProp name="File.path">Files/CreateCase/5-mb.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3575,9 +3575,9 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2-JPEG-UploadDocument-50mb-jpeg" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/jpeg/50mb.jpg" elementType="HTTPFileArg">
+                  <elementProp name="Files/CreateCase/50mb.jpg" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">image/jpeg</stringProp>
-                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/jpeg/50mb.jpg</stringProp>
+                    <stringProp name="File.path">Files/CreateCase/50mb.jpg</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3823,9 +3823,9 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3-DOC-UploadDocument-1mb" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/doc/1mb.docx" elementType="HTTPFileArg">
+                  <elementProp name="Files/CreateCase/1mb.docx" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/vnd.openxmlformats-officedocument.wordprocessingml.document\</stringProp>
-                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/doc/1mb.docx</stringProp>
+                    <stringProp name="File.path">Files/CreateCase/1mb.docx</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4980,133 +4980,6 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PDF-NOTICE-UploadDocument-5mb-pdf" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.mimetype">application/pdf</stringProp>
-                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
-                    <stringProp name="File.paramname">files</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="classification" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.name">classification</stringProp>
-                    <stringProp name="Argument.value">PUBLIC</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  </elementProp>
-                  <elementProp name="caseTypeId" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.name">caseTypeId</stringProp>
-                    <stringProp name="Argument.value">PCS-316</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  </elementProp>
-                  <elementProp name="jurisdictionId" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.name">jurisdictionId</stringProp>
-                    <stringProp name="Argument.value">PCS</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
-              <stringProp name="HTTPSampler.port">443</stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/documentsv2</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                    <stringProp name="Header.value">cors</stringProp>
-                  </elementProp>
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}/cases/case-details/PCS/PCS-316/${id}/trigger/resumePossessionClaim/resumePossessionClaimtenancyLicenceDetails</stringProp>
-                  </elementProp>
-                  <elementProp name="Sec-Fetch-Site" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                    <stringProp name="Header.value">same-origin</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
-                  </elementProp>
-                  <elementProp name="Origin" elementType="Header">
-                    <stringProp name="Header.name">Origin</stringProp>
-                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                  </elementProp>
-                  <elementProp name="X-XSRF-TOKEN" elementType="Header">
-                    <stringProp name="Header.name">X-XSRF-TOKEN</stringProp>
-                    <stringProp name="Header.value">${XSRF-TOKEN21-a}</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:143.0) Gecko/20100101 Firefox/143.0</stringProp>
-                  </elementProp>
-                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                    <stringProp name="Header.value">empty</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Notice_filename-pdf" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">Notice_filename-pdf</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$[&apos;documents&apos;][0][&apos;originalDocumentName&apos;]</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
-                <stringProp name="JSONPostProcessor.defaultValues">Failed Notice_filename-pdf</stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Notice-hashToken-pdf" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">Notice-hashToken-pdf</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$[&apos;documents&apos;][0][&apos;hashToken&apos;]</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
-                <stringProp name="JSONPostProcessor.defaultValues">Failed Notice-hashToken-pdf</stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Notice_pdf" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">Notice_pdf</stringProp>
-                <stringProp name="RegexExtractor.regex">{&quot;self&quot;:{&quot;href&quot;:&quot;http://dm-store-aat.service.core-compute-aat.internal/documents/(.+?)&quot;}</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default">document_pdf not found</stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN21-b" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
-                <stringProp name="RegexExtractor.refname">XSRF-TOKEN21-b</stringProp>
-                <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default">XSRF-TOKEN21-b notfound</stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-                <stringProp name="Sample.scope">all</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PDF-NOTICE-UploadDocument-5mb-pdf" enabled="false">
-              <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                <collectionProp name="HTTPFileArgs.files">
                   <elementProp name="Files/CreateCase/Notice-5-mb.pdf" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                     <stringProp name="File.path">Files/CreateCase/Notice-5-mb.pdf</stringProp>
@@ -5644,9 +5517,9 @@
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1-RentDoc-PDF-5mb-pdf-/documentsv2" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf" elementType="HTTPFileArg">
+                  <elementProp name="Files/CreateCase/5-mb.pdf" elementType="HTTPFileArg">
                     <stringProp name="File.mimetype">application/pdf</stringProp>
-                    <stringProp name="File.path">/Users/sreyasigosh/Documents/Solicitor-EXUI/DocumentsToUpload/docs/pdf/5-mb.pdf</stringProp>
+                    <stringProp name="File.path">Files/CreateCase/5-mb.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                   </elementProp>
                 </collectionProp>
