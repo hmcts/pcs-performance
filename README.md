@@ -1,4 +1,3 @@
-# pcs-performance
 EXUI Solicitor User Journey
 This repository contains JMeter scripts for the EXUI Solicitor User Journey, covering the process of viewing and creating possession claim cases via the XUI interface.
 User Journey
