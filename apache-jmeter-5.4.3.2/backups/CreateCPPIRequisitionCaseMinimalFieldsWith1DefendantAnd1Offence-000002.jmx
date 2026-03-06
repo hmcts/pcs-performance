@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="false"/>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="createTemporaryVariables" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">vars.put(&quot;NEW_URN&quot;, &quot;${__Random(10, 99)}PTREQ${__Random(1000000, 9999999)}&quot;);
+
+def DATETIME_FORMAT = java.time.format.DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);
+java.util.Random ran = new java.util.Random();
+def tempDays  = ran.nextInt(Integer.parseInt(vars.get(&quot;hearingRandomDays&quot;))) + 2;
+def hDate = java.time.LocalDateTime.now().plusDays(tempDays).format(DATETIME_FORMAT);
+
+def weekDate = java.time.LocalDate.parse(hDate);
+
+if(weekDate.getDayOfWeek() == java.time.DayOfWeek.SATURDAY)  {
+            weekDate = weekDate.plusDays(2);  }
+ else if(weekDate.getDayOfWeek() == java.time.DayOfWeek.SUNDAY) {
+ 	 	 weekDate = weekDate.plusDays(1);  }
+
+def hearingDate = weekDate.format(DATETIME_FORMAT);
+log.info(&quot;hearing_date &quot; +  hearingDate ) ;
+vars.put(&quot;HEARING_DATE&quot;, hearingDate); 
+
+
+vars.put(&quot;DOB1&quot;, &quot;${__Random(1910, 1999)}-${__Random(10, 12)}-${__Random(10, 28)}&quot;);
+String timeMillis = Long.toString(System.currentTimeMillis());
+vars.put(&quot;REQUEST_ID&quot;, timeMillis + &quot;${__Random(10, 99)}&quot;);
+
+def faker = new com.github.javafaker.Faker();
+vars.put(&quot;defendantFirstName&quot;, faker.name().firstName());
+vars.put(&quot;defendantLastName&quot;, faker.name().lastName());
+vars.put(&quot;streetAddress&quot;, faker.address().streetAddress());
+
+def allOffencesCodes = props.get(&quot;ALL_OFFENCE_CODES&quot;);
+random_num = ran.nextInt(allOffencesCodes.size())
+def randomOffenceDetails = allOffencesCodes.get(random_num).split(&quot;,&quot;);
+vars.put(&quot;offenceCode&quot; , randomOffenceDetails.first());
+vars.put(&quot;offenceDescription&quot;, randomOffenceDetails.last()); 
+
+def randomDay  = ${__Random(1,99,)}; 
+def offenceStartDate = weekDate.minusYears(2).minusDays(randomDay);
+def offenceArrestDate = offenceStartDate.plusMonths(1);
+
+vars.put(&quot;offenceStartDate&quot;, offenceStartDate.format(DATETIME_FORMAT));
+vars.put(&quot;offenceArrestDate&quot;, offenceArrestDate.format(DATETIME_FORMAT));
+
+log.info(&quot;REQUEST_ID:&quot; + vars.get(&quot;REQUEST_ID&quot;));
+log.info(&quot;destinationID:&quot; + vars.get(&quot;destinationID&quot;));
+
+log.info(&quot;NEW_URN:&quot; + vars.get(&quot;NEW_URN&quot;));
+log.info(&quot;originatingOrganisation:&quot; + vars.get(&quot;originatingOrganisation&quot;));
+log.info(&quot;courtHearingLocation:&quot; + vars.get(&quot;courtHearingLocation&quot;));
+log.info(&quot;HEARING_DATE:&quot; + vars.get(&quot;HEARING_DATE&quot;));
+log.info(&quot;prosecutorReference:&quot; + vars.get(&quot;prosecutorReference&quot;));
+log.info(&quot;defendantFirstName:&quot; + vars.get(&quot;defendantFirstName&quot;));
+log.info(&quot;defendantLastName:&quot; + vars.get(&quot;defendantLastName&quot;));
+log.info(&quot;DOB:&quot; + vars.get(&quot;DOB1&quot;));
+log.info(&quot;streetAddress:&quot; + vars.get(&quot;streetAddress&quot;));
+log.info(&quot;offenceCode:&quot; + vars.get(&quot;offenceCode&quot;));
+log.info(&quot;offenceDescription:&quot; + vars.get(&quot;offenceDescription&quot;));
+log.info(&quot;offenceStartDate:&quot; + vars.get(&quot;offenceStartDate&quot;));
+log.info(&quot;offenceStartDate:&quot; + vars.get(&quot;offenceStartDate&quot;));
+log.info(&quot;offenceArrestDate:&quot; + vars.get(&quot;offenceArrestDate&quot;));
+
+
+
+
+
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CreateSPICaseMinimalFields" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="stagingprosecutorsspi" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;prosecutionSubmissionDetails&quot;: {&#xd;
+    &quot;urn&quot;: &quot;${NEW_URN}&quot;,&#xd;
+    &quot;prosecutingAuthority&quot;: &quot;GANKE00&quot;,&#xd;
+    &quot;informant&quot;: &quot;Adam&quot;,&#xd;
+    &quot;caseMarker&quot;: &quot;HT&quot;,&#xd;
+    &quot;hearingDetails&quot;: {&#xd;
+      &quot;courtHearingLocation&quot;: &quot;${courtHearingLocation}&quot;,&#xd;
+      &quot;dateOfHearing&quot;: &quot;${HEARING_DATE}&quot;,&#xd;
+      &quot;timeOfHearing&quot;: &quot;09:01:01.001&quot;&#xd;
+    },&#xd;
+    &quot;writtenChargePostingDate&quot;: &quot;2015-04-04&quot;&#xd;
+  },&#xd;
+  &quot;defendants&quot;: [&#xd;
+    {&#xd;
+      &quot;defendantDetails&quot;: {&#xd;
+        &quot;prosecutorDefendantId&quot;: &quot;TFLDEF001&quot;,&#xd;
+        &quot;asn&quot;: &quot;SummonsNumber001&quot;,&#xd;
+        &quot;prosecutorCosts&quot;: &quot;20.99&quot;,&#xd;
+        &quot;documentationLanguage&quot;: &quot;E&quot;,&#xd;
+        &quot;hearingLanguage&quot;: &quot;E&quot;,&#xd;
+        &quot;numPreviousConvictions&quot;: 3,&#xd;
+        &quot;address&quot;: {&#xd;
+          &quot;address1&quot;: &quot;${streetAddress}&quot;,&#xd;
+          &quot;address2&quot;: &quot;Address Line 2&quot;,&#xd;
+          &quot;address3&quot;: &quot;Address Line 3&quot;,&#xd;
+          &quot;address4&quot;: &quot;Address Line 4&quot;,&#xd;
+          &quot;address5&quot;: &quot;Address Line 5&quot;,&#xd;
+          &quot;postcode&quot;: &quot;C7 1XX&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;languageRequirement&quot;: &quot;no special language needs&quot;,&#xd;
+        &quot;specificRequirements&quot;: &quot;no special needs&quot;,&#xd;
+        &quot;nameDetails&quot;: {&#xd;
+          &quot;forename&quot;: &quot;${defendantFirstName}&quot;,&#xd;
+          &quot;forename2&quot;: &quot;Adam&quot;,&#xd;
+          &quot;forename3&quot;: &quot;Theodore&quot;,&#xd;
+          &quot;surname&quot;: &quot;${defendantLastName}&quot;&#xd;
+        },&#xd;
+        &quot;contactDetails&quot;: {&#xd;
+          &quot;workTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;homeTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;mobileTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;primaryEmail&quot;: &quot;aer@af.com&quot;,&#xd;
+          &quot;secondaryEmail&quot;: &quot;aer@af.com&quot;&#xd;
+        },&#xd;
+        &quot;parentGuardian&quot;: {&#xd;
+          &quot;individual&quot;: {&#xd;
+            &quot;nameDetails&quot;: {&#xd;
+              &quot;title&quot;: &quot;Mr&quot;,&#xd;
+              &quot;forename&quot;: &quot;parentGuardianJack&quot;,&#xd;
+              &quot;forename2&quot;: &quot;parentGuardianAaron&quot;,&#xd;
+              &quot;forename3&quot;: &quot;Sr&quot;,&#xd;
+              &quot;surname&quot;: &quot;parentGuardianReaper&quot;&#xd;
+            },&#xd;
+            &quot;contactDetails&quot;: {&#xd;
+              &quot;workTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;homeTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;mobileTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;primaryEmail&quot;: &quot;999aer@test.com&quot;,&#xd;
+              &quot;secondaryEmail&quot;: &quot;999aer@test.com&quot;&#xd;
+            },&#xd;
+            &quot;dateOfBirth&quot;: &quot;${DOB1}&quot;,&#xd;
+            &quot;gender&quot;: 1,&#xd;
+            &quot;observedEthnicity&quot;: 4,&#xd;
+            &quot;selfDefinedEthnicity&quot;: &quot;W1&quot;&#xd;
+          },&#xd;
+          &quot;address&quot;: {&#xd;
+            &quot;address1&quot;: &quot;ParentGuardian Address Line 1&quot;,&#xd;
+            &quot;address2&quot;: &quot;ParentGuardian Address Line 2&quot;,&#xd;
+            &quot;address3&quot;: &quot;ParentGuardian Address Line 3&quot;,&#xd;
+            &quot;address4&quot;: &quot;ParentGuardian Address Line 4&quot;,&#xd;
+            &quot;address5&quot;: &quot;ParentGuardian Address Line 5&quot;,&#xd;
+            &quot;postcode&quot;: &quot;PG0 1XX&quot;&#xd;
+          }&#xd;
+        },&#xd;
+        &quot;aliases&quot;: [&#xd;
+          {&#xd;
+            &quot;title&quot;: &quot;Mr&quot;,&#xd;
+            &quot;forename&quot;: &quot;AliasJack&quot;,&#xd;
+            &quot;forename2&quot;: &quot;AliasAaron&quot;,&#xd;
+            &quot;forename3&quot;: &quot;Sr&quot;,&#xd;
+            &quot;surname&quot;: &quot;AliasReaper&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;dateOfBirth&quot;: &quot;1970-02-03&quot;,&#xd;
+        &quot;ethnicity&quot;: &quot;W1&quot;,&#xd;
+        &quot;nationality&quot;: &quot;GBR&quot;,&#xd;
+        &quot;additionalNationality&quot;: &quot;POL&quot;,&#xd;
+        &quot;gender&quot;: 1,&#xd;
+        &quot;occupation&quot;: &quot;TA&quot;,&#xd;
+        &quot;occupationCode&quot;: 666,&#xd;
+        &quot;driverNumber&quot;: &quot;KER99861065SE9RM&quot;,&#xd;
+        &quot;nationalInsuranceNumber&quot;: &quot;SN123456C&quot;&#xd;
+      },&#xd;
+      &quot;offences&quot;: [&#xd;
+        {&#xd;
+          &quot;offenceDetails&quot;: {&#xd;
+            &quot;cjsOffenceCode&quot;: &quot;CA03014&quot;,&#xd;
+            &quot;offenceSequenceNo&quot;: 1,&#xd;
+            &quot;offenceCommittedDate&quot;: &quot;2019-06-11&quot;,&#xd;
+            &quot;offenceCommittedEndDate&quot;: &quot;2020-06-11&quot;,&#xd;
+            &quot;offenceDateCode&quot;: 4,&#xd;
+            &quot;offenceLocation&quot;: &quot;Croydon&quot;,&#xd;
+            &quot;offenceWording&quot;: &quot;Test Prosecution charge wording&quot;,&#xd;
+            &quot;offenceWordingWelsh&quot;: &quot;Test Prosecution charge wording in Welsh&quot;,&#xd;
+            &quot;backDutyDateFrom&quot;: &quot;2018-04-09&quot;,&#xd;
+            &quot;backDutyDateTo&quot;: &quot;2018-05-09&quot;,&#xd;
+            &quot;vehicleMake&quot;: &quot;Ford&quot;,&#xd;
+            &quot;vehicleRegistrationMark&quot;: &quot;AA11 ABC&quot;&#xd;
+          },&#xd;
+          &quot;chargeDate&quot;: &quot;${offenceStartDate}&quot;,&#xd;
+          &quot;statementOfFacts&quot;: &quot;Test Prosecution statements of facts&quot;,&#xd;
+          &quot;statementOfFactsWelsh&quot;: &quot;Welsh -Test Prosecution statements of facts&quot;&#xd;
+        }&#xd;
+      ]&#xd;
+    }&#xd;
+  ]&#xd;
+}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/stagingprosecutors-command-api/command/api/rest/stagingprosecutors/v2/prosecutions/GANKE00</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSCPPUID</stringProp>
+                  <stringProp name="Header.value">2c8810b9-1d06-4830-af49-d341c022a217</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.hmcts.cjs.requisition-prosecution.v2+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSOUCODE</stringProp>
+                  <stringProp name="Header.value">GANKE00</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+                <stringProp name="49588">202</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">40</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="stagingprosecutorsspi" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;prosecutionSubmissionDetails&quot;: {&#xd;
+    &quot;urn&quot;: &quot;${NEW_URN}&quot;,&#xd;
+    &quot;prosecutingAuthority&quot;: &quot;GANKE00&quot;,&#xd;
+    &quot;informant&quot;: &quot;Adam&quot;,&#xd;
+    &quot;caseMarker&quot;: &quot;HT&quot;,&#xd;
+    &quot;hearingDetails&quot;: {&#xd;
+      &quot;courtHearingLocation&quot;: &quot;${courtHearingLocation}&quot;,&#xd;
+      &quot;dateOfHearing&quot;: &quot;${HEARING_DATE}&quot;,&#xd;
+      &quot;timeOfHearing&quot;: &quot;09:01:01.001&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;defendants&quot;: [&#xd;
+    {&#xd;
+      &quot;defendantDetails&quot;: {&#xd;
+        &quot;prosecutorDefendantId&quot;: &quot;DEFENDANTID1&quot;,&#xd;
+        &quot;asn&quot;: &quot;SummonsNumber001&quot;,&#xd;
+        &quot;prosecutorCosts&quot;: &quot;20.99&quot;,&#xd;
+        &quot;documentationLanguage&quot;: &quot;E&quot;,&#xd;
+        &quot;hearingLanguage&quot;: &quot;E&quot;,&#xd;
+        &quot;numPreviousConvictions&quot;: 3,&#xd;
+        &quot;address&quot;: {&#xd;
+          &quot;address1&quot;: &quot;${streetAddress}&quot;,&#xd;
+          &quot;address2&quot;: &quot;Address Line 2&quot;,&#xd;
+          &quot;address3&quot;: &quot;Address Line 3&quot;,&#xd;
+          &quot;address4&quot;: &quot;Address Line 4&quot;,&#xd;
+          &quot;address5&quot;: &quot;Address Line 5&quot;,&#xd;
+          &quot;postcode&quot;: &quot;CR0 1XX&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;custodyStatus&quot;: &quot;U&quot;,&#xd;
+        &quot;languageRequirement&quot;: &quot;no special language needs&quot;,&#xd;
+        &quot;specificRequirements&quot;: &quot;no special needs&quot;,&#xd;
+        &quot;nameDetails&quot;: {&#xd;
+          &quot;title&quot;: &quot;Mr&quot;,&#xd;
+          &quot;forename&quot;: &quot;${defendantFirstName}&quot;,&#xd;
+          &quot;forename2&quot;: &quot;Adam&quot;,&#xd;
+          &quot;forename3&quot;: &quot;Theodore&quot;,&#xd;
+          &quot;surname&quot;: &quot;${defendantLastName}&quot;&#xd;
+        },&#xd;
+        &quot;observedEthnicity&quot;: 1,&#xd;
+        &quot;gender&quot;: 1,&#xd;
+        &quot;nationality&quot;: &quot;GBR&quot;,&#xd;
+        &quot;dateOfBirth&quot;: &quot;${DOB1}&quot;,&#xd;
+        &quot;ethnicity&quot;: &quot;W1&quot;,&#xd;
+        &quot;contactDetails&quot;: {&#xd;
+          &quot;workTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;homeTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;mobileTelephoneNumber&quot;: &quot;1231231230&quot;,&#xd;
+          &quot;primaryEmail&quot;: &quot;aer@af.com&quot;,&#xd;
+          &quot;secondaryEmail&quot;: &quot;aer@af.com&quot;&#xd;
+        },&#xd;
+        &quot;parentGuardian&quot;: {&#xd;
+          &quot;individual&quot;: {&#xd;
+            &quot;nameDetails&quot;: {&#xd;
+              &quot;title&quot;: &quot;Mr&quot;,&#xd;
+              &quot;forename&quot;: &quot;parentGuardianJack&quot;,&#xd;
+              &quot;forename2&quot;: &quot;parentGuardianAaron&quot;,&#xd;
+              &quot;forename3&quot;: &quot;Sr&quot;,&#xd;
+              &quot;surname&quot;: &quot;parentGuardianReaper&quot;&#xd;
+            },&#xd;
+            &quot;contactDetails&quot;: {&#xd;
+              &quot;workTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;homeTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;mobileTelephoneNumber&quot;: &quot;9991231230&quot;,&#xd;
+              &quot;primaryEmail&quot;: &quot;999aer@test.com&quot;,&#xd;
+              &quot;secondaryEmail&quot;: &quot;999aer@test.com&quot;&#xd;
+            },&#xd;
+            &quot;dateOfBirth&quot;: &quot;1979-05-23&quot;,&#xd;
+            &quot;gender&quot;: 1,&#xd;
+            &quot;observedEthnicity&quot;: 4,&#xd;
+            &quot;selfDefinedEthnicity&quot;: &quot;W1&quot;&#xd;
+          },&#xd;
+          &quot;address&quot;: {&#xd;
+            &quot;address1&quot;: &quot;ParentGAddress Line 1&quot;,&#xd;
+            &quot;address2&quot;: &quot;ParentGAddress Line 2&quot;,&#xd;
+            &quot;address3&quot;: &quot;ParentGAddress Line 3&quot;,&#xd;
+            &quot;address4&quot;: &quot;ParentGAddress Line 4&quot;,&#xd;
+            &quot;address5&quot;: &quot;ParentG Address Line 5&quot;,&#xd;
+            &quot;postcode&quot;: &quot;PG0 1XX&quot;&#xd;
+          }&#xd;
+        },&#xd;
+        &quot;aliases&quot;: [&#xd;
+          {&#xd;
+            &quot;title&quot;: &quot;Mr&quot;,&#xd;
+            &quot;forename&quot;: &quot;AliasJack&quot;,&#xd;
+            &quot;forename2&quot;: &quot;AliasAaron&quot;,&#xd;
+            &quot;forename3&quot;: &quot;Sr&quot;,&#xd;
+            &quot;surname&quot;: &quot;AliasReaper&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;title&quot;: &quot;Mr&quot;,&#xd;
+            &quot;forename&quot;: &quot;Alias2Jack&quot;,&#xd;
+            &quot;forename2&quot;: &quot;Alias2Aaron&quot;,&#xd;
+            &quot;forename3&quot;: &quot;Mr&quot;,&#xd;
+            &quot;surname&quot;: &quot;Alias2Reaper&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;additionalNationality&quot;: &quot;POL&quot;,&#xd;
+        &quot;occupation&quot;: &quot;TA&quot;,&#xd;
+        &quot;occupationCode&quot;: 666,&#xd;
+        &quot;driverNumber&quot;: &quot;KER99861065SE9RM&quot;,&#xd;
+        &quot;nationalInsuranceNumber&quot;: &quot;SN123456C&quot;&#xd;
+      },&#xd;
+      &quot;offences&quot;: [&#xd;
+        {&#xd;
+          &quot;offenceDetails&quot;: {&#xd;
+            &quot;cjsOffenceCode&quot;: &quot;CA03012&quot;,&#xd;
+            &quot;offenceSequenceNo&quot;: 1,&#xd;
+            &quot;offenceCommittedDate&quot;: &quot;2019-06-11&quot;,&#xd;
+            &quot;offenceCommittedEndDate&quot;: &quot;2020-06-11&quot;,&#xd;
+            &quot;offenceDateCode&quot;: 4,&#xd;
+            &quot;offenceLocation&quot;: &quot;Croydon&quot;,&#xd;
+            &quot;offenceWording&quot;: &quot;Test Prosecution charge wording&quot;,&#xd;
+            &quot;offenceWordingWelsh&quot;: &quot;Test Prosecution charge wording in Welsh&quot;,&#xd;
+            &quot;backDutyDateFrom&quot;: &quot;2018-04-09&quot;,&#xd;
+            &quot;backDutyDateTo&quot;: &quot;2018-05-09&quot;,&#xd;
+            &quot;vehicleMake&quot;: &quot;Ford&quot;,&#xd;
+            &quot;vehicleRegistrationMark&quot;: &quot;AA11 ABC&quot;&#xd;
+          },&#xd;
+          &quot;arrestDate&quot;: &quot;${offenceArrestDate}&quot;,&#xd;
+          &quot;chargeDate&quot;: &quot;${offenceStartDate}&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;offenceDetails&quot;: {&#xd;
+            &quot;cjsOffenceCode&quot;: &quot;CA03013&quot;,&#xd;
+            &quot;offenceSequenceNo&quot;: 2,&#xd;
+            &quot;offenceCommittedDate&quot;: &quot;2017-06-12&quot;,&#xd;
+            &quot;offenceCommittedEndDate&quot;: &quot;2019-06-12&quot;,&#xd;
+            &quot;alcoholRelatedOffence&quot;: {&#xd;
+              &quot;alcoholOrDrugLevelMethod&quot;: &quot;C&quot;,&#xd;
+              &quot;alcoholOrDrugLevelAmount&quot;: 3&#xd;
+            },&#xd;
+            &quot;offenceDateCode&quot;: 4,&#xd;
+            &quot;offenceLocation&quot;: &quot;EAST Croydon&quot;,&#xd;
+            &quot;offenceWording&quot;: &quot;Second Offence - Test Prosecution charge wording&quot;,&#xd;
+            &quot;offenceWordingWelsh&quot;: &quot;Second Offence - Test Prosecution charge wording in Welsh&quot;,&#xd;
+            &quot;backDutyDateFrom&quot;: &quot;2018-04-19&quot;,&#xd;
+            &quot;backDutyDateTo&quot;: &quot;2018-05-19&quot;,&#xd;
+            &quot;vehicleMake&quot;: &quot;Toyota&quot;,&#xd;
+            &quot;vehicleRegistrationMark&quot;: &quot;BB11 ABC&quot;&#xd;
+          },&#xd;
+          &quot;arrestDate&quot;: &quot;${offenceArrestDate}&quot;,&#xd;
+          &quot;chargeDate&quot;: &quot;${offenceStartDate}&quot;&#xd;
+        }&#xd;
+      ]&#xd;
+    }&#xd;
+  ]&#xd;
+}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/stagingprosecutors-command-api/command/api/rest/stagingprosecutors/v2/prosecutions/GANKE00</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSCPPUID</stringProp>
+                  <stringProp name="Header.value">2c8810b9-1d06-4830-af49-d341c022a217</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.hmcts.cjs.requisition-prosecution.v2+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSOUCODE</stringProp>
+                  <stringProp name="Header.value">GANKE00</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+                <stringProp name="49588">202</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">40</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="stagingprosecutorsspi" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;NS1:Envelope xmlns:NS1=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+    &lt;NS1:Body&gt;&#xd;
+        &lt;NS2:SubmitRequestMes xmlns:NS2=&quot;http://schemas.cjse.gov.uk/endpoint/types/&quot;&gt;&#xd;
+            &lt;NS2:RequestID&gt;${REQUEST_ID}&lt;/NS2:RequestID&gt;&#xd;
+            &lt;NS2:SourceID&gt;Z00CJSE&lt;/NS2:SourceID&gt;&#xd;
+            &lt;NS2:DestinationID&gt;${destinationID}&lt;/NS2:DestinationID&gt;&#xd;
+            &lt;NS2:ExecMode&gt;ASYNCH&lt;/NS2:ExecMode&gt;&#xd;
+            &lt;NS2:Timestamp&gt;2020-04-20T14:27:48Z&lt;/NS2:Timestamp&gt;&#xd;
+            &lt;NS2:Message&gt;&amp;lt;RouteData xmlns=&quot;http://schemas.cjse.gov.uk/common/operations&quot; xmlns:cjseEntity=&quot;http://schemas.cjse.gov.uk/common/businessentities&quot; xmlns:cjseType=&quot;http://schemas.cjse.gov.uk/common/businesstypes&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; VersionNumber=&quot;1.0&quot; RequestResponse=&quot;Request&quot;&amp;gt;&amp;lt;RequestFromSystem VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;CorrelationID&amp;gt;${REQUEST_ID}&amp;lt;/CorrelationID&amp;gt;&amp;lt;SystemID literalvalue=&quot;CJSE&quot;&amp;gt;ART1243&amp;lt;/SystemID&amp;gt;&amp;lt;OrganizationalUnitID literalvalue=&quot;CJICJSE&quot;&amp;gt;Z000019&amp;lt;/OrganizationalUnitID&amp;gt;&amp;lt;DataController literalvalue=&quot;String&quot;&amp;gt;VishnuDataController&amp;lt;/DataController&amp;gt;&amp;lt;User literalvalue=&quot;String&quot;&amp;gt;lee.flaxington&amp;lt;/User&amp;gt;&amp;lt;SourceID literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/SourceID&amp;gt;&amp;lt;DestinationID literalvalue=&quot;String&quot;&amp;gt;Z00CJSE&amp;lt;/DestinationID&amp;gt;&amp;lt;TestOperation&amp;gt;1&amp;lt;/TestOperation&amp;gt;&amp;lt;/RequestFromSystem&amp;gt;&amp;lt;DataStream VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;cjseEntity:System literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/cjseEntity:System&amp;gt;&amp;lt;cjseEntity:DataStreamType literalvalue=&quot;String&quot;&amp;gt;SPINewCase&amp;lt;/cjseEntity:DataStreamType&amp;gt;&amp;lt;cjseEntity:SystemDataStreamID&amp;gt;20_04_2020_142719_000000309381&amp;lt;/cjseEntity:SystemDataStreamID&amp;gt;&amp;lt;cjseEntity:Name&amp;gt;SPI New Case&amp;lt;/cjseEntity:Name&amp;gt;&amp;lt;cjseEntity:Reference&amp;gt;20_04_2020_142719_000000309381&amp;lt;/cjseEntity:Reference&amp;gt;&amp;lt;cjseEntity:ReferenceType&amp;gt;SPINewCase&amp;lt;/cjseEntity:ReferenceType&amp;gt;&amp;lt;cjseEntity:Dated&amp;gt;2013-12-01&amp;lt;/cjseEntity:Dated&amp;gt;&amp;lt;cjseEntity:Timed&amp;gt;14:27:21.657Z&amp;lt;/cjseEntity:Timed&amp;gt;&amp;lt;cjseEntity:ContentType&amp;gt;text/plain&amp;lt;/cjseEntity:ContentType&amp;gt;&amp;lt;cjseEntity:DataStreamContent&amp;gt;&amp;amp;lt;?xml version=&amp;amp;quot;1.0&amp;amp;quot; encoding=&amp;amp;quot;utf-8&amp;amp;quot;?&amp;amp;gt;&#xd;
+                &amp;amp;lt;NewCaseMessage xmlns:xsd=&amp;amp;quot;http://www.w3.org/2001/XMLSchema&amp;amp;quot; xmlns:xsi=&amp;amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;amp;quot; Flow=&amp;amp;quot;NewCasesFromThePolice&amp;amp;quot; Interface=&amp;amp;quot;LibraStandardProsecutorPolice&amp;amp;quot; SchemaVersion=&amp;amp;quot;0.6g&amp;amp;quot; xmlns=&amp;amp;quot;http://www.dca.gov.uk/xmlschemas/libra&amp;amp;quot;&amp;amp;gt;&#xd;
+                &amp;amp;lt;Case&amp;amp;gt;&#xd;
+                &amp;amp;lt;PTIURN&amp;amp;gt;${NEW_URN}&amp;amp;lt;/PTIURN&amp;amp;gt;&#xd;
+                &amp;amp;lt;OriginatingOrganisation&amp;amp;gt;${originatingOrganisation}&amp;amp;lt;/OriginatingOrganisation&amp;amp;gt;&#xd;
+                &amp;amp;lt;CaseInitiation&amp;amp;gt;C&amp;amp;lt;/CaseInitiation&amp;amp;gt;&#xd;
+                &amp;amp;lt;CPSorganisation&amp;amp;gt;A30AB00&amp;amp;lt;/CPSorganisation&amp;amp;gt;&#xd;
+                &amp;amp;lt;InitialHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;CourtHearingLocation&amp;amp;gt;${courtHearingLocation}&amp;amp;lt;/CourtHearingLocation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DateOfHearing&amp;amp;gt;${HEARING_DATE}&amp;amp;lt;/DateOfHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;TimeOfHearing&amp;amp;gt;09:01:01.001&amp;amp;lt;/TimeOfHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;/InitialHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;OtherPartyOfficerInCase&amp;amp;gt;&#xd;
+                &amp;amp;lt;OfficerName&amp;amp;gt;&#xd;
+                &amp;amp;lt;PersonFamilyName&amp;amp;gt;Gellart&amp;amp;lt;/PersonFamilyName&amp;amp;gt;&#xd;
+                &amp;amp;lt;/OfficerName&amp;amp;gt;&#xd;
+                &amp;amp;lt;PoliceOfficerRank&amp;amp;gt;Constable&amp;amp;lt;/PoliceOfficerRank&amp;amp;gt;&#xd;
+                &amp;amp;lt;PoliceWorkerReferenceNumber&amp;amp;gt;PoliceWorkerRef&amp;amp;lt;/PoliceWorkerReferenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;PoliceWorkerLocationCode&amp;amp;gt;PoliceWork&amp;amp;lt;/PoliceWorkerLocationCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;/OtherPartyOfficerInCase&amp;amp;gt;&#xd;
+                &amp;amp;lt;Defendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;ProsecutorReference&amp;amp;gt;${prosecutorReference}&amp;amp;lt;/ProsecutorReference&amp;amp;gt;&#xd;
+                &amp;amp;lt;PoliceIndividualDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;PersonDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;BasePersonDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;PersonName&amp;amp;gt;&#xd;
+                &amp;amp;lt;PersonGivenName1&amp;amp;gt;${defendantFirstName}&amp;amp;lt;/PersonGivenName1&amp;amp;gt;&#xd;
+                &amp;amp;lt;PersonFamilyName&amp;amp;gt;${defendantLastName}&amp;amp;lt;/PersonFamilyName&amp;amp;gt;&#xd;
+                &amp;amp;lt;/PersonName&amp;amp;gt;&#xd;
+                &amp;amp;lt;Birthdate&amp;amp;gt;${DOB1}&amp;amp;lt;/Birthdate&amp;amp;gt;&#xd;
+                &amp;amp;lt;Gender&amp;amp;gt;1&amp;amp;lt;/Gender&amp;amp;gt;&#xd;
+                &amp;amp;lt;/BasePersonDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/PersonDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;Address&amp;amp;gt;&#xd;
+                &amp;amp;lt;PAON xmlns=&amp;amp;quot;http://www.govtalk.gov.uk/people/bs7666&amp;amp;quot;&amp;amp;gt;          ${streetAddress}&amp;amp;lt;/PAON&amp;amp;gt;&#xd;
+                &amp;amp;lt;StreetDescription xmlns=&amp;amp;quot;http://www.govtalk.gov.uk/people/bs7666&amp;amp;quot;&amp;amp;gt;StreetDescription&amp;amp;lt;/StreetDescription&amp;amp;gt;&#xd;
+                &amp;amp;lt;UniqueStreetReferenceNumber xmlns=&amp;amp;quot;http://www.govtalk.gov.uk/people/bs7666&amp;amp;quot;&amp;amp;gt;    50000008&amp;amp;lt;/UniqueStreetReferenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;Locality xmlns=&amp;amp;quot;http://www.govtalk.gov.uk/people/bs7666&amp;amp;quot;&amp;amp;gt;Locality2O&amp;amp;lt;/Locality&amp;amp;gt;&#xd;
+                &amp;amp;lt;/Address&amp;amp;gt;&#xd;
+                &amp;amp;lt;CustodyStatus&amp;amp;gt;C&amp;amp;lt;/CustodyStatus&amp;amp;gt;&#xd;
+                &amp;amp;lt;LanguageOptions&amp;amp;gt;&#xd;
+                &amp;amp;lt;DocumentationLanguage&amp;amp;gt;E&amp;amp;lt;/DocumentationLanguage&amp;amp;gt;&#xd;
+                &amp;amp;lt;HearingLanguage&amp;amp;gt;E&amp;amp;lt;/HearingLanguage&amp;amp;gt;&#xd;
+                &amp;amp;lt;/LanguageOptions&amp;amp;gt;&#xd;
+                &amp;amp;lt;DriverInformation&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DriverInformation&amp;amp;gt;&#xd;
+                &amp;amp;lt;/PoliceIndividualDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceSequenceNumber&amp;amp;gt;500&amp;amp;lt;/OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceCode&amp;amp;gt;${offenceCode}&amp;amp;lt;/OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceWording&amp;amp;gt;${offenceDescription}&amp;amp;lt;/OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;OffenceDateStartDate&amp;amp;gt;${offenceStartDate}&amp;amp;lt;/OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;/OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;/OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;ChargeDate&amp;amp;gt;${offenceStartDate}&amp;amp;lt;/ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;ArrestDate&amp;amp;gt;${offenceArrestDate}&amp;amp;lt;/ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;/BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/Defendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;/Case&amp;amp;gt;&#xd;
+                &amp;amp;lt;/NewCaseMessage&amp;amp;gt;&amp;lt;/cjseEntity:DataStreamContent&amp;gt;&amp;lt;/DataStream&amp;gt;&amp;lt;Routes VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;Route VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;RouteID&amp;gt;001&amp;lt;/RouteID&amp;gt;&amp;lt;RouteSourceSystem literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/RouteSourceSystem&amp;gt;&amp;lt;RouteDestinationSystem literalvalue=&quot;String&quot;&amp;gt;${destinationID}&amp;lt;/RouteDestinationSystem&amp;gt;&amp;lt;Descriptor&amp;gt;String&amp;lt;/Descriptor&amp;gt;&amp;lt;/Route&amp;gt;&amp;lt;/Routes&amp;gt;&amp;lt;/RouteData&amp;gt;&lt;/NS2:Message&gt;&#xd;
+        &lt;/NS2:SubmitRequestMes&gt;&#xd;
+    &lt;/NS1:Body&gt;&#xd;
+&lt;/NS1:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/stagingprosecutorsspi-service/CJSEService</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSCPPUID</stringProp>
+                  <stringProp name="Header.value">${cppiUserId}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/soap+xml; charset=UTF-8;</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+                <stringProp name="49588">202</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">40</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

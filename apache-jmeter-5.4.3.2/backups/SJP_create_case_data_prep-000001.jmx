@@ -1,0 +1,3074 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Global Variables - NFT" enabled="false">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="baseDir" elementType="Argument">
+            <stringProp name="Argument.name">baseDir</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir())}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="--- ENVIRONMENT SETTINGS ---" elementType="Argument">
+            <stringProp name="Argument.name">--- ENVIRONMENT SETTINGS ---</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cppHostname" elementType="Argument">
+            <stringProp name="Argument.name">cppHostname</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_HOSTNAME,NFTCCM01ACTLB01.cpp.nonlive)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">localhost</stringProp>
+          </elementProp>
+          <elementProp name="cppPort" elementType="Argument">
+            <stringProp name="Argument.name">cppPort</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_PORT,443)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">81</stringProp>
+          </elementProp>
+          <elementProp name="cppProtocol" elementType="Argument">
+            <stringProp name="Argument.name">cppProtocol</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_PROTOCOL,https)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyIp" elementType="Argument">
+            <stringProp name="Argument.name">proxyIp</stringProp>
+            <stringProp name="Argument.value">${__P(PROXY_IP, )}</stringProp>
+            <stringProp name="Argument.desc">proxy server IP -leave blanck if not used   10.224.23.8</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyPort" elementType="Argument">
+            <stringProp name="Argument.name">proxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(PROXY_PORT, )}</stringProp>
+            <stringProp name="Argument.desc">proxy server port - leave blanck if not used 3128</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="--- SCRIPT LOGIC CONFIGURATION ---" elementType="Argument">
+            <stringProp name="Argument.name">--- SCRIPT LOGIC CONFIGURATION ---</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="idamSimulator" elementType="Argument">
+            <stringProp name="Argument.name">idamSimulator</stringProp>
+            <stringProp name="Argument.value">${__P(IDAM_SIMULATOR, true)}</stringProp>
+            <stringProp name="Argument.desc">Set true for Idam Simulator. False for &apos;Real Idam&apos;</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="thinkTimeDeviation" elementType="Argument">
+            <stringProp name="Argument.name">thinkTimeDeviation</stringProp>
+            <stringProp name="Argument.value">${__P(THINK_TIME_DEVIATION,1000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="thinkTimeDelayOffset" elementType="Argument">
+            <stringProp name="Argument.name">thinkTimeDelayOffset</stringProp>
+            <stringProp name="Argument.value">${__P(THINK_TIME_DELAY_OFFSET,3000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="evalStatic" elementType="Argument">
+            <stringProp name="Argument.name">evalStatic</stringProp>
+            <stringProp name="Argument.value">${__P(INCLUDE_STATIC_ASSETS, false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="timeToWaitForSearchCase" elementType="Argument">
+            <stringProp name="Argument.name">timeToWaitForSearchCase</stringProp>
+            <stringProp name="Argument.value">${__P(SEARCH_CASE_WAITTIME,20000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MOT_REASON_ID" elementType="Argument">
+            <stringProp name="Argument.name">MOT_REASON_ID</stringProp>
+            <stringProp name="Argument.value">b8c37e33-defd-351c-b91e-1e03e51657da</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COURT_CENTRE" elementType="Argument">
+            <stringProp name="Argument.name">COURT_CENTRE</stringProp>
+            <stringProp name="Argument.value">31b3d313-7a7c-4598-bb4b-c1bff9b00e26</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="originatingOrganisation" elementType="Argument">
+            <stringProp name="Argument.name">originatingOrganisation</stringProp>
+            <stringProp name="Argument.value">0480000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="courtHearingLocation" elementType="Argument">
+            <stringProp name="Argument.name">courtHearingLocation</stringProp>
+            <stringProp name="Argument.value">B01BH00</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="courtRoomId" elementType="Argument">
+            <stringProp name="Argument.name">courtRoomId</stringProp>
+            <stringProp name="Argument.value">61bb0ee6-5c8b-3020-8123-b6fb88ccfd74</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="prosecutorReference" elementType="Argument">
+            <stringProp name="Argument.name">prosecutorReference</stringProp>
+            <stringProp name="Argument.value">TFL</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="hearingRandomDays" elementType="Argument">
+            <stringProp name="Argument.name">hearingRandomDays</stringProp>
+            <stringProp name="Argument.value">30</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="prosecutingAuthority" elementType="Argument">
+            <stringProp name="Argument.name">prosecutingAuthority</stringProp>
+            <stringProp name="Argument.value">G94DV00</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="envType" elementType="Argument">
+            <stringProp name="Argument.name">envType</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(System.getenv(&quot;JENKINS_ANSIBLE_ENVIRONMENT&quot;))}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="destinationID" elementType="Argument">
+            <stringProp name="Argument.name">destinationID</stringProp>
+            <stringProp name="Argument.value">${__P(DESTINATION_ID,B00LIBRA)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="originatingOrganisation" elementType="Argument">
+            <stringProp name="Argument.name">originatingOrganisation</stringProp>
+            <stringProp name="Argument.value">0480000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="pacingIntervalTime" elementType="Argument">
+            <stringProp name="Argument.name">pacingIntervalTime</stringProp>
+            <stringProp name="Argument.value">10</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Global Variables - Local" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="baseDir" elementType="Argument">
+            <stringProp name="Argument.name">baseDir</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir())}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="--- ENVIRONMENT SETTINGS ---" elementType="Argument">
+            <stringProp name="Argument.name">--- ENVIRONMENT SETTINGS ---</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cppHostname" elementType="Argument">
+            <stringProp name="Argument.name">cppHostname</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_HOSTNAME,localhost)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">localhost</stringProp>
+          </elementProp>
+          <elementProp name="cppPort" elementType="Argument">
+            <stringProp name="Argument.name">cppPort</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_PORT,8080)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">81</stringProp>
+          </elementProp>
+          <elementProp name="cppProtocol" elementType="Argument">
+            <stringProp name="Argument.name">cppProtocol</stringProp>
+            <stringProp name="Argument.value">${__P(CPP_PROTOCOL,http)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyIp" elementType="Argument">
+            <stringProp name="Argument.name">proxyIp</stringProp>
+            <stringProp name="Argument.value">${__P(PROXY_IP, )}</stringProp>
+            <stringProp name="Argument.desc">proxy server IP -leave blanck if not used   10.224.23.8</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyPort" elementType="Argument">
+            <stringProp name="Argument.name">proxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(PROXY_PORT, )}</stringProp>
+            <stringProp name="Argument.desc">proxy server port - leave blanck if not used 3128</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="--- SCRIPT LOGIC CONFIGURATION ---" elementType="Argument">
+            <stringProp name="Argument.name">--- SCRIPT LOGIC CONFIGURATION ---</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="idamSimulator" elementType="Argument">
+            <stringProp name="Argument.name">idamSimulator</stringProp>
+            <stringProp name="Argument.value">${__P(IDAM_SIMULATOR, true)}</stringProp>
+            <stringProp name="Argument.desc">Set true for Idam Simulator. False for &apos;Real Idam&apos;</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="thinkTimeDeviation" elementType="Argument">
+            <stringProp name="Argument.name">thinkTimeDeviation</stringProp>
+            <stringProp name="Argument.value">${__P(THINK_TIME_DEVIATION,1000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="thinkTimeDelayOffset" elementType="Argument">
+            <stringProp name="Argument.name">thinkTimeDelayOffset</stringProp>
+            <stringProp name="Argument.value">${__P(THINK_TIME_DELAY_OFFSET,3000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="evalStatic" elementType="Argument">
+            <stringProp name="Argument.name">evalStatic</stringProp>
+            <stringProp name="Argument.value">${__P(INCLUDE_STATIC_ASSETS, false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="timeToWaitForSearchCase" elementType="Argument">
+            <stringProp name="Argument.name">timeToWaitForSearchCase</stringProp>
+            <stringProp name="Argument.value">${__P(SEARCH_CASE_WAITTIME,20000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="MOT_REASON_ID" elementType="Argument">
+            <stringProp name="Argument.name">MOT_REASON_ID</stringProp>
+            <stringProp name="Argument.value">b8c37e33-defd-351c-b91e-1e03e51657da</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COURT_CENTRE" elementType="Argument">
+            <stringProp name="Argument.name">COURT_CENTRE</stringProp>
+            <stringProp name="Argument.value">31b3d313-7a7c-4598-bb4b-c1bff9b00e26</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="originatingOrganisation" elementType="Argument">
+            <stringProp name="Argument.name">originatingOrganisation</stringProp>
+            <stringProp name="Argument.value">0480000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="courtHearingLocation" elementType="Argument">
+            <stringProp name="Argument.name">courtHearingLocation</stringProp>
+            <stringProp name="Argument.value">B01BH00</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="courtRoomId" elementType="Argument">
+            <stringProp name="Argument.name">courtRoomId</stringProp>
+            <stringProp name="Argument.value">61bb0ee6-5c8b-3020-8123-b6fb88ccfd74</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="prosecutorReference" elementType="Argument">
+            <stringProp name="Argument.name">prosecutorReference</stringProp>
+            <stringProp name="Argument.value">TFL</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="hearingRandomDays" elementType="Argument">
+            <stringProp name="Argument.name">hearingRandomDays</stringProp>
+            <stringProp name="Argument.value">30</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="prosecutingAuthority" elementType="Argument">
+            <stringProp name="Argument.name">prosecutingAuthority</stringProp>
+            <stringProp name="Argument.value">G94DV00</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="destinationID" elementType="Argument">
+            <stringProp name="Argument.name">destinationID</stringProp>
+            <stringProp name="Argument.value">${__P(DESTINATION_ID,B00LIBRA)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="originatingOrganisation" elementType="Argument">
+            <stringProp name="Argument.name">originatingOrganisation</stringProp>
+            <stringProp name="Argument.value">0480000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="pacingIntervalTime" elementType="Argument">
+            <stringProp name="Argument.name">pacingIntervalTime</stringProp>
+            <stringProp name="Argument.value">10</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="envType" elementType="Argument">
+            <stringProp name="Argument.name">envType</stringProp>
+            <stringProp name="Argument.value">nftccm02</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${cppHostname}</stringProp>
+        <stringProp name="HTTPSampler.port">${cppPort}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${cppProtocol}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="TestPlan.comments">Proxy setting in &apos;Advanced&apos; tab</stringProp>
+        <boolProp name="HTTPSampler.image_parser">true</boolProp>
+        <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.proxyHost">${proxyIp}</stringProp>
+        <stringProp name="HTTPSampler.proxyPort">${proxyPort}</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">CJSCPPUID</stringProp>
+            <stringProp name="Header.value">${USER_ID}</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="legalAdvisers" enabled="true">
+        <stringProp name="filename">./spi/data/legaladvisers.csv</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="variableNames">USER_ID,email</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.group</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="cjseUsers" enabled="true">
+        <stringProp name="filename">./spi/data/cjseusers.csv</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="variableNames">cppiUserId,cppiEmail</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.group</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="defence users" enabled="true">
+        <stringProp name="filename">./defence/data/defence_users_logins.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">DEFENCE_USER_ID</stringProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.group</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="cps users" enabled="true">
+        <stringProp name="filename">./defence/data/cps_for_idpc_users.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">CPS_USER_ID</stringProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.group</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_allocated_without_case_material" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_LOOP_COUNT, 5)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_TARGET_THREADS,2)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_UP_TIME, 100)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="TestPlan.comments">SJP Creation Data</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="sjpoucode" enabled="true">
+          <stringProp name="filename">./shared/data/sjpoucode.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">sjpoucode</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter"></stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdata.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+def courtLocation = location.substring(0,5) + roomCode;
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 1O" enabled="false">
+          <intProp name="ThroughputController.style">0</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <stringProp name="ThroughputController.maxThroughput"></stringProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+          <stringProp name="TestPlan.comments">15.0</stringProp>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SJPCaseCreation.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Case with 1D and 1O" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SJPCaseCreation.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_allocated_without_case_material" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_LOOP_COUNT, 5)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_TARGET_THREADS,2)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_UP_TIME, 100)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="TestPlan.comments">SJP Creation Data</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdata.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+def courtLocation = location.substring(0,5) + roomCode;
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 1O" enabled="false">
+          <intProp name="ThroughputController.style">0</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <stringProp name="ThroughputController.maxThroughput"></stringProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>15.0</savedValue>
+          </FloatProperty>
+          <stringProp name="TestPlan.comments">15.0</stringProp>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SJPCaseCreation.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Case with 1D and 1O" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SJPCaseCreation.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_allocated_without_case_material" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_LOOP_COUNT, 5)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_TARGET_THREADS,2)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_UP_TIME, 100)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdata.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+def courtLocation = location.substring(0,5) + roomCode;
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 1O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+          <stringProp name="TestPlan.comments">15.0</stringProp>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd1Offence.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>20.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-5O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 2O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>25.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd2Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-2O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 3O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd3Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-3O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 4O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>8.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd4Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-4O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-5O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 3D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith3DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;3D-5O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 4D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith4DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;4D-5O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 5D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>2.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith5DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;5D-5O&quot; ;
+ log.info(&quot;allocated cases without material &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf5S" enabled="true">
+            <stringProp name="ConstantTimer.delay">7000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_creation_for_create_application_and_eject_case_users" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED__FOR_APPLICATION_AND_LINK_CASES_LOOP_COUNT, 2)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_FOR_APPLICATION_AND_LINK_CASES_TARGET_THREADS,5)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED__FOR_APPLICATION_AND_LINK_CASES_UP_TIME, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">120</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdata.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+def courtLocation = location.substring(0,5) + roomCode;
+
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="createCaseFor1D-10" enabled="true">
+          <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd1Offence.jmx</stringProp>
+        </IncludeController>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+          <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot; ;
+ log.info(&quot;Application and eject cases &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 5S" enabled="true">
+          <stringProp name="ConstantTimer.delay">5000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_creation_for_defence_users" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_CASES_DEFENCE_LOOP_COUNT,1)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_CASES_DEFENCE_TARGET_THREADS,5)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_CASES_DEFENCE_UP_TIME,1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPICaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+import org.apache.jmeter.services.FileServer
+
+vars.put(&quot;NEW_URN&quot;, &quot;${__time(mmss,)}BA${__Random(10000, 99999)}&quot;);
+vars.put(&quot;DOB&quot;, &quot;${__Random(1910, 1999)}-${__Random(10, 12)}-${__Random(10, 28)}&quot;);
+String timeMillis = Long.toString(System.currentTimeMillis());
+vars.put(&quot;REQUEST_ID&quot;, timeMillis + &quot;${__Random(10, 99)}&quot;);
+
+def DATETIME_FORMAT = java.time.format.DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);
+def hDate = java.time.LocalDateTime.now().plusDays(${__Random(2,50,)}).format(DATETIME_FORMAT);
+vars.put(&quot;HEARING_DATE&quot;,hDate); 
+
+def faker = new com.github.javafaker.Faker();
+vars.put(&quot;firstname&quot;, faker.name().firstName());
+vars.put(&quot;lastname&quot;, faker.name().lastName());
+vars.put(&quot;streetAddress&quot;, faker.address().streetAddress());
+
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="createCaseForDefenceUsers" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="stagingprosecutorsspi" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;NS1:Envelope xmlns:NS1=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+    &lt;NS1:Body&gt;&#xd;
+        &lt;NS2:SubmitRequestMes xmlns:NS2=&quot;http://schemas.cjse.gov.uk/endpoint/types/&quot;&gt;&#xd;
+            &lt;NS2:RequestID&gt;${REQUEST_ID}&lt;/NS2:RequestID&gt;&#xd;
+            &lt;NS2:SourceID&gt;Z00CJSE&lt;/NS2:SourceID&gt;&#xd;
+            &lt;NS2:DestinationID&gt;B00LIBRA&lt;/NS2:DestinationID&gt;&#xd;
+            &lt;NS2:ExecMode&gt;ASYNCH&lt;/NS2:ExecMode&gt;&#xd;
+            &lt;NS2:Timestamp&gt;2019-02-06T14:27:48Z&lt;/NS2:Timestamp&gt;&#xd;
+            &lt;NS2:Message&gt;&amp;lt;RouteData xmlns=&quot;http://schemas.cjse.gov.uk/common/operations&quot; xmlns:cjseEntity=&quot;http://schemas.cjse.gov.uk/common/businessentities&quot; xmlns:cjseType=&quot;http://schemas.cjse.gov.uk/common/businesstypes&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; VersionNumber=&quot;1.0&quot; RequestResponse=&quot;Request&quot;&amp;gt;&amp;lt;RequestFromSystem VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;CorrelationID&amp;gt;${REQUEST_ID}&amp;lt;/CorrelationID&amp;gt;&amp;lt;SystemID literalvalue=&quot;CJSE&quot;&amp;gt;Z00CJASE&amp;lt;/SystemID&amp;gt;&amp;lt;OrganizationalUnitID literalvalue=&quot;CJIT CJSE&quot;&amp;gt;Z000000&amp;lt;/OrganizationalUnitID&amp;gt;&amp;lt;DataController literalvalue=&quot;String&quot;&amp;gt;lee.flaxington&amp;lt;/DataController&amp;gt;&amp;lt;User literalvalue=&quot;String&quot;&amp;gt;lee.flaxington&amp;lt;/User&amp;gt;&amp;lt;SourceID literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/SourceID&amp;gt;&amp;lt;DestinationID literalvalue=&quot;String&quot;&amp;gt;Z00CJSE&amp;lt;/DestinationID&amp;gt;&amp;lt;TestOperation&amp;gt;1&amp;lt;/TestOperation&amp;gt;&amp;lt;/RequestFromSystem&amp;gt;&amp;lt;DataStream VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;cjseEntity:System literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/cjseEntity:System&amp;gt;&amp;lt;cjseEntity:DataStreamType literalvalue=&quot;String&quot;&amp;gt;SPINewCase&amp;lt;/cjseEntity:DataStreamType&amp;gt;&amp;lt;cjseEntity:SystemDataStreamID&amp;gt;06_02_2019_142719_000000309381&amp;lt;/cjseEntity:SystemDataStreamID&amp;gt;&amp;lt;cjseEntity:Name&amp;gt;SPI New Case&amp;lt;/cjseEntity:Name&amp;gt;&amp;lt;cjseEntity:Reference&amp;gt;06_02_2019_142719_000000309381&amp;lt;/cjseEntity:Reference&amp;gt;&amp;lt;cjseEntity:ReferenceType&amp;gt;SPINewCase&amp;lt;/cjseEntity:ReferenceType&amp;gt;&amp;lt;cjseEntity:Dated&amp;gt;2013-12-01&amp;lt;/cjseEntity:Dated&amp;gt;&amp;lt;cjseEntity:Timed&amp;gt;14:27:21.657Z&amp;lt;/cjseEntity:Timed&amp;gt;&amp;lt;cjseEntity:ContentType&amp;gt;text/plain&amp;lt;/cjseEntity:ContentType&amp;gt;&amp;lt;cjseEntity:DataStreamContent&amp;gt;&amp;amp;lt;?xml version=&amp;amp;quot;1.0&amp;amp;quot; encoding=&amp;amp;quot;utf-8&amp;amp;quot;?&amp;amp;gt;&#xd;
+&#xd;
+&#xd;
+                &amp;amp;lt;DC:NewCaseMessage xmlns:DC=&quot;http://www.dca.gov.uk/xmlschemas/libra&quot; Flow=&quot;NewCasesFromThePolice&quot; Interface=&quot;LibraStandardProsecutorPolice&quot; SchemaVersion=&quot;0.6g&quot;&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Case&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PTIURN&amp;amp;gt;${NEW_URN}&amp;amp;lt;/DC:PTIURN&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OriginatingOrganisation&amp;amp;gt;${originatingOrganisation}&amp;amp;lt;/DC:OriginatingOrganisation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:CaseInitiation&amp;amp;gt;C&amp;amp;lt;/DC:CaseInitiation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Informant&amp;amp;gt;06&amp;amp;lt;/DC:Informant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:CPSorganisation&amp;amp;gt;A30AB00&amp;amp;lt;/DC:CPSorganisation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:InitialHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:CourtHearingLocation&amp;amp;gt;B01BH00&amp;amp;lt;/DC:CourtHearingLocation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:DateOfHearing&amp;amp;gt;${HEARING_DATE}&amp;amp;lt;/DC:DateOfHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:TimeOfHearing&amp;amp;gt;10:29:17&amp;amp;lt;/DC:TimeOfHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:InitialHearing&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OtherPartyOfficerInCase&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OfficerName&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonGivenName1&amp;amp;gt;Vikesh&amp;amp;lt;/DC:PersonGivenName1&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonFamilyName&amp;amp;gt;Sondhi&amp;amp;lt;/DC:PersonFamilyName&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OfficerName&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PoliceOfficerRank&amp;amp;gt;PC&amp;amp;lt;/DC:PoliceOfficerRank&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PoliceWorkerReferenceNumber&amp;amp;gt;53508&amp;amp;lt;/DC:PoliceWorkerReferenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PoliceWorkerLocationCode&amp;amp;gt;EE06&amp;amp;lt;/DC:PoliceWorkerLocationCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:StructuredAddress&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:SAON xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;          Longsight Station&amp;amp;lt;/bsa:SAON&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:PAON xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;          Greater Manchester Constabulary&amp;amp;lt;/bsa:PAON&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:StreetDescription xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;Grindlow Street&amp;amp;lt;/bsa:StreetDescription&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:Locality xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;Longsight&amp;amp;lt;/bsa:Locality&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:Town xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;Greater Manchester&amp;amp;lt;/bsa:Town&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:PostCode xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;M13 0LL&amp;amp;lt;/bsa:PostCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:StructuredAddress&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:TelephoneDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:TelephoneNumberBusiness&amp;amp;gt;0161 856 4232&amp;amp;lt;/DC:TelephoneNumberBusiness&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:TelephoneDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OtherPartyOfficerInCase&amp;amp;gt;&#xd;
+&#xd;
+&#xd;
+                &amp;amp;lt;DC:Defendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ProsecutorReference&amp;amp;gt;${prosecutorReference}&amp;amp;lt;/DC:ProsecutorReference&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PoliceIndividualDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BasePersonDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonName&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonTitle&amp;amp;gt;MR&amp;amp;lt;/DC:PersonTitle&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonGivenName1&amp;amp;gt;${firstname}&amp;amp;lt;/DC:PersonGivenName1&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonFamilyName&amp;amp;gt;${lastname}&amp;amp;lt;/DC:PersonFamilyName&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:PersonName&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:TelephoneDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:TelephoneNumberHome&amp;amp;gt;015324443756&amp;amp;lt;/DC:TelephoneNumberHome&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:TelephoneDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Birthdate&amp;amp;gt;${DOB}&amp;amp;lt;/DC:Birthdate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Gender&amp;amp;gt;1&amp;amp;lt;/DC:Gender&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BasePersonDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonStatedNationality&amp;amp;gt;GBR&amp;amp;lt;/DC:PersonStatedNationality&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:PersonDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Address&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:PAON xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;          ${streetAddress}&amp;amp;lt;/bsa:PAON&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:StreetDescription xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;MALLERTON WAY&amp;amp;lt;/bsa:StreetDescription&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:Town xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;DUNSTABLE&amp;amp;lt;/bsa:Town&amp;amp;gt;&#xd;
+                &amp;amp;lt;bsa:PostCode xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&amp;amp;gt;LN5 5TT&amp;amp;lt;/bsa:PostCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Address&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:PersonEthnicity&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ObservedEthnicity&amp;amp;gt;1&amp;amp;lt;/DC:ObservedEthnicity&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:SelfDefinedEthnicity&amp;amp;gt;W1&amp;amp;lt;/DC:SelfDefinedEthnicity&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:PersonEthnicity&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OccupationCode&amp;amp;gt;02201&amp;amp;lt;/DC:OccupationCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Occupation&amp;amp;gt;Accountant&amp;amp;lt;/DC:Occupation&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:CustodyStatus&amp;amp;gt;C&amp;amp;lt;/DC:CustodyStatus&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LanguageOptions&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:DocumentationLanguage&amp;amp;gt;E&amp;amp;lt;/DC:DocumentationLanguage&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:HearingLanguage&amp;amp;gt;E&amp;amp;lt;/DC:HearingLanguage&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:LanguageOptions&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:PoliceIndividualDefendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceSequenceNumber&amp;amp;gt;005&amp;amp;lt;/DC:OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceCode&amp;amp;gt;CA03014&amp;amp;lt;/DC:OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceWording&amp;amp;gt;On TEST  at  TEST  used or threatened unlawful violence towards another and your conduct was such as would cause a person of reasonable firmness present at the scene to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&amp;amp;lt;/DC:OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/DC:OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateStartDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStartTime&amp;amp;gt;10:15:00&amp;amp;lt;/DC:OffenceStartTime&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceEnd/&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ChargeDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ArrestDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LocationOfOffence&amp;amp;gt;TWST&amp;amp;lt;/DC:LocationOfOffence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Offence&amp;amp;gt;&#xd;
+&#xd;
+                &amp;amp;lt;DC:Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceSequenceNumber&amp;amp;gt;004&amp;amp;lt;/DC:OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceCode&amp;amp;gt;CA03014&amp;amp;lt;/DC:OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceWording&amp;amp;gt;On TEST  at  TEST  used or threatened unlawful violence towards another and your conduct was such as would cause a person of reasonable firmness present at the scene to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&amp;amp;lt;/DC:OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/DC:OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateStartDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStartTime&amp;amp;gt;10:15:00&amp;amp;lt;/DC:OffenceStartTime&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceEnd/&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ChargeDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ArrestDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LocationOfOffence&amp;amp;gt;TWST&amp;amp;lt;/DC:LocationOfOffence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Offence&amp;amp;gt;&#xd;
+&#xd;
+                &amp;amp;lt;DC:Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceSequenceNumber&amp;amp;gt;003&amp;amp;lt;/DC:OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceCode&amp;amp;gt;CA03014&amp;amp;lt;/DC:OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceWording&amp;amp;gt;On TEST  at  TEST  used or threatened unlawful violence towards another and your conduct was such as would cause a person of reasonable firmness present at the scene to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&amp;amp;lt;/DC:OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/DC:OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateStartDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStartTime&amp;amp;gt;10:15:00&amp;amp;lt;/DC:OffenceStartTime&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceEnd/&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ChargeDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ArrestDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LocationOfOffence&amp;amp;gt;TWST&amp;amp;lt;/DC:LocationOfOffence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Offence&amp;amp;gt;&#xd;
+&#xd;
+                &amp;amp;lt;DC:Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceSequenceNumber&amp;amp;gt;001&amp;amp;lt;/DC:OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceCode&amp;amp;gt;CA03014&amp;amp;lt;/DC:OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceWording&amp;amp;gt;On TEST  at  TEST  used or threatened unlawful violence towards another and your conduct was such as would cause a person of reasonable firmness present at the scene to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&amp;amp;lt;/DC:OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/DC:OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateStartDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStartTime&amp;amp;gt;10:15:00&amp;amp;lt;/DC:OffenceStartTime&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceEnd/&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ChargeDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ArrestDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LocationOfOffence&amp;amp;gt;TWST&amp;amp;lt;/DC:LocationOfOffence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Offence&amp;amp;gt;&#xd;
+&#xd;
+                &amp;amp;lt;DC:Offence&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceSequenceNumber&amp;amp;gt;002&amp;amp;lt;/DC:OffenceSequenceNumber&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceCode&amp;amp;gt;CA03014&amp;amp;lt;/DC:OffenceCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceWording&amp;amp;gt;On TEST  at  TEST  used or threatened unlawful violence towards another and your conduct was such as would cause a person of reasonable firmness present at the scene to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&amp;amp;lt;/DC:OffenceWording&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateCode&amp;amp;gt;1&amp;amp;lt;/DC:OffenceDateCode&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceDateStartDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:OffenceDateStartDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceStartTime&amp;amp;gt;10:15:00&amp;amp;lt;/DC:OffenceStartTime&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceStart&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:OffenceEnd/&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:OffenceTiming&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ChargeDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ChargeDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:ArrestDate&amp;amp;gt;2019-09-12&amp;amp;lt;/DC:ArrestDate&amp;amp;gt;&#xd;
+                &amp;amp;lt;DC:LocationOfOffence&amp;amp;gt;TWST&amp;amp;lt;/DC:LocationOfOffence&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:BaseOffenceDetails&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Offence&amp;amp;gt;&#xd;
+&#xd;
+                &amp;amp;lt;/DC:Defendant&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:Case&amp;amp;gt;&#xd;
+                &amp;amp;lt;/DC:NewCaseMessage&amp;amp;gt;&#xd;
+&#xd;
+&#xd;
+                &amp;lt;/cjseEntity:DataStreamContent&amp;gt;&amp;lt;/DataStream&amp;gt;&amp;lt;Routes VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;Route VersionNumber=&quot;1.0&quot;&amp;gt;&amp;lt;RouteID&amp;gt;001&amp;lt;/RouteID&amp;gt;&amp;lt;RouteSourceSystem literalvalue=&quot;String&quot;&amp;gt;00101PoliceCaseSystem&amp;lt;/RouteSourceSystem&amp;gt;&amp;lt;RouteDestinationSystem literalvalue=&quot;String&quot;&amp;gt;B00LIBRA&amp;lt;/RouteDestinationSystem&amp;gt;&amp;lt;Descriptor&amp;gt;String&amp;lt;/Descriptor&amp;gt;&amp;lt;/Route&amp;gt;&amp;lt;/Routes&amp;gt;&amp;lt;/RouteData&amp;gt;&lt;/NS2:Message&gt;&#xd;
+        &lt;/NS2:SubmitRequestMes&gt;&#xd;
+    &lt;/NS1:Body&gt;&#xd;
+&lt;/NS1:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/stagingprosecutorsspi-service/CJSEService</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSCPPUID</stringProp>
+                  <stringProp name="Header.value">d7c91866-646a-462c-9203-46678e8cddef</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/soap+xml; charset=UTF-8;</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 20S" enabled="true">
+          <stringProp name="ConstantTimer.delay">20000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SendToIdpc" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;CP20&#xd;
+	xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&#xd;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&#xd;
+	xmlns=&quot;http://www.cgi.com/CP/CP20/2020-03&quot;&gt;&#xd;
+	&lt;TransactionID&gt;30011&lt;/TransactionID&gt;&#xd;
+	&lt;CompassCaseId&gt;12122&lt;/CompassCaseId&gt;&#xd;
+	&lt;URN&gt;${NEW_URN}&lt;/URN&gt;&#xd;
+	&lt;ResponseEmail&gt;john.test@org.gsi.gov.uk&lt;/ResponseEmail&gt;&#xd;
+	&lt;Documents&gt;&#xd;
+		&lt;!--Zero or more repetitions:--&gt;&#xd;
+		&lt;Document&gt;&#xd;
+			&lt;DocumentId&gt;D372201&lt;/DocumentId&gt;&#xd;
+			&lt;MaterialType&gt;1&lt;/MaterialType&gt;&#xd;
+			&lt;FileName&gt;Smith_John_${NEW_URN}.pdf&lt;/FileName&gt;&#xd;
+			&lt;DocumentContent&gt;${IDPC_DATA}&lt;/DocumentContent&gt;&#xd;
+		&lt;/Document&gt;&#xd;
+	&lt;/Documents&gt;&#xd;
+	&lt;Defendants&gt;&#xd;
+		&lt;!--Zero or more repetitions:--&gt;&#xd;
+		&lt;Defendant&gt;&#xd;
+			&lt;CMSDefendantID&gt;1&lt;/CMSDefendantID&gt;&#xd;
+			&lt;Surname&gt;Smith${REQUEST_ID}&lt;/Surname&gt;&#xd;
+			&lt;Forenames&gt;John${REQUEST_ID}&lt;/Forenames&gt;&#xd;
+			&lt;DOB&gt;${DOB}&lt;/DOB&gt;&#xd;
+			&lt;OUCode&gt;B01BH00&lt;/OUCode&gt;&#xd;
+			&lt;ASN&gt;${prosecutorReference}&lt;/ASN&gt;&#xd;
+		&lt;/Defendant&gt;&#xd;
+	&lt;/Defendants&gt;&#xd;
+&lt;/CP20&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/stagingprosecutors-command-api/command/api/rest/stagingprosecutors/v1/prosecutions/cps-xml/materials</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">CJSCPPUID</stringProp>
+                <stringProp name="Header.value">${CPS_USER_ID}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/xml</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="readIdpcMetaData" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import org.apache.jmeter.services.FileServer
+
+def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/shared/data/fileUploads/pdfless100KB.txt&quot;
+def jsonString = new File(inputPath).text
+vars.put(&quot;IDPC_DATA&quot;, jsonString);
+log.info(&quot;the inputPath is &quot; +  inputPath);</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+          <stringProp name="BeanShellSampler.query">
+String caseDetails = vars.get(&quot;NEW_URN&quot;) + &quot;,&quot; +  &quot;1D-1O&quot; + &quot;,&quot; + vars.get(&quot;firstname&quot;) +  &quot;,&quot; + vars.get(&quot;lastname&quot;) + &quot;,&quot; + vars.get(&quot;DOB&quot;) ;
+log.info(&quot;defence case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_unllocated" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_UNALLOCATED_CASES_LOOP_COUNT,10)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_UNALLOCATED_CASES_TARGET_THREADS,10)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_UNALLOCATED_CASES_RAMP_UP_TIME,1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="TestPlan.comments">3600 2700</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="CourtCentres(Random)" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdataForUnallocatedCases.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingLocation,courtroomCode</stringProp>
+          <boolProp name="randomOrder">true</boolProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="rewindOnTheEndOfList">true</boolProp>
+          <boolProp name="independentListPerThread">false</boolProp>
+        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="getAllOffenceCodes" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+//	def random_number = ${__Random(1,99,)}
+//	return csvData.get(random_number).split(&quot;,&quot;);
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 1O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>20.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd1Offence.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;1D-1O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) ;
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 10S" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${pacingIntervalTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>25.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;1D-5O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) ;
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 10S" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${pacingIntervalTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 2O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>50.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd2Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;2D-2O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;);
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 10S" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${pacingIntervalTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 3O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd3Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;2D-3O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;);
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 10S" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${pacingIntervalTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 4O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>10.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd4Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;2D-4O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) ;
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 10S" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${pacingIntervalTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>30.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;2D-50&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) ;
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 20S" enabled="true">
+            <stringProp name="ConstantTimer.delay">20000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 3D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith3DefendantsAnd4Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;3D-50&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) ;
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 20S" enabled="true">
+            <stringProp name="ConstantTimer.delay">20000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 4D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith4DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;4D-50&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;);
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 20S" enabled="true">
+            <stringProp name="ConstantTimer.delay">20000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 5D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith5DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;5D-50&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) +  &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;);
+log.info(&quot;Unallocated case details &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+  
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delay of 20S" enabled="true">
+            <stringProp name="ConstantTimer.delay">20000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_allocated_for_magistrates_update_casedetails" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_MAGIS_LOOP_COUNT, 1)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_MAGIS_TARGET_THREADS,5)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_MAGIS_UP_TIME, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="judicaryIds" enabled="true">
+          <stringProp name="filename">./shared/data/judiciaryIds.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">JUDICIARY_ID1,JUDICIARY_ID2</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="magsUsersCases" enabled="true">
+          <stringProp name="filename">./shared/data/${envType}/allocatedCasesForMagistrates.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">NEW_URN,HEARING_DATE,COURT_CENTRE,COURT_ROOM,caseType</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="unifiedsearch-query/cases" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/unifiedsearchquery-query-api/query/api/rest/unifiedsearchquery/cases?caseReference=${NEW_URN}&amp;pageSize=10</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/vnd.unifiedsearch.query.cases+json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">${refererUrl}search/search?referrer=${__urlencode(refererUrl)}&amp;caseReference=${NEW_URN}</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; WOW64; rv;48.0) Gecko/20100101 Firefox/48.0</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractCaseID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">CASE_ID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.cases[0].caseId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractHearingId" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">HEARING_ID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.cases[0].hearings[0].hearingId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractDefendantId" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">DEFENDANT_ID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.cases[0].parties[0].partyId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractParties" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">PARTIES</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.cases[0].parties[*]</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+            <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractHearingDate" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">HEARING_DATE</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.cases[0].hearings[0].hearingDates[0]</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractCountCenterId" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">COURT_CENTRE</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">cases[0].hearings[0].courtId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractCourtCentreName" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">COURT_CENTRE_NAME</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">cases[0].hearings[0].courtCentreName</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="UpdateHearingDetails" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="computePayloadForUpdateHearingDetails" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">false</stringProp>
+            <stringProp name="script">import groovy.json.*
+def payloadBuilder = new JsonBuilder();
+
+def counter = 1; 	
+def isDeputyValue = true
+def isBenchChairmanValue = false
+def juidicaryIdValue = vars.get(&quot;JUDICIARY_ID1&quot;);
+
+def DATETIME_FORMAT = java.time.format.DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);
+def hearingDate = java.time.LocalDateTime.now().format(DATETIME_FORMAT);
+
+payloadBuilder{
+  selectedCourtCentre {
+    id vars.get(&quot;COURT_CENTRE&quot;)
+    courtRoomId vars.get(&quot;COURT_ROOM&quot;)
+    courtCentreName vars.get(&quot;COURT_CENTRE_NAME&quot;)
+  } 
+   courtCentreId vars.get(&quot;COURT_CENTRE&quot;)
+   courtRoomId vars.get(&quot;COURT_ROOM&quot;)
+   type{
+     id vars.get(&quot;HEARING_ID&quot;)
+     description &quot;First hearing&quot;
+  } 
+   startDate hearingDate
+   endDate hearingDate
+   nonSittingDays([])
+   nonDefaultDays([
+     {
+       courtCentreId vars.get(&quot;COURT_CENTRE&quot;)
+       roomId vars.get(&quot;COURT_ROOM&quot;)
+       startTime hearingDate+&quot;T13:00:00.000Z&quot;
+       duration 20 }
+       ])
+    judiciary((1..2).collect {
+   	({{
+   	 if (counter == 2 ) {
+   	 	isDeputyValue = false
+          isBenchChairmanValue = true
+          juidicaryIdValue = vars.get(&quot;JUDICIARY_ID2&quot;);
+   	 }
+       judicialId juidicaryIdValue
+       judicialRoleType {
+         judiciaryType &quot;MAGISTRATE&quot;
+      } 
+       isDeputy isDeputyValue 
+       isBenchChairman isBenchChairmanValue
+       counter = counter + 1 
+     }})
+ })
+   jurisdictionType &quot;MAGISTRATES&quot;
+   hearingLanguage &quot;ENGLISH&quot;
+   publicListNote &quot;&quot;  
+   hasVideoLink  false
+}
+
+def updateHearingPayload = payloadBuilder.toPrettyString();
+vars.put(&quot;updateHearingPayload&quot;,updateHearingPayload);</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="listing/hearings(update hearing details)" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${updateHearingPayload}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/listing-command-api/command/api/rest/listing/hearings/${HEARING_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.listing.command.update-hearing-for-listing+json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="wait for 5S" enabled="true">
+          <stringProp name="ConstantTimer.delay">5000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_creation_for_magistrates_and_djmc_users" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_MAGIS_LOOP_COUNT, 1)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_MAGIS_TARGET_THREADS,5)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_MAGIS_UP_TIME, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="judicaryIds" enabled="true">
+          <stringProp name="filename">./shared/data/judiciaryIds.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">JUDICIARY_ID1,JUDICIARY_ID2</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentresForMags" enabled="true">
+          <stringProp name="filename">./shared/data/courtsRefdataForMagsusers.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+
+def courtLocation = location.substring(0,5) + roomCode;
+
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseForTodayHearingDater" enabled="true">
+          <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWithCurrentDayHearingDate.jmx</stringProp>
+        </IncludeController>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+          <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot; ; 
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;Mags and  DJMC cases &quot; + caseDetails);
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+          <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+        </IncludeController>
+        <hashTree/>
+        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Random delay between 5S" enabled="true">
+          <stringProp name="ConstantTimer.delay">5000</stringProp>
+          <stringProp name="RandomTimer.range">2000</stringProp>
+        </UniformRandomTimer>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_allocated_with_case_material" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ALLOCATED_CASES_MATERIAL_LOOP_COUNT, 1)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ALLOCATED_CASES_MATERIAL_TARGET_THREADS,10)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ALLOCATED_CASES_MATERIAL_UP_TIME, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">180</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtsNFTrefdata.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">COURT_CENTRE,COURT_ROOM,courtHearingUnallocatedLocation,courtroomCode,courtHearingLocation</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="setSPiCaseDetails" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+def location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+def roomCode =  vars.get(&quot;courtroomCode&quot;);
+def courtLocation = location.substring(0,5) + roomCode;
+vars.put(&quot;courtHearingLocation&quot;, courtLocation);
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 1O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd1Offence.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-1O&quot;; 
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+
+ vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 1D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>20.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith1DefendantAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;1D-5O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Random delay between 30S to 1M" enabled="true">
+            <stringProp name="ConstantTimer.delay">30000.0</stringProp>
+            <stringProp name="RandomTimer.range">30000.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 2O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>25.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd2Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-2O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Random delay between 30S to 1M" enabled="true">
+            <stringProp name="ConstantTimer.delay">30000</stringProp>
+            <stringProp name="RandomTimer.range">30000</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 3O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>15.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd3Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-3O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+
+  vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 4O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>8.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd4Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-4O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 2D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith2DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;2D-5O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 3D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith3DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;3D-5O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 4D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>5.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith4DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;4D-5O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Case with 5D and 5O" enabled="true">
+          <intProp name="ThroughputController.style">1</intProp>
+          <boolProp name="ThroughputController.perThread">false</boolProp>
+          <intProp name="ThroughputController.maxThroughput">1</intProp>
+          <FloatProperty>
+            <name>ThroughputController.percentThroughput</name>
+            <value>2.0</value>
+            <savedValue>0.0</savedValue>
+          </FloatProperty>
+        </ThroughputController>
+        <hashTree>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="CreateSPICaseMinimalFields" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalFieldsWith5DefendantsAnd5Offences.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="true">
+            <stringProp name="BeanShellSampler.query"> String location = vars.get(&quot;courtHearingUnallocatedLocation&quot;);
+ String caseUrn = vars.get(&quot;NEW_URN&quot;);
+ String courtCenter = vars.get(&quot;COURT_CENTRE&quot;);
+ String courtRoom = vars.get(&quot;COURT_ROOM&quot;);
+ String hearingDate = vars.get(&quot;HEARING_DATE&quot;);
+ String caseDetails = caseUrn + &quot;,&quot; + hearingDate + &quot;,&quot; + courtCenter + &quot;,&quot; +  courtRoom + &quot;,&quot; +  &quot;5D-5O&quot;;
+ vars.put(&quot;idbc_file_name&quot;, &quot;smallPDF.txt&quot;);
+ log.info(&quot;CaseDetails &quot; + caseDetails);
+  
+
+
+vars.put(&quot;INPUT_DATA&quot;,caseDetails)
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="sendCaseMaterialToIDPC" enabled="true">
+            <stringProp name="IncludeController.includepath">./spi/components/SendCaseMaterialToIdpc.jmx</stringProp>
+          </IncludeController>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="delayOf10S" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_creation_for_dvla_tvl_and_tfl( no upload)" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(ATCM_NUMBER_OF_TIMES,100)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(ATCM_NUMBER_OF_USERS,10)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(ATCM_RAMPUP_PERIOD_FOR_USERS,1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CourtCentres" enabled="true">
+          <stringProp name="filename">./shared/data/courtOUCodesForSJPCaseCreation.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">courtHouseOUCode</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Prosecutors" enabled="true">
+          <stringProp name="filename">./shared/data/prosecutorOucodesForSJPCaseCreation.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">prosecutingAuthority,postCode</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable for URN" enabled="true">
+          <stringProp name="maximumValue">1000000</stringProp>
+          <stringProp name="minimumValue">100</stringProp>
+          <stringProp name="outputFormat">TVLPERFA0</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed"></stringProp>
+          <stringProp name="variableName">urn</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="createSJPCase" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="stagingprosecutors/v2/prosecutions" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;prosecutionSubmissionDetails&quot;: {&#xd;
+    &quot;urn&quot;: &quot;${urn}&quot;,&#xd;
+    &quot;prosecutingAuthority&quot;: &quot;${prosecutingAuthority}&quot;,&#xd;
+    &quot;writtenChargePostingDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+    &quot;sjpnPostingDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+    &quot;informant&quot;: &quot;${firstName}123&quot;&#xd;
+  },&#xd;
+  &quot;defendant&quot;: {&#xd;
+    &quot;prosecutorCosts&quot;: &quot;320.10&quot;,&#xd;
+    &quot;prosecutorDefendantId&quot;: &quot;${__UUID}&quot;,&#xd;
+    &quot;documentationLanguage&quot;: &quot;E&quot;,&#xd;
+    &quot;defendantPerson&quot;: {&#xd;
+      &quot;driverNumber&quot;: &quot;MORGA657054460BF&quot;,&#xd;
+      &quot;forename&quot;: &quot;${firstName}&quot;,&#xd;
+      &quot;occupation&quot;: &quot;TA&quot;,&#xd;
+      &quot;address&quot;: {&#xd;
+        &quot;address1&quot;: &quot;${address1}&quot;,&#xd;
+        &quot;address2&quot;: &quot;${address2}&quot;,&#xd;
+        &quot;address3&quot;: &quot;${address3}&quot;,&#xd;
+        &quot;address4&quot;: &quot;${address4}&quot;,&#xd;
+        &quot;address5&quot;: &quot;UK&quot;,&#xd;
+        &quot;postcode&quot;: &quot;${postCode}&quot;&#xd;
+      },&#xd;
+      &quot;occupationCode&quot;: 666,&#xd;
+      &quot;surname&quot;: &quot;${lastName}&quot;,&#xd;
+      &quot;selfDefinedInformation&quot;: {&#xd;
+        &quot;additionalNationality&quot;: &quot;GBR&quot;,&#xd;
+        &quot;gender&quot;: 1,&#xd;
+        &quot;ethnicity&quot;: &quot;W1&quot;,&#xd;
+        &quot;nationality&quot;: &quot;POL&quot;&#xd;
+      },&#xd;
+      &quot;nationalInsuranceNumber&quot;: &quot;AB123456C&quot;,&#xd;
+      &quot;dateOfBirth&quot;: &quot;${__Random(1950,1995,)}-0${__Random(1,9,)}-${__Random(11,27,)}&quot;,&#xd;
+      &quot;title&quot;: &quot;Mr&quot;,&#xd;
+      &quot;contactDetails&quot;: {&#xd;
+        &quot;secondaryEmail&quot;: &quot;${firstName}.${lastName}@nfttest.com&quot;,&#xd;
+        &quot;homeTelephoneNumber&quot;: &quot;01231231230&quot;,&#xd;
+        &quot;mobileTelephoneNumber&quot;: &quot;78231231230&quot;,&#xd;
+        &quot;workTelephoneNumber&quot;: &quot;0201231230&quot;,&#xd;
+        &quot;primaryEmail&quot;: &quot;${firstName}.${lastName}@nfttest.com&quot;&#xd;
+      }&#xd;
+    },&#xd;
+    &quot;offences&quot;: [&#xd;
+      {&#xd;
+        &quot;offenceWordingWelsh&quot;: &quot;Teipiwch neu copïwch y testun iw gyfieithu ymaDi ddirwy nad ywn uwch na lefel pump ar y raddfa safonol. Terfyn amser ar gyfer erlyniadau:6 misA gafodd y terfyn ar ddirwyon a osodwyd gan lys Ynadon ei ddileu ar 12 Mawrth 2015 – fel y cyfryw, maer ddirwy bosibl ar gollfarn ddiannod mewn perthynas â throsedd a gyflawnwyd ar ôl y dyddiad hwn yn ddiderfyn.&quot;,&#xd;
+        &quot;offenceWording&quot;: &quot;A fine not exceeding level five on the standard scale.Time limit for prosecutions:6 monthsOn the 12th March 2015 the limit on fines imposed by a Magistrates&apos; court was removed – as such, the potential fine on summary conviction in relation to an offence committed after this date is unlimited.&quot;,&#xd;
+        &quot;offenceCommittedDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;cjsOffenceCode&quot;: &quot;CA03014&quot;,&#xd;
+        &quot;offenceSequenceNo&quot;: 1,&#xd;
+        &quot;offenceLocation&quot;: &quot;Croydon&quot;,&#xd;
+        &quot;offenceDateCode&quot;: 1,&#xd;
+        &quot;backDutyDateFrom&quot;: &quot;2020-04-30&quot;,&#xd;
+        &quot;offenceCommittedStartDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDutyDateTo&quot;: &quot;2021-01-20&quot;,&#xd;
+        &quot;prosecutorCompensation&quot;: &quot;542.34&quot;,&#xd;
+        &quot;statementOfFacts&quot;: &quot;Prosecution Facts&quot;,&#xd;
+        &quot;chargeDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDuty&quot;: &quot;340.30&quot;&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;offenceWordingWelsh&quot;: &quot;Teipiwch neu copïwch y testun iw gyfieithu ymaDi ddirwy nad ywn uwch na lefel pump ar y raddfa safonol. Terfyn amser ar gyfer erlyniadau:6 misA gafodd y terfyn ar ddirwyon a osodwyd gan lys Ynadon ei ddileu ar 12 Mawrth 2015 – fel y cyfryw, maer ddirwy bosibl ar gollfarn ddiannod mewn perthynas â throsedd a gyflawnwyd ar ôl y dyddiad hwn yn ddiderfyn.&quot;,&#xd;
+        &quot;offenceWording&quot;: &quot;A fine not exceeding level five on the standard scale.Time limit for prosecutions:6 monthsOn the 12th March 2015 the limit on fines imposed by a Magistrates&apos; court was removed – as such, the potential fine on summary conviction in relation to an offence committed after this date is unlimited.&quot;,&#xd;
+        &quot;offenceCommittedDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;cjsOffenceCode&quot;: &quot;CA03013&quot;,&#xd;
+        &quot;offenceSequenceNo&quot;: 2,&#xd;
+        &quot;offenceLocation&quot;: &quot;Croydon&quot;,&#xd;
+        &quot;offenceDateCode&quot;: 1,&#xd;
+        &quot;backDutyDateFrom&quot;: &quot;2020-04-30&quot;,&#xd;
+        &quot;offenceCommittedStartDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDutyDateTo&quot;: &quot;2021-01-20&quot;,&#xd;
+        &quot;prosecutorCompensation&quot;: &quot;542.34&quot;,&#xd;
+        &quot;statementOfFacts&quot;: &quot;Prosecution Facts&quot;,&#xd;
+        &quot;chargeDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDuty&quot;: &quot;340.30&quot;&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;offenceWordingWelsh&quot;: &quot;Teipiwch neu copïwch y testun iw gyfieithu ymaDi ddirwy nad ywn uwch na lefel pump ar y raddfa safonol. Terfyn amser ar gyfer erlyniadau:6 misA gafodd y terfyn ar ddirwyon a osodwyd gan lys Ynadon ei ddileu ar 12 Mawrth 2015 – fel y cyfryw, maer ddirwy bosibl ar gollfarn ddiannod mewn perthynas â throsedd a gyflawnwyd ar ôl y dyddiad hwn yn ddiderfyn.&quot;,&#xd;
+        &quot;offenceWording&quot;: &quot;A fine not exceeding level five on the standard scale.Time limit for prosecutions:6 monthsOn the 12th March 2015 the limit on fines imposed by a Magistrates&apos; court was removed – as such, the potential fine on summary conviction in relation to an offence committed after this date is unlimited.&quot;,&#xd;
+        &quot;offenceCommittedDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;cjsOffenceCode&quot;: &quot;CA03010&quot;,&#xd;
+        &quot;offenceSequenceNo&quot;: 3,&#xd;
+        &quot;offenceLocation&quot;: &quot;Croydon&quot;,&#xd;
+        &quot;offenceDateCode&quot;: 1,&#xd;
+        &quot;backDutyDateFrom&quot;: &quot;2020-04-30&quot;,&#xd;
+        &quot;offenceCommittedStartDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDutyDateTo&quot;: &quot;2021-01-20&quot;,&#xd;
+        &quot;prosecutorCompensation&quot;: &quot;542.34&quot;,&#xd;
+        &quot;statementOfFacts&quot;: &quot;Prosecution Facts&quot;,&#xd;
+        &quot;chargeDate&quot;: &quot;${__timeShift(yyyy-MM-dd,,-P30D,,)}&quot;,&#xd;
+        &quot;backDuty&quot;: &quot;340.30&quot;&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;numPreviousConvictions&quot;: 3,&#xd;
+    &quot;hearingLanguage&quot;: &quot;E&quot;,&#xd;
+    &quot;specificRequirements&quot;: &quot;no special needs&quot;,&#xd;
+    &quot;asn&quot;: &quot;arrest/summons&quot;,&#xd;
+    &quot;languageRequirement&quot;: &quot;no special language needs&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/stagingprosecutors-command-api/command/api/rest/stagingprosecutors/v2/prosecutions/${prosecutingAuthority}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="defendant name faker" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+              <stringProp name="script">def faker = new com.github.javafaker.Faker();
+
+vars.put(&quot;firstName&quot;,faker.name().firstName());
+vars.put(&quot;lastName&quot;,faker.name().lastName());
+vars.put(&quot;address1&quot;,faker.address().streetName());
+vars.put(&quot;address2&quot;,faker.address().state());
+vars.put(&quot;address3&quot;,faker.address().cityName());
+vars.put(&quot;address4&quot;,faker.address().state());
+
+</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.hmcts.cjs.sjp-prosecution.v2+json</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">CJSCPPUID</stringProp>
+                  <stringProp name="Header.value">2c8810b9-1d06-4830-af49-d341c022a217</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for 2 secs" enabled="true">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SPI_case_creation_for_spi_errors(no upload)" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(SPI_ERRORCASES_LOOP_COUNT,10)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(SPI_ERROR_CASES_STARGET_THREADS,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SPI_ERROR_CASES_RAMP_UP_TIME,1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="TestPlan.comments">THIS WAS DISABLED ALREADY BY RAJA &amp; TEAM EARLIER</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="courtHearingLocation" enabled="true">
+          <stringProp name="filename">./shared/data/courtHearingLocationsForSpiErrors.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">courtHearingLocation</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="getAllOffenceCodes" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import org.apache.commons.io.FileUtils;   
+
+import org.apache.jmeter.services.FileServer
+
+def getRandomRowFromCsv() {
+	def inputPath = FileServer.getFileServer().getBaseDir() + &quot;/spi/data/offenceCodes.csv&quot;;
+     List csvData = FileUtils.readLines(new File(inputPath));
+     return csvData
+}
+props.put(&quot;ALL_OFFENCE_CODES&quot;, getRandomRowFromCsv());
+
+
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="createCaseForSPIErrors" enabled="true">
+          <stringProp name="IncludeController.includepath">./spi/components/CreateSPICaseMinimalForSPIErros.jmx</stringProp>
+        </IncludeController>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="printCaseInfo" enabled="false">
+          <stringProp name="BeanShellSampler.query">String caseUrn = vars.get(&quot;NEW_URN&quot;);
+String caseDetails = caseUrn + &quot;,&quot; +  &quot;1D-1O&quot; + &quot;,&quot; + vars.get(&quot;COURT_CENTRE&quot;) + &quot;,&quot; + vars.get(&quot;COURT_ROOM&quot;) + &quot;,&quot; + vars.get(&quot;courtHearingLocation&quot;) +  &quot;\n&quot;;
+log.info(&quot;SPI error cases &quot; + caseDetails);
+
+  
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="delay of 2S" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">2000</stringProp>
+        </TestAction>
+        <hashTree/>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="testDataExtractorInCsvFile" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </PostThreadGroup>
+      <hashTree>
+        <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="OS Process Sampler" enabled="true">
+          <boolProp name="SystemSampler.checkReturnCode">false</boolProp>
+          <stringProp name="SystemSampler.expectedReturnCode">0</stringProp>
+          <stringProp name="SystemSampler.command">bash</stringProp>
+          <elementProp name="SystemSampler.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="Argument">
+                <stringProp name="Argument.name"></stringProp>
+                <stringProp name="Argument.value">${__BeanShell(System.getenv(&quot;WORKSPACE&quot;))}/cpp.nft.performance-tests/target/jmeter/testFiles/generateCsvDataFiles.sh</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Argument">
+                <stringProp name="Argument.name"></stringProp>
+                <stringProp name="Argument.value">${__time(yyyyMMdd,)}-${__BeanShell(System.getenv(&quot;JMETER_TEST_FILE&quot;))}.csv</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="SystemSampler.environment" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SystemSampler.directory">${__BeanShell(System.getenv(&quot;WORKSPACE&quot;))}/cpp.nft.performance-tests/target/jmeter/results</stringProp>
+        </SystemSampler>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
