@@ -16,7 +16,7 @@ properties([
 def product = "pcs"
 def type = "java"
 def component = "performance"
-def branchesToSync = ['demo', 'perftest']
+def branchesToSync = ['perftest']
 
 def secrets = [
   'pcs-perftest': [
