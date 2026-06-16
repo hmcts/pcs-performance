@@ -1,74 +1,74 @@
-#!groovy
+// #!groovy
 
-properties([
-    // pipelineTriggers([cron('00 17 * * *')]),
-    parameters([
+// properties([
+//     // pipelineTriggers([cron('00 17 * * *')]),
+//     parameters([
 
-        choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
+//         choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
         
 
-        choice(name: 'JMETER_TEST_FILE', choices: ['CaseListView', 'Solicitor-CreateCase'], description: 'Select the target JMeter test script'),
-        string(name: 'Users', defaultValue: '1', description: 'Number of concurrent virtual users'),
-        string(name: 'ENV', defaultValue: 'perftest', description: 'Target test environment (e.g., perftest, aat)')
-    ])
-])
+//         choice(name: 'JMETER_TEST_FILE', choices: ['CaseListView', 'Solicitor-CreateCase'], description: 'Select the target JMeter test script'),
+//         string(name: 'Users', defaultValue: '1', description: 'Number of concurrent virtual users'),
+//         string(name: 'ENV', defaultValue: 'perftest', description: 'Target test environment (e.g., perftest, aat)')
+//     ])
+// ])
 
-@Library("Infrastructure") _
+// @Library("Infrastructure") _
 
-def product = "pcs"
-def component = "performance"
+// def product = "pcs"
+// def component = "performance"
 
-def secrets = [
-  'pcs-perftest': [
-    secret('api-POSTGRES-USER', 'DB_USERNAME'),
-    secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
-  ]
-]
+// def secrets = [
+//   'pcs-perftest': [
+//     secret('api-POSTGRES-USER', 'DB_USERNAME'),
+//     secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
+//   ]
+// ]
 
-static LinkedHashMap secret(String secretName, String envVar) {
-  return [
-    $class     : 'AzureKeyVaultSecret',
-    secretType : 'Secret',
-    name       : secretName,
-    version    : '',
-    envVariable: envVar
-  ]
-}
+// static LinkedHashMap secret(String secretName, String envVar) {
+//   return [
+//     $class     : 'AzureKeyVaultSecret',
+//     secretType : 'Secret',
+//     name       : secretName,
+//     version    : '',
+//     envVariable: envVar
+//   ]
+// }
 
-withNightlyPipeline("java", product, component) {
-    loadVaultSecrets(secrets)
+// withNightlyPipeline("java", product, component) {
+//     loadVaultSecrets(secrets)
     
-    stage('Run JMeter Tests') {
-        sh """
-          set -e
+//     stage('Run JMeter Tests') {
+//         sh """
+//           set -e
           
-          # Locates your committed binary within the workspace
-          export JMETER_HOME="${WORKSPACE}/apache-jmeter-5.6.3"
-          export TEST_FILE_PATH="${WORKSPACE}/scripts/UserJourney/XUI/Solicitor-CaseView/${params.JMETER_TEST_FILE}.jmx"
+//           # Locates your committed binary within the workspace
+//           export JMETER_HOME="${WORKSPACE}/apache-jmeter-5.6.3"
+//           export TEST_FILE_PATH="${WORKSPACE}/scripts/UserJourney/XUI/Solicitor-CaseView/${params.JMETER_TEST_FILE}.jmx"
           
-          echo "Running JMeter test: \$TEST_FILE_PATH"
+//           echo "Running JMeter test: \$TEST_FILE_PATH"
           
-          if [[ ! -f "\$TEST_FILE_PATH" ]]; then
-            echo "ERROR: Test file not found at \$TEST_FILE_PATH"
-            exit 1
-          fi
+//           if [[ ! -f "\$TEST_FILE_PATH" ]]; then
+//             echo "ERROR: Test file not found at \$TEST_FILE_PATH"
+//             exit 1
+//           fi
           
-          mkdir -p "${WORKSPACE}/results"
+//           mkdir -p "${WORKSPACE}/results"
           
-          # Execute the test and dynamically generate native HTML dashboard reports
-          \$JMETER_HOME/bin/jmeter -n \
-            -t "\$TEST_FILE_PATH" \
-            -l "${WORKSPACE}/results/results.jtl" \
-            -e \
-            -o "${WORKSPACE}/results/report" \
-            -Jdb.username="${DB_USERNAME}" \
-            -Jdb.password="${DB_PASSWORD}" \
-            -Jusers="${params.Users}" \
-            -Jenv="${params.ENV}"
-        """
-    }
+//           # Execute the test and dynamically generate native HTML dashboard reports
+//           \$JMETER_HOME/bin/jmeter -n \
+//             -t "\$TEST_FILE_PATH" \
+//             -l "${WORKSPACE}/results/results.jtl" \
+//             -e \
+//             -o "${WORKSPACE}/results/report" \
+//             -Jdb.username="${DB_USERNAME}" \
+//             -Jdb.password="${DB_PASSWORD}" \
+//             -Jusers="${params.Users}" \
+//             -Jenv="${params.ENV}"
+//         """
+//     }
     
-    afterFailure('test') {
-        publishPerformanceReports()
-    }
-}
+//     afterFailure('test') {
+//         publishPerformanceReports()
+//     }
+// }
