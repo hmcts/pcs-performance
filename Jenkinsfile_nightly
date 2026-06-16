@@ -1,15 +1,15 @@
 #!groovy
 
 properties([
-    // Commented out the cron so you can safely test it manually first
     // pipelineTriggers([cron('00 17 * * *')]),
     parameters([
-        choice(choices: [
-          'CaseListView',
-          'Solicitor-CreateCase'
-        ], name: 'JMETER_TEST_FILE'),
-        string(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-        string(name: 'ENV', defaultValue: 'perftest', description: 'Target environment')
+
+        choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
+        
+
+        choice(name: 'JMETER_TEST_FILE', choices: ['CaseListView', 'Solicitor-CreateCase'], description: 'Select the target JMeter test script'),
+        string(name: 'Users', defaultValue: '1', description: 'Number of concurrent virtual users'),
+        string(name: 'ENV', defaultValue: 'perftest', description: 'Target test environment (e.g., perftest, aat)')
     ])
 ])
 
@@ -38,10 +38,11 @@ static LinkedHashMap secret(String secretName, String envVar) {
 withNightlyPipeline("java", product, component) {
     loadVaultSecrets(secrets)
     
-
     stage('Run JMeter Tests') {
         sh """
           set -e
+          
+          # Locates your committed binary within the workspace
           export JMETER_HOME="${WORKSPACE}/apache-jmeter-5.6.3"
           export TEST_FILE_PATH="${WORKSPACE}/scripts/UserJourney/XUI/Solicitor-CaseView/${params.JMETER_TEST_FILE}.jmx"
           
@@ -54,6 +55,7 @@ withNightlyPipeline("java", product, component) {
           
           mkdir -p "${WORKSPACE}/results"
           
+          # Execute the test and dynamically generate native HTML dashboard reports
           \$JMETER_HOME/bin/jmeter -n \
             -t "\$TEST_FILE_PATH" \
             -l "${WORKSPACE}/results/results.jtl" \
