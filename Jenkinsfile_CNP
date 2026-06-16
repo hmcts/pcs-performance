@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-    // pipelineTriggers([cron('00 17 * * *')]), // Automatically ignored on PR feature branches
+    // pipelineTriggers([cron('00 17 * * *')]),
     parameters([
        
         choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
