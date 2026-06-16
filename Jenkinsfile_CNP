@@ -1,14 +1,19 @@
 #!groovy
+
 properties([
-  pipelineTriggers([cron('00 17 * * *')]),
-  parameters([
-    choice(choices: [
-      'CaseListView',
-      'Solicitor-CreateCase'
-    ], name: 'JMETER_TEST_FILE'),
-    string(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-    string(name: 'ENV', defaultValue: 'perftest', description: 'Target environment (e.g. aat, demo)')
-  ])
+    // pipelineTriggers([cron('00 17 * * *')]), // Automatically ignored on PR feature branches
+    parameters([
+       
+        choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
+        
+    
+        choice(choices: [
+          'CaseListView',
+          'Solicitor-CreateCase'
+        ], name: 'JMETER_TEST_FILE'),
+        string(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
+        string(name: 'ENV', defaultValue: 'perftest', description: 'Target environment (e.g. aat, demo)')
+    ])
 ])
 
 @Library("Infrastructure") _
@@ -39,6 +44,7 @@ withNightlyPipeline(type, product, component) {
   enableSlackNotifications('#pcs-tech')
   loadVaultSecrets(secrets)
   
+  // Maps the current run execution parameters safely to the execution runtime environment
   env.JMETER_TEST_FILE = params.JMETER_TEST_FILE
   env.SOAP_USERS_COUNT = params.Users
   
