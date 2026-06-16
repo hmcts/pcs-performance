@@ -1,81 +1,82 @@
-#!groovy
+// #!groovy
 
-properties([
-    // pipelineTriggers([cron('00 17 * * *')]),
-    parameters([
+// properties([
+//     // pipelineTriggers([cron('00 17 * * *')]),
+//     parameters([
        
-        choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
+//         choice(name: 'TEST_TYPE', choices: 'pipeline', description: 'Test type (must be \'pipeline\' for Jenkins use)'),
         
     
-        choice(choices: [
-          'CaseListView',
-          'Solicitor-CreateCase'
-        ], name: 'JMETER_TEST_FILE'),
-        string(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-        string(name: 'ENV', defaultValue: 'perftest', description: 'Target environment (e.g. aat, demo)')
-    ])
-])
+//         choice(choices: [
+//           'CaseListView',
+//           'Solicitor-CreateCase'
+//         ], name: 'JMETER_TEST_FILE'),
+//         string(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
+//         string(name: 'ENV', defaultValue: 'perftest', description: 'Target environment (e.g. aat, demo)')
+//     ])
+// ])
 
-@Library("Infrastructure") _
+// @Library("Infrastructure") _
 
-def product = "pcs"
-def type = "java"
-def component = "performance"
-def branchesToSync = ['perftest']
+// def product = "pcs"
+// def type = "java"
+// def component = "performance"
+// def branchesToSync = ['perftest']
 
-def secrets = [
-  'pcs-perftest': [
-    secret('api-POSTGRES-USER', 'DB_USERNAME'),
-    secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
-  ]
-]
+// def secrets = [
+//   'pcs-perftest': [
+//     secret('api-POSTGRES-USER', 'DB_USERNAME'),
+//     secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
+//   ]
+// ]
 
-static LinkedHashMap secret(String secretName, String envVar) {
-  return [
-    $class     : 'AzureKeyVaultSecret',
-    secretType : 'Secret',
-    name       : secretName,
-    version    : '',
-    envVariable: envVar
-  ]
-}
+// static LinkedHashMap secret(String secretName, String envVar) {
+//   return [
+//     $class     : 'AzureKeyVaultSecret',
+//     secretType : 'Secret',
+//     name       : secretName,
+//     version    : '',
+//     envVariable: envVar
+//   ]
+// }
 
-withNightlyPipeline(type, product, component) {
-  enableSlackNotifications('#pcs-tech')
-  loadVaultSecrets(secrets)
+// withNightlyPipeline(type, product, component) {
+//   enableSlackNotifications('#pcs-tech')
+//   loadVaultSecrets(secrets)
   
-  // Maps the current run execution parameters safely to the execution runtime environment
-  env.JMETER_TEST_FILE = params.JMETER_TEST_FILE
-  env.SOAP_USERS_COUNT = params.Users
+//   // Maps the current run execution parameters safely to the execution runtime environment
+//   env.JMETER_TEST_FILE = params.JMETER_TEST_FILE
+//   env.SOAP_USERS_COUNT = params.Users
   
-  stage('Run JMeter Tests') {
-    sh """
-      set -e
-      export JMETER_HOME="${WORKSPACE}/apache-jmeter-5.6.3"
-      export TEST_FILE_PATH="${WORKSPACE}/scripts/UserJourney/XUI/Solicitor-CaseView/${env.JMETER_TEST_FILE}.jmx"
+//   stage('Run JMeter Tests') {
+//     sh """
+//       set -e
+//       export JMETER_HOME="${WORKSPACE}/apache-jmeter-5.6.3"
+//       export TEST_FILE_PATH="${WORKSPACE}/scripts/UserJourney/XUI/Solicitor-CaseView/${env.JMETER_TEST_FILE}.jmx"
       
-      echo "Running JMeter test: \$TEST_FILE_PATH"
+//       echo "Running JMeter test: \$TEST_FILE_PATH"
       
-      if [[ ! -f "\$TEST_FILE_PATH" ]]; then
-        echo "ERROR: Test file not found at \$TEST_FILE_PATH"
-        exit 1
-      fi
+//       if [[ ! -f "\$TEST_FILE_PATH" ]]; then
+//         echo "ERROR: Test file not found at \$TEST_FILE_PATH"
+//         exit 1
+//       fi
       
-      mkdir -p "${WORKSPACE}/results"
+//       mkdir -p "${WORKSPACE}/results"
       
-      \$JMETER_HOME/bin/jmeter -n \
-        -t "\$TEST_FILE_PATH" \
-        -l "${WORKSPACE}/results/results.jtl" \
-        -e \
-        -o "${WORKSPACE}/results/report" \
-        -Jdb.username="${DB_USERNAME}" \
-        -Jdb.password="${DB_PASSWORD}" \
-        -Jusers="${params.Users}" \
-        -Jenv="${params.ENV}"
-    """
-  }
+//       \$JMETER_HOME/bin/jmeter -n \
+//         -t "\$TEST_FILE_PATH" \
+//         -l "${WORKSPACE}/results/results.jtl" \
+//         -e \
+//         -o "${WORKSPACE}/results/report" \
+//         -Jdb.username="${DB_USERNAME}" \
+//         -Jdb.password="${DB_PASSWORD}" \
+//         -Jusers="${params.Users}" \
+//         -Jenv="${params.ENV}"
+//     """
+//   }
   
-  afterFailure('test') {
-    publishPerformanceReports()
-  }
-}
+//   afterFailure('test') {
+//     publishPerformanceReports()
+//   }
+// }
+
