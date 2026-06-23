@@ -16,7 +16,7 @@
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <boolProp name="HTTPSampler.image_parser">true</boolProp>
         <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -194,7 +194,7 @@
         <stringProp name="TestPlan.comments">~/TreeResult-NEW${resultFileName}.xml</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -232,7 +232,7 @@
         <stringProp name="TestPlan.comments">~/Aggregate-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_SC01_DashboardNavigation" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_SC01_DashboardNavigation">
         <stringProp name="TestPlan.comments">Need Citizen users and caseids  (Already Created - citizen101@test.perftest - citizen300@test.perftest)</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -244,7 +244,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="DashboardNavigation" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="DashboardNavigation">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator + &quot;DashboardNavigation.csv&quot;)}</stringProp>
@@ -256,12 +256,12 @@
           <stringProp name="variableNames">username,password,Caseid,Accesscode</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_01_Launch" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_01_Launch">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Launch-3" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Launch-3">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -278,7 +278,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -324,7 +324,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Launch-4" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Launch-4">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -643,12 +643,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_02_Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_02_Login">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -694,7 +694,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -751,7 +751,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Access your case" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Access your case">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1774162785">Access your case</stringProp>
               </collectionProp>
@@ -761,7 +761,31 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">import java.util.Base64;
+
+String encodedPwd = props.get(&quot;password&quot;);
+
+log.info(&quot;Encoded Password: &quot; + encodedPwd);
+
+String decodedPwd = new String(
+    Base64.getDecoder().decode(encodedPwd),
+    &quot;UTF-8&quot;
+);
+
+vars.put(&quot;password&quot;, decodedPwd);
+
+log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
           </hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler">
+            <stringProp name="BeanShellSampler.query">log.info(&quot;Property password = [&quot; + props.get(&quot;password&quot;) + &quot;]&quot;);</stringProp>
+          </BeanShellSampler>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-31" enabled="false">
             <stringProp name="TestPlan.comments">Detected a redirect from the previous sample</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
@@ -1109,7 +1133,7 @@
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -1350,7 +1374,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_04_View_The_Claim">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_04_View_The_Claim" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -1490,12 +1514,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_05_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_05_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-155">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-155" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1511,7 +1535,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -1560,7 +1584,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Possession Claims">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Possession Claims" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="2089454549">Possession Claims</stringProp>
               </collectionProp>
@@ -1712,12 +1736,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_07_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_07_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-160">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-160" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1794,7 +1818,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_08_Respond_To_Claim">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_08_Respond_To_Claim" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -1934,12 +1958,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_09_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_09_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-165">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-165" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2218,7 +2242,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_12_View_Hearing_Documets">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_12_View_Hearing_Documets" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -2358,12 +2382,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_13_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_13_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-190">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-190" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2440,7 +2464,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_14_View_Order&amp;Notices">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_14_View_Order&amp;Notices" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -2580,12 +2604,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_15_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_15_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-196">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-196" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2802,12 +2826,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_17_Back_To_Dashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_17_Back_To_Dashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-201">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BACK TO DASHBOARD-201" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -3434,7 +3458,7 @@
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_SC02_AdjournCase">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_SC02_AdjournCase" enabled="false">
         <stringProp name="TestPlan.comments">Need Citizen users and caseids (Already Created - citizen101@test.perftest - citizen300@test.perftest)</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -3446,7 +3470,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="AdjournCase">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="AdjournCase" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator + &quot;AdjournCase.csv&quot;)}</stringProp>
@@ -3953,6 +3977,26 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">import java.util.Base64;
+
+String encodedPwd = props.get(&quot;password&quot;);
+
+log.info(&quot;Encoded Password: &quot; + encodedPwd);
+
+String decodedPwd = new String(
+    Base64.getDecoder().decode(encodedPwd),
+    &quot;UTF-8&quot;
+);
+
+vars.put(&quot;password&quot;, decodedPwd);
+
+log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-31" enabled="false">
             <stringProp name="TestPlan.comments">Detected a redirect from the previous sample</stringProp>
@@ -4406,7 +4450,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4531,12 +4575,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_04_Choose_An_Application">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_04_Choose_An_Application" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-53">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-53" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4612,7 +4656,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-56">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-56" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4671,12 +4715,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_05_Click_Ask_The_Court_To_Make_An_Order">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_05_Click_Ask_The_Court_To_Make_An_Order" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CLICK ASK THE COURT TO MAKE AN ORDER-232">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CLICK ASK THE COURT TO MAKE AN ORDER-232" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4752,7 +4796,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CLICK ASK THE COURT TO MAKE AN ORDER-237">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CLICK ASK THE COURT TO MAKE AN ORDER-237" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4811,12 +4855,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_06_Select_Ask_To_Adjourn_The_Hearing">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_06_Select_Ask_To_Adjourn_The_Hearing" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SELECT ASK TO ADJOURN THE HEARING-238">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SELECT ASK TO ADJOURN THE HEARING-238" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -7868,7 +7912,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CancelCase.csv">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CancelCase.csv" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator + &quot;CancelCase.csv&quot;)}</stringProp>
@@ -7880,7 +7924,7 @@
           <stringProp name="variableNames">username,password,Caseid,Accesscode</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_01_Launch" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_01_Launch">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -8267,12 +8311,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_02_Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_02_Login">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -8374,6 +8418,26 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">import java.util.Base64;
+
+String encodedPwd = props.get(&quot;password&quot;);
+
+log.info(&quot;Encoded Password: &quot; + encodedPwd);
+
+String decodedPwd = new String(
+    Base64.getDecoder().decode(encodedPwd),
+    &quot;UTF-8&quot;
+);
+
+vars.put(&quot;password&quot;, decodedPwd);
+
+log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
+            </BeanShellPreProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-31" enabled="false">
@@ -8723,7 +8787,7 @@
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -8760,7 +8824,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -8817,7 +8881,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="303">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="303" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="50550">303</stringProp>
               </collectionProp>
@@ -8828,7 +8892,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -8894,7 +8958,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-52">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-52" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -8953,12 +9017,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_04_Choose_An_Application">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_04_Choose_An_Application" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-53">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-53" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -8974,7 +9038,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -9023,7 +9087,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Choose an application">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Choose an application" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1470090522">Choose an application</stringProp>
               </collectionProp>
@@ -9034,7 +9098,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-56">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Ask the court to make an order-56" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -9093,12 +9157,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_05_Ask_The_Court_To_Set_Aside_The_Order">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_CancelCase_05_Ask_The_Court_To_Set_Aside_The_Order" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-57">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-57" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -9205,7 +9269,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-58">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-58" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -9271,7 +9335,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-61">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select cancel and continue-61" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -12536,12 +12600,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_02_Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_02_Login">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-30">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -12643,6 +12707,26 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">import java.util.Base64;
+
+String encodedPwd = props.get(&quot;password&quot;);
+
+log.info(&quot;Encoded Password: &quot; + encodedPwd);
+
+String decodedPwd = new String(
+    Base64.getDecoder().decode(encodedPwd),
+    &quot;UTF-8&quot;
+);
+
+vars.put(&quot;password&quot;, decodedPwd);
+
+log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
+            </BeanShellPreProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-31" enabled="false">
@@ -12884,7 +12968,7 @@
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-48" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
@@ -12990,7 +13074,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -13056,7 +13140,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-52">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-52" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">pcs.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
