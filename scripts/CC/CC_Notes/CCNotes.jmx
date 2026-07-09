@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Launch-trial">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CCNotes">
       <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.${project.version}. Please contact support@blazemeter.com for further support.</stringProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
@@ -25,7 +23,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager">
+      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
         <collectionProp name="DNSCacheManager.servers"/>
         <collectionProp name="DNSCacheManager.hosts"/>
         <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
@@ -68,16 +66,16 @@ vars.put(&quot;scriptHome&quot;, scriptHome)
 
 def logsRoot = new File(scriptHome, vars.get(&quot;logsDir&quot;) ?: &quot;Logs&quot;)
 logsRoot.mkdirs()
-new File(scriptHome, &quot;Summary Report&quot;).mkdirs()
-new File(scriptHome, &quot;Aggregate Report&quot;).mkdirs()
-new File(scriptHome, &quot;Reports&quot;).mkdirs()
+new File(scriptHome, &quot;Reports/Summary Report&quot;).mkdirs()
+new File(scriptHome, &quot;Reports/Aggregate Report&quot;).mkdirs()
+new File(logsRoot, &quot;Reports&quot;).mkdirs()
 
-def errorPath = new File(scriptHome, vars.get(&quot;errorLogPath&quot;) ?: &quot;Logs/CCCaseLink-errors.log&quot;).absolutePath
+def errorPath = new File(scriptHome, vars.get(&quot;errorLogPath&quot;) ?: &quot;Logs/CCNotes-errors.log&quot;).absolutePath
 props.put(&quot;__CC_ERROR_LOG_PATH__&quot;, errorPath)
 new File(errorPath).getParentFile()?.mkdirs()
-new File(errorPath).write(&quot;=== CCCaseLink Error Log | started &quot; + new Date() + &quot; ===\n\n&quot;, &quot;UTF-8&quot;)
+new File(errorPath).write(&quot;=== CCNotes Error Log | started &quot; + new Date() + &quot; ===\n\n&quot;, &quot;UTF-8&quot;)
 
-[&apos;__CC_USED_LINK_PAIRS__&apos;, &apos;__CC_USED_CASE_IDS__&apos;, &apos;__CC_RUN_RESULTS_CSV_PATH__&apos;, &apos;__CC_RUN_RESULTS_CSV_NAME__&apos;, &apos;ccCaseLinkApiLogStarted&apos;].each { props.remove(it) }
+[&apos;__CC_NOTES_USED_CASE_IDS__&apos;, &apos;__CC_USED_CASE_IDS__&apos;, &apos;__CC_RUN_RESULTS_CSV_PATH__&apos;, &apos;__CC_RUN_RESULTS_CSV_NAME__&apos;, &apos;ccNotesApiLogStarted&apos;].each { props.remove(it) }
 props.keySet().findAll { k -&gt;
     k.startsWith(&apos;__cc_iteration_&apos;) || k.startsWith(&apos;cc_csv_row_&apos;) || k.startsWith(&apos;cc_run_complete_&apos;)
 }.each { props.remove(it) }
@@ -89,8 +87,8 @@ if (!dir.exists()) {
 }
 
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd_HH-mm-ss&quot;).format(new Date())
-def csvFile = new File(dir, &quot;CCCaseLink-run-results-&quot; + ts + &quot;.csv&quot;)
-def header = &quot;timestamp,thread,username,iteration,Case_ID,Linking_Case_ID,status,http_code\n&quot;
+def csvFile = new File(dir, &quot;CCNotes-run-results-&quot; + ts + &quot;.csv&quot;)
+def header = &quot;timestamp,thread,solicitor_username,admin_username,iteration,Case_ID,noteText,status,http_code\n&quot;
 
 csvFile.write(header, &quot;UTF-8&quot;)
 props.put(&quot;__CC_RUN_RESULTS_CSV_PATH__&quot;, csvFile.absolutePath)
@@ -105,15 +103,15 @@ log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">6</intProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC_SC01_AddCaseNote">
+        <intProp name="ThreadGroup.num_threads">5</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">0</longProp>
         <longProp name="ThreadGroup.delay">0</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">5</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -174,26 +172,50 @@ log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">InputFiles/userdetails.csv</stringProp>
+          <stringProp name="filename">ccnoteuserdetails.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.thread</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">username</stringProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">solicitor_username,Case_ID,admin_username</stringProp>
         </CSVDataSet>
         <hashTree/>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
-          <stringProp name="script">log.info(&quot;Thread: &quot; + Thread.currentThread().getName())
-log.info(&quot;Username: &quot; + vars.get(&quot;username&quot;))
+          <stringProp name="script">def solicitor = (vars.get(&quot;solicitor_username&quot;) ?: &quot;&quot;).trim()
+if (solicitor &amp;&amp; !solicitor.contains(&quot;@&quot;)) {
+    solicitor = solicitor + &quot;@test.com&quot;
+}
+vars.put(&quot;solicitor_username&quot;, solicitor)
+vars.put(&quot;username&quot;, solicitor)
+
+def caseId = (vars.get(&quot;Case_ID&quot;) ?: &quot;&quot;).trim()
+vars.put(&quot;Case_ID&quot;, caseId)
+
+def admin = (vars.get(&quot;admin_username&quot;) ?: &quot;&quot;).trim()
+if (!admin &amp;&amp; solicitor =~ /pcs-solicitor(\\d+)/) {
+    def num = (solicitor =~ /pcs-solicitor(\\d+)/)[0][1] as int
+    def adminNum = num &gt;= 500 ? (num - 100) : (num + 300)
+    if (adminNum &gt; 419) { adminNum = 400 + ((adminNum - 401) % 19) + 1 }
+    admin = &quot;PCS-CTSC-Admin&quot; + adminNum + &quot;@hmcts.net&quot;
+}
+vars.put(&quot;admin_username&quot;, admin)
+vars.put(&quot;cc_case_ready&quot;, &quot;false&quot;)
+
+log.info(&quot;Thread: &quot; + Thread.currentThread().getName())
+log.info(&quot;Solicitor: &quot; + vars.get(&quot;solicitor_username&quot;))
+log.info(&quot;Case_ID: &quot; + vars.get(&quot;Case_ID&quot;))
+log.info(&quot;Admin: &quot; + vars.get(&quot;admin_username&quot;))
+log.info(&quot;Active user: &quot; + vars.get(&quot;username&quot;))
 </stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Launch and Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_AddCaseNote_01_Launch" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -221,10 +243,26 @@ log.info(&quot;Username: &quot; + vars.get(&quot;username&quot;))
             </HeaderManager>
             <hashTree/>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HMCTS Manage cases" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-472773301">HMCTS Manage cases</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_01_Launch failed: Manage Cases page not loaded</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
           </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_AddCaseNote_02_Login" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /auth/login" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">0</stringProp>
@@ -239,8 +277,8 @@ log.info(&quot;Username: &quot; + vars.get(&quot;username&quot;))
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
-              <stringProp name="ConstantTimer.delay">1208</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CSRF Extractor" enabled="true">
@@ -274,6 +312,16 @@ if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Sign in" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-542111160">Sign in</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_02_Login failed: IDAM sign-in page not displayed</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login" enabled="true">
@@ -420,7 +468,7 @@ if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
               <stringProp name="ConstantTimer.delay">27023</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -432,7 +480,7 @@ if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
 import java.text.SimpleDateFormat
 
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def auditFile = new File(auditPath)
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
 def threadName = ctx.getThread().getThreadName()
@@ -440,12 +488,16 @@ def threadName = ctx.getThread().getThreadName()
 synchronized (org.apache.jmeter.JMeter.class) {
     if (!props.get(&quot;ccAuditLogStarted&quot;)) {
         props.put(&quot;ccAuditLogStarted&quot;, &quot;true&quot;)
-        auditFile.append(&quot;=== CCCaseLink Audit Log | started &quot; + new Date() + &quot; ===\n\n&quot;)
+        auditFile.append(&quot;=== CCNotes Audit Log | started &quot; + new Date() + &quot; ===\n\n&quot;)
     }
 }
 
 // Clean username
 String username = vars.get(&quot;username&quot;)
+if (!username) {
+    username = vars.get(&quot;solicitor_username&quot;)
+    if (username) { vars.put(&quot;username&quot;, username) }
+}
 if (username != null) {
     username = username.replace(&apos;\u00A0&apos;, &apos;&apos;).trim()
     vars.put(&quot;username&quot;, username)
@@ -581,7 +633,7 @@ else {
 log.info(&quot;========== LOGIN VALIDATION END ==========&quot;)
 
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def ts = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
 def threadName = ctx.getThread().getThreadName()
 def username = vars.get(&quot;username&quot;) ?: &quot;unknown&quot;
@@ -597,6 +649,10 @@ if (loginOk) {
     def errorPath = props.get(&quot;__CC_ERROR_LOG_PATH__&quot;)
     if (errorPath) { new File(errorPath).append(loginLine + &quot;\n&quot;, &quot;UTF-8&quot;) }
     log.error(loginLine)
+}
+
+if ((username ?: &quot;&quot;).contains(&quot;PCS-CTSC-Admin&quot;)) {
+    vars.put(&quot;admin_login_ok&quot;, loginOk ? &quot;true&quot; : &quot;false&quot;)
 }
 
 // Extract oauth code from redirect chain for GET /oauth2/callback step
@@ -632,20 +688,30 @@ if (oauthCode) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Manage cases loaded after login" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-472773301">HMCTS Manage cases</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_02_Login failed: post-login Manage Cases page not loaded</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">1970</stringProp>
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
             <boolProp name="displayJMeterProperties">false</boolProp>
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugSampler>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="00_Search_Workbasket_Cases" enabled="true">
-          <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_03_Search_Case_By_Reference" enabled="true">
+          <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=SEARCH&amp;view=SEARCH&amp;page=1&amp;case_reference=${Case_ID}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -682,7 +748,7 @@ if (oauthCode) {
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Select Case And Linking Case From List" enabled="true">
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Validate Case Search Result" enabled="true">
             <stringProp name="cacheKey">false</stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
@@ -690,18 +756,17 @@ if (oauthCode) {
 import java.text.SimpleDateFormat
 
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def auditFile = new File(auditPath)
 def threadName = ctx.getThread().getThreadName()
 def username = vars.get(&quot;username&quot;) ?: &quot;unknown&quot;
-vars.put(&quot;cc_pair_ready&quot;, &quot;false&quot;)
+def expectedCaseId = (vars.get(&quot;Case_ID&quot;) ?: &quot;&quot;).trim()
+vars.put(&quot;cc_case_ready&quot;, &quot;false&quot;)
 
 def writeAudit = { level, event, extra -&gt;
     def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
     def iteration = vars.get(&quot;cc_iteration&quot;) ?: &quot;-&quot;
-    def caseId = vars.get(&quot;Case_ID&quot;) ?: &quot;-&quot;
-    def linkingId = vars.get(&quot;Linking_Case_ID&quot;) ?: &quot;-&quot;
-    def line = &quot;[&quot; + ts + &quot;] [&quot; + level + &quot;] event=&quot; + event + &quot; | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; | &quot; + extra
+    def line = &quot;[&quot; + ts + &quot;] [&quot; + level + &quot;] event=&quot; + event + &quot; | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + expectedCaseId + &quot; | &quot; + extra
     auditFile.append(line + &quot;\n&quot;)
     if (level == &quot;FAIL&quot;) {
         def errorPath = props.get(&quot;__CC_ERROR_LOG_PATH__&quot;)
@@ -712,17 +777,8 @@ def writeAudit = { level, event, extra -&gt;
     }
 }
 
-def responseBody = prev.getResponseDataAsString() ?: &quot;&quot;
-if (prev.getResponseCode() != &quot;200&quot; || !responseBody) {
-    writeAudit(&quot;FAIL&quot;, &quot;WORKBASKET_SEARCH&quot;, &quot;workbasket search failed HTTP=&quot; + prev.getResponseCode())
-    return
-}
-
-def results = new JsonSlurper().parseText(responseBody).results ?: []
-def caseIds = results.collect { it?.case_id?.toString() }.findAll { it }.unique()
-
-if (caseIds.size() &lt; 2) {
-    writeAudit(&quot;FAIL&quot;, &quot;PAIR_SELECTION&quot;, &quot;not enough cases in workbasket, found=&quot; + caseIds.size())
+if (!expectedCaseId) {
+    writeAudit(&quot;FAIL&quot;, &quot;CASE_SELECTION&quot;, &quot;Case_ID missing from CSV row&quot;)
     return
 }
 
@@ -730,83 +786,57 @@ def iterKey = &quot;__cc_iteration_&quot; + threadName
 def iteration = (props.get(iterKey) ?: &quot;0&quot;).toInteger() + 1
 props.put(iterKey, iteration.toString())
 vars.put(&quot;cc_iteration&quot;, iteration.toString())
+writeAudit(&quot;INFO&quot;, &quot;RUN_START&quot;, &quot;starting iteration &quot; + iteration)
 
-def USED_PAIRS_KEY = &apos;__CC_USED_LINK_PAIRS__&apos;
-def USED_CASE_IDS_KEY = &apos;__CC_USED_CASE_IDS__&apos;
-
-synchronized (org.apache.jmeter.JMeter.class) {
-    if (!props.containsKey(USED_PAIRS_KEY)) {
-        props.put(USED_PAIRS_KEY, java.util.Collections.synchronizedSet(new LinkedHashSet()))
-    }
-    if (!props.containsKey(USED_CASE_IDS_KEY)) {
-        props.put(USED_CASE_IDS_KEY, java.util.Collections.synchronizedSet(new LinkedHashSet()))
-    }
-}
-
-def usedPairs = props.get(USED_PAIRS_KEY) as Set
-def usedCaseIds = props.get(USED_CASE_IDS_KEY) as Set
-
-def pairKey = { a, b -&gt;
-    (a &lt;= b) ? (a + &apos;|&apos; + b) : (b + &apos;|&apos; + a)
-}
-
-def caseId = null
-def linkingCaseId = null
-
-writeAudit(&quot;INFO&quot;, &quot;RUN_START&quot;, &quot;starting iteration &quot; + iteration + &quot; for user=&quot; + username)
-
-synchronized (usedPairs) {
-    outer:
-    for (int i = 0; i &lt; caseIds.size(); i++) {
-        for (int j = 0; j &lt; caseIds.size(); j++) {
-            if (i == j) continue
-            def c1 = caseIds[i]
-            def c2 = caseIds[j]
-            def pk = pairKey(c1, c2)
-            if (usedPairs.contains(pk)) continue
-            if (usedCaseIds.contains(c1) || usedCaseIds.contains(c2)) continue
-            caseId = c1
-            linkingCaseId = c2
-            usedPairs.add(pk)
-            usedCaseIds.add(c1)
-            usedCaseIds.add(c2)
-            break outer
-        }
-    }
-}
-
-if (!caseId || !linkingCaseId) {
-    writeAudit(&quot;FAIL&quot;, &quot;PAIR_SELECTION&quot;, &quot;no unused pair available | usedPairs=&quot; + usedPairs.size() + &quot; | workbasketCases=&quot; + caseIds.size())
-    writeAudit(&quot;INFO&quot;, &quot;FLOW_SKIPPED&quot;, &quot;skipping steps 01-09 because no valid case pair was selected&quot;)
+def responseBody = prev.getResponseDataAsString() ?: &quot;&quot;
+if (prev.getResponseCode() != &quot;200&quot; || !responseBody) {
+    writeAudit(&quot;FAIL&quot;, &quot;CASE_SEARCH&quot;, &quot;case search failed HTTP=&quot; + prev.getResponseCode())
     return
 }
 
-vars.put(&quot;Case_ID&quot;, caseId)
-vars.put(&quot;Linking_Case_ID&quot;, linkingCaseId)
-vars.put(&quot;cc_pair_ready&quot;, &quot;true&quot;)
+def results = (new JsonSlurper().parseText(responseBody).results ?: [])
+def found = results.any { it?.case_id?.toString() == expectedCaseId }
+if (!found) {
+    writeAudit(&quot;FAIL&quot;, &quot;CASE_SEARCH&quot;, &quot;case &quot; + expectedCaseId + &quot; not found in search results (count=&quot; + results.size() + &quot;)&quot;)
+    return
+}
 
-writeAudit(&quot;PASS&quot;, &quot;PAIR_SELECTED&quot;, &quot;pairKey=&quot; + pairKey(caseId, linkingCaseId) + &quot; | usedPairsAfter=&quot; + usedPairs.size())
-</stringProp>
+vars.put(&quot;cc_case_ready&quot;, &quot;true&quot;)
+writeAudit(&quot;PASS&quot;, &quot;CASE_FOUND&quot;, &quot;Case_ID=&quot; + expectedCaseId)</stringProp>
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case search results" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1659698930">&quot;results&quot;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_03_Search_Case_By_Reference failed: search results not returned</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Skip Case Link Flow If No Case IDs" enabled="true">
-          <stringProp name="IfController.condition">${__groovy(&quot;true&quot;.equals(vars.get(&quot;cc_pair_ready&quot;)),)}</stringProp>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Skip CCNotes Flow If No Case ID" enabled="true">
+          <stringProp name="IfController.condition">${__groovy(&quot;true&quot;.equals(vars.get(&quot;cc_case_ready&quot;)),)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
         </IfController>
         <hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="01_Open_Case Retry Loop">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_AddCaseNote_04_Open_Case_Retry_Loop" enabled="true">
             <boolProp name="LoopController.continue_forever">false</boolProp>
             <stringProp name="LoopController.loops">3</stringProp>
           </LoopController>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="01 Retry Wait">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="01 Retry Wait" enabled="true">
               <stringProp name="ConstantTimer.delay">1500</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01_Open_Case" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_04_Open_Case" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -843,6 +873,16 @@ writeAudit(&quot;PASS&quot;, &quot;PAIR_SELECTED&quot;, &quot;pairKey=&quot; + p
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case opened" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1302272262">&quot;case_id&quot;</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_04_Open_Case failed: case data not returned</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
             </hashTree>
             <IfController guiclass="IfControllerPanel" testclass="IfController" testname="01 Stop Retry On Success" enabled="true">
               <stringProp name="IfController.condition">${JMeterThread.last_sample_ok}</stringProp>
@@ -858,57 +898,8 @@ writeAudit(&quot;PASS&quot;, &quot;PAIR_SELECTED&quot;, &quot;pairKey=&quot; + p
               <hashTree/>
             </hashTree>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02_Get_Linked_Cases">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/getLinkedCases/${Case_ID}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03_Start_CreateCaseLink" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/createCaseLink?ignore-warning=false</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-event-trigger.v2+json;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">experimental</stringProp>
-                  <stringProp name="Header.value">true</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">event_token</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.event_token</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04_Fetch_Linking_Case" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/data/internal/cases/${Linking_Case_ID}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_05_Get_Profile" enabled="true">
+            <stringProp name="HTTPSampler.path">/data/internal/profile</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -922,11 +913,7 @@ writeAudit(&quot;PASS&quot;, &quot;PAIR_SELECTED&quot;, &quot;pairKey=&quot; + p
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
+                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-user-profile.v2+json;charset=UTF-8</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">experimental</stringProp>
@@ -935,34 +922,58 @@ writeAudit(&quot;PASS&quot;, &quot;PAIR_SELECTED&quot;, &quot;pairKey=&quot; + p
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Linking Case Metadata" enabled="true">
-              <stringProp name="cacheKey">false</stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="script">import groovy.json.JsonSlurper
-def body = prev.getResponseDataAsString() ?: &quot;&quot;
-if (prev.getResponseCode() == &quot;200&quot; &amp;&amp; body) {
-    def json = new JsonSlurper().parseText(body)
-    def caseType = &quot;PCS&quot;
-    if (json.case_type_id instanceof Map &amp;&amp; json.case_type_id.id) {
-        caseType = json.case_type_id.id.toString()
-    } else if (json.case_type_id instanceof String) {
-        caseType = json.case_type_id
-    } else if (json.case_type instanceof Map &amp;&amp; json.case_type.id) {
-        caseType = json.case_type.id.toString()
-    }
-    vars.put(&quot;linkingCaseType&quot;, caseType)
-    def created = json.created_date?.toString()
-    if (!created) { created = json.last_modified?.toString() }
-    if (created) { vars.put(&quot;linkingCaseCreatedDate&quot;, created) }
-}</stringProp>
-              <stringProp name="scriptLanguage">groovy</stringProp>
-            </JSR223PostProcessor>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05_Validate_CreateCaseLink" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=createCaseLinkcreateCaseLink</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_06_Start_AddCaseNote" enabled="true">
+            <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/addCaseNote?ignore-warning=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-event-trigger.v2+json;charset=UTF-8</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">experimental</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor event_token" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">event_token</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.event_token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Add a case note" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1159165124">Add a case note</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_06_Start_AddCaseNote failed: add case note event not returned</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_07_Validate_AddCaseNote" enabled="true">
+            <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=addCaseNoteaddCaseNote</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -971,25 +982,26 @@ if (prev.getResponseCode() == &quot;200&quot; &amp;&amp; body) {
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${caseLinkValidateBody}</stringProp>
+                  <stringProp name="Argument.value">${addCaseNoteValidateBody}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Case Link Validate Body" enabled="true">
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build AddCaseNote Bodies" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
-              <stringProp name="script">def caseId = vars.get(&quot;Case_ID&quot;)
-def linkingId = vars.get(&quot;Linking_Case_ID&quot;)
-def created = vars.get(&quot;linkingCaseCreatedDate&quot;) ?: &quot;2026-05-14T17:36:41.445&quot;
-def caseType = vars.get(&quot;linkingCaseType&quot;) ?: &quot;PCS&quot;
+              <stringProp name="script">def prefix = vars.get(&quot;noteTextPrefix&quot;) ?: &quot;Testing&quot;
+def noteText = prefix + &quot;-&quot; + ctx.getThread().getThreadName() + &quot;-&quot; + System.currentTimeMillis()
+vars.put(&quot;noteText&quot;, noteText)
+def caseId = vars.get(&quot;Case_ID&quot;)
 def eventToken = vars.get(&quot;event_token&quot;)
-def reason = &apos;{&quot;value&quot;:{&quot;Reason&quot;:&quot;CLRC002&quot;,&quot;OtherDescription&quot;:&quot;&quot;}}&apos;
-def linkEntry = &apos;{&quot;id&quot;:&quot;&apos; + linkingId + &apos;&quot;,&quot;value&quot;:{&quot;CaseReference&quot;:&quot;&apos; + linkingId + &apos;&quot;,&quot;CaseType&quot;:&quot;&apos; + caseType + &apos;&quot;,&quot;CreatedDateTime&quot;:&quot;&apos; + created + &apos;&quot;,&quot;ReasonForLink&quot;:[&apos; + reason + &apos;]}}&apos;
-vars.put(&quot;caseLinkValidateBody&quot;, &apos;{&quot;data&quot;:{&quot;caseLinks&quot;:[&apos; + linkEntry + &apos;]},&quot;event&quot;:{&quot;id&quot;:&quot;createCaseLink&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_data&quot;:{&quot;caseLinks&quot;:[&apos; + linkEntry + &apos;]},&quot;event_token&quot;:&quot;&apos; + eventToken + &apos;&quot;,&quot;ignore_warning&quot;:false,&quot;case_reference&quot;:&quot;&apos; + caseId + &apos;&quot;}&apos;)</stringProp>
+def esc = { s -&gt; s.replace(&apos;\\&apos;, &apos;\\\\&apos;).replace(&apos;&quot;&apos;, &apos;\\&quot;&apos;) }
+def n = esc(noteText)
+vars.put(&quot;addCaseNoteValidateBody&quot;, &apos;{&quot;data&quot;:{&quot;note&quot;:&quot;&apos; + n + &apos;&quot;},&quot;event&quot;:{&quot;id&quot;:&quot;addCaseNote&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_data&quot;:{&quot;note&quot;:&quot;&apos; + n + &apos;&quot;},&quot;event_token&quot;:&quot;&apos; + eventToken + &apos;&quot;,&quot;ignore_warning&quot;:false,&quot;case_reference&quot;:&quot;&apos; + caseId + &apos;&quot;}&apos;)
+vars.put(&quot;addCaseNoteEventBody&quot;, &apos;{&quot;data&quot;:{&quot;note&quot;:&quot;&apos; + n + &apos;&quot;},&quot;event&quot;:{&quot;id&quot;:&quot;addCaseNote&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_token&quot;:&quot;&apos; + eventToken + &apos;&quot;,&quot;ignore_warning&quot;:false}&apos;)</stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
@@ -1014,9 +1026,22 @@ vars.put(&quot;caseLinkValidateBody&quot;, &apos;{&quot;data&quot;:{&quot;caseLi
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case note validated" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1492054505">caseTitleMarkdown</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_07_Validate_AddCaseNote failed: validation response not returned</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="06_Submit_CreateCaseLink" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_08_Submit_AddCaseNote" enabled="true">
             <stringProp name="HTTPSampler.path">/data/cases/${Case_ID}/events</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -1026,27 +1051,13 @@ vars.put(&quot;caseLinkValidateBody&quot;, &apos;{&quot;data&quot;:{&quot;caseLi
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${caseLinkEventBody}</stringProp>
+                  <stringProp name="Argument.value">${addCaseNoteEventBody}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Case Link Event Body" enabled="true">
-              <stringProp name="cacheKey">false</stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="script">def linkingId = vars.get(&quot;Linking_Case_ID&quot;)
-def created = vars.get(&quot;linkingCaseCreatedDate&quot;) ?: &quot;2026-05-14T17:36:41.445&quot;
-def caseType = vars.get(&quot;linkingCaseType&quot;) ?: &quot;PCS&quot;
-def eventToken = vars.get(&quot;event_token&quot;)
-def reason = &apos;{&quot;value&quot;:{&quot;Reason&quot;:&quot;CLRC002&quot;,&quot;OtherDescription&quot;:&quot;&quot;}}&apos;
-def linkEntry = &apos;{&quot;id&quot;:&quot;&apos; + linkingId + &apos;&quot;,&quot;value&quot;:{&quot;CaseReference&quot;:&quot;&apos; + linkingId + &apos;&quot;,&quot;CaseType&quot;:&quot;&apos; + caseType + &apos;&quot;,&quot;CreatedDateTime&quot;:&quot;&apos; + created + &apos;&quot;,&quot;ReasonForLink&quot;:[&apos; + reason + &apos;]}}&apos;
-vars.put(&quot;caseLinkEventBody&quot;, &apos;{&quot;data&quot;:{&quot;caseLinks&quot;:[&apos; + linkEntry + &apos;]},&quot;event&quot;:{&quot;id&quot;:&quot;createCaseLink&quot;,&quot;summary&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;},&quot;event_token&quot;:&quot;&apos; + eventToken + &apos;&quot;,&quot;ignore_warning&quot;:false}&apos;)</stringProp>
-              <stringProp name="scriptLanguage">groovy</stringProp>
-            </JSR223PreProcessor>
-            <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
@@ -1068,107 +1079,80 @@ vars.put(&quot;caseLinkEventBody&quot;, &apos;{&quot;data&quot;:{&quot;caseLinks
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="06 Log Link Submit Result" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="06 Log Note Submit Result" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="script">import java.text.SimpleDateFormat
-
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
-def threadName = ctx.getThread().getThreadName()
-def username = vars.get(&quot;username&quot;) ?: &quot;unknown&quot;
-def iteration = vars.get(&quot;cc_iteration&quot;) ?: &quot;-&quot;
-def caseId = vars.get(&quot;Case_ID&quot;) ?: &quot;-&quot;
-def linkingId = vars.get(&quot;Linking_Case_ID&quot;) ?: &quot;-&quot;
-def code = prev.getResponseCode() ?: &quot;unknown&quot;
 def ok = prev.isSuccessful()
 def level = ok ? &quot;PASS&quot; : &quot;FAIL&quot;
-def detail = ok ? (&quot;case link submitted HTTP=&quot; + code) : (&quot;link submit failed HTTP=&quot; + code + &quot; msg=&quot; + prev.getResponseMessage())
-def line = &quot;[&quot; + ts + &quot;] [&quot; + level + &quot;] event=LINK_SUBMIT | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; | &quot; + detail
+def line = &quot;[&quot; + ts + &quot;] [&quot; + level + &quot;] event=NOTE_SUBMIT | thread=&quot; + ctx.getThread().getThreadName() + &quot; | user=&quot; + (vars.get(&quot;username&quot;) ?: &quot;-&quot;) + &quot; | Case_ID=&quot; + (vars.get(&quot;Case_ID&quot;) ?: &quot;-&quot;) + &quot; | noteText=&quot; + (vars.get(&quot;noteText&quot;) ?: &quot;-&quot;) + &quot; | HTTP=&quot; + prev.getResponseCode()
 new File(auditPath).append(line + &quot;\n&quot;)
-if (ok) {
-    log.info(line)
-} else {
+if (!ok) {
     def errorPath = props.get(&quot;__CC_ERROR_LOG_PATH__&quot;)
     if (errorPath) { new File(errorPath).append(line + &quot;\n&quot;, &quot;UTF-8&quot;) }
-    log.error(line)
-}
-</stringProp>
+}</stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07_Refresh_Main_Case" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">experimental</stringProp>
-                  <stringProp name="Header.value">true</stringProp>
-                </elementProp>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case note submitted" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49587">201</stringProp>
               </collectionProp>
-            </HeaderManager>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_08_Submit_AddCaseNote failed: expected HTTP 201</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
             <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="08_Get_Linked_Cases_After" enabled="true">
-            <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
-            <stringProp name="HTTPSampler.path">/getLinkedCases/${Case_ID}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case event created" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1701607639">&quot;jurisdiction&quot;:&quot;PCS&quot;</stringProp>
               </collectionProp>
-            </HeaderManager>
+              <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_08_Submit_AddCaseNote failed: case event response body invalid</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
             <hashTree/>
-          </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="09_Open_Linked_Case Retry Loop" enabled="true">
-            <boolProp name="LoopController.continue_forever">false</boolProp>
-            <stringProp name="LoopController.loops">3</stringProp>
-          </LoopController>
-          <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="09 Retry Wait" enabled="true">
-              <stringProp name="ConstantTimer.delay">2000</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="09_Open_Linked_Case" enabled="true">
-              <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_09_Sign_Out" enabled="true">
+            <stringProp name="HTTPSampler.path">/auth/logout</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Switch To Admin User" enabled="true">
+            <stringProp name="cacheKey">false</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">vars.put(&quot;username&quot;, vars.get(&quot;admin_username&quot;) ?: &quot;&quot;)
+vars.put(&quot;admin_login_ok&quot;, &quot;false&quot;)
+log.info(&quot;Switched to admin: &quot; + vars.get(&quot;username&quot;))</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_AddCaseNote_10_Launch_Admin" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /cases" enabled="true">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.port">0</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.path">/data/internal/cases/${Linking_Case_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">cases</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1178,17 +1162,522 @@ if (ok) {
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="09 Validate Linking Case ID" enabled="true">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Purpose" elementType="Header">
+                    <stringProp name="Header.name">Sec-Purpose</stringProp>
+                    <stringProp name="Header.value">prefetch;prerender</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HMCTS Manage cases" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-472773301">HMCTS Manage cases</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_10_Launch_Admin failed: Manage Cases page not loaded</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_AddCaseNote_11_Login_Admin">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /auth/login" enabled="true">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">auth/login</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CSRF Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">csrf</stringProp>
+                <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">NOT_FOUND</stringProp>
+                <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract OAuth from IDAM URL" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
-                <stringProp name="script">def linkingId = vars.get(&quot;Linking_Case_ID&quot;)?.trim()
-def valid = linkingId &amp;&amp; !(linkingId.contains(&apos;${&apos;)) &amp;&amp; linkingId ==~ /\\d+/
+                <stringProp name="script">def url = prev.getURL()?.toString() ?: &quot;&quot;
 
-if (!valid) {
-    log.error(&quot;[FAIL] 09_Open_Linked_Case: Linking_Case_ID is missing or invalid: [&quot; + linkingId + &quot;]&quot;)
+def extractParam = { u, param -&gt;
+    def m = (u =~ /[?&amp;]${param}=([^&amp;]+)/)
+    return m.find() ? java.net.URLDecoder.decode(m.group(1), &quot;UTF-8&quot;) : null
+}
+
+def urlNonce = extractParam(url, &quot;nonce&quot;)
+def urlState = extractParam(url, &quot;state&quot;)
+def urlChallenge = extractParam(url, &quot;code_challenge&quot;)
+
+if (urlNonce) { vars.put(&quot;nonce&quot;, urlNonce) }
+if (urlState) { vars.put(&quot;state&quot;, urlState) }
+if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
+</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Sign in" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-542111160">Sign in</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_11_Login_Admin failed: IDAM sign-in page not displayed</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+                <stringProp name="ConstantTimer.delay">1208</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login" enabled="true">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">login</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="username" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">username</stringProp>
+                    <stringProp name="Argument.value">${username}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="password" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">password</stringProp>
+                    <stringProp name="Argument.value">${password}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="state" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">state</stringProp>
+                    <stringProp name="Argument.value">${state}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="nonce" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">nonce</stringProp>
+                    <stringProp name="Argument.value">${nonce}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="code_challenge" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">code_challenge</stringProp>
+                    <stringProp name="Argument.value">${code_challenge}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="_csrf" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">_csrf</stringProp>
+                    <stringProp name="Argument.value">${csrf}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="scope" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">scope</stringProp>
+                    <stringProp name="Argument.value">profile openid roles manage-user create-user search-user</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="response_type" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">response_type</stringProp>
+                    <stringProp name="Argument.value">code</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="redirect_uri" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">redirect_uri</stringProp>
+                    <stringProp name="Argument.value">https://manage-case.perftest.platform.hmcts.net/oauth2/callback</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="code_challenge_method" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">code_challenge_method</stringProp>
+                    <stringProp name="Argument.value">S256</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="prompt" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">prompt</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="client_id" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">client_id</stringProp>
+                    <stringProp name="Argument.value">xuiwebapp</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="mojLoginEnabled" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">mojLoginEnabled</stringProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="selfRegistrationEnabled" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">selfRegistrationEnabled</stringProp>
+                    <stringProp name="Argument.value">false</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                  <elementProp name="azureLoginEnabled" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                    <stringProp name="Argument.name">azureLoginEnabled</stringProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="HTTPArgument.content_type"></stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Generate State, Nonce &amp; PKCE" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import java.util.Base64
+import java.text.SimpleDateFormat
+
+def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
+def auditFile = new File(auditPath)
+def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
+def threadName = ctx.getThread().getThreadName()
+
+synchronized (org.apache.jmeter.JMeter.class) {
+    if (!props.get(&quot;ccAuditLogStarted&quot;)) {
+        props.put(&quot;ccAuditLogStarted&quot;, &quot;true&quot;)
+        auditFile.append(&quot;=== CCNotes Audit Log | started &quot; + new Date() + &quot; ===\n\n&quot;)
+    }
+}
+
+// Clean username
+String username = vars.get(&quot;username&quot;)
+if (!username) {
+    username = vars.get(&quot;solicitor_username&quot;)
+    if (username) { vars.put(&quot;username&quot;, username) }
+}
+if (username != null) {
+    username = username.replace(&apos;\u00A0&apos;, &apos;&apos;).trim()
+    vars.put(&quot;username&quot;, username)
+}
+
+def mapKey = &quot;cc_thread_user_&quot; + threadName
+if (!props.get(mapKey) &amp;&amp; username) {
+    def mapLine = &quot;[&quot; + ts + &quot;] [INFO] event=THREAD_USER | thread=&quot; + threadName + &quot; | user=&quot; + username
+    auditFile.append(mapLine + &quot;\n&quot;)
+    log.info(mapLine)
+    props.put(mapKey, username)
+}
+
+if (username) {
+    def loginLine = &quot;[&quot; + ts + &quot;] [INFO] event=ITERATION_LOGIN | thread=&quot; + threadName + &quot; | user=&quot; + username
+    auditFile.append(loginLine + &quot;\n&quot;)
+    log.info(loginLine)
+    log.info(&quot;Username = [&quot; + username + &quot;] for &quot; + threadName)
+}
+
+// Decode password — OAuth state/nonce/challenge come from IDAM redirect URL
+String encoded = vars.get(&quot;encodedPassword&quot;)
+if (encoded != null) {
+    String password = new String(
+        Base64.getDecoder().decode(encoded),
+        &quot;UTF-8&quot;
+    )
+    password = password.replace(&apos;\u00A0&apos;, &apos;&apos;).trim()
+    vars.put(&quot;password&quot;, password)
+    log.info(&quot;Password decoded successfully&quot;)
 }
 </stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Validate Login and Log Status" enabled="true">
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">//=====================================================
+// HMCTS Login Validation
+//=====================================================
+
+log.info(&quot;========== LOGIN VALIDATION START ==========&quot;)
+
+//-----------------------------------------------------
+// Validate Correlation Variables
+//-----------------------------------------------------
+
+def checks = [
+    &quot;Username&quot;      : vars.get(&quot;username&quot;),
+    &quot;CSRF Token&quot;    : vars.get(&quot;csrf&quot;),
+    &quot;OAuth State&quot;   : vars.get(&quot;state&quot;),
+    &quot;OAuth Nonce&quot;   : vars.get(&quot;nonce&quot;),
+    &quot;PKCE Challenge&quot;: vars.get(&quot;code_challenge&quot;)
+]
+
+checks.each { key, value -&gt;
+
+    if (value == null || value.trim().isEmpty()) {
+        log.error(&quot;[FAIL] &quot; + key + &quot; : MISSING&quot;)
+    } else {
+
+        switch(key) {
+
+            case &quot;Username&quot;:
+                log.info(&quot;[PASS] Username loaded from CSV : &quot; + value)
+                break
+
+            case &quot;CSRF Token&quot;:
+                log.info(&quot;[PASS] CSRF Token extracted successfully&quot;)
+                break
+
+            case &quot;OAuth State&quot;:
+                log.info(&quot;[PASS] OAuth State extracted from IDAM redirect&quot;)
+                break
+
+            case &quot;OAuth Nonce&quot;:
+                log.info(&quot;[PASS] OAuth Nonce extracted from IDAM redirect&quot;)
+                break
+
+            case &quot;PKCE Challenge&quot;:
+                log.info(&quot;[PASS] PKCE Code Challenge extracted from IDAM redirect&quot;)
+                break
+        }
+    }
+}
+
+//-----------------------------------------------------
+// Validate Login Response
+//-----------------------------------------------------
+
+String responseCode = prev.getResponseCode()
+String responseBody = prev.getResponseDataAsString().toLowerCase()
+
+log.info(&quot;HTTP Response Code : &quot; + responseCode)
+
+def finalUrl = prev.getURL()?.toString() ?: &quot;&quot;
+
+
+if (responseCode == &quot;302&quot;) {
+
+    log.info(&quot;[PASS] LOGIN SUCCESSFUL&quot;)
+}
+else if (responseCode == &quot;200&quot;) {
+
+    if (responseBody.contains(&quot;sign in&quot;) ||
+        responseBody.contains(&quot;&lt;title&gt;sign in&quot;) ||
+        responseBody.contains(&quot;login-submit-btn&quot;) ||
+        responseBody.contains(&quot;expired-login-link&quot;) ||
+        finalUrl.contains(&quot;expired-login-link&quot;)) {
+
+        log.error(&quot;[FAIL] LOGIN FAILED&quot;)
+        log.error(&quot;Reason : Login page or expired login link returned by application.&quot;)
+        log.error(&quot;Possible causes:&quot;)
+        log.error(&quot;   • Invalid username or password&quot;)
+        log.error(&quot;   • Invalid CSRF token&quot;)
+        log.error(&quot;   • Missing or expired session cookie&quot;)
+        log.error(&quot;   • Invalid State or Nonce&quot;)
+        log.error(&quot;   • Invalid PKCE Code Challenge&quot;)
+    }
+    else {
+
+        log.info(&quot;[PASS] Login completed successfully (HTTP 200).&quot;)
+    }
+}
+else {
+
+    log.error(&quot;[FAIL] Unexpected HTTP Response&quot;)
+    log.error(&quot;HTTP Response Code : &quot; + responseCode)
+}
+
+log.info(&quot;========== LOGIN VALIDATION END ==========&quot;)
+
+def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
+def ts = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
+def threadName = ctx.getThread().getThreadName()
+def username = vars.get(&quot;username&quot;) ?: &quot;unknown&quot;
+def iteration = vars.get(&quot;cc_iteration&quot;) ?: &quot;-&quot;
+def loginOk = (responseCode == &quot;302&quot;) || (responseCode == &quot;200&quot; &amp;&amp; !(responseBody.contains(&quot;sign in&quot;) || responseBody.contains(&quot;login-submit-btn&quot;) || responseBody.contains(&quot;expired-login-link&quot;) || finalUrl.contains(&quot;expired-login-link&quot;)))
+def loginLevel = loginOk ? &quot;PASS&quot; : &quot;FAIL&quot;
+def loginDetail = loginOk ? &quot;login successful&quot; : (&quot;login failed HTTP=&quot; + responseCode)
+def loginLine = &quot;[&quot; + ts + &quot;] [&quot; + loginLevel + &quot;] event=LOGIN | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=- | Linking_Case_ID=- | &quot; + loginDetail
+new File(auditPath).append(loginLine + &quot;\n&quot;)
+if (loginOk) {
+    log.info(loginLine)
+} else {
+    def errorPath = props.get(&quot;__CC_ERROR_LOG_PATH__&quot;)
+    if (errorPath) { new File(errorPath).append(loginLine + &quot;\n&quot;, &quot;UTF-8&quot;) }
+    log.error(loginLine)
+}
+
+if ((username ?: &quot;&quot;).contains(&quot;PCS-CTSC-Admin&quot;)) {
+    vars.put(&quot;admin_login_ok&quot;, loginOk ? &quot;true&quot; : &quot;false&quot;)
+}
+
+// Extract oauth code from redirect chain for GET /oauth2/callback step
+def oauthCode = null
+prev.getSubResults()?.each { sub -&gt;
+    def u = sub.getURL()?.toString() ?: &quot;&quot;
+    def m = (u =~ /[?&amp;]code=([^&amp;]+)/)
+    if (m.find()) {
+        oauthCode = java.net.URLDecoder.decode(m.group(1), &quot;UTF-8&quot;)
+    }
+}
+if (oauthCode) {
+    vars.put(&quot;oauth_code&quot;, oauthCode)
+    log.info(&quot;[PASS] OAuth code captured for callback step&quot;)
+} else {
+    log.warn(&quot;[WARN] OAuth code not found in redirect chain; GET /oauth2/callback may fail&quot;)
+}</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+                <stringProp name="ConstantTimer.delay">27023</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /cases" enabled="true">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">cases</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Manage cases loaded after login" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-472773301">HMCTS Manage cases</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_11_Login_Admin failed: post-login Manage Cases page not loaded</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">1970</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Skip Verify If Admin Login Failed" enabled="true">
+          <stringProp name="IfController.condition">${__groovy(&quot;true&quot;.equals(vars.get(&quot;admin_login_ok&quot;)),)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_AddCaseNote_12_Verify_Case_Note_Retry_Loop" enabled="true">
+            <boolProp name="LoopController.continue_forever">false</boolProp>
+            <stringProp name="LoopController.loops">3</stringProp>
+          </LoopController>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="08 Retry Wait" enabled="true">
+              <stringProp name="ConstantTimer.delay">2000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_AddCaseNote_12_Verify_Case_Note" enabled="true">
+              <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="08 Build Note Text" enabled="true">
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">// verify step</stringProp>
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PreProcessor>
               <hashTree/>
@@ -1209,61 +1698,70 @@ if (!valid) {
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="09 Log HTTP Result" enabled="true">
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="08 Log Verify Result" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="script">import java.text.SimpleDateFormat
 
 def code = prev.getResponseCode() ?: &apos;unknown&apos;
-def bytes = prev.getBytes() ?: 0
-def linkingId = vars.get(&quot;Linking_Case_ID&quot;)
 def caseId = vars.get(&quot;Case_ID&quot;)
+def noteText = vars.get(&quot;noteText&quot;) ?: &quot;&quot;
 def username = vars.get(&quot;username&quot;) ?: &quot;unknown&quot;
 def iteration = vars.get(&quot;cc_iteration&quot;) ?: &quot;-&quot;
 def threadName = ctx.getThread().getThreadName()
-def ok = prev.isSuccessful()
+def body = prev.getResponseDataAsString() ?: &quot;&quot;
+def noteFound = noteText &amp;&amp; body.contains(&apos;&quot;note&quot;:&quot;&apos; + noteText + &apos;&quot;&apos;)
+def ok = prev.isSuccessful() &amp;&amp; noteFound
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
 def completeKey = &quot;cc_run_complete_&quot; + threadName + &quot;_&quot; + iteration
 
 if (ok &amp;&amp; !props.get(completeKey)) {
     props.put(completeKey, &quot;true&quot;)
-    def auditLine = &quot;[&quot; + ts + &quot;] [PASS] event=RUN_COMPLETE | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; | full flow completed HTTP=&quot; + code
-    new File(auditPath).append(auditLine + &quot;\n&quot;)
-    log.info(auditLine)
+    new File(auditPath).append(&quot;[&quot; + ts + &quot;] [PASS] event=NOTE_VERIFIED | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | Case_ID=&quot; + caseId + &quot; | noteText=&quot; + noteText + &quot;\n&quot;)
+    new File(auditPath).append(&quot;[&quot; + ts + &quot;] [PASS] event=RUN_COMPLETE | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | Case_ID=&quot; + caseId + &quot; | noteText=&quot; + noteText + &quot;\n&quot;)
+    log.info(&quot;[PASS] NOTE_VERIFIED noteText=&quot; + noteText)
 } else if (!ok) {
-    def auditLine = &quot;[&quot; + ts + &quot;] [FAIL] event=RUN_FAIL | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; | 09_Open_Linked_Case failed HTTP=&quot; + code
-    new File(auditPath).append(auditLine + &quot;\n&quot;)
+    def line = &quot;[&quot; + ts + &quot;] [FAIL] event=NOTE_VERIFY_FAIL | thread=&quot; + threadName + &quot; | user=&quot; + username + &quot; | Case_ID=&quot; + caseId + &quot; | noteText=&quot; + noteText + &quot; | HTTP=&quot; + code + &quot; | noteFound=&quot; + noteFound
+    new File(auditPath).append(line + &quot;\n&quot;)
     def errorPath = props.get(&quot;__CC_ERROR_LOG_PATH__&quot;)
-    if (errorPath) { new File(errorPath).append(auditLine + &quot;\n&quot;, &quot;UTF-8&quot;) }
-    log.error(auditLine)
-}
-
-log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | bodyBytes=&quot; + bytes + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; (bodyBytes is response SIZE, not an error code)&quot;)
-</stringProp>
+    if (errorPath) { new File(errorPath).append(line + &quot;\n&quot;, &quot;UTF-8&quot;) }
+    log.error(line)
+    prev.setSuccessful(false)
+}</stringProp>
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PostProcessor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="09 Expect HTTP 200" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case note verified" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
-                <stringProp name="Assertion.custom_message">09_Open_Linked_Case failed: expected HTTP 200 (check Response Code column, not Bytes column)</stringProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_12_Verify_Case_Note failed: expected HTTP 200 (check Response Code column, not Bytes column)</stringProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case note text present" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1191680729">${noteText}</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message">CC_SC01_AddCaseNote_12_Verify_Case_Note failed: submitted case note text not found in response</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
             </hashTree>
-            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="09 Stop Retry On Success" enabled="true">
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="08 Stop Retry On Success" enabled="true">
               <stringProp name="IfController.condition">${JMeterThread.last_sample_ok}</stringProp>
               <boolProp name="IfController.evaluateAll">false</boolProp>
               <boolProp name="IfController.useExpression">false</boolProp>
             </IfController>
             <hashTree>
-              <TestAction guiclass="TestActionGui" testclass="TestAction" testname="09 Break Retry Loop" enabled="true">
+              <TestAction guiclass="TestActionGui" testclass="TestAction" testname="08 Break Retry Loop" enabled="true">
                 <intProp name="ActionProcessor.action">4</intProp>
                 <intProp name="ActionProcessor.target">0</intProp>
                 <stringProp name="ActionProcessor.duration"></stringProp>
@@ -1272,12 +1770,6 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
             </hashTree>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-          <boolProp name="displayJMeterProperties">false</boolProp>
-          <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
-        </DebugSampler>
-        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /oauth2/callback" enabled="false">
           <stringProp name="TestPlan.comments">Disabled: OAuth callback already completes during POST /login redirect chain. Re-enable only if debugging OAuth in isolation.</stringProp>
           <stringProp name="HTTPSampler.path">/oauth2/callback</stringProp>
@@ -1353,7 +1845,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Results-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.xml&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Results-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.xml&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/&apos; + (vars.get(&apos;logsDir&apos;) ?: &apos;Logs&apos;) + &apos;/Reports/Results-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.xml&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/&apos; + (vars.get(&apos;logsDir&apos;) ?: &apos;Logs&apos;) + &apos;/Reports/Results-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.xml&apos;).absolutePath)}</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
@@ -1390,7 +1882,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Summary Report/Summary-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Summary Report/Summary-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Summary Report/Summary-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Summary Report/Summary-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).absolutePath)}</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
@@ -1427,17 +1919,17 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Aggregate Report/Aggregate-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Aggregate Report/Aggregate-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Aggregate Report/Aggregate-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.jtl&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Reports/Aggregate Report/Aggregate-CCNotes&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).absolutePath)}</stringProp>
       </ResultCollector>
       <hashTree/>
-      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="CC Run Audit Logger">
+      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="CC Run Audit Logger" enabled="true">
         <stringProp name="cacheKey">false</stringProp>
         <stringProp name="filename"></stringProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="script">import java.text.SimpleDateFormat
 
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCCaseLink-audit.log&quot;).absolutePath
+def auditPath = new File(scriptHome, vars.get(&quot;auditLogPath&quot;) ?: &quot;Logs/CCNotes-audit.log&quot;).absolutePath
 def auditFile = new File(auditPath)
 def result = sampleEvent.getResult()
 def label = result.getSampleLabel() ?: &quot;unknown&quot;
@@ -1450,7 +1942,7 @@ def code = result.getResponseCode() ?: &quot;&quot;
 def ok = result.isSuccessful()
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
 
-def skipLabels = [&quot;Debug Sampler&quot;, &quot;01 Retry Wait&quot;, &quot;09 Retry Wait&quot;, &quot;01 Break Retry Loop&quot;, &quot;09 Break Retry Loop&quot;] as Set
+def skipLabels = [&quot;Debug Sampler&quot;, &quot;01 Retry Wait&quot;, &quot;08 Retry Wait&quot;, &quot;01 Break Retry Loop&quot;, &quot;08 Break Retry Loop&quot;] as Set
 if (skipLabels.contains(label)) {
     return
 }
@@ -1466,7 +1958,7 @@ if (!ok) {
         <stringProp name="scriptLanguage">groovy</stringProp>
       </JSR223Listener>
       <hashTree/>
-      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="CC Run Results CSV Logger">
+      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="CC Run Results CSV Logger" enabled="true">
         <stringProp name="cacheKey">false</stringProp>
         <stringProp name="filename"></stringProp>
         <stringProp name="parameters"></stringProp>
@@ -1474,15 +1966,16 @@ if (!ok) {
 
 def result = sampleEvent.getResult()
 def label = result.getSampleLabel() ?: &quot;&quot;
-if (label != &quot;09_Open_Linked_Case&quot;) {
+if (label != &quot;CC_SC01_AddCaseNote_12_Verify_Case_Note&quot;) {
     return
 }
 
 def threadName = result.getThreadName() ?: &quot;unknown&quot;
-def username = vars.get(&quot;username&quot;) ?: &quot;&quot;
+def solicitor = vars.get(&quot;solicitor_username&quot;) ?: &quot;&quot;
+def admin = vars.get(&quot;admin_username&quot;) ?: &quot;&quot;
 def iteration = vars.get(&quot;cc_iteration&quot;) ?: &quot;-&quot;
 def caseId = vars.get(&quot;Case_ID&quot;) ?: &quot;&quot;
-def linkingId = vars.get(&quot;Linking_Case_ID&quot;) ?: &quot;&quot;
+def noteText = vars.get(&quot;noteText&quot;) ?: &quot;&quot;
 def ok = result.isSuccessful()
 def code = result.getResponseCode() ?: &quot;&quot;
 
@@ -1508,30 +2001,30 @@ def esc = { v -&gt;
 
 def ts = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).format(new Date())
 def status = ok ? &quot;PASS&quot; : &quot;FAIL&quot;
-def line = [ts, threadName, username, iteration, caseId, linkingId, status, code].collect(esc).join(&quot;,&quot;)
+def line = [ts, threadName, solicitor, admin, iteration, caseId, noteText, status, code].collect(esc).join(&quot;,&quot;)
 
 new File(csvPath).append(line + &quot;\n&quot;, &quot;UTF-8&quot;)
-log.info(&quot;[CSV] &quot; + status + &quot; | user=&quot; + username + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | Linking_Case_ID=&quot; + linkingId + &quot; | file=&quot; + props.get(&quot;__CC_RUN_RESULTS_CSV_NAME__&quot;))
+log.info(&quot;[CSV] &quot; + status + &quot; | solicitor=&quot; + solicitor + &quot; | admin=&quot; + admin + &quot; | iteration=&quot; + iteration + &quot; | Case_ID=&quot; + caseId + &quot; | noteText=&quot; + noteText + &quot; | file=&quot; + props.get(&quot;__CC_RUN_RESULTS_CSV_NAME__&quot;))
 </stringProp>
         <stringProp name="scriptLanguage">groovy</stringProp>
       </JSR223Listener>
       <hashTree/>
-      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="API Call Trace Logger">
+      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="API Call Trace Logger" enabled="true">
         <stringProp name="cacheKey">false</stringProp>
         <stringProp name="filename"></stringProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="script">import java.text.SimpleDateFormat
 
 def scriptHome = props.get(&quot;SCRIPT_HOME&quot;) ?: new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
-def logPath = new File(scriptHome, vars.get(&quot;apiLogPath&quot;) ?: &quot;Logs/CCCaseLink-run.log&quot;).absolutePath
+def logPath = new File(scriptHome, vars.get(&quot;apiLogPath&quot;) ?: &quot;Logs/CCNotes-run.log&quot;).absolutePath
 def logFile = new File(logPath).getAbsoluteFile()
 if (logFile.parentFile &amp;&amp; !logFile.parentFile.exists()) {
     logFile.parentFile.mkdirs()
 }
 
-if (!props.get(&quot;ccCaseLinkApiLogStarted&quot;)) {
-    props.put(&quot;ccCaseLinkApiLogStarted&quot;, &quot;true&quot;)
-    logFile.append(&quot;=== CCCaseLink API Trace | started &quot; + new Date() + &quot; ===\n\n&quot;)
+if (!props.get(&quot;ccNotesApiLogStarted&quot;)) {
+    props.put(&quot;ccNotesApiLogStarted&quot;, &quot;true&quot;)
+    logFile.append(&quot;=== CCNotes API Trace | started &quot; + new Date() + &quot; ===\n\n&quot;)
 }
 
 def result = sampleEvent.getResult()
@@ -1640,7 +2133,7 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
         <stringProp name="scriptLanguage">groovy</stringProp>
       </JSR223Listener>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="scriptHome" elementType="Argument">
             <stringProp name="Argument.name">scriptHome</stringProp>
@@ -1683,38 +2176,43 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
           </elementProp>
           <elementProp name="apiLogPath" elementType="Argument">
             <stringProp name="Argument.name">apiLogPath</stringProp>
-            <stringProp name="Argument.value">Logs/CCCaseLink-run.log</stringProp>
+            <stringProp name="Argument.value">Logs/CCNotes-run.log</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="auditLogPath" elementType="Argument">
             <stringProp name="Argument.name">auditLogPath</stringProp>
-            <stringProp name="Argument.value">Logs/CCCaseLink-audit.log</stringProp>
+            <stringProp name="Argument.value">Logs/CCNotes-audit.log</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="errorLogPath" elementType="Argument">
             <stringProp name="Argument.name">errorLogPath</stringProp>
-            <stringProp name="Argument.value">Logs/CCCaseLink-errors.log</stringProp>
+            <stringProp name="Argument.value">Logs/CCNotes-errors.log</stringProp>
             <stringProp name="Argument.desc">Failures only — login, API, pair selection, assertions</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="runResultsCsvDir" elementType="Argument">
             <stringProp name="Argument.name">runResultsCsvDir</stringProp>
-            <stringProp name="Argument.value">CaseLinedDetails</stringProp>
+            <stringProp name="Argument.value">Logs</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="noteTextPrefix" elementType="Argument">
+            <stringProp name="Argument.name">noteTextPrefix</stringProp>
+            <stringProp name="Argument.value">Testing</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="resultFileName" elementType="Argument">
             <stringProp name="Argument.name">resultFileName</stringProp>
-            <stringProp name="Argument.value">CCCaseLink_Perf_${__time(yyyyMMdd-HHmmss)}</stringProp>
+            <stringProp name="Argument.value">CCNotes_Perf_${__time(yyyyMMdd-HHmmss)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Linking Case ID" enabled="false">
-        <stringProp name="TestPlan.comments">Disabled: Linking_Case_ID is now selected automatically from the workbasket case list (2nd case).</stringProp>
+        <stringProp name="TestPlan.comments">Disabled: Case_ID is now supplied per row in ccnoteuserdetails.csv and validated via case search.</stringProp>
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
-        <stringProp name="filename">InputFiles/linking_case.csv</stringProp>
+        <stringProp name="filename">linking_case.csv</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -1723,7 +2221,7 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
         <stringProp name="variableNames">Linking_Case_ID</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1757,7 +2255,7 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/ActiveThreads-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/ActiveThreads-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename"></stringProp>
         <longProp name="interval_grouping">500</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -1768,7 +2266,16 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time">
+      <kg.apc.jmeter.reporters.FlexibleFileWriter guiclass="kg.apc.jmeter.reporters.FlexibleFileWriterGui" testclass="kg.apc.jmeter.reporters.FlexibleFileWriter" testname="jp@gc - Flexible File Writer" enabled="false">
+        <stringProp name="filename">testResults.txt</stringProp>
+        <stringProp name="columns">endTimeMillis|\t|responseTime|\t|latency|\t|sentBytes|\t|receivedBytes|\t|isSuccessful|\t|responseCode|\r\n</stringProp>
+        <boolProp name="overwrite">false</boolProp>
+        <stringProp name="header">endTimeMillis	responseTime	latency	sentBytes	receivedBytes	isSuccessful	responseCode
+</stringProp>
+        <stringProp name="footer"></stringProp>
+      </kg.apc.jmeter.reporters.FlexibleFileWriter>
+      <hashTree/>
+      <kg.apc.jmeter.perfmon.PerfMonCollector guiclass="kg.apc.jmeter.vizualizers.PerfMonGui" testclass="kg.apc.jmeter.perfmon.PerfMonCollector" testname="jp@gc - PerfMon Metrics Collector" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1802,7 +2309,99 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/ResponseTimes-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/ResponseTimes-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename"></stringProp>
+        <longProp name="interval_grouping">1000</longProp>
+        <boolProp name="graph_aggregated">false</boolProp>
+        <stringProp name="include_sample_labels"></stringProp>
+        <stringProp name="exclude_sample_labels"></stringProp>
+        <stringProp name="start_offset"></stringProp>
+        <stringProp name="end_offset"></stringProp>
+        <boolProp name="include_checkbox_state">false</boolProp>
+        <boolProp name="exclude_checkbox_state">false</boolProp>
+        <collectionProp name="metricConnections"/>
+      </kg.apc.jmeter.perfmon.PerfMonCollector>
+      <hashTree/>
+      <kg.apc.jmeter.perfmon.PerfMonCollector guiclass="kg.apc.jmeter.vizualizers.PerfMonGui" testclass="kg.apc.jmeter.perfmon.PerfMonCollector" testname="jp@gc - PerfMon Metrics Collector" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <longProp name="interval_grouping">1000</longProp>
+        <boolProp name="graph_aggregated">false</boolProp>
+        <stringProp name="include_sample_labels"></stringProp>
+        <stringProp name="exclude_sample_labels"></stringProp>
+        <stringProp name="start_offset"></stringProp>
+        <stringProp name="end_offset"></stringProp>
+        <boolProp name="include_checkbox_state">false</boolProp>
+        <boolProp name="exclude_checkbox_state">false</boolProp>
+        <collectionProp name="metricConnections"/>
+      </kg.apc.jmeter.perfmon.PerfMonCollector>
+      <hashTree/>
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
         <longProp name="interval_grouping">500</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -1813,7 +2412,7 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1847,7 +2446,7 @@ log.info(&quot;[API] &quot; + label + &quot; | user=&quot; + username + &quot; |
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${__groovy(new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/TransactionsPerSecond-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).getParentFile().mkdirs(); new File((props.get(&apos;SCRIPT_HOME&apos;) ?: org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()) + &apos;/Other Graph Reports/TransactionsPerSecond-&apos; + vars.get(&apos;resultFileName&apos;) + &apos;.csv&apos;).absolutePath)}</stringProp>
+        <stringProp name="filename"></stringProp>
         <longProp name="interval_grouping">1000</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
