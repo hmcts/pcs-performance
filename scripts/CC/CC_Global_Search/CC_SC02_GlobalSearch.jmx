@@ -26,7 +26,7 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="baseDir" elementType="Argument">
             <stringProp name="Argument.name">baseDir</stringProp>
@@ -240,12 +240,12 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC_SC02_GlobalSearch">
         <stringProp name="TestPlan.comments">Need staff users and case ids  (Already Created - PCS-CTSC-Admin401@hmcts.net - PCS-CTSC-Admin600@hmcts.net)</stringProp>
         <intProp name="ThreadGroup.num_threads">3</intProp>
-        <intProp name="ThreadGroup.ramp_time">100</intProp>
+        <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">1800</longProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">5</stringProp>
+          <stringProp name="LoopController.loops">8</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -262,12 +262,12 @@
           <stringProp name="variableNames">username</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_01_Launch" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_01_Launch">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-761">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-761" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -339,7 +339,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/external/config/ui/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/external/config/ui/" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -451,7 +451,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-786">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-786" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -780,7 +780,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/login">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/login" enabled="true">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -918,12 +918,12 @@
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_02_CTSCAdmin_CaseListView">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_02_CTSCAdmin_CaseListView" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-826">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-826" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -1085,7 +1085,7 @@ vars.put(&quot;password&quot;, decodedPwd);
 log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-472773301">HMCTS Manage cases</stringProp>
               </collectionProp>
@@ -1916,163 +1916,6 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-890">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;size&quot;:25}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">cors</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-GB,en;q=0.9</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://${PcsXUI}</stringProp>
-                </elementProp>
-                <elementProp name="Request-Id" elementType="Header">
-                  <stringProp name="Header.name">Request-Id</stringProp>
-                  <stringProp name="Header.value">|be620b6ce7c249f3b9ac02db79562c7a.fb816bd1c62341c8</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="X-XSRF-TOKEN" elementType="Header">
-                  <stringProp name="Header.name">X-XSRF-TOKEN</stringProp>
-                  <stringProp name="Header.value">${tokenx}</stringProp>
-                </elementProp>
-                <elementProp name="traceparent" elementType="Header">
-                  <stringProp name="Header.name">traceparent</stringProp>
-                  <stringProp name="Header.value">00-be620b6ce7c249f3b9ac02db79562c7a-fb816bd1c62341c8-01</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:151.0) Gecko/20100101 Firefox/151.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="caseId">
-              <stringProp name="JSONPostProcessor.referenceNames">caseId</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.results[*].case_id</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
-              <stringProp name="Sample.scope">all</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="selectedCaseId">
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="script">int count = Integer.parseInt(vars.get(&quot;caseId_matchNr&quot;));
-
-int randomIndex = 1 + (int)(Math.random() * count);
-
-String selectedCaseId = vars.get(&quot;caseId_&quot; + randomIndex);
-
-vars.put(&quot;selectedCaseId&quot;, selectedCaseId);
-
-System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
-            </BeanShellPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-904" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/auth/keepalive</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">cors</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-GB,en;q=0.9</stringProp>
-                </elementProp>
-                <elementProp name="Request-Id" elementType="Header">
-                  <stringProp name="Header.name">Request-Id</stringProp>
-                  <stringProp name="Header.value">|be620b6ce7c249f3b9ac02db79562c7a.7e1222f18f454b0a</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                </elementProp>
-                <elementProp name="traceparent" elementType="Header">
-                  <stringProp name="Header.name">traceparent</stringProp>
-                  <stringProp name="Header.value">00-be620b6ce7c249f3b9ac02db79562c7a-7e1222f18f454b0a-01</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:151.0) Gecko/20100101 Firefox/151.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
           <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">5000</stringProp>
           </ConstantTimer>
@@ -2087,7 +1930,164 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-629">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1">
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;page=1</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;size&quot;:25}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.9</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">https://${PcsXUI}</stringProp>
+                  </elementProp>
+                  <elementProp name="Request-Id" elementType="Header">
+                    <stringProp name="Header.name">Request-Id</stringProp>
+                    <stringProp name="Header.value">|be620b6ce7c249f3b9ac02db79562c7a.fb816bd1c62341c8</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="X-XSRF-TOKEN" elementType="Header">
+                    <stringProp name="Header.name">X-XSRF-TOKEN</stringProp>
+                    <stringProp name="Header.value">${tokenx}</stringProp>
+                  </elementProp>
+                  <elementProp name="traceparent" elementType="Header">
+                    <stringProp name="Header.name">traceparent</stringProp>
+                    <stringProp name="Header.value">00-be620b6ce7c249f3b9ac02db79562c7a-fb816bd1c62341c8-01</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:151.0) Gecko/20100101 Firefox/151.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="caseId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">caseId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.results[*].case_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="selectedCaseId" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int count = Integer.parseInt(vars.get(&quot;caseId_matchNr&quot;));
+
+int randomIndex = 1 + (int)(Math.random() * count);
+
+String selectedCaseId = vars.get(&quot;caseId_&quot; + randomIndex);
+
+vars.put(&quot;selectedCaseId&quot;, selectedCaseId);
+
+System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/keepalive">
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">/auth/keepalive</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.9</stringProp>
+                  </elementProp>
+                  <elementProp name="Request-Id" elementType="Header">
+                    <stringProp name="Header.name">Request-Id</stringProp>
+                    <stringProp name="Header.value">|be620b6ce7c249f3b9ac02db79562c7a.7e1222f18f454b0a</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                  </elementProp>
+                  <elementProp name="traceparent" elementType="Header">
+                    <stringProp name="Header.name">traceparent</stringProp>
+                    <stringProp name="Header.value">00-be620b6ce7c249f3b9ac02db79562c7a-7e1222f18f454b0a-01</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:151.0) Gecko/20100101 Firefox/151.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-629" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2145,7 +2145,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-632">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-632" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2203,7 +2203,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/globalSearch/services">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/globalSearch/services" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2293,7 +2293,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-654">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-654" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2351,7 +2351,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/aggregated/caseworkers/:uid/jurisdictions">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/aggregated/caseworkers/:uid/jurisdictions" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2433,7 +2433,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-/api/globalsearch/results">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-/api/globalsearch/results" enabled="true">
               <stringProp name="TestPlan.comments">${Caseid}${selectedCaseId}</stringProp>
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
@@ -2570,7 +2570,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-671">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-671" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2681,7 +2681,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="token3x">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="token3x" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                 <stringProp name="RegexExtractor.refname">token3x</stringProp>
                 <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
@@ -3669,7 +3669,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler">
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
