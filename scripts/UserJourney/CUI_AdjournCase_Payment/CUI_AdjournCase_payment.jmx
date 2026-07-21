@@ -161,7 +161,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -199,7 +199,7 @@
         <stringProp name="TestPlan.comments">~/TreeResult-NEWDashboar${resultFileName}.xml</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -237,7 +237,7 @@
         <stringProp name="TestPlan.comments">~/Aggregate-NEW_AdjournCase${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -716,7 +716,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
           </hashTree>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler">
             <stringProp name="BeanShellSampler.query">log.info(&quot;Property password = [&quot; + props.get(&quot;password&quot;) + &quot;]&quot;);</stringProp>
           </BeanShellSampler>
           <hashTree>
@@ -726,7 +726,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_03_select_Claim">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_03_select_Claim" enabled="true">
           <stringProp name="TestPlan.comments">GITHUB 2026-07-08</stringProp>
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -3167,7 +3167,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_13_language to choose">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_13_language to choose" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -4751,7 +4751,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_19_ReturnToDashboard">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_19_ReturnToDashboard" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -4876,12 +4876,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">5000</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_20_SingOff">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_20_SingOff" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
