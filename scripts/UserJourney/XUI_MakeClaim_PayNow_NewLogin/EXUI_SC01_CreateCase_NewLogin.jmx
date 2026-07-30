@@ -160,7 +160,7 @@
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Accounts">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">/Users/priyankasn/Applications/Jmeter/apache-jmeter-5.6.3/pcs-performance-master/scripts/Archive/XUIScripts/New_Login_CreateClaim/Fee_PayNow_Userfile.csv</stringProp>
+        <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator +&quot;Fee_PayNow_Userfile.csv&quot;)}</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -205,7 +205,7 @@
       </ResultCollector>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userdetails">
-        <stringProp name="filename">/Users/priyankasn/Applications/Jmeter/apache-jmeter-5.6.3/pcs-performance-master/scripts/Archive/XUIScripts/New_Login_CreateClaim/userdetails_makeAClaim_feePay.csv</stringProp>
+        <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator +&quot;userdetails_makeAClaim_feePay.csv&quot;)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">username,password</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -291,12 +291,12 @@
       </ResultCollector>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
-        <intProp name="ThreadGroup.ramp_time">100</intProp>
+        <intProp name="ThreadGroup.num_threads">5</intProp>
+        <intProp name="ThreadGroup.ramp_time">300</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">4</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -2872,7 +2872,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <hashTree/>
         </hashTree>
         <RunTime guiclass="RunTimeGui" testclass="RunTime" testname="Runtime Controller">
-          <stringProp name="RunTime.seconds">400</stringProp>
+          <stringProp name="RunTime.seconds">1800</stringProp>
         </RunTime>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC01_CreateCase_04_ClickCreateCaseStart">
