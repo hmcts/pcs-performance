@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CaseWorker_AmendDocument" enabled="true">
-      <stringProp name="TestPlan.comments">CaseWorker Manage documents Amend - Find case by reference then amend</stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CW_SC01_ManageAmend" enabled="true">
+      <stringProp name="TestPlan.comments">CW_SC01 Manage documents Amend - Find case by reference then amend</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -28,7 +28,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC01_ManageAmend_ThreadGroup">
         <intProp name="ThreadGroup.num_threads">5</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -39,7 +39,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">30000</intProp>
           <intProp name="HTTPSampler.response_timeout">120000</intProp>
           <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
@@ -69,7 +69,7 @@
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - Users">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC01_ManageAmend_CSV_Users" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">CWDocumentamned_users.csv</stringProp>
@@ -81,7 +81,7 @@
           <stringProp name="variableNames">username,Case_ID</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - PageToChoose" enabled="false">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC01_ManageAmend_CSV_PageToChoose" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">PageToChoose.csv</stringProp>
@@ -93,12 +93,12 @@
           <stringProp name="variableNames">PageToChoose</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Login">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_01_Login">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01 GET /auth/login">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_01_Get_/auth/login">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/auth/login</stringProp>
@@ -111,7 +111,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RegexExtractor csrf">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_CSRF">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
@@ -121,7 +121,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Enter email">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Enter_Email" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="292990123">Enter your email address</stringProp>
               </collectionProp>
@@ -132,7 +132,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02 POST /enter-email" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_02_/enter-email">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-email</stringProp>
@@ -177,7 +177,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03 GET /enter-password">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_03_Get_/enter-password">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-password</stringProp>
@@ -190,7 +190,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RegexExtractor csrf">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_CSRF" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
@@ -200,7 +200,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert password page" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Password_Page" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1216985755">password</stringProp>
               </collectionProp>
@@ -211,7 +211,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04 POST /enter-password">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_04_/enter-password">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-password</stringProp>
@@ -246,7 +246,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Decode Password">
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC01_ManageAmend_Decode_Password" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -261,7 +261,7 @@ if (encoded != null) {
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -280,12 +280,12 @@ if (encoded != null) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_Find_And_Open_Case">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_02_Search_And_Navigate_Case">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05 GET /api/user/details">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_05_Get_/api/user/details?refreshRoleAssignments=true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/user/details?refreshRoleAssignments=true</stringProp>
@@ -298,7 +298,7 @@ if (encoded != null) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -307,7 +307,7 @@ if (encoded != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 user details" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_User_Details">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -318,7 +318,7 @@ if (encoded != null) {
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="06 POST searchCases by case reference">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_06_POST_/data/internal/searchCases?ctid=PCS&amp;use_case=SEARCH&amp;view=SEARCH&amp;page=1&amp;case_reference=${Case_ID}">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=SEARCH&amp;view=SEARCH&amp;page=1&amp;case_reference=${Case_ID}</stringProp>
@@ -337,7 +337,7 @@ if (encoded != null) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -354,7 +354,7 @@ if (encoded != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Case_id" enabled="false">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_Case_Id" enabled="false">
               <stringProp name="TestPlan.comments">Random case in Pending Case Issued. Change PENDING_CASE_ISSUED to CASE_ISSUED to match PR #39 pattern.</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">Case_id</stringProp>
@@ -365,7 +365,7 @@ if (encoded != null) {
               <stringProp name="RegexExtractor.match_number">-1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Validate Find case search result" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Validate_Search_Case">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -419,7 +419,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Find case search results" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Search_Results">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1659698930">&quot;results&quot;</stringProp>
               </collectionProp>
@@ -430,7 +430,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07 GET case (navigate)">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_07_GET_/data/internal/cases/${Case_ID}">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -443,7 +443,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -456,7 +456,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 navigate case">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Navigate_Case">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -468,16 +468,16 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Amend_Document">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_03_Amend_Document">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Retry cases until amendable document found">
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="CW_SC01_ManageAmend_Retry_Until_Amendable">
             <stringProp name="WhileController.condition">${__groovy(vars.get(&quot;amendReady&quot;) != &quot;true&quot; &amp;&amp; vars.get(&quot;amendReady&quot;) != &quot;done_fail&quot; &amp;&amp; ((vars.get(&quot;caseTryIndex&quot;) ?: &quot;0&quot;) as int) &lt; (new groovy.json.JsonSlurper().parseText(vars.get(&quot;caseIdListJson&quot;) ?: &quot;[]&quot;).size()),)}</stringProp>
           </WhileController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07b GET case before amend">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_08_Get_/data/internal/cases/${Case_ID}">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -490,7 +490,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
@@ -503,7 +503,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 open case" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Open_Case">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -514,7 +514,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="08 GET event-triggers amendDocuments">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_09_GET_/data/internal/cases/${Case_ID}/event-triggers/amendDocuments?ignore-warning=false">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/amendDocuments?ignore-warning=false</stringProp>
@@ -527,7 +527,7 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
@@ -540,14 +540,14 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor event_token">
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC01_ManageAmend_Extract_Event_Token">
                 <stringProp name="JSONPostProcessor.referenceNames">event_token</stringProp>
                 <stringProp name="JSONPostProcessor.jsonPathExprs">$.event_token</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
                 <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Pick non-empty folder and document">
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Pick_Folder_And_Document" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -648,13 +648,13 @@ log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
               <hashTree/>
             </hashTree>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Fail if no amendable case found">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CW_SC01_ManageAmend_Fail_If_No_Amendable_Case">
             <stringProp name="IfController.condition">${__groovy(vars.get(&quot;amendReady&quot;) != &quot;true&quot;,)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No amendable CASE_ISSUED case">
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="CW_SC01_ManageAmend_No_Amendable_Case">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -668,13 +668,13 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
             </JSR223Sampler>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Continue amend only if case ready">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CW_SC01_ManageAmend_Continue_If_Case_Ready">
             <stringProp name="IfController.condition">${__groovy(vars.get(&quot;amendReady&quot;) == &quot;true&quot;,)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="09 POST validate selectDocument">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_10_POST_/data/case-types/PCS/validate?pageId=amendDocumentsselectDocument">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=amendDocumentsselectDocument</stringProp>
@@ -693,7 +693,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build selectDocumentValidateBody">
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC01_ManageAmend_Build_Select_Document_Body" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -739,7 +739,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PreProcessor>
               <hashTree/>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Content-Type</stringProp>
@@ -756,7 +756,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Store amend details and event bodies">
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Store_Amend_Bodies" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -888,7 +888,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PostProcessor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 selectDocument">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Select_Document" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -899,7 +899,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10 POST validate amendDocumentDetails">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_11_POST_/data/case-types/PCS/validate?pageId=amendDocumentsamendDocumentDetails">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=amendDocumentsamendDocumentDetails</stringProp>
@@ -918,7 +918,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Content-Type</stringProp>
@@ -935,7 +935,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 amendDocumentDetails">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Amend_Details" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -946,7 +946,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11 POST create event">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_12_POST_/data/cases/${Case_ID}/events">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/cases/${Case_ID}/events</stringProp>
@@ -965,7 +965,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Content-Type</stringProp>
@@ -982,7 +982,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 201 events">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Submit_Amend" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49587">201</stringProp>
                 </collectionProp>
@@ -993,7 +993,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="12 GET case after amend">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_13_GET_/data/internal/cases/${Case_ID}">
               <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -1006,7 +1006,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
@@ -1019,7 +1019,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 case after amend">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Case_After_Amend" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -1069,7 +1069,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate_Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1106,7 +1106,7 @@ log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary_Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
