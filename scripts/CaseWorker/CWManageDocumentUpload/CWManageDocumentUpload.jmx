@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CaseWorker_UploadDocument" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CaseWorker_UploadDocument">
       <stringProp name="TestPlan.comments">Cleaned CaseWorker upload document sanity script</stringProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="BASE_URL_1" elementType="Argument">
@@ -35,7 +33,8 @@
           </elementProp>
         </collectionProp>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
@@ -102,43 +101,6 @@
           <boolProp name="stopThread">false</boolProp>
           <stringProp name="variableNames">PageToChoose</stringProp>
         </CSVDataSet>
-        <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>true</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
         <hashTree/>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Login" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -326,7 +288,7 @@ if (encoded != null) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_Open_Case" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_Open_Case">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -399,60 +361,33 @@ if (encoded != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Case_id" enabled="true">
-              <stringProp name="TestPlan.comments">Pending Case Issued only. Negative lookahead prevents pairing wrong case_id with next case STATE.</stringProp>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Case_id">
+              <stringProp name="TestPlan.comments">Random case in Pending Case Issued. Change PENDING_CASE_ISSUED to CASE_ISSUED to match PR #39 pattern.</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">Case_id</stringProp>
-              <stringProp name="RegexExtractor.regex">case_id&quot;\s*:\s*&quot;([^&quot;]+)&quot;(?:(?!&quot;case_id&quot;)[\s\S])*?&quot;\[STATE\]&quot;\s*:\s*&quot;PENDING_CASE_ISSUED</stringProp>
+              <stringProp name="RegexExtractor.regex">case_id&quot;\s*:\s*&quot;([^&quot;]+)&quot;[\s\S]*?&quot;\[STATE\]&quot;\s*:\s*&quot;CASE_ISSUED</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">NOT FOUND</stringProp>
               <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Map Case_id to Case_ID" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Map Case_id to Case_ID">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
-              <stringProp name="script">import groovy.json.JsonSlurper
-
-def regexId = (vars.get(&quot;Case_id&quot;) ?: &quot;&quot;).trim()
-def wanted = &quot;PENDING_CASE_ISSUED&quot;
-def pendingIds = []
-def regexState = &quot;&quot;
-try {
-  def json = new JsonSlurper().parseText(prev.getResponseDataAsString() ?: &quot;{}&quot;)
-  (json.results ?: []).each { r -&gt;
-    def st = (r?.case_fields?.get(&quot;[STATE]&quot;) ?: &quot;&quot;).toString()
-    def id = (r?.case_id ?: &quot;&quot;).toString()
-    if (id &amp;&amp; st == wanted) { pendingIds &lt;&lt; id }
-    if (id == regexId) { regexState = st }
-  }
-} catch (Exception e) {
-  log.warn(&quot;parse searchCases failed: &quot; + e.message)
-}
-
-def caseId = regexId
-if (!caseId || caseId == &quot;NOT FOUND&quot; || regexState != wanted) {
-  caseId = pendingIds ? pendingIds[0] : &quot;&quot;
-}
-vars.put(&quot;Case_id&quot;, caseId)
+              <stringProp name="script">def caseId = (vars.get(&quot;Case_id&quot;) ?: &quot;&quot;).trim()
 vars.put(&quot;Case_ID&quot;, caseId)
-vars.put(&quot;pendingCaseIds&quot;, pendingIds.join(&quot;,&quot;))
-vars.put(&quot;pendingCaseCount&quot;, String.valueOf(pendingIds.size()))
-vars.put(&quot;casePickIndex&quot;, &quot;0&quot;)
-vars.put(&quot;uploadCaseReady&quot;, &quot;false&quot;)
-
-if (!caseId) {
+if (!caseId || caseId == &quot;NOT FOUND&quot;) {
   prev.setSuccessful(false)
-  prev.setResponseMessage(&quot;No PENDING_CASE_ISSUED case in search results&quot;)
+  prev.setResponseMessage(&quot;Case_id regex did not find CASE_ISSUED case&quot;)
 }
-log.info(&quot;[CaseWorker] Case_id=&quot; + caseId + &quot; regexState=&quot; + regexState + &quot; pendingCount=&quot; + pendingIds.size())
+log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=&quot; + vars.get(&quot;PageToChoose&quot;))
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert search results">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert search results" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1659698930">&quot;results&quot;</stringProp>
               </collectionProp>
@@ -463,85 +398,49 @@ log.info(&quot;[CaseWorker] Case_id=&quot; + caseId + &quot; regexState=&quot; +
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Find Pending case with Upload event" enabled="true">
-            <stringProp name="WhileController.condition">${__groovy(vars.get(&quot;uploadCaseReady&quot;) != &quot;true&quot; &amp;&amp; ((vars.get(&quot;casePickIndex&quot;) ?: &quot;0&quot;) as int) &lt; ((vars.get(&quot;pendingCaseCount&quot;) ?: &quot;0&quot;) as int) &amp;&amp; ((vars.get(&quot;casePickIndex&quot;) ?: &quot;0&quot;) as int) &lt; 8)}</stringProp>
-          </WhileController>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07 GET case">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07 GET case">
-              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-                <collectionProp name="Arguments.arguments"/>
-              </elementProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">experimental</stringProp>
-                    <stringProp name="Header.value">true</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Check upload trigger then advance" enabled="true">
-                <stringProp name="cacheKey">false</stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="script">import groovy.json.JsonSlurper
-
-def idx = (vars.get(&quot;casePickIndex&quot;) ?: &quot;0&quot;) as int
-def caseId = vars.get(&quot;Case_ID&quot;) ?: &quot;&quot;
-def hasUpload = false
-def stateId = &quot;&quot;
-try {
-  def json = new JsonSlurper().parseText(prev.getResponseDataAsString() ?: &quot;{}&quot;)
-  stateId = (json?.state?.id ?: json?.state ?: &quot;&quot;).toString()
-  def triggers = json?.triggers ?: []
-  hasUpload = triggers.any { (it?.id ?: &quot;&quot;).toString() == &quot;caseworkerUploadDocuments&quot; }
-} catch (Exception e) {
-  log.warn(&quot;Check upload trigger failed: &quot; + e.message)
-}
-
-if (hasUpload) {
-  vars.put(&quot;uploadCaseReady&quot;, &quot;true&quot;)
-  vars.put(&quot;Case_id&quot;, caseId)
-  log.info(&quot;[CaseWorker] Using Case_ID=&quot; + caseId + &quot; state=&quot; + stateId + &quot; (upload available)&quot;)
-} else {
-  def ids = (vars.get(&quot;pendingCaseIds&quot;) ?: &quot;&quot;).tokenize(&quot;,&quot;).findAll { it }
-  idx = idx + 1
-  vars.put(&quot;casePickIndex&quot;, String.valueOf(idx))
-  if (idx &lt; ids.size()) {
-    vars.put(&quot;Case_ID&quot;, ids[idx])
-    vars.put(&quot;Case_id&quot;, ids[idx])
-    log.info(&quot;[CaseWorker] Case &quot; + caseId + &quot; state=&quot; + stateId + &quot; has no upload event; next=&quot; + ids[idx])
-  } else {
-    vars.put(&quot;uploadCaseReady&quot;, &quot;true&quot;)
-    prev.setSuccessful(false)
-    prev.setResponseMessage(&quot;Case is in list but none of the Pending Case Issued candidates expose Manage documents: Upload&quot;)
-  }
-}
-</stringProp>
-                <stringProp name="scriptLanguage">groovy</stringProp>
-              </JSR223PostProcessor>
-              <hashTree/>
-            </hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">experimental</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 open case" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Upload_Document" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Upload_Document">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="08 GET event-triggers caseworkerUploadDocuments">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="08 GET event-triggers caseworkerUploadDocuments" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/caseworkerUploadDocuments?ignore-warning=false</stringProp>
@@ -675,7 +574,7 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -684,35 +583,35 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_url">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_url" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_url</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0]._links.self.href</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_binary_url">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_binary_url" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_binary_url</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0]._links.binary.href</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_filename">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_filename" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_filename</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0].originalDocumentName</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_hash">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_hash" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_hash</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0].hashToken</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 documentsv2">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 documentsv2" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -940,6 +839,117 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
             <hashTree/>
           </hashTree>
         </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
