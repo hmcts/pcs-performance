@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CaseWorker_UploadDocument">
-      <stringProp name="TestPlan.comments">Cleaned CaseWorker upload document sanity script</stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CW_SC02_UploadDocument">
+      <stringProp name="TestPlan.comments">CWDocumentUpload (CW_SC02) Manage documents Upload sanity script</stringProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
@@ -37,7 +37,7 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC02_UploadDocument_ThreadGroup">
         <intProp name="ThreadGroup.num_threads">5</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -78,10 +78,10 @@
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - Users" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC02_UploadDocument_CSV_Users" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">caseworker_users.csv</stringProp>
+          <stringProp name="filename">CWDocumentUpload_users.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -90,7 +90,7 @@
           <stringProp name="variableNames">username</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - PageToChoose" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC02_UploadDocument_CSV_PageToChoose" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">PageToChoose.csv</stringProp>
@@ -102,11 +102,11 @@
           <stringProp name="variableNames">PageToChoose</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="01_Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC02_UploadDocument_01_Login">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01 GET /auth/login" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_01_Get_/auth/login">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/auth/login</stringProp>
@@ -119,7 +119,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RegexExtractor csrf" enabled="true">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC02_UploadDocument_Extract_CSRF" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
@@ -129,7 +129,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Enter email" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Enter_Email" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="292990123">Enter your email address</stringProp>
               </collectionProp>
@@ -140,7 +140,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02 POST /enter-email" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_02_/enter-email">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-email</stringProp>
@@ -185,7 +185,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03 GET /enter-password" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_03_Get_/enter-password">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-password</stringProp>
@@ -198,7 +198,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RegexExtractor csrf" enabled="true">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC02_UploadDocument_Extract_CSRF" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
@@ -208,7 +208,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert password page" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Password_Page" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1216985755">password</stringProp>
               </collectionProp>
@@ -219,7 +219,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04 POST /enter-password" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_04_/enter-password">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-password</stringProp>
@@ -254,7 +254,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Decode Password" enabled="true">
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC02_UploadDocument_Decode_Password" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -288,11 +288,11 @@ if (encoded != null) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="02_Open_Case">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC02_UploadDocument_02_Open_Case">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05 GET /api/user/details">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_05_Get_/api/user/details?refreshRoleAssignments=true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/user/details?refreshRoleAssignments=true</stringProp>
@@ -314,7 +314,7 @@ if (encoded != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 user details" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_User_Details" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -325,7 +325,7 @@ if (encoded != null) {
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="06 POST searchCases">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_06_/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;${PageToChoose}">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=WORKBASKET&amp;view=WORKBASKET&amp;${PageToChoose}</stringProp>
@@ -361,8 +361,8 @@ if (encoded != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Case_id">
-              <stringProp name="TestPlan.comments">Random case in Pending Case Issued. Change PENDING_CASE_ISSUED to CASE_ISSUED to match PR #39 pattern.</stringProp>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC02_UploadDocument_Extract_Case_Id" enabled="true">
+              <stringProp name="TestPlan.comments">CWDocumentUpload: pick CASE_ISSUED case from workbasket search results.</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">Case_id</stringProp>
               <stringProp name="RegexExtractor.regex">case_id&quot;\s*:\s*&quot;([^&quot;]+)&quot;[\s\S]*?&quot;\[STATE\]&quot;\s*:\s*&quot;CASE_ISSUED</stringProp>
@@ -372,7 +372,7 @@ if (encoded != null) {
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Map Case_id to Case_ID">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC02_UploadDocument_Map_Case_Id" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -382,12 +382,12 @@ if (!caseId || caseId == &quot;NOT FOUND&quot;) {
   prev.setSuccessful(false)
   prev.setResponseMessage(&quot;Case_id regex did not find CASE_ISSUED case&quot;)
 }
-log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=&quot; + vars.get(&quot;PageToChoose&quot;))
+log.info(&quot;[CWDocumentUpload] Regex Case_id=&quot; + caseId + &quot; PageToChoose=&quot; + vars.get(&quot;PageToChoose&quot;))
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert search results" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Search_Results" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1659698930">&quot;results&quot;</stringProp>
               </collectionProp>
@@ -398,7 +398,7 @@ log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="07 GET case">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_07_/data/internal/cases/${Case_ID}">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -424,7 +424,7 @@ log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 open case" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Open_Case" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -436,11 +436,11 @@ log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="03_Upload_Document">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC02_UploadDocument_03_Upload_Document">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="08 GET event-triggers caseworkerUploadDocuments" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_08_Start_/data/internal/cases/${Case_ID}/event-triggers/caseworkerUploadDocuments?ignore-warning=false">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/caseworkerUploadDocuments?ignore-warning=false</stringProp>
@@ -466,14 +466,14 @@ log.info(&quot;[CaseWorker] Regex Case_id=&quot; + caseId + &quot; PageToChoose=
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor event_token" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC02_UploadDocument_Extract_Event_Token" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">event_token</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.event_token</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Store trigger fields" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC02_UploadDocument_Store_Trigger_Fields" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -517,7 +517,7 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Manage documents Upload" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Start_Upload" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1248853412">Manage documents: Upload</stringProp>
               </collectionProp>
@@ -528,7 +528,7 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="09 POST /documentsv2" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_09_/documentsv2">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/documentsv2</stringProp>
@@ -583,35 +583,35 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_url" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC02_UploadDocument_Extract_Doc_Url" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_url</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0]._links.self.href</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_binary_url" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC02_UploadDocument_Extract_Doc_Binary_Url" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_binary_url</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0]._links.binary.href</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_filename" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC02_UploadDocument_Extract_Doc_Filename" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_filename</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0].originalDocumentName</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor doc_hash" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC02_UploadDocument_Extract_Doc_Hash" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">doc_hash</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.documents[0].hashToken</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 documentsv2" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Upload_File" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -622,7 +622,7 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10 POST validate uploadADocument" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_10_/data/case-types/PCS/validate?pageId=caseworkerUploadDocumentsuploadADocument">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=caseworkerUploadDocumentsuploadADocument</stringProp>
@@ -641,7 +641,7 @@ vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build uploadValidateBody" enabled="true">
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC02_UploadDocument_Build_Upload_Body" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -743,7 +743,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 validate" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Validate_Upload" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -754,7 +754,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11 POST create event" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_11_/data/cases/${Case_ID}/events">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/cases/${Case_ID}/events</stringProp>
@@ -790,7 +790,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 201 events" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Submit_Upload" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49587">201</stringProp>
               </collectionProp>
@@ -801,7 +801,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="12 GET case after upload" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_12_/data/internal/cases/${Case_ID}">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -827,7 +827,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200 case after upload" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC02_UploadDocument_Assert_Case_After_Upload" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -839,7 +839,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
             <hashTree/>
           </hashTree>
         </hashTree>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View_Results_Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -876,7 +876,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate_Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -913,7 +913,7 @@ vars.put(&quot;uploadEventBody&quot;, JsonOutput.toJson(eventBody))
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary_Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
