@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -224,7 +226,7 @@
         <stringProp name="filename">~/ResultTree-NEW${resultFileName}.jmx</stringProp>
       </ResultCollector>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userdetails">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userdetails" enabled="true">
         <stringProp name="filename">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir() + File.separator +&quot;userdetails_makeAClaim_feePay.csv&quot;)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">username,password</stringProp>
@@ -310,7 +312,7 @@
         <stringProp name="filename">~/Aggregate-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
@@ -385,8 +387,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-
-
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/external/config/ui/" enabled="true">
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
@@ -1394,7 +1394,6 @@ vars.put(&quot;password&quot;, decodedPwd);
 log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
-
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="enter passsword-142" enabled="false">
             <stringProp name="TestPlan.comments">Detected a redirect from the previous sample</stringProp>
@@ -5186,7 +5185,6 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
@@ -10191,6 +10189,37 @@ vars.put(&quot;CASEID&quot;, vars.get(&quot;id&quot;) ?: &quot;&quot;)
                 <stringProp name="TestPlan.comments">415.00</stringProp>
               </RegexExtractor>
               <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug log fee amount" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="script">// #region agent log
+import groovy.json.JsonOutput
+try {
+  def body = prev.getResponseDataAsString() ?: &quot;&quot;
+  def fee = vars.get(&quot;Fee_amount1&quot;) ?: &quot;&quot;
+  def line = JsonOutput.toJson([
+    sessionId: &quot;fd1cc2&quot;, runId: &quot;post-fix&quot;, hypothesisId: &quot;A&quot;,
+    location: &quot;CUI_LR_SC01.jmx:paymentgroups&quot;,
+    message: &quot;fee-amount-extract&quot;,
+    data: [
+      httpCode: prev.getResponseCode(),
+      bodyLen: body.length(),
+      feeAmount: fee,
+      feeIsDefault: fee.contains(&quot;NOT FOUND&quot;),
+      hasCalculatedAmount: body.contains(&quot;calculated_amount&quot;),
+      hasFeeAmount: body.contains(&quot;fee_amount&quot;),
+      hasMemoLine: body.contains(&quot;memo_line&quot;),
+      bodyPreview: body.take(350).replaceAll(&quot;[\\r\\n]&quot;, &quot; &quot;)
+    ],
+    timestamp: System.currentTimeMillis()
+  ])
+  new File(&quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-fd1cc2.log&quot;).append(line + &quot;\n&quot;)
+} catch (Exception ignored) {}
+// #endregion</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click on Service Request-240" enabled="true">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
@@ -10276,13 +10305,42 @@ vars.put(&quot;CASEID&quot;, vars.get(&quot;id&quot;) ?: &quot;&quot;)
                 <stringProp name="Sample.scope">all</stringProp>
               </RegexExtractor>
               <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug log service ref" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="script">// #region agent log
+import groovy.json.JsonOutput
+try {
+  def body = prev.getResponseDataAsString() ?: &quot;&quot;
+  def ref = vars.get(&quot;Refrerncx&quot;) ?: &quot;&quot;
+  def line = JsonOutput.toJson([
+    sessionId: &quot;fd1cc2&quot;, runId: &quot;post-fix&quot;, hypothesisId: &quot;B&quot;,
+    location: &quot;CUI_LR_SC01.jmx:case-payment-orders&quot;,
+    message: &quot;service-request-extract&quot;,
+    data: [
+      httpCode: prev.getResponseCode(),
+      bodyLen: body.length(),
+      ref: ref,
+      refIsDefault: (ref == &quot;FAIL&quot;),
+      hasOrderReference: body.contains(&quot;orderReference&quot;),
+      bodyPreview: body.take(350).replaceAll(&quot;[\\r\\n]&quot;, &quot; &quot;)
+    ],
+    timestamp: System.currentTimeMillis()
+  ])
+  new File(&quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-fd1cc2.log&quot;).append(line + &quot;\n&quot;)
+} catch (Exception ignored) {}
+// #endregion</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
             </hashTree>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_40_Click_PayNow" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_40_Click_PayNow">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -10406,8 +10464,57 @@ vars.put(&quot;CASEID&quot;, vars.get(&quot;id&quot;) ?: &quot;&quot;)
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug log pba accounts" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="script">// #region agent log
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+try {
+  def body = prev.getResponseDataAsString() ?: &quot;&quot;
+  def csvAccount = vars.get(&quot;Accounts&quot;) ?: &quot;&quot;
+  def liveAccounts = []
+  def keys = []
+  try {
+    def parsed = new JsonSlurper().parseText(body)
+    def org = (parsed instanceof Map) ? (parsed.organisationEntityResponse ?: parsed) : [:]
+    if (org instanceof Map) {
+      keys = org.keySet().collect { it.toString() }
+      def raw = org.paymentAccount ?: org.paymentAccounts ?: org.pbaAccounts ?: org.account_number
+      if (raw instanceof List) liveAccounts = raw.collect { it.toString() }
+      else if (raw) liveAccounts = [raw.toString()]
+    }
+  } catch (Exception ignored) {}
+  if (liveAccounts) {
+    def chosen = liveAccounts.contains(csvAccount) ? csvAccount : liveAccounts[0]
+    vars.put(&quot;Accounts&quot;, chosen)
+  }
+  def line = JsonOutput.toJson([
+    sessionId: &quot;fd1cc2&quot;, runId: &quot;post-fix2&quot;, hypothesisId: &quot;F&quot;,
+    location: &quot;CUI_LR_SC01.jmx:pba-accounts&quot;,
+    message: &quot;pba-accounts-result&quot;,
+    data: [
+      httpCode: prev.getResponseCode(),
+      bodyLen: body.length(),
+      orgKeys: keys,
+      liveAccounts: liveAccounts,
+      csvAccount: csvAccount,
+      csvInLive: liveAccounts.contains(csvAccount),
+      accountsAfter: vars.get(&quot;Accounts&quot;) ?: &quot;&quot;,
+      username: vars.get(&quot;username&quot;) ?: &quot;&quot;,
+      bodyPreview: body.take(450).replaceAll(&quot;[\\r\\\\n]&quot;, &quot; &quot;)
+    ],
+    timestamp: System.currentTimeMillis()
+  ])
+  new File(&quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-fd1cc2.log&quot;).append(line + &quot;\n&quot;)
+} catch (Exception ignored) {}
+// #endregion</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -10491,7 +10598,7 @@ vars.put(&quot;CASEID&quot;, vars.get(&quot;id&quot;) ?: &quot;&quot;)
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_42_Confirm Payment" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_42_Confirm Payment">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -10659,8 +10766,41 @@ vars.put(&quot;CASEID&quot;, vars.get(&quot;id&quot;) ?: &quot;&quot;)
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug log confirm payment" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="script">// #region agent log
+import groovy.json.JsonOutput
+try {
+  def body = prev.getResponseDataAsString() ?: &quot;&quot;
+  def tok = vars.get(&quot;TokenConfrimx&quot;) ?: &quot;&quot;
+  def line = JsonOutput.toJson([
+    sessionId: &quot;fd1cc2&quot;, runId: &quot;post-fix&quot;, hypothesisId: &quot;A-C-D-E&quot;,
+    location: &quot;CUI_LR_SC01.jmx:ConfirmPayment-248&quot;,
+    message: &quot;pba-payment-result&quot;,
+    data: [
+      httpCode: prev.getResponseCode(),
+      success: prev.isSuccessful(),
+      bodyLen: body.length(),
+      bodyPreview: body.take(400).replaceAll(&quot;[\\r\\n]&quot;, &quot; &quot;),
+      feeAmount: vars.get(&quot;Fee_amount1&quot;) ?: &quot;&quot;,
+      csvAccount: vars.get(&quot;Accounts&quot;) ?: &quot;&quot;,
+      ref: vars.get(&quot;Refrerncx&quot;) ?: &quot;&quot;,
+      tokenIsFail: (tok == &quot;FAIL&quot;),
+      tokenLen: tok.length(),
+      username: vars.get(&quot;username&quot;) ?: &quot;&quot;
+    ],
+    timestamp: System.currentTimeMillis()
+  ])
+  new File(&quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-fd1cc2.log&quot;).append(line + &quot;\n&quot;)
+} catch (Exception ignored) {}
+// #endregion</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">15000</stringProp>
             </ConstantTimer>
             <hashTree/>
