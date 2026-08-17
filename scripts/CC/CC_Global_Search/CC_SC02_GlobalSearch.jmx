@@ -5,8 +5,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
@@ -26,7 +24,7 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="baseDir" elementType="Argument">
             <stringProp name="Argument.name">baseDir</stringProp>
@@ -161,7 +159,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -199,7 +197,7 @@
         <stringProp name="TestPlan.comments">~/TreeResult-NEW${resultFileName}.xml</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -237,7 +235,7 @@
         <stringProp name="TestPlan.comments">~/Aggregate-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC_SC02_GlobalSearch">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC_SC02_GlobalSearch" enabled="true">
         <stringProp name="TestPlan.comments">Need staff users and case ids  (Already Created - PCS-CTSC-Admin401@hmcts.net - PCS-CTSC-Admin600@hmcts.net)</stringProp>
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
@@ -250,7 +248,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="GlobalSearchUserDetails">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="GlobalSearchUserDetails" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">GlobalSearch.csv</stringProp>
@@ -267,7 +265,7 @@
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-761" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-761">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -339,7 +337,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/external/config/ui/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/external/config/ui/">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -393,7 +391,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/api/configuration" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/api/configuration">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -451,7 +449,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-786" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-786">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -501,7 +499,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/auth/isAuthenticated" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/auth/isAuthenticated">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -551,7 +549,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/auth/login" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/auth/login">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
@@ -643,7 +641,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/o/authorize" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/o/authorize">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -780,7 +778,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/login" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="launch-/login">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -918,12 +916,12 @@
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_02_CTSCAdmin_CaseListView" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_02_CTSCAdmin_CaseListView">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-826" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-826">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
@@ -1096,7 +1094,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler">
             <stringProp name="BeanShellSampler.query">log.info(&quot;Property password = [&quot; + props.get(&quot;password&quot;) + &quot;]&quot;);</stringProp>
           </BeanShellSampler>
           <hashTree>
@@ -1105,7 +1103,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/oauth2/callback" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/oauth2/callback">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
@@ -1201,7 +1199,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-829" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-829">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1263,7 +1261,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/external/config/ui/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/external/config/ui/">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1317,7 +1315,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/api/configuration" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/api/configuration">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1375,7 +1373,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-851" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-851">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1425,7 +1423,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/auth/isAuthenticated" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/auth/isAuthenticated">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1475,7 +1473,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/api/user/details" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/api/user/details">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1533,7 +1531,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-856" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-856">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1641,7 +1639,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-880" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-880">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">gateway-ccd.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1707,7 +1705,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/aggregated/caseworkers/:uid/jurisdictions" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-/aggregated/caseworkers/:uid/jurisdictions">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1788,7 +1786,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-889" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-889">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1854,7 +1852,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-886" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-886">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">gateway-ccd.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1921,11 +1919,11 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <RunTime guiclass="RunTimeGui" testclass="RunTime" testname="Runtime Controller">
+        <RunTime guiclass="RunTimeGui" testclass="RunTime" testname="Runtime Controller" enabled="true">
           <stringProp name="RunTime.seconds">1800</stringProp>
         </RunTime>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_03_Search">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC02_GlobalSearch_03_Search" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -2087,7 +2085,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-629" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-629">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2145,7 +2143,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-632" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search-632">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2203,7 +2201,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/globalSearch/services" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/globalSearch/services">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2293,7 +2291,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-654" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-654">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2351,7 +2349,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/aggregated/caseworkers/:uid/jurisdictions" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/aggregated/caseworkers/:uid/jurisdictions">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2433,7 +2431,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-/api/globalsearch/results" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search again-/api/globalsearch/results">
               <stringProp name="TestPlan.comments">${Caseid}${selectedCaseId}</stringProp>
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
@@ -2510,7 +2508,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -2570,7 +2568,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-671" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-671">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2624,7 +2622,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/data/internal/cases/${selectedCaseId}" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/data/internal/cases/${selectedCaseId}">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2693,7 +2691,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/api/wa-supported-jurisdiction/get" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/api/wa-supported-jurisdiction/get">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2747,7 +2745,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/api/role-access/roles/manageLabellingRoleAssignment/${selectedCaseId}" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/api/role-access/roles/manageLabellingRoleAssignment/${selectedCaseId}">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2819,13 +2817,13 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/activity/cases/$${selectedCaseId}/activity" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click View-/activity/cases/$${selectedCaseId}/activity">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">gateway-ccd.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/activity/cases/$${selectedCaseId}/activity</stringProp>
+              <stringProp name="HTTPSampler.path">/activity/cases/${selectedCaseId}/activity</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <stringProp name="HTTPSampler.method">OPTIONS</stringProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -3147,7 +3145,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">20000</stringProp>
             </ConstantTimer>
             <hashTree/>
