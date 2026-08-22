@@ -1,0 +1,132 @@
+[2026-08-22 08:44:42.648] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | starting iteration 1
+[2026-08-22 08:44:42.650] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 08:44:46.508] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=1 | Case_ID=1781543488003742 | starting iteration 1
+[2026-08-22 08:44:46.509] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=1 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 08:44:48.098] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | starting iteration 1
+[2026-08-22 08:44:48.099] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 08:44:48.857] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor502@test.com | iteration=1 | Case_ID=1781543676495023 | starting iteration 1
+[2026-08-22 08:44:48.857] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor502@test.com | iteration=1 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
+[2026-08-22 08:44:49.713] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor505@test.com | iteration=1 | Case_ID=1781543779294067 | starting iteration 1
+[2026-08-22 08:44:49.714] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor505@test.com | iteration=1 | Case_ID=1781543779294067 | case 1781543779294067 not found in search results (count=0)
+[2026-08-22 08:45:55.791] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor506@test.com | iteration=2 | Case_ID=1781543813547249 | starting iteration 2
+[2026-08-22 08:45:55.794] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor506@test.com | iteration=2 | Case_ID=1781543813547249 | case 1781543813547249 not found in search results (count=0)
+[2026-08-22 08:46:15.892] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor507@test.com | iteration=2 | Case_ID=1781543848286052 | starting iteration 2
+[2026-08-22 08:46:15.893] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor507@test.com | iteration=2 | Case_ID=1781543848286052 | case 1781543848286052 not found in search results (count=0)
+[2026-08-22 08:46:16.464] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor508@test.com | iteration=2 | Case_ID=1781543882341987 | starting iteration 2
+[2026-08-22 08:46:16.465] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor508@test.com | iteration=2 | Case_ID=1781543882341987 | case 1781543882341987 not found in search results (count=0)
+[2026-08-22 08:46:17.775] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor509@test.com | iteration=2 | Case_ID=1781543917111207 | starting iteration 2
+[2026-08-22 08:46:17.776] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor509@test.com | iteration=2 | Case_ID=1781543917111207 | case 1781543917111207 not found in search results (count=0)
+[2026-08-22 08:46:18.593] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor510@test.com | iteration=2 | Case_ID=1781543951347246 | starting iteration 2
+[2026-08-22 08:46:18.594] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor510@test.com | iteration=2 | Case_ID=1781543951347246 | case 1781543951347246 not found in search results (count=0)
+[2026-08-22 08:47:24.935] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor511@test.com | iteration=3 | Case_ID=1781543985601493 | starting iteration 3
+[2026-08-22 08:47:24.938] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor511@test.com | iteration=3 | Case_ID=1781543985601493 | case 1781543985601493 not found in search results (count=0)
+[2026-08-22 08:47:44.925] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor516@test.com | iteration=3 | Case_ID=1781544158380022 | starting iteration 3
+[2026-08-22 08:47:44.926] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor516@test.com | iteration=3 | Case_ID=1781544158380022 | case 1781544158380022 not found in search results (count=0)
+[2026-08-22 08:47:46.404] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor517@test.com | iteration=3 | Case_ID=1781544193377546 | starting iteration 3
+[2026-08-22 08:47:46.404] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor512@test.com | iteration=3 | Case_ID=1781544019909373 | starting iteration 3
+[2026-08-22 08:47:46.404] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor517@test.com | iteration=3 | Case_ID=1781544193377546 | case 1781544193377546 not found in search results (count=0)
+[2026-08-22 08:47:46.404] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor512@test.com | iteration=3 | Case_ID=1781544019909373 | case 1781544019909373 not found in search results (count=0)
+[2026-08-22 08:47:48.009] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor518@test.com | iteration=3 | Case_ID=1781544227640000 | starting iteration 3
+[2026-08-22 08:47:48.010] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor518@test.com | iteration=3 | Case_ID=1781544227640000 | case 1781544227640000 not found in search results (count=0)
+[2026-08-22 08:48:54.453] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor501@test.com | iteration=4 | Case_ID=1781545023744755 | starting iteration 4
+[2026-08-22 08:48:54.453] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor501@test.com | iteration=4 | Case_ID=1781545023744755 | case 1781545023744755 not found in search results (count=0)
+[2026-08-22 08:49:15.048] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor506@test.com | iteration=4 | Case_ID=1781545193968515 | starting iteration 4
+[2026-08-22 08:49:15.048] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor506@test.com | iteration=4 | Case_ID=1781545193968515 | case 1781545193968515 not found in search results (count=0)
+[2026-08-22 08:49:15.422] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor502@test.com | iteration=4 | Case_ID=1781545057967454 | starting iteration 4
+[2026-08-22 08:49:15.422] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor502@test.com | iteration=4 | Case_ID=1781545057967454 | case 1781545057967454 not found in search results (count=0)
+[2026-08-22 08:49:15.995] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor505@test.com | iteration=4 | Case_ID=1781545159497681 | starting iteration 4
+[2026-08-22 08:49:15.996] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor505@test.com | iteration=4 | Case_ID=1781545159497681 | case 1781545159497681 not found in search results (count=0)
+[2026-08-22 08:49:16.607] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor507@test.com | iteration=4 | Case_ID=1781545228119290 | starting iteration 4
+[2026-08-22 08:49:16.608] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor507@test.com | iteration=4 | Case_ID=1781545228119290 | case 1781545228119290 not found in search results (count=0)
+[2026-08-22 08:50:22.610] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor508@test.com | iteration=5 | Case_ID=1781545263054790 | starting iteration 5
+[2026-08-22 08:50:22.612] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor508@test.com | iteration=5 | Case_ID=1781545263054790 | case 1781545263054790 not found in search results (count=0)
+[2026-08-22 08:50:43.817] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor509@test.com | iteration=5 | Case_ID=1781545297367960 | starting iteration 5
+[2026-08-22 08:50:43.818] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor509@test.com | iteration=5 | Case_ID=1781545297367960 | case 1781545297367960 not found in search results (count=0)
+[2026-08-22 08:50:44.462] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor510@test.com | iteration=5 | Case_ID=1781545331652112 | starting iteration 5
+[2026-08-22 08:50:44.463] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor510@test.com | iteration=5 | Case_ID=1781545331652112 | case 1781545331652112 not found in search results (count=0)
+[2026-08-22 08:50:44.966] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor511@test.com | iteration=5 | Case_ID=1781545366302633 | starting iteration 5
+[2026-08-22 08:50:44.967] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor511@test.com | iteration=5 | Case_ID=1781545366302633 | case 1781545366302633 not found in search results (count=0)
+[2026-08-22 08:50:45.014] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor512@test.com | iteration=5 | Case_ID=1781545400727381 | starting iteration 5
+[2026-08-22 08:50:45.014] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor512@test.com | iteration=5 | Case_ID=1781545400727381 | case 1781545400727381 not found in search results (count=0)
+[2026-08-22 09:06:23.196] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=6 | Case_ID=1785427224332506 | starting iteration 6
+[2026-08-22 09:06:23.197] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=6 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 09:06:25.051] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=6 | Case_ID=1781543488003742 | starting iteration 6
+[2026-08-22 09:06:25.052] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=6 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 09:06:26.974] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor501@test.com | iteration=6 | Case_ID=1781543642080834 | starting iteration 6
+[2026-08-22 09:06:26.974] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor501@test.com | iteration=6 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 09:06:29.217] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor502@test.com | iteration=6 | Case_ID=1781543676495023 | starting iteration 6
+[2026-08-22 09:06:29.218] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor502@test.com | iteration=6 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
+[2026-08-22 09:06:30.938] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor505@test.com | iteration=6 | Case_ID=1781543779294067 | starting iteration 6
+[2026-08-22 09:06:30.939] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor505@test.com | iteration=6 | Case_ID=1781543779294067 | case 1781543779294067 not found in search results (count=0)
+[2026-08-22 09:07:36.304] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor506@test.com | iteration=7 | Case_ID=1781543813547249 | starting iteration 7
+[2026-08-22 09:07:36.304] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor506@test.com | iteration=7 | Case_ID=1781543813547249 | case 1781543813547249 not found in search results (count=0)
+[2026-08-22 09:07:54.050] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor507@test.com | iteration=7 | Case_ID=1781543848286052 | starting iteration 7
+[2026-08-22 09:07:54.051] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor507@test.com | iteration=7 | Case_ID=1781543848286052 | case 1781543848286052 not found in search results (count=0)
+[2026-08-22 09:07:57.669] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor508@test.com | iteration=7 | Case_ID=1781543882341987 | starting iteration 7
+[2026-08-22 09:07:57.670] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor508@test.com | iteration=7 | Case_ID=1781543882341987 | case 1781543882341987 not found in search results (count=0)
+[2026-08-22 09:07:58.341] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor509@test.com | iteration=7 | Case_ID=1781543917111207 | starting iteration 7
+[2026-08-22 09:07:58.342] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor509@test.com | iteration=7 | Case_ID=1781543917111207 | case 1781543917111207 not found in search results (count=0)
+[2026-08-22 09:07:59.527] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor510@test.com | iteration=7 | Case_ID=1781543951347246 | starting iteration 7
+[2026-08-22 09:07:59.528] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor510@test.com | iteration=7 | Case_ID=1781543951347246 | case 1781543951347246 not found in search results (count=0)
+[2026-08-22 09:09:05.443] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor511@test.com | iteration=8 | Case_ID=1781543985601493 | starting iteration 8
+[2026-08-22 09:09:05.444] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor511@test.com | iteration=8 | Case_ID=1781543985601493 | case 1781543985601493 not found in search results (count=0)
+[2026-08-22 09:09:22.187] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor512@test.com | iteration=8 | Case_ID=1781544019909373 | starting iteration 8
+[2026-08-22 09:09:22.188] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor512@test.com | iteration=8 | Case_ID=1781544019909373 | case 1781544019909373 not found in search results (count=0)
+[2026-08-22 09:09:26.610] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor516@test.com | iteration=8 | Case_ID=1781544158380022 | starting iteration 8
+[2026-08-22 09:09:26.611] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor516@test.com | iteration=8 | Case_ID=1781544158380022 | case 1781544158380022 not found in search results (count=0)
+[2026-08-22 09:09:26.824] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor517@test.com | iteration=8 | Case_ID=1781544193377546 | starting iteration 8
+[2026-08-22 09:09:26.825] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor517@test.com | iteration=8 | Case_ID=1781544193377546 | case 1781544193377546 not found in search results (count=0)
+[2026-08-22 09:09:27.747] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor518@test.com | iteration=8 | Case_ID=1781544227640000 | starting iteration 8
+[2026-08-22 09:09:27.748] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor518@test.com | iteration=8 | Case_ID=1781544227640000 | case 1781544227640000 not found in search results (count=0)
+[2026-08-22 09:10:35.432] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor501@test.com | iteration=9 | Case_ID=1781545023744755 | starting iteration 9
+[2026-08-22 09:10:35.433] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor501@test.com | iteration=9 | Case_ID=1781545023744755 | case 1781545023744755 not found in search results (count=0)
+[2026-08-22 09:10:51.880] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=9 | Case_ID=1781545057967454 | starting iteration 9
+[2026-08-22 09:10:51.881] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=9 | Case_ID=1781545057967454 | case 1781545057967454 not found in search results (count=0)
+[2026-08-22 09:10:55.451] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor506@test.com | iteration=9 | Case_ID=1781545193968515 | starting iteration 9
+[2026-08-22 09:10:55.452] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor506@test.com | iteration=9 | Case_ID=1781545193968515 | case 1781545193968515 not found in search results (count=0)
+[2026-08-22 09:10:56.242] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor505@test.com | iteration=9 | Case_ID=1781545159497681 | starting iteration 9
+[2026-08-22 09:10:56.243] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor505@test.com | iteration=9 | Case_ID=1781545159497681 | case 1781545159497681 not found in search results (count=0)
+[2026-08-22 09:10:56.283] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor507@test.com | iteration=9 | Case_ID=1781545228119290 | starting iteration 9
+[2026-08-22 09:10:56.283] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor507@test.com | iteration=9 | Case_ID=1781545228119290 | case 1781545228119290 not found in search results (count=0)
+[2026-08-22 09:12:04.433] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor508@test.com | iteration=10 | Case_ID=1781545263054790 | starting iteration 10
+[2026-08-22 09:12:04.434] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor508@test.com | iteration=10 | Case_ID=1781545263054790 | case 1781545263054790 not found in search results (count=0)
+[2026-08-22 09:12:20.563] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor509@test.com | iteration=10 | Case_ID=1781545297367960 | starting iteration 10
+[2026-08-22 09:12:20.564] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor509@test.com | iteration=10 | Case_ID=1781545297367960 | case 1781545297367960 not found in search results (count=0)
+[2026-08-22 09:12:25.054] [INFO] event=RUN_START | thread=CC-Notes 5-3 | user=pcs-solicitor512@test.com | iteration=10 | Case_ID=1781545400727381 | starting iteration 10
+[2026-08-22 09:12:25.055] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-3 | user=pcs-solicitor512@test.com | iteration=10 | Case_ID=1781545400727381 | case 1781545400727381 not found in search results (count=0)
+[2026-08-22 09:12:25.322] [INFO] event=RUN_START | thread=CC-Notes 5-5 | user=pcs-solicitor511@test.com | iteration=10 | Case_ID=1781545366302633 | starting iteration 10
+[2026-08-22 09:12:25.322] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-5 | user=pcs-solicitor511@test.com | iteration=10 | Case_ID=1781545366302633 | case 1781545366302633 not found in search results (count=0)
+[2026-08-22 09:12:25.533] [INFO] event=RUN_START | thread=CC-Notes 5-4 | user=pcs-solicitor510@test.com | iteration=10 | Case_ID=1781545331652112 | starting iteration 10
+[2026-08-22 09:12:25.534] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-4 | user=pcs-solicitor510@test.com | iteration=10 | Case_ID=1781545331652112 | case 1781545331652112 not found in search results (count=0)
+[2026-08-22 09:35:57.335] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | starting iteration 1
+[2026-08-22 09:35:57.337] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 09:37:12.962] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | starting iteration 2
+[2026-08-22 09:37:12.963] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 09:37:35.166] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | starting iteration 1
+[2026-08-22 09:37:35.167] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 09:39:05.976] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | starting iteration 2
+[2026-08-22 09:39:05.976] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
+[2026-08-22 10:58:52.953] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | starting iteration 1
+[2026-08-22 10:58:52.957] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 11:00:07.610] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | starting iteration 2
+[2026-08-22 11:00:07.612] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 11:00:34.613] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | starting iteration 1
+[2026-08-22 11:00:34.615] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 11:02:05.525] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | starting iteration 2
+[2026-08-22 11:02:05.527] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
+[2026-08-22 11:21:40.876] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | starting iteration 1
+[2026-08-22 11:21:40.881] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 11:22:55.455] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | starting iteration 2
+[2026-08-22 11:22:55.456] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 11:23:20.735] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | starting iteration 1
+[2026-08-22 11:23:20.737] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 11:24:50.208] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | starting iteration 2
+[2026-08-22 11:24:50.209] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
+[2026-08-22 12:14:59.768] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | starting iteration 1
+[2026-08-22 12:14:59.771] [PASS] event=CASE_FOUND | thread=CC-Notes 5-1 | user=pcs-solicitor141@test.com | iteration=1 | Case_ID=1785427224332506 | Case_ID=1785427224332506
+[2026-08-22 12:16:14.154] [INFO] event=RUN_START | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | starting iteration 2
+[2026-08-22 12:16:14.158] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-1 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543488003742 | case 1781543488003742 not found in search results (count=0)
+[2026-08-22 12:16:39.694] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | starting iteration 1
+[2026-08-22 12:16:39.695] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor501@test.com | iteration=1 | Case_ID=1781543642080834 | case 1781543642080834 not found in search results (count=0)
+[2026-08-22 12:18:09.005] [INFO] event=RUN_START | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | starting iteration 2
+[2026-08-22 12:18:09.007] [FAIL] event=CASE_SEARCH | thread=CC-Notes 5-2 | user=pcs-solicitor502@test.com | iteration=2 | Case_ID=1781543676495023 | case 1781543676495023 not found in search results (count=0)
