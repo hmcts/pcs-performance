@@ -81453,7 +81453,6 @@ if (encoded != null) {
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="script">import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
 
 def body = prev.getResponseDataAsString() ?: &quot;&quot;
 def results = []
@@ -81476,9 +81475,6 @@ if (!issued) {
     prev.setSuccessful(false)
     prev.setResponseMessage(&quot;No CASE_ISSUED case in workbasket (count=&quot; + results.size() + &quot;)&quot;)
     vars.put(&quot;Case_ID&quot;, &quot;&quot;)
-    // #region agent log
-    try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Map_Case_Id&quot;,message:&quot;no-case-issued&quot;,hypothesisId:&quot;A&quot;,runId:&quot;post-fix&quot;,data:[resultCount:results.size()]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-    // #endregion
     return
 }
 
@@ -81487,9 +81483,6 @@ def caseId = issued[0]
 vars.put(&quot;Case_id&quot;, caseId)
 vars.put(&quot;Case_ID&quot;, caseId)
 log.info(&quot;[CWDocumentUpload] Picked CASE_ISSUED Case_ID=&quot; + caseId + &quot; from &quot; + issued.size() + &quot;/&quot; + results.size())
-// #region agent log
-try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Map_Case_Id&quot;,message:&quot;picked-case-issued&quot;,hypothesisId:&quot;A&quot;,runId:&quot;post-fix&quot;,data:[Case_ID:caseId,issuedCount:issued.size(),resultCount:results.size()]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
@@ -81632,9 +81625,6 @@ vars.put(&quot;docTypeLabel&quot;, matched?.label?.toString() ?: wantedCode)
 vars.put(&quot;docTypeListJson&quot;, JsonOutput.toJson(docTypeItems))
 vars.put(&quot;docTypeFieldId&quot;, typeFieldId)
 vars.put(&quot;uploadStartOk&quot;, (status == &quot;200&quot; &amp;&amp; body.contains(&quot;Manage documents: Upload&quot;)) ? &quot;true&quot; : &quot;false&quot;)
-// #region agent log
-try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Start_Upload&quot;,message:&quot;start-upload-result&quot;,hypothesisId:&quot;B&quot;,runId:&quot;post-fix&quot;,data:[code:status,Case_ID:vars.get(&quot;Case_ID&quot;),uploadStartOk:vars.get(&quot;uploadStartOk&quot;),titleOk:body.contains(&quot;Manage documents: Upload&quot;),tokenLen:(vars.get(&quot;event_token&quot;)?:&quot;&quot;).length()]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
@@ -81987,10 +81977,6 @@ vars.put(&quot;uploadedStoredFilename&quot;, storedName)
 def ok = prev.isSuccessful() &amp;&amp; prev.getResponseCode() == &quot;201&quot;
 vars.put(&quot;uploadSucceeded&quot;, ok ? &quot;true&quot; : &quot;false&quot;)
 log.info(&quot;[CWRemove] uploaded collectionId=&quot; + collectionId + &quot; file=&quot; + storedName + &quot; uploadSucceeded=&quot; + vars.get(&quot;uploadSucceeded&quot;))
-
-// #region agent log
-try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(groovy.json.JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Submit_Upload&quot;,message:&quot;upload-submit-result&quot;,hypothesisId:&quot;C&quot;,runId:&quot;post-fix&quot;,data:[code:prev.getResponseCode(),success:prev.isSuccessful(),Case_ID:vars.get(&quot;Case_ID&quot;),uploadedCollectionId:vars.get(&quot;uploadedCollectionId&quot;),uploadedStoredFilename:vars.get(&quot;uploadedStoredFilename&quot;),uploadSucceeded:vars.get(&quot;uploadSucceeded&quot;)]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
@@ -82252,10 +82238,6 @@ vars.put(&quot;emptyFlagsJson&quot;, JsonOutput.toJson(emptyFlags))
 vars.put(&quot;amendReady&quot;, &quot;true&quot;)
 
 log.info(&quot;[CWAmend] case=&quot; + vars.get(&quot;Case_ID&quot;) + &quot; folder=&quot; + chosen.code + &quot; doc=&quot; + picked.label + &quot; how=&quot; + pickHow)
-
-// #region agent log
-try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(groovy.json.JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Amend_Pick&quot;,message:&quot;amend-pick-result&quot;,hypothesisId:&quot;D&quot;,runId:&quot;post-fix&quot;,data:[code:prev.getResponseCode(),success:prev.isSuccessful(),Case_ID:vars.get(&quot;Case_ID&quot;),amendReady:vars.get(&quot;amendReady&quot;),selectedDocCode:vars.get(&quot;selectedDocCode&quot;),selectedDocLabel:vars.get(&quot;selectedDocLabel&quot;),selectedFolderCode:vars.get(&quot;selectedFolderCode&quot;)]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
@@ -82796,10 +82778,6 @@ vars.put(&quot;removeDocListJson&quot;, JsonOutput.toJson(items))
 vars.put(&quot;removeEmptyFlagsJson&quot;, JsonOutput.toJson(emptyFlags))
 
 log.info(&quot;[CWRemove] case=&quot; + vars.get(&quot;Case_ID&quot;) + &quot; folder=&quot; + chosen.code + &quot; doc=&quot; + picked.label + &quot; how=&quot; + pickHow)
-
-// #region agent log
-try { new File(&quot;/Users/priyadharsini/Desktop/Gatling/.cursor/debug-6433cf.log&quot;).append(groovy.json.JsonOutput.toJson([sessionId:&quot;6433cf&quot;,timestamp:System.currentTimeMillis(),location:&quot;CWDocumentUploadAmendRemove.jmx:Remove_Pick&quot;,message:&quot;remove-pick-result&quot;,hypothesisId:&quot;E&quot;,runId:&quot;post-fix&quot;,data:[code:prev.getResponseCode(),success:prev.isSuccessful(),Case_ID:vars.get(&quot;Case_ID&quot;),removeDocCode:vars.get(&quot;removeDocCode&quot;),removeDocLabel:vars.get(&quot;removeDocLabel&quot;),removeFolderCode:vars.get(&quot;removeFolderCode&quot;)]]) + &quot;\n&quot;) } catch (Exception ignored) {}
-// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
