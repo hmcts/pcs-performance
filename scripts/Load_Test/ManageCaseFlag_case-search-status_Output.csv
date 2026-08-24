@@ -1,0 +1,9 @@
+timestamp,username,Case_ID,status,reason
+2026-08-24 21:05:53,PCS-CTSC-Admin411@hmcts.net,1785832380747340,PASS,found_by_case_id
+2026-08-24 21:07:31,PCS-CTSC-Admin412@hmcts.net,1785832419342717,PASS,found_by_case_id
+2026-08-24 21:08:17,PCS-CTSC-Admin413@hmcts.net,1785832458004350,PASS,found_by_case_id
+2026-08-24 21:09:56,PCS-CTSC-Admin414@hmcts.net,1785832500630004,PASS,found_by_case_id
+2026-08-24 21:10:42,PCS-CTSC-Admin415@hmcts.net,1785832539552963,PASS,found_by_case_id
+2026-08-24 21:12:20,PCS-CTSC-Admin416@hmcts.net,1785832579992335,FAIL,search_http_fail_Non HTTP response code: java.net.SocketException
+2026-08-24 21:14:59,PCS-CTSC-Admin401@hmcts.net,1785338581731083,PASS,found_by_case_id
+2026-08-24 21:16:38,PCS-CTSC-Admin401@hmcts.net,1785338581731083,PASS,found_by_case_id
