@@ -320,7 +320,7 @@
         <stringProp name="TestPlan.comments">~/Aggregate-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MakeAClaim" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MakeAClaim" enabled="true">
         <intProp name="ThreadGroup.num_threads">8</intProp>
         <intProp name="ThreadGroup.ramp_time">80</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -10622,7 +10622,7 @@ fw.close();</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="global search" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="global search" enabled="true">
         <intProp name="ThreadGroup.num_threads">4</intProp>
         <intProp name="ThreadGroup.ramp_time">400</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -14868,7 +14868,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="citizen dashboard" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="citizen dashboard" enabled="true">
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -17426,7 +17426,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_setAside" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_setAside" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -23011,7 +23011,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Adjoun" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Adjoun" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -29393,7 +29393,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Somethingelse" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Somethingelse">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">700</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -34977,7 +34977,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI-CC-Chnage_case_State" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI-CC-Chnage_case_State" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">400</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -39567,7 +39567,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_CC_Caseworker-AddReviewDate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_CC_Caseworker-AddReviewDate" enabled="true">
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">300</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -44013,7 +44013,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">400</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -48367,7 +48367,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing-Payment" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing-Payment" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">500</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -53266,7 +53266,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI- CancelCaseHearing" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI- CancelCaseHearing" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">300</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -57382,7 +57382,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-CancelCaseHearing-Payment" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-CancelCaseHearing-Payment" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">500</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -61844,7 +61844,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_RespondToClaim" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_RespondToClaim" enabled="true">
         <intProp name="ThreadGroup.num_threads">7</intProp>
         <intProp name="ThreadGroup.ramp_time">70</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
