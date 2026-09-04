@@ -2,7 +2,7 @@
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="RefreshUser_PerfTest">
-      <stringProp name="TestPlan.comments">From Refresh user in Perf Test.har. Login as possessionsUser2@test.com, open Manage Org Users, match Filter by name emails, then refresh each user via ogd-flow update.</stringProp>
+      <stringProp name="TestPlan.comments">From All three issue handling.har. Login, open Users, match CSV emails. For each: GET user-details and capture PENDING; if details load, Change; if Case management (pui-case-manager) unchecked then check it, else submit; PUT ogd-flow/update; capture SUCCESS or SORRY.</stringProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
@@ -21,10 +21,11 @@
             <stringProp name="Argument.value">possessionsUser2@test.com</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="encodedPassword" elementType="Argument">
-            <stringProp name="Argument.name">encodedPassword</stringProp>
-            <stringProp name="Argument.value">UGEkJHcwcmQ=</stringProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">Pa$$w0rd</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Hardcoded login password</stringProp>
           </elementProp>
           <elementProp name="Thinktime" elementType="Argument">
             <stringProp name="Argument.name">Thinktime</stringProp>
@@ -43,8 +44,6 @@
           </elementProp>
         </collectionProp>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="RefreshUser_ThreadGroup">
@@ -58,13 +57,13 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">30000</intProp>
           <intProp name="HTTPSampler.response_timeout">120000</intProp>
           <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
@@ -75,7 +74,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -101,12 +100,12 @@
           <stringProp name="variableNames">email</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="RefreshUser_01_Login">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="RefreshUser_01_Login" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/login">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/login" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/auth/login</stringProp>
@@ -140,7 +139,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-email">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-email" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-email</stringProp>
@@ -186,7 +185,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-password">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-password" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/enter-password</stringProp>
@@ -255,17 +254,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Decode_Password" enabled="true">
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Decode_Password" enabled="false">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
-              <stringProp name="script">import java.util.Base64
-String encoded = vars.get(&quot;encodedPassword&quot;)
-if (encoded != null) {
-    String password = new String(Base64.getDecoder().decode(encoded), &quot;UTF-8&quot;)
-    password = password.replace(&apos;\u00A0&apos;, &apos;&apos;).trim()
-    vars.put(&quot;password&quot;, password)
-}
+              <stringProp name="script">// Disabled. Password is hardcoded in Test Plan User Defined Variables as password.
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PreProcessor>
@@ -289,7 +282,7 @@ if (encoded != null) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime_After_Login">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime_After_Login" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
@@ -313,7 +306,7 @@ if (encoded != null) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract_XSRF">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract_XSRF" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">true</stringProp>
               <stringProp name="RegexExtractor.refname">xsrf</stringProp>
               <stringProp name="RegexExtractor.regex">XSRF-TOKEN=([^;]+)</stringProp>
@@ -323,7 +316,7 @@ if (encoded != null) {
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Copy_XSRF_From_Cookies">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Copy_XSRF_From_Cookies" enabled="true">
               <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -341,14 +334,14 @@ if (cm != null) {
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Users_Page">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Users_Page" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-951801963">Manage organisation</stringProp>
+                <stringProp name="49586">200</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
+              <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -365,7 +358,7 @@ if (cm != null) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -378,7 +371,7 @@ if (cm != null) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Config_UI">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Config_UI" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -402,7 +395,7 @@ if (cm != null) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -444,7 +437,7 @@ if (cm != null) {
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Logged_In_User" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="653269455">possessionsUser2@test.com</stringProp>
+                <stringProp name="1685720944">${username}</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -453,7 +446,7 @@ if (cm != null) {
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/healthCheck">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/healthCheck" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/healthCheck?path=%2Fusers</stringProp>
@@ -480,7 +473,7 @@ if (cm != null) {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/allUserListWithoutRoles">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/allUserListWithoutRoles" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/allUserListWithoutRoles</stringProp>
@@ -589,19 +582,18 @@ def csvEscape = { s -&gt;
 def stamp = vars.get(&quot;outputStamp&quot;) ?: new Date().format(&quot;yyyyMMdd-HHmmss&quot;)
 vars.put(&quot;outputStamp&quot;, stamp)
 def dir = new File(FileServer.getFileServer().getBaseDir())
-def header = &quot;email,userId,httpCode,result,message\n&quot;
+def header = &quot;email,userId,idamStatus,cmaState,httpCode,result,message\n&quot;
 def allFile = new File(dir, &quot;output_RefreshUser_&quot; + stamp + &quot;.csv&quot;)
 def successFile = new File(dir, &quot;output_RefreshUser_success_&quot; + stamp + &quot;.csv&quot;)
 def sorryFile = new File(dir, &quot;output_RefreshUser_sorry_&quot; + stamp + &quot;.csv&quot;)
 [allFile, successFile, sorryFile].each { f -&gt; if (!f.exists()) f.write(header) }
 missing.each { em -&gt;
-    def line = csvEscape(em) + &quot;,,,&quot; + &quot;SORRY&quot; + &quot;,&quot; + csvEscape(&quot;Sorry: email not found in Filter by name / user list&quot;) + &quot;\n&quot;
+    def line = csvEscape(em) + &quot;,,,,,&quot; + &quot;SORRY&quot; + &quot;,&quot; + csvEscape(&quot;Sorry: email not found in Filter by name / user list&quot;) + &quot;\n&quot;
     allFile.append(line)
     sorryFile.append(line)
 }
 if (n == 0) {
-    prev.setSuccessful(false)
-    prev.setResponseMessage(&quot;None of the Filter by name emails were in /api/allUserListWithoutRoles&quot;)
+    log.warn(&quot;[RefreshUser] none of the CSV emails are in this org user list; Open Users API succeeded, ForEach will skip&quot;)
 }
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
@@ -701,7 +693,7 @@ if (xsrf == null || xsrf == &quot;NOT_FOUND&quot; || xsrf.trim().isEmpty()) {
           <boolProp name="ForeachController.useSeparator">true</boolProp>
         </ForeachController>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="RefreshUser_04_Refresh_Selected_User">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="RefreshUser_04_Refresh_Selected_User" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -749,31 +741,125 @@ for (int i = 1; i &lt;= count; i++) {
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Build_Refresh_Payload" enabled="true">
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Build_Change_Submit_Payload" enabled="true">
                 <stringProp name="cacheKey">false</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="script">import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
+import org.apache.jmeter.services.FileServer
+
+def writeRow = { email, userId, idamStatus, cmaState, httpCode, result, message -&gt;
+    def csvEscape = { s -&gt;
+        def t = (s ?: &quot;&quot;).toString().replace(&quot;\r&quot;, &quot; &quot;).replace(&quot;\n&quot;, &quot; &quot;)
+        if (t.contains(&quot;,&quot;) || t.contains(&quot;\&quot;&quot;)) {
+            return &quot;\&quot;&quot; + t.replace(&quot;\&quot;&quot;, &quot;\&quot;\&quot;&quot;) + &quot;\&quot;&quot;
+        }
+        return t
+    }
+    def stamp = vars.get(&quot;outputStamp&quot;) ?: new Date().format(&quot;yyyyMMdd-HHmmss&quot;)
+    vars.put(&quot;outputStamp&quot;, stamp)
+    def dir = new File(FileServer.getFileServer().getBaseDir())
+    def header = &quot;email,userId,idamStatus,cmaState,httpCode,result,message\n&quot;
+    def allFile = new File(dir, &quot;output_RefreshUser_&quot; + stamp + &quot;.csv&quot;)
+    def successFile = new File(dir, &quot;output_RefreshUser_success_&quot; + stamp + &quot;.csv&quot;)
+    def sorryFile = new File(dir, &quot;output_RefreshUser_sorry_&quot; + stamp + &quot;.csv&quot;)
+    [allFile, successFile, sorryFile].each { f -&gt; if (!f.exists()) f.write(header) }
+    def line = csvEscape(email) + &quot;,&quot; + csvEscape(userId) + &quot;,&quot; + csvEscape(idamStatus) + &quot;,&quot; + csvEscape(cmaState) + &quot;,&quot; + csvEscape(httpCode) + &quot;,&quot; + result + &quot;,&quot; + csvEscape(message) + &quot;\n&quot;
+    allFile.append(line)
+    if (result == &quot;SUCCESS&quot;) {
+        successFile.append(line)
+    } else {
+        sorryFile.append(line)
+    }
+}
+
+vars.put(&quot;doSubmit&quot;, &quot;false&quot;)
+vars.put(&quot;refreshPayload&quot;, &quot;{}&quot;)
+vars.put(&quot;idamStatus&quot;, &quot;&quot;)
+vars.put(&quot;cmaState&quot;, &quot;&quot;)
 
 def body = prev.getResponseDataAsString() ?: &quot;&quot;
+def httpCode = prev.getResponseCode() ?: &quot;&quot;
+def lower = body.toLowerCase()
+def emailGuess = vars.get(&quot;refreshEmail&quot;) ?: &quot;&quot;
+def uidGuess = vars.get(&quot;userId&quot;) ?: &quot;&quot;
+
+if (httpCode != &quot;200&quot; || lower.contains(&quot;sorry&quot;) || lower.contains(&quot;&lt;html&quot;)) {
+    prev.setSuccessful(false)
+    def msg = lower.contains(&quot;sorry&quot;) ? body.replaceAll(&quot;\\s+&quot;, &quot; &quot;).take(250) : (&quot;User details did not load: HTTP &quot; + httpCode)
+    writeRow(emailGuess, uidGuess, &quot;&quot;, &quot;&quot;, httpCode, &quot;SORRY&quot;, msg)
+    log.warn(&quot;[RefreshUser] details not through email=&quot; + emailGuess + &quot; code=&quot; + httpCode)
+    return
+}
+
 def parsed
 try {
     parsed = new JsonSlurper().parseText(body)
 } catch (Exception e) {
     prev.setSuccessful(false)
     prev.setResponseMessage(&quot;user-details is not JSON: &quot; + e.message)
-    vars.put(&quot;refreshPayload&quot;, &quot;{}&quot;)
+    writeRow(emailGuess, uidGuess, &quot;&quot;, &quot;&quot;, httpCode, &quot;SORRY&quot;, &quot;user-details is not JSON: &quot; + e.message)
     return
 }
 
 def u = (parsed.users &amp;&amp; parsed.users.size() &gt; 0) ? parsed.users[0] : [:]
-def userId = (u.userIdentifier ?: vars.get(&quot;userId&quot;) ?: &quot;&quot;).toString()
-def email = (u.email ?: vars.get(&quot;refreshEmail&quot;) ?: &quot;&quot;).toString()
+if (!u) {
+    prev.setSuccessful(false)
+    writeRow(emailGuess, uidGuess, &quot;&quot;, &quot;&quot;, httpCode, &quot;SORRY&quot;, &quot;user-details returned no user&quot;)
+    return
+}
+
+def userId = (u.userIdentifier ?: uidGuess).toString()
+def email = (u.email ?: emailGuess).toString()
 def firstName = (u.firstName ?: &quot;&quot;).toString()
 def lastName = (u.lastName ?: &quot;&quot;).toString()
-def status = (u.idamStatus ?: &quot;ACTIVE&quot;).toString()
+def status = (u.idamStatus ?: &quot;&quot;).toString()
 def existing = (u.userAccessTypes ?: []) as List
+def existingRoles = (u.roles ?: []) as List
+def roleNames = existingRoles.collect { it instanceof Map ? (it.name ?: &quot;&quot;).toString() : it.toString() }
+def cmaChecked = roleNames.any { it.equalsIgnoreCase(&quot;pui-case-manager&quot;) }
+def cmaState = cmaChecked ? &quot;CHECKED&quot; : &quot;UNCHECKED&quot;
+
+vars.put(&quot;refreshEmail&quot;, email)
+vars.put(&quot;idamStatus&quot;, status)
+vars.put(&quot;cmaState&quot;, cmaState)
+
+log.info(&quot;[RefreshUser] details through email=&quot; + email + &quot; idamStatus=&quot; + status + &quot; cma=&quot; + cmaState)
+
+def cmaRoles = [
+    &quot;pui-case-manager&quot;,
+    &quot;caseworker&quot;,
+    &quot;caseworker-divorce&quot;,
+    &quot;caseworker-divorce-solicitor&quot;,
+    &quot;caseworker-divorce-financialremedy&quot;,
+    &quot;caseworker-divorce-financialremedy-solicitor&quot;,
+    &quot;caseworker-probate&quot;,
+    &quot;caseworker-ia&quot;,
+    &quot;caseworker-probate-solicitor&quot;,
+    &quot;caseworker-publiclaw&quot;,
+    &quot;caseworker-ia-legalrep-solicitor&quot;,
+    &quot;caseworker-publiclaw-solicitor&quot;,
+    &quot;caseworker-civil&quot;,
+    &quot;caseworker-civil-solicitor&quot;,
+    &quot;caseworker-employment&quot;,
+    &quot;caseworker-employment-legalrep-solicitor&quot;,
+    &quot;caseworker-privatelaw&quot;,
+    &quot;caseworker-privatelaw-solicitor&quot;,
+    &quot;caseworker-pcs&quot;,
+    &quot;caseworker-pcs-solicitor&quot;
+]
+def rolesAdd = []
+if (!cmaChecked) {
+    cmaRoles.each { name -&gt;
+        if (!roleNames.any { it.equalsIgnoreCase(name) }) {
+            rolesAdd.add([name: name])
+        }
+    }
+    log.info(&quot;[RefreshUser] Case management unchecked; will check then submit for &quot; + email)
+} else {
+    log.info(&quot;[RefreshUser] Case management already checked; submit only for &quot; + email)
+}
 
 def required = [
     [jurisdictionId: &quot;BEFTA_MASTER&quot;, organisationProfileId: &quot;SOLICITOR_PROFILE&quot;, accessTypeId: &quot;BEFTA_SOLICITOR_1&quot;, enabled: true],
@@ -781,7 +867,6 @@ def required = [
     [jurisdictionId: &quot;PCS&quot;, organisationProfileId: &quot;SOLICITOR_PROFILE&quot;, accessTypeId: &quot;solicitor-org-defendant-access&quot;, enabled: true],
     [jurisdictionId: &quot;PCS&quot;, organisationProfileId: &quot;SOLICITOR_PROFILE&quot;, accessTypeId: &quot;duty-advisor-access&quot;, enabled: false]
 ]
-
 def merged = []
 def seen = [] as Set
 existing.each { at -&gt;
@@ -820,15 +905,14 @@ def payload = [
         firstName: firstName,
         lastName: lastName,
         idamStatus: status,
-        rolesAdd: [],
+        rolesAdd: rolesAdd,
         rolesDelete: [],
         userAccessTypes: merged
     ],
     orgIdsPayload: orgIds
 ]
 vars.put(&quot;refreshPayload&quot;, JsonOutput.toJson(payload))
-vars.put(&quot;refreshEmail&quot;, email)
-log.info(&quot;[RefreshUser] built refresh payload for &quot; + email + &quot; id=&quot; + userId)
+vars.put(&quot;doSubmit&quot;, &quot;true&quot;)
 </stringProp>
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PostProcessor>
@@ -844,30 +928,36 @@ log.info(&quot;[RefreshUser] built refresh payload for &quot; + email + &quot; i
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /api/ogd-flow/update" enabled="true">
-              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.path">/api/ogd-flow/update/${userId}</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <stringProp name="HTTPSampler.method">PUT</stringProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">${refreshPayload}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-            </HTTPSamplerProxy>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="RefreshUser_05_If_Details_OK_Then_Change_Submit" enabled="true">
+              <stringProp name="IfController.condition">${__groovy(&quot;true&quot;.equals(vars.get(&quot;doSubmit&quot;)),)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
             <hashTree>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Copy_XSRF_Cookie" enabled="true">
-                <stringProp name="cacheKey">false</stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="script">def xsrf = vars.get(&quot;xsrf&quot;)
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /api/ogd-flow/update" enabled="true">
+                <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.path">/api/ogd-flow/update/${userId}</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${refreshPayload}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Copy_XSRF_Cookie" enabled="true">
+                  <stringProp name="cacheKey">false</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">def xsrf = vars.get(&quot;xsrf&quot;)
 if (xsrf == null || xsrf == &quot;NOT_FOUND&quot; || xsrf.trim().isEmpty()) {
     def cm = sampler.getCookieManager()
     if (cm != null) {
@@ -881,49 +971,50 @@ if (xsrf == null || xsrf == &quot;NOT_FOUND&quot; || xsrf.trim().isEmpty()) {
     }
 }
 </stringProp>
-                <stringProp name="scriptLanguage">groovy</stringProp>
-              </JSR223PreProcessor>
-              <hashTree/>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Origin</stringProp>
-                    <stringProp name="Header.value">https://manage-org.perftest.platform.hmcts.net</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://manage-org.perftest.platform.hmcts.net/</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">x-xsrf-token</stringProp>
-                    <stringProp name="Header.value">${xsrf}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Refresh_User" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Write_Refresh_Output" enabled="true">
-                <stringProp name="cacheKey">false</stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="script">import org.apache.jmeter.services.FileServer
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PreProcessor>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Origin</stringProp>
+                      <stringProp name="Header.value">https://manage-org.perftest.platform.hmcts.net</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">https://manage-org.perftest.platform.hmcts.net/</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">x-xsrf-token</stringProp>
+                      <stringProp name="Header.value">${xsrf}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert_Refresh_User" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="49586">200</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.custom_message"></stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Write_Refresh_Output" enabled="true">
+                  <stringProp name="cacheKey">false</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+import org.apache.jmeter.services.FileServer
 
 def csvEscape = { s -&gt;
     def t = (s ?: &quot;&quot;).toString().replace(&quot;\r&quot;, &quot; &quot;).replace(&quot;\n&quot;, &quot; &quot;)
@@ -935,7 +1026,7 @@ def csvEscape = { s -&gt;
 
 def stamp = vars.get(&quot;outputStamp&quot;) ?: new Date().format(&quot;yyyyMMdd-HHmmss&quot;)
 def dir = new File(FileServer.getFileServer().getBaseDir())
-def header = &quot;email,userId,httpCode,result,message\n&quot;
+def header = &quot;email,userId,idamStatus,cmaState,httpCode,result,message\n&quot;
 def allFile = new File(dir, &quot;output_RefreshUser_&quot; + stamp + &quot;.csv&quot;)
 def successFile = new File(dir, &quot;output_RefreshUser_success_&quot; + stamp + &quot;.csv&quot;)
 def sorryFile = new File(dir, &quot;output_RefreshUser_sorry_&quot; + stamp + &quot;.csv&quot;)
@@ -943,38 +1034,62 @@ def sorryFile = new File(dir, &quot;output_RefreshUser_sorry_&quot; + stamp + &q
 
 def email = vars.get(&quot;refreshEmail&quot;) ?: &quot;&quot;
 def userId = vars.get(&quot;userId&quot;) ?: &quot;&quot;
-def code = prev.getResponseCode() ?: &quot;&quot;
+def idamStatus = vars.get(&quot;idamStatus&quot;) ?: &quot;&quot;
+def cmaState = vars.get(&quot;cmaState&quot;) ?: &quot;&quot;
+def httpCode = prev.getResponseCode() ?: &quot;&quot;
 def body = prev.getResponseDataAsString() ?: &quot;&quot;
 def lower = body.toLowerCase()
+
+def idamFail = false
+def idamMsg = &quot;&quot;
+try {
+    def parsed = new JsonSlurper().parseText(body)
+    def check = { resp -&gt;
+        if (resp == null) return
+        def c = (resp.idamStatusCode ?: &quot;&quot;).toString().trim()
+        def m = (resp.idamMessage ?: &quot;&quot;).toString()
+        def ml = m.toLowerCase()
+        if (c &amp;&amp; c != &quot;200&quot;) {
+            idamFail = true
+            idamMsg = (idamMsg ? idamMsg + &quot;; &quot; : &quot;&quot;) + m + &quot; (&quot; + c + &quot;)&quot;
+        } else if (ml.contains(&quot;sorry&quot;) || ml.contains(&quot;not found&quot;) || ml.contains(&quot;unable&quot;) || ml.contains(&quot;problem&quot;)) {
+            idamFail = true
+            idamMsg = (idamMsg ? idamMsg + &quot;; &quot; : &quot;&quot;) + m
+        }
+    }
+    check(parsed.roleAdditionResponse)
+    check(parsed.roleDeletionResponse)
+    check(parsed.statusUpdateResponse)
+} catch (Exception ignored) {}
+
 def hasSorry = lower.contains(&quot;sorry&quot;)
-def httpOk = prev.isSuccessful() &amp;&amp; code == &quot;200&quot;
+def pendingNote = idamStatus.equalsIgnoreCase(&quot;PENDING&quot;) ? &quot;PENDING user details loaded; Change then submit. &quot; : &quot;&quot;
+def cmaNote = (cmaState == &quot;UNCHECKED&quot;) ? &quot;Case management was unchecked and was checked. &quot; : ((cmaState == &quot;CHECKED&quot;) ? &quot;Case management already checked; submit only. &quot; : &quot;&quot;)
+
 def result
 def message
-if (httpOk &amp;&amp; !hasSorry) {
+if (httpCode == &quot;200&quot; &amp;&amp; !hasSorry &amp;&amp; !idamFail) {
     result = &quot;SUCCESS&quot;
-    message = &quot;User refreshed successfully&quot;
-} else if (hasSorry) {
-    result = &quot;SORRY&quot;
-    def snippet = body.replaceAll(&quot;\\s+&quot;, &quot; &quot;).take(250)
-    message = snippet ?: &quot;Sorry message returned&quot;
+    message = (pendingNote + cmaNote + &quot;User refreshed successfully&quot;).trim()
 } else {
     result = &quot;SORRY&quot;
-    def snippet = (prev.getResponseMessage() ?: &quot;&quot;) + &quot; &quot; + body.replaceAll(&quot;\\s+&quot;, &quot; &quot;).take(200)
-    message = snippet.trim() ?: &quot;Refresh failed&quot;
+    def snippet = idamMsg ?: body.replaceAll(&quot;\\s+&quot;, &quot; &quot;).take(250)
+    message = (pendingNote + cmaNote + (snippet ?: &quot;Refresh failed&quot;)).trim()
 }
 
-def line = csvEscape(email) + &quot;,&quot; + csvEscape(userId) + &quot;,&quot; + csvEscape(code) + &quot;,&quot; + result + &quot;,&quot; + csvEscape(message) + &quot;\n&quot;
+def line = csvEscape(email) + &quot;,&quot; + csvEscape(userId) + &quot;,&quot; + csvEscape(idamStatus) + &quot;,&quot; + csvEscape(cmaState) + &quot;,&quot; + csvEscape(httpCode) + &quot;,&quot; + result + &quot;,&quot; + csvEscape(message) + &quot;\n&quot;
 allFile.append(line)
 if (result == &quot;SUCCESS&quot;) {
     successFile.append(line)
 } else {
     sorryFile.append(line)
 }
-log.info(&quot;[RefreshUser] &quot; + result + &quot; email=&quot; + email + &quot; code=&quot; + code)
+log.info(&quot;[RefreshUser] &quot; + result + &quot; email=&quot; + email + &quot; status=&quot; + idamStatus + &quot; cma=&quot; + cmaState + &quot; code=&quot; + httpCode)
 </stringProp>
-                <stringProp name="scriptLanguage">groovy</stringProp>
-              </JSR223PostProcessor>
-              <hashTree/>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
             </hashTree>
             <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime_After_Refresh" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
