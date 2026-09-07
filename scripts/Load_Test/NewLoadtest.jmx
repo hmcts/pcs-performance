@@ -190,7 +190,7 @@
       </Arguments>
       <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <boolProp name="ResultCollector.error_logging">true</boolProp>
         <objProp>
           <name>saveConfig</name>
           <value class="SampleSaveConfiguration">
@@ -100312,7 +100312,7 @@ log.info(&quot;Cancel HearingId=&quot; + vars.get(&apos;HearingId&apos;))
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments">
             <elementProp name="baseDir" elementType="Argument">
               <stringProp name="Argument.name">baseDir</stringProp>
@@ -100487,7 +100487,7 @@ log.info(&quot;Cancel HearingId=&quot; + vars.get(&apos;HearingId&apos;))
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
           <stringProp name="HTTPSampler.domain">www.example.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -100496,7 +100496,7 @@ log.info(&quot;Cancel HearingId=&quot; + vars.get(&apos;HearingId&apos;))
           <stringProp name="HTTPSampler.implementation"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_Accounts" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_Accounts">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">Fee_PayNow_Userfile_RA.csv</stringProp>
@@ -100508,7 +100508,7 @@ log.info(&quot;Cancel HearingId=&quot; + vars.get(&apos;HearingId&apos;))
           <stringProp name="variableNames">Accounts</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_Claimant" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_Claimant">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">SolicitorClaimantEmail__makeAClaim_feePay_RA.csv</stringProp>
@@ -100520,7 +100520,7 @@ log.info(&quot;Cancel HearingId=&quot; + vars.get(&apos;HearingId&apos;))
           <stringProp name="variableNames">SolicitorClaimantEmail_XUI</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_DefendantSolicitor" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LR_SC01_RentArrears_CSV_DefendantSolicitor">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">DefendantsolicitorEmailRA.csv</stringProp>
