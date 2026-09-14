@@ -1,0 +1,18 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,success,failureMessage,bytes,grpThreads,allThreads,Latency,SampleCount,ErrorCount,Hostname
+1789405601147,1454,EXUI_SC01_NonRA_CreateCase_01_Launch,200,"Number of samples in transaction : 9, number of failing samples : 0",LR_NonRentArrears 2-1,true,,110391,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405601126,1575,EXUI_SC01_RA_CreateCase_01_Launch,200,"Number of samples in transaction : 9, number of failing samples : 0",LR_RentArrears 1-1,true,,110384,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405605715,100,EXUI_SC01_RA_CreateCase_02_EnterEmail,200,"Number of samples in transaction : 2, number of failing samples : 0",LR_RentArrears 1-1,true,,19122,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405605609,328,EXUI_SC01_NonRA_CreateCase_02_EnterEmail,200,"Number of samples in transaction : 2, number of failing samples : 0",LR_NonRentArrears 2-1,true,,19122,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405608943,3896,EXUI_SC01_NonRA_CreateCase_03_EnterPassword,200,"Number of samples in transaction : 25, number of failing samples : 0",LR_NonRentArrears 2-1,true,,248104,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405608822,4164,EXUI_SC01_RA_CreateCase_03_EnterPassword,200,"Number of samples in transaction : 25, number of failing samples : 0",LR_RentArrears 1-1,true,,247272,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405616102,717,EXUI_SC01_RA_CreateCase_04_ClickCreateCaseStart,200,"Number of samples in transaction : 3, number of failing samples : 0",LR_RentArrears 1-1,true,,124597,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405615953,2158,EXUI_SC01_NonRA_CreateCase_04_ClickCreateCaseStart,200,"Number of samples in transaction : 3, number of failing samples : 0",LR_NonRentArrears 2-1,true,,124595,1,2,0,1,0,Scrumconnect-PR-000.local
+1789405619827,493,EXUI_SC01_RA_CreateCase_05_MakeAClaim,200,"Number of samples in transaction : 2, number of failing samples : 0",LR_RentArrears 1-1,true,,7402,2,3,0,1,0,Scrumconnect-PR-000.local
+1789405621117,246,EXUI_SC01_NonRA_CreateCase_05_MakeAClaim,200,"Number of samples in transaction : 2, number of failing samples : 0",LR_NonRentArrears 2-1,true,,7401,1,3,0,1,0,Scrumconnect-PR-000.local
+1789405621119,1670,EXUI_SC01_RA_CreateCase_01_Launch,200,"Number of samples in transaction : 9, number of failing samples : 0",LR_RentArrears 1-2,true,,110385,2,3,0,1,0,Scrumconnect-PR-000.local
+1789405623345,1058,EXUI_SC01_RA_CreateCase_06_PropertyAddress,200,"Number of samples in transaction : 4, number of failing samples : 0",LR_RentArrears 1-1,true,,71036,2,3,0,1,0,Scrumconnect-PR-000.local
+1789405624370,867,EXUI_SC01_NonRA_CreateCase_06_PropertyAddress,200,"Number of samples in transaction : 4, number of failing samples : 0",LR_NonRentArrears 2-1,true,,71037,1,3,0,1,0,Scrumconnect-PR-000.local
+1789405625800,108,EXUI_SC01_RA_CreateCase_02_EnterEmail,200,"Number of samples in transaction : 2, number of failing samples : 0",LR_RentArrears 1-2,true,,19122,2,3,0,1,0,Scrumconnect-PR-000.local
+1789405627410,1642,EXUI_SC01_RA_CreateCase_07_MakeClaimCYA,204,,LR_RentArrears 1-1,true,,205317,2,3,0,1,0,Scrumconnect-PR-000.local
+1789405628243,1435,EXUI_SC01_NonRA_CreateCase_07_MakeClaimCYA,204,,LR_NonRentArrears 2-1,true,,205326,1,5,0,1,0,Scrumconnect-PR-000.local
+1789405628912,2236,EXUI_SC01_RA_CreateCase_03_EnterPassword,Non HTTP response code: java.net.SocketException,,LR_RentArrears 1-2,false,,166533,2,7,0,1,1,Scrumconnect-PR-000.local
