@@ -8016,7 +8016,7 @@ if (token37c == null || token37c.trim().equals(&quot;&quot;)) {
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC01_CreateCase_34_LanguageUsed" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC01_CreateCase_34_LanguageUsed">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -8910,7 +8910,7 @@ fw.close();</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_39_Click_Service_Request">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC02_PayNow_39_Click_Service_Request" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -9605,7 +9605,7 @@ fw.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="global search">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="global search" enabled="true">
         <stringProp name="TestPlan.comments">3 users 400 ramp up 7 loop</stringProp>
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">400</intProp>
@@ -13483,7 +13483,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_setAside">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_setAside" enabled="true">
         <stringProp name="TestPlan.comments">2 users  85 secods ramp up</stringProp>
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">85</intProp>
@@ -16335,7 +16335,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_05_SelectEnterGenAppfrom next step">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_05_SelectEnterGenAppfrom next step" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -16985,7 +16985,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_07_EnterApplicationFee">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_07_EnterApplicationFee" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -17419,7 +17419,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_09_UploadGenApp" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_09_UploadGenApp">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -18807,7 +18807,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_12_ClickHistoryTab">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC04_CW_EnterGenpps_setAside_12_ClickHistoryTab" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -23454,7 +23454,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC05_CW_Genpps_adjourn_08_EnterApplicationFee" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC05_CW_Genpps_adjourn_08_EnterApplicationFee">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -25541,7 +25541,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Somethingelse">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Somethingelse" enabled="true">
         <stringProp name="TestPlan.comments">2 users 100 ramp up</stringProp>
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">100</intProp>
@@ -27307,7 +27307,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_04_SeclectCaseIssuedRecord" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_04_SeclectCaseIssuedRecord">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -28993,7 +28993,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_07_EnterApplicationFee">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_07_EnterApplicationFee" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -29214,7 +29214,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_08_EnterApplcationConcent&amp;Notice" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC06_CW_Genpps_SomethinElse_08_EnterApplcationConcent&amp;Notice">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -34160,7 +34160,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC07_CW_ChangeCaseState_06_AnswerToSelectCaseSatateTochnageTo" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC07_CW_ChangeCaseState_06_AnswerToSelectCaseSatateTochnageTo">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -38958,7 +38958,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC08_CW_AddReviewDate_07_ClickSubmit" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC08_CW_AddReviewDate_07_ClickSubmit">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -39961,7 +39961,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="citizen dashboard">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="citizen dashboard" enabled="true">
         <stringProp name="TestPlan.comments">3 users 60 sec</stringProp>
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">60</intProp>
@@ -41690,7 +41690,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_15_View_Hearing_Documets">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_15_View_Hearing_Documets" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -42064,7 +42064,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_18_Back_To_Dashboard" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_18_Back_To_Dashboard">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -42526,7 +42526,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">80</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -43350,7 +43350,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_05_Click_Ask_The_Court_To_Make_An_Order" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_05_Click_Ask_The_Court_To_Make_An_Order" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -43494,7 +43494,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_06_Select_Ask_To_Adjourn_The_Hearing" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_06_Select_Ask_To_Adjourn_The_Hearing" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -43735,7 +43735,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_07_Start_Now" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_07_Start_Now" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -43969,7 +43969,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_08_Select_Yes_And_Click_Continue" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_08_Select_Yes_And_Click_Continue" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -44210,7 +44210,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_09_Select_I_Need_Help_Paying_The_Fee" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_09_Select_I_Need_Help_Paying_The_Fee" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -44451,7 +44451,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_10_Select_Yes_And_Continue" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_10_Select_Yes_And_Continue" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -44699,7 +44699,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_11_have-the-other-parties-agreed-to-this-application" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_11_have-the-other-parties-agreed-to-this-application" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -44940,7 +44940,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_12_Select_Continue" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_12_Select_Continue">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -45181,7 +45181,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_13_Select_Yes_And_Continue(Upload) " enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_13_Select_Yes_And_Continue(Upload) " enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -45380,7 +45380,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_14_AddDocumnet To Upload(Upload) " enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_14_AddDocumnet To Upload(Upload) " enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -45471,7 +45471,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_15_AddDocumnet_Click Continue" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_15_AddDocumnet_Click Continue" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -45703,7 +45703,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_16_Select_English_Language" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_16_Select_English_Language" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -45944,7 +45944,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_17_Check answer_Submit" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_17_Check answer_Submit" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -46192,7 +46192,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_18_Return_To_claims" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_AdjournCase_18_Return_To_claims" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -46785,7 +46785,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing-Payment">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing-Payment" enabled="true">
         <stringProp name="TestPlan.comments">2 users 45</stringProp>
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">45</intProp>
@@ -50042,7 +50042,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_12_add documnet">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_12_add documnet" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -50832,7 +50832,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_15_pay for your application" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC02_01_AdjournCase_Pay_15_pay for your application">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -52039,7 +52039,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI- CancelCaseHearing" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI- CancelCaseHearing" enabled="true">
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">35</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -58469,7 +58469,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_12_AddDocumnet To Upload(Upload) " enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_12_AddDocumnet To Upload(Upload) ">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -73250,7 +73250,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_55_Clcik_pay_for_counter claim fee">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_55_Clcik_pay_for_counter claim fee" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -73392,7 +73392,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_56_Clcik_Pay_your_fee" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_56_Clcik_Pay_your_fee">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -77314,7 +77314,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AddHearing_05_open record with case issued status" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AddHearing_05_open record with case issued status">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -81287,7 +81287,7 @@ log.info(&quot;Amend HearingId=&quot; + vars.get(&apos;HearingId&apos;))
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_14_clcik edit heraing" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_14_clcik edit heraing">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -81554,7 +81554,7 @@ log.info(&quot;Amend HearingId=&quot; + vars.get(&apos;HearingId&apos;))
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_16_clcik submit">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_16_clcik submit" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -81800,7 +81800,7 @@ log.info(&quot;Amend HearingId=&quot; + vars.get(&apos;HearingId&apos;))
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_17_clcik histry tab" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_AmendHearing_17_clcik histry tab" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -89747,7 +89747,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC05_ManageParties">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC05_ManageParties" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -91742,7 +91742,7 @@ vars.put(&quot;simpleEventBody&quot;, JsonOutput.toJson([
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_RentArrears">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_RentArrears" enabled="true">
         <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">100</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
@@ -101038,12 +101038,12 @@ vars.put(&quot;UsernameSolicitor&quot;, vars.get(&quot;SolicitorClaimantEmail_XU
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_01_S2S_token_PCS_API" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_01_S2S_token_PCS_API">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_S2S_token_PCS-API" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_S2S_token_PCS-API">
             <stringProp name="HTTPSampler.domain">${s2sUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.path">/testing-support/lease</stringProp>
@@ -101180,12 +101180,12 @@ vars.put(&quot;UsernameSolicitor&quot;, vars.get(&quot;SolicitorClaimantEmail_XU
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_03_S2S_token_CCD" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_03_S2S_token_CCD">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_S2S_token_CCD" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_S2S_token_CCD">
             <stringProp name="HTTPSampler.domain">${s2sUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.path">/testing-support/lease</stringProp>
@@ -101229,7 +101229,7 @@ vars.put(&quot;UsernameSolicitor&quot;, vars.get(&quot;SolicitorClaimantEmail_XU
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_IDAM_Claimant" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetPartyID_IDAM_Claimant">
             <stringProp name="HTTPSampler.domain">${IdamApiUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/o/token</stringProp>
@@ -101314,7 +101314,7 @@ vars.put(&quot;UsernameSolicitor&quot;, vars.get(&quot;SolicitorClaimantEmail_XU
           <stringProp name="WhileController.condition">${__groovy(def p = vars.get(&apos;DefendantPartyID&apos;) ?: &apos;&apos;; def n = (vars.get(&apos;ccdPartyRetry&apos;) ?: &apos;0&apos;) as int; def max = (vars.get(&apos;PartyIdMaxRetries&apos;) ?: &apos;8&apos;) as int; def ok = p ==~ /(?i)^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/; return !ok &amp;&amp; n &lt; max)}</stringProp>
         </WhileController>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_05_CCD_Case" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_LR_SC01_RA_GetPartyID_05_CCD_Case">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -102759,12 +102759,12 @@ if (!nocUser) {
 </stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_01_Launch" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_01_Launch">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/login" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/login">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -103467,12 +103467,12 @@ if (!nocUser) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_03_GetNoCQuestions" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_03_GetNoCQuestions">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/user/details" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/user/details">
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/user/details?refreshRoleAssignments=true</stringProp>
@@ -103516,7 +103516,7 @@ if (!nocUser) {
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/isAuthenticated" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/auth/isAuthenticated">
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/auth/isAuthenticated</stringProp>
@@ -103549,7 +103549,7 @@ if (!nocUser) {
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/wa-supported-jurisdiction/get" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/wa-supported-jurisdiction/get">
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/wa-supported-jurisdiction/get</stringProp>
@@ -103637,7 +103637,7 @@ if (!nocUser) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
@@ -103648,7 +103648,7 @@ if (!nocUser) {
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/noc/validateNoCQuestions" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/api/noc/validateNoCQuestions">
             <stringProp name="HTTPSampler.domain">${PcsXUI}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/noc/validateNoCQuestions</stringProp>
@@ -104030,7 +104030,7 @@ SampleResult.setResponseData((&quot;Caseid=&quot; + caseId + &quot; username=&qu
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-now" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start-now">
             <stringProp name="HTTPSampler.domain">${PcsCUIBaseURL}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/case/${Caseid}/respond-to-claim/start-now</stringProp>
@@ -107988,7 +107988,7 @@ if (code != &quot;200&quot;) {
         </CookieManager>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_NonRentArrears">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_NonRentArrears" enabled="true">
         <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
