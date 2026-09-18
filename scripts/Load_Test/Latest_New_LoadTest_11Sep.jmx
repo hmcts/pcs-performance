@@ -308,10 +308,10 @@
       </ResultCollector>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MakeAClaim">
-        <stringProp name="TestPlan.comments">11 users 80 ramp up  -old users were 8 and 80 ramp up </stringProp>
-        <intProp name="ThreadGroup.num_threads">10</intProp>
+        <stringProp name="TestPlan.comments">10 users 80 ramp up used in sanity 18th sep -old users were 8 and 80 ramp up </stringProp>
+        <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">80</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -321,7 +321,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userdetails" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userdetails">
           <stringProp name="filename">userdetails_makeAClaim_feePay.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">username,Accounts</stringProp>
@@ -333,9 +333,9 @@
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">12</stringProp>
-          <stringProp name="TestPlan.comments">12</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
+          <stringProp name="TestPlan.comments">12 -load loop count</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC01_CreateCase_01_Launch" enabled="true">
@@ -5884,7 +5884,7 @@ if (token21N == null || token21N.trim().equals(&quot;&quot;)) {
               </BeanShellPostProcessor>
               <hashTree/>
             </hashTree>
-            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
               <stringProp name="ActionProcessor.duration">${FlowControlAction}</stringProp>
@@ -9476,8 +9476,9 @@ fw.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">25000</stringProp>
+              <stringProp name="TestPlan.comments">25000 -load test pacing</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
@@ -9611,10 +9612,10 @@ fw.close();</stringProp>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="global search">
-        <stringProp name="TestPlan.comments">3 users 400 ramp up 7 loop</stringProp>
-        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <stringProp name="TestPlan.comments">3 users 400 ramp up 7 loop -load test</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">400</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -10724,11 +10725,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">7</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
+          <stringProp name="TestPlan.comments">7 old loop count</stringProp>
         </LoopController>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC03_GlobalSearch_04_CTSCAdmin_CaseListView" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC03_GlobalSearch_04_CTSCAdmin_CaseListView">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -12953,7 +12955,7 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">32000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -13490,9 +13492,9 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_setAside">
         <stringProp name="TestPlan.comments">2 users  85 secods ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">85</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -13514,8 +13516,8 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
           <stringProp name="TestPlan.comments">10 loop</stringProp>
         </LoopController>
         <hashTree>
@@ -18939,7 +18941,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
             </TestAction>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">110000</stringProp>
               <stringProp name="TestPlan.comments">110000 use for load test</stringProp>
             </ConstantTimer>
@@ -19143,10 +19145,10 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Adjoun">
-        <stringProp name="TestPlan.comments">2 users 65 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users 65 ramp up -load test</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">65</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -19168,8 +19170,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
           <stringProp name="TestPlan.comments">10 loop</stringProp>
         </LoopController>
         <hashTree>
@@ -25345,12 +25347,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">110000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC05_CW_Genpps_adjourn_14_Singout" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC05_CW_Genpps_adjourn_14_Singout">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -25549,9 +25551,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_EnterGenapp_Somethingelse">
         <stringProp name="TestPlan.comments">2 users 100 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">100</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -25573,8 +25575,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
           <stringProp name="TestPlan.comments">10 loop for load test</stringProp>
         </LoopController>
         <hashTree>
@@ -31156,9 +31158,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI-CC-Chnage_case_State">
         <stringProp name="TestPlan.comments">2 users 95 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">95</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -31181,7 +31183,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </CSVDataSet>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC07_CW_ChangeCaseState_01_Launch" enabled="true">
@@ -35522,9 +35524,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="XUI_CC_Caseworker-AddReviewDate">
         <stringProp name="TestPlan.comments">3 users 85 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">85</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -35546,8 +35548,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <stringProp name="variableNames">PageToChoose</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">7</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
           <stringProp name="TestPlan.comments">7 loop for load test</stringProp>
         </LoopController>
         <hashTree>
@@ -39969,9 +39971,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="citizen dashboard">
         <stringProp name="TestPlan.comments">3 users 60 sec</stringProp>
-        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">60</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -40552,8 +40554,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">35</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">110</stringProp>
           <stringProp name="TestPlan.comments">35 loop need for load test</stringProp>
         </LoopController>
         <hashTree>
@@ -42381,8 +42383,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">10000</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+              <stringProp name="ConstantTimer.delay">25000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
@@ -46793,9 +46795,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-AdjournCaseHearing-Payment">
         <stringProp name="TestPlan.comments">2 users 45</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">45</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -46805,7 +46807,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Cards" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Cards">
           <stringProp name="filename">Cards.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">Cards</stringProp>
@@ -47746,7 +47748,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </hashTree>
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
           <stringProp name="TestPlan.comments">7 loop</stringProp>
         </LoopController>
         <hashTree>
@@ -56165,9 +56167,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-CancelCaseHearing-Payment">
         <stringProp name="TestPlan.comments">2 users 80 </stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">80</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -56618,8 +56620,8 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_03_Access_Your_Case" enabled="true">
@@ -60629,14 +60631,14 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_RespondToClaim">
         <stringProp name="TestPlan.comments">11 users 11 loop 700 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">11</intProp>
+        <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">700</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">11</stringProp>
+          <stringProp name="LoopController.loops">60</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -61400,7 +61402,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Continue-49">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
             <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -62401,7 +62403,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_08_Defendant_Name_Confirmation" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC05_RespondToClaim_08_Defendant_Name_Confirmation">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -62471,7 +62473,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-2010840520">Your name</stringProp>
               </collectionProp>
@@ -63001,7 +63003,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1144507660">Your postal address</stringProp>
               </collectionProp>
@@ -73736,7 +73738,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
@@ -73812,7 +73814,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
@@ -74066,7 +74068,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
@@ -74078,7 +74080,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CONFIRM PAYMENT-190" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CONFIRM PAYMENT-190">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">card.payments.service.gov.uk</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -74175,8 +74177,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CONFIRM PAYMENT-191" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CONFIRM PAYMENT-191">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">card.payments.service.gov.uk</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -74191,7 +74197,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -74240,6 +74246,10 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CONFIRM PAYMENT-193">
             <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
@@ -74255,7 +74265,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -74305,8 +74315,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-            <stringProp name="ConstantTimer.delay">20000</stringProp>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <stringProp name="ConstantTimer.delay">250000</stringProp>
+            <stringProp name="TestPlan.comments">20000 -old pacing</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>
@@ -74628,9 +74639,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CaseWorker_AddHearing">
         <stringProp name="TestPlan.comments">10 users 200 seconds</stringProp>
-        <intProp name="ThreadGroup.num_threads">10</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -74640,9 +74651,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">15</stringProp>
-          <stringProp name="TestPlan.comments">20 loop</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">60</stringProp>
+          <stringProp name="TestPlan.comments">20 loop , 15 loop old one</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_019_CaseWorker_HearingManagement_01_launch application" enabled="true">
@@ -82880,9 +82891,10 @@ log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
         <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC04_UploadAmendRemoveDocument_ThreadGroup">
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users  95 threads</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">95</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -83182,8 +83194,8 @@ if (encoded != null) {
           <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
         </TestAction>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC02_UploadDocument_05_Get_User_Details">
@@ -85024,9 +85036,10 @@ log.info(&quot;[CWRemove] submit id=&quot; + docId + &quot; file=&quot; + docLab
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC-Manage Case Flag">
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users 90 seconds</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">90</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -85135,7 +85148,7 @@ if (sharedUser) { vars.put(&quot;username&quot;, sharedUser); username = sharedU
         </JSR223Sampler>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_01_Launch" enabled="true">
@@ -86584,17 +86597,17 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
               </hashTree>
             </hashTree>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
-              <stringProp name="ConstantTimer.delay">5000</stringProp>
+              <stringProp name="ConstantTimer.delay">150000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC-CaseLink">
-        <stringProp name="TestPlan.comments">NOTE: Run Remove link before running</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users 95 old</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">95</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -87040,8 +87053,8 @@ try {
           </TestAction>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_CaseLink_03_Search_Workbasket" enabled="true">
@@ -87716,7 +87729,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
               <hashTree/>
             </hashTree>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
-              <stringProp name="ConstantTimer.delay">180000</stringProp>
+              <stringProp name="ConstantTimer.delay">250000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
@@ -87731,7 +87744,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC05_ManageParties">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -89710,8 +89723,8 @@ vars.put(&quot;simpleEventBody&quot;, JsonOutput.toJson([
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">50000</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+              <stringProp name="ConstantTimer.delay">250000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
@@ -89724,9 +89737,10 @@ vars.put(&quot;simpleEventBody&quot;, JsonOutput.toJson([
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC-Create Case Flag">
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users 45 seconds</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">45</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -90158,8 +90172,8 @@ try {
           </ConstantTimer>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_CreateCaseFlag_03_Search_Case List" enabled="true">
@@ -90941,7 +90955,7 @@ if (ready) {
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
-                <stringProp name="ConstantTimer.delay">80000</stringProp>
+                <stringProp name="ConstantTimer.delay">250000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -90949,9 +90963,10 @@ if (ready) {
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CC-Notes">
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <stringProp name="TestPlan.comments">2 users</stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">105</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -91295,7 +91310,7 @@ if (encoded != null) {
         </TestAction>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_AddCaseNote_03_Search_Case_By_Reference" enabled="true">
@@ -91855,19 +91870,19 @@ if (ok &amp;&amp; !props.get(completeKey)) {
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_NOC_CUI_RA">
         <stringProp name="TestPlan.comments">Sanity 2 threads x 2 loops = 4 unique unused cases from NOC_Input_LR_RA.csv. Password=${Password}.</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">100</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments">
             <elementProp name="PcsCUIBaseURL" elementType="Argument">
               <stringProp name="Argument.name">PcsCUIBaseURL</stringProp>
@@ -91922,7 +91937,7 @@ if (ok &amp;&amp; !props.get(completeKey)) {
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
@@ -92409,7 +92424,7 @@ if (!nocUser) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_02_Login" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="EXUI_SC03_RA_NOC_02_Login">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -92501,7 +92516,7 @@ if (!nocUser) {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-password" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/enter-password">
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -92530,7 +92545,7 @@ if (!nocUser) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -92588,7 +92603,7 @@ if (!nocUser) {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NOC enter-password" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NOC enter-password">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -92625,7 +92640,7 @@ if (!nocUser) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Sec-Fetch-Mode" elementType="Header">
                   <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -93637,7 +93652,7 @@ if (code in [&apos;200&apos;,&apos;302&apos;,&apos;303&apos;]) { prev.setSuccess
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/CaseID/respond-to-claim/start-now" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/CaseID/respond-to-claim/start-now">
             <stringProp name="HTTPSampler.domain">${PcsCUIBaseURL}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/case/${Caseid}/respond-to-claim/start-now</stringProp>
@@ -96337,14 +96352,14 @@ walk(prev)
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LR_NOC_CUI_NonRA">
         <stringProp name="TestPlan.comments">Sanity 2 threads x 2 loops = 4 unique unused cases from NOC_Input_LR_NonRA.csv. Password=${Password}.</stringProp>
-        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">100</intProp>
-        <longProp name="ThreadGroup.duration">1800</longProp>
+        <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -96422,7 +96437,7 @@ walk(prev)
           <boolProp name="stopThread">true</boolProp>
         </CSVDataSet>
         <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Prepare NOC case and answers" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Prepare NOC case and answers">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
