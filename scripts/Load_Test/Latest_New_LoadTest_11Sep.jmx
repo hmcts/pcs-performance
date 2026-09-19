@@ -60631,14 +60631,14 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI_RespondToClaim">
         <stringProp name="TestPlan.comments">11 users 11 loop 700 ramp up</stringProp>
-        <intProp name="ThreadGroup.num_threads">5</intProp>
+        <intProp name="ThreadGroup.num_threads">7</intProp>
         <intProp name="ThreadGroup.ramp_time">700</intProp>
         <longProp name="ThreadGroup.duration">18000</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">30</stringProp>
+          <stringProp name="LoopController.loops">20</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -74652,7 +74652,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
       </ThreadGroup>
       <hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">60</stringProp>
+          <stringProp name="LoopController.loops">43</stringProp>
           <stringProp name="TestPlan.comments">20 loop , 15 loop old one</stringProp>
         </LoopController>
         <hashTree>
@@ -82946,7 +82946,7 @@ log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC03_RemoveDocument_CSV_Users" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC03_RemoveDocument_CSV_Users">
           <stringProp name="TestPlan.comments">User pool for this journey. One unique username per concurrent thread; do not reuse accounts from the other two journey CSVs.</stringProp>
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
@@ -82959,7 +82959,7 @@ log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
           <stringProp name="variableNames">username</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC03_RemoveDocument_CSV_PageToChoose" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC03_RemoveDocument_CSV_PageToChoose">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">CWDocumentUploadAmendRemove_PageToChoose_Input.csv</stringProp>
@@ -85102,15 +85102,15 @@ log.info(&quot;[CWRemove] submit id=&quot; + docId + &quot; file=&quot; + docLab
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">ManageCaseFlag_ManageCaseFlags_Input.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
+          <boolProp name="recycle">false</boolProp>
           <stringProp name="shareMode">shareMode.group</stringProp>
-          <boolProp name="stopThread">false</boolProp>
+          <boolProp name="stopThread">true</boolProp>
           <stringProp name="variableNames">username,Case_ID</stringProp>
         </CSVDataSet>
         <hashTree/>
@@ -85148,7 +85148,7 @@ if (sharedUser) { vars.put(&quot;username&quot;, sharedUser); username = sharedU
         </JSR223Sampler>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">50</stringProp>
+          <stringProp name="LoopController.loops">25</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_01_Launch" enabled="true">
@@ -86670,7 +86670,7 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">Case_ID_Link.csv</stringProp>
@@ -87742,7 +87742,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC05_ManageParties">
-        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
         <longProp name="ThreadGroup.duration">18000</longProp>
         <longProp name="ThreadGroup.delay">10</longProp>
@@ -87761,7 +87761,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments">
             <elementProp name="addPartyOrgName" elementType="Argument">
               <stringProp name="Argument.name">addPartyOrgName</stringProp>
@@ -87831,7 +87831,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC05_ManageParties_CSV_Users" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC05_ManageParties_CSV_Users">
           <stringProp name="TestPlan.comments">User pool for this journey. One unique username per concurrent thread; do not reuse accounts from the other two journey CSVs.</stringProp>
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
@@ -87856,7 +87856,7 @@ log.info(&quot;[VERIFY] 09_Open_Linked_Case -&gt; HTTP &quot; + code + &quot; | 
           <stringProp name="variableNames">PageToChoose</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC05_ManageParties_CSV_Postcode" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC05_ManageParties_CSV_Postcode">
           <stringProp name="TestPlan.comments">Postcode used for /api/addresses lookup. Each iteration can use a different postcode; the script then picks a different dropdown address from that result set.</stringProp>
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
@@ -88110,8 +88110,8 @@ if (encoded != null) {
           <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
         </TestAction>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">25</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC05_ManageParties_04_Open_Case" enabled="true">
@@ -89803,7 +89803,7 @@ vars.put(&quot;simpleEventBody&quot;, JsonOutput.toJson([
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">CreateCaseFlag_Create&amp;ManageCaseFlags_Input.csv</stringProp>
@@ -91007,7 +91007,7 @@ if (ready) {
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">CCNotes_ccnoteuserdetails_Input.csv</stringProp>
