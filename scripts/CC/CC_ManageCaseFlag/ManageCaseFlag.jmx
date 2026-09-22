@@ -6,6 +6,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager">
@@ -15,7 +17,7 @@
         <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
       </DNSCacheManager>
       <hashTree/>
-      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager">
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
         <collectionProp name="AuthManager.auth_list"/>
         <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
       </AuthManager>
@@ -28,12 +30,12 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
-          <stringProp name="LoopController.loops">5</stringProp>
+          <stringProp name="LoopController.loops">4</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">30000</intProp>
           <intProp name="HTTPSampler.response_timeout">90000</intProp>
           <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
@@ -44,7 +46,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="sec-ch-ua" elementType="Header">
               <stringProp name="Header.name">sec-ch-ua</stringProp>
@@ -73,20 +75,19 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
-          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
-          <stringProp name="CookieManager.policy">netscape</stringProp>
         </CookieManager>
         <hashTree/>
-        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
           <boolProp name="clearEachIteration">true</boolProp>
           <boolProp name="useExpires">false</boolProp>
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">ManageCaseFlags.csv</stringProp>
@@ -119,7 +120,7 @@ vars.put(&quot;updatedFlagComment&quot;, (vars.get(&quot;updatedFlagComment&quot
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_01_Launch">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_01_Launch" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -182,7 +183,7 @@ vars.put(&quot;updatedFlagComment&quot;, (vars.get(&quot;updatedFlagComment&quot
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -218,146 +219,71 @@ if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="DEBUG Login Hop Logger" enabled="true">
+              <stringProp name="cacheKey">false</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">// #region agent log
+def logPath = &quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-c2c500.log&quot;
+def safe = { v -&gt; String.valueOf(v ?: &quot;&quot;).replace(&apos;&quot;&apos;, &quot;&apos;&quot;).replace(&apos;\n&apos;,&apos; &apos;).replace(&apos;\r&apos;,&apos;&apos;) }
+def writeLog = { hyp, msg, dataMap -&gt;
+  def dataParts = dataMap.collect { k, v -&gt; &apos;&quot;&apos; + safe(k) + &apos;&quot;:&quot;&apos; + safe(v) + &apos;&quot;&apos; }.join(&apos;,&apos;)
+  def line = &apos;{&quot;sessionId&quot;:&quot;c2c500&quot;,&quot;runId&quot;:&quot;post-fix&quot;,&quot;hypothesisId&quot;:&quot;&apos; + safe(hyp) + &apos;&quot;,&quot;location&quot;:&quot;LOGIN_AUTH&quot;,&quot;message&quot;:&quot;&apos; + safe(msg) + &apos;&quot;,&quot;data&quot;:{&apos; + dataParts + &apos;},&quot;timestamp&quot;:&apos; + System.currentTimeMillis() + &apos;}\n&apos;
+  try { def f = new File(logPath); f.parentFile?.mkdirs(); f.append(line, &apos;UTF-8&apos;) } catch (Exception e) { log.warn(e.message) }
+  log.info(&apos;[DEBUG-c2c500] &apos; + hyp + &apos; &apos; + msg + &apos; &apos; + dataMap)
+}
+def finalUrl = prev.getURL()?.toString() ?: &apos;&apos;
+def code = prev.getResponseCode() ?: &apos;&apos;
+def body = prev.getResponseDataAsString() ?: &apos;&apos;
+def csrf = vars.get(&apos;csrf&apos;) ?: &apos;&apos;
+writeLog(&apos;A&apos;, &apos;auth_login_landed&apos;, [responseCode: code, finalUrl: finalUrl, landsOnEnterEmail: finalUrl.contains(&apos;/enter-email&apos;), hasEnterEmailText: body.contains(&apos;Enter your email address&apos;), csrfNotFound: (csrf == &apos;NOT_FOUND&apos;), csrfLen: csrf.length(), success: prev.isSuccessful()])
+// #endregion
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Sign in" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-542111160">Sign in</stringProp>
+                <stringProp name="292990123">Enter your email address</stringProp>
               </collectionProp>
-              <stringProp name="Assertion.custom_message">CC_SC01_ManageCaseFlag_02_Login failed: IDAM sign-in page not displayed</stringProp>
+              <stringProp name="Assertion.custom_message">CC_SC01_ManageCaseFlag_02_Login failed: IDAM Access UI email page not displayed</stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="https" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://manage-case.perftest.platform.hmcts.net/cases</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST  /enter-email" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
-            <stringProp name="HTTPSampler.port">0</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.path">login</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.path">/enter-email</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="username" elementType="HTTPArgument">
+                <elementProp name="email" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">username</stringProp>
                   <stringProp name="Argument.value">${username}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="password" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">password</stringProp>
-                  <stringProp name="Argument.value">${password}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="state" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">state</stringProp>
-                  <stringProp name="Argument.value">${state}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="nonce" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">nonce</stringProp>
-                  <stringProp name="Argument.value">${nonce}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="code_challenge" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">code_challenge</stringProp>
-                  <stringProp name="Argument.value">${code_challenge}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">email</stringProp>
                   <stringProp name="HTTPArgument.content_type"></stringProp>
                 </elementProp>
                 <elementProp name="_csrf" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">_csrf</stringProp>
                   <stringProp name="Argument.value">${csrf}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="scope" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">scope</stringProp>
-                  <stringProp name="Argument.value">profile openid roles manage-user create-user search-user</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="response_type" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">response_type</stringProp>
-                  <stringProp name="Argument.value">code</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="redirect_uri" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">redirect_uri</stringProp>
-                  <stringProp name="Argument.value">https://manage-case.perftest.platform.hmcts.net/oauth2/callback</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="code_challenge_method" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">code_challenge_method</stringProp>
-                  <stringProp name="Argument.value">S256</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="prompt" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">prompt</stringProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="client_id" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">client_id</stringProp>
-                  <stringProp name="Argument.value">xuiwebapp</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="mojLoginEnabled" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">mojLoginEnabled</stringProp>
-                  <stringProp name="Argument.value">true</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="selfRegistrationEnabled" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">selfRegistrationEnabled</stringProp>
-                  <stringProp name="Argument.value">false</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="HTTPArgument.content_type"></stringProp>
-                </elementProp>
-                <elementProp name="azureLoginEnabled" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">azureLoginEnabled</stringProp>
-                  <stringProp name="Argument.value">true</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">_csrf</stringProp>
                   <stringProp name="HTTPArgument.content_type"></stringProp>
                 </elementProp>
               </collectionProp>
@@ -370,32 +296,175 @@ if (urlChallenge) { vars.put(&quot;code_challenge&quot;, urlChallenge) }
                   <stringProp name="Header.name">Content-Type</stringProp>
                   <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
                 </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net/enter-email</stringProp>
+                </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-              <stringProp name="ConstantTimer.delay">27023</stringProp>
-            </ConstantTimer>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Enter email accepted" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="50554">307</stringProp>
+                <stringProp name="50549">302</stringProp>
+                <stringProp name="50550">303</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">33</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
             <hashTree/>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Decode Password" enabled="true">
-              <stringProp name="cacheKey">true</stringProp>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="DEBUG Enter Email Logger" enabled="true">
+              <stringProp name="cacheKey">false</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
-              <stringProp name="script">// Decode shared password; OAuth state/nonce/challenge come from Extract OAuth
-import java.util.Base64
-
-String username = vars.get(&quot;username&quot;)
-if (username != null) {
-    vars.put(&quot;username&quot;, username.replace(&apos;\u00A0&apos;, &apos;&apos;).trim())
-}
-
-String encoded = vars.get(&quot;encodedPassword&quot;)
-if (encoded != null) {
-    String password = new String(Base64.getDecoder().decode(encoded), &quot;UTF-8&quot;)
-    vars.put(&quot;password&quot;, password.replace(&apos;\u00A0&apos;, &apos;&apos;).trim())
-}
+              <stringProp name="script">// #region agent log
+def logPath = &quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-c2c500.log&quot;
+def safe = { v -&gt; String.valueOf(v ?: &quot;&quot;).replace(&apos;&quot;&apos;, &quot;&apos;&quot;).replace(&apos;\n&apos;,&apos; &apos;).replace(&apos;\r&apos;,&apos;&apos;) }
+def loc = &apos;&apos;
+try {
+  def headers = prev.getResponseHeaders() ?: &apos;&apos;
+  headers.eachLine { line -&gt;
+    if (line.toLowerCase().startsWith(&apos;location:&apos;)) { loc = line.substring(9).trim() }
+  }
+} catch (Exception ignore) {}
+def line = &apos;{&quot;sessionId&quot;:&quot;c2c500&quot;,&quot;runId&quot;:&quot;post-fix&quot;,&quot;hypothesisId&quot;:&quot;C&quot;,&quot;location&quot;:&quot;LOGIN_EMAIL&quot;,&quot;message&quot;:&quot;enter_email_post&quot;,&quot;data&quot;:{&quot;responseCode&quot;:&quot;&apos; + safe(prev.getResponseCode()) + &apos;&quot;,&quot;location&quot;:&quot;&apos; + safe(loc) + &apos;&quot;,&quot;csrfNotFound&quot;:&quot;&apos; + ((vars.get(&apos;csrf&apos;) ?: &apos;&apos;) == &apos;NOT_FOUND&apos;) + &apos;&quot;,&quot;success&quot;:&quot;&apos; + prev.isSuccessful() + &apos;&quot;},&quot;timestamp&quot;:&apos; + System.currentTimeMillis() + &apos;}\n&apos;
+try { def f = new File(logPath); f.parentFile?.mkdirs(); f.append(line, &apos;UTF-8&apos;) } catch (Exception e) { log.warn(e.message) }
+log.info(&apos;[DEBUG-c2c500] C enter_email code=&apos; + prev.getResponseCode())
+// #endregion
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /enter-password" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+            <stringProp name="HTTPSampler.path">/enter-password</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net/enter-email</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CSRF from password page" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">csrf</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Password page" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1216985755">password</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /enter-password" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+            <stringProp name="HTTPSampler.path">/enter-password</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="action" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">_submit</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">action</stringProp>
+                  <stringProp name="HTTPArgument.content_type"></stringProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${password}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                  <stringProp name="HTTPArgument.content_type"></stringProp>
+                </elementProp>
+                <elementProp name="_csrf" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${csrf}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">_csrf</stringProp>
+                  <stringProp name="HTTPArgument.content_type"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net/enter-password</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="DEBUG Password Login Logger" enabled="true">
+              <stringProp name="cacheKey">false</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">// #region agent log
+def logPath = &quot;/Users/priyadharsini/Desktop/Gatling/xui-performance/.cursor/debug-c2c500.log&quot;
+def safe = { v -&gt; String.valueOf(v ?: &quot;&quot;).replace(&apos;&quot;&apos;, &quot;&apos;&quot;).replace(&apos;\n&apos;,&apos; &apos;).replace(&apos;\r&apos;,&apos;&apos;) }
+def csrf = vars.get(&apos;csrf&apos;) ?: &apos;&apos;
+def body = prev.getResponseDataAsString() ?: &apos;&apos;
+def line = &apos;{&quot;sessionId&quot;:&quot;c2c500&quot;,&quot;runId&quot;:&quot;post-fix&quot;,&quot;hypothesisId&quot;:&quot;B&quot;,&quot;location&quot;:&quot;LOGIN_PWD&quot;,&quot;message&quot;:&quot;password_post&quot;,&quot;data&quot;:{&quot;responseCode&quot;:&quot;&apos; + safe(prev.getResponseCode()) + &apos;&quot;,&quot;finalUrl&quot;:&quot;&apos; + safe(prev.getURL()?.toString()) + &apos;&quot;,&quot;csrfNotFound&quot;:&quot;&apos; + (csrf == &apos;NOT_FOUND&apos;) + &apos;&quot;,&quot;hasManageCases&quot;:&quot;&apos; + (body.contains(&apos;Manage cases&apos;) || body.contains(&apos;HMCTS Manage cases&apos;)) + &apos;&quot;,&quot;hasCannotAccess&quot;:&quot;&apos; + body.contains(&apos;cannot access&apos;) + &apos;&quot;,&quot;success&quot;:&quot;&apos; + prev.isSuccessful() + &apos;&quot;},&quot;timestamp&quot;:&apos; + System.currentTimeMillis() + &apos;}\n&apos;
+try { def f = new File(logPath); f.parentFile?.mkdirs(); f.append(line, &apos;UTF-8&apos;) } catch (Exception e) { log.warn(e.message) }
+log.info(&apos;[DEBUG-c2c500] B password_post code=&apos; + prev.getResponseCode())
+// #endregion
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import java.util.Base64
+String encoded = vars.get(&quot;encodedPassword&quot;)
+if (encoded != null) {
+    vars.put(&quot;password&quot;, new String(Base64.getDecoder().decode(encoded), &quot;UTF-8&quot;).trim())
+}</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
           </hashTree>
@@ -526,7 +595,7 @@ vars.put(&quot;cc_case_ready&quot;, &quot;true&quot;)
           <boolProp name="IfController.useExpression">true</boolProp>
         </IfController>
         <hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_04_Open_Case_Retry_Loop" enabled="true">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_04_Open_Case_Retry_Loop">
             <boolProp name="LoopController.continue_forever">false</boolProp>
             <stringProp name="LoopController.loops">3</stringProp>
           </LoopController>
@@ -879,7 +948,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_09_Verify_Flag_Retry_Loop">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_09_Verify_Flag_Retry_Loop" enabled="true">
             <boolProp name="LoopController.continue_forever">false</boolProp>
             <stringProp name="LoopController.loops">3</stringProp>
           </LoopController>
@@ -888,7 +957,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
               <stringProp name="ConstantTimer.delay">2000</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_09_Verify_Flag">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_09_Verify_Flag" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
@@ -901,7 +970,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
@@ -918,7 +987,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case opened for verify">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Case opened for verify" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -928,7 +997,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Complex Case flag present">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Complex Case flag present" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="1984277221">CF0002</stringProp>
                 </collectionProp>
@@ -938,7 +1007,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Flag comment present">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Flag comment present" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="1421250529">${flagComment}</stringProp>
                 </collectionProp>
@@ -950,7 +1019,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_10_View_Case_Flags">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_10_View_Case_Flags" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -1082,7 +1151,7 @@ log.info(&quot;CreateFlags payload built | parties=&quot; + (parties?.size() ?: 
               <hashTree/>
             </hashTree>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_11_Start_AmendFlags">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_11_Start_AmendFlags" enabled="true">
             <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/amendFlags?ignore-warning=false</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -1138,7 +1207,7 @@ if (token) { vars.put(&quot;xsrf_token&quot;, token) }
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Build AmendFlags Event Body">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Build AmendFlags Event Body" enabled="true">
             <stringProp name="cacheKey">false</stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
@@ -1241,7 +1310,7 @@ log.info(&quot;AmendFlags payload built | updatedFlagComment=&quot; + updatedFla
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_12_Submit_AmendFlags">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CC_SC01_ManageCaseFlag_12_Submit_AmendFlags" enabled="true">
             <stringProp name="HTTPSampler.path">/data/cases/${Case_ID}/events</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -1294,7 +1363,7 @@ log.info(&quot;AmendFlags payload built | updatedFlagComment=&quot; + updatedFla
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_13_Verify_Amended_Flag_Retry_Loop">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CC_SC01_ManageCaseFlag_13_Verify_Amended_Flag_Retry_Loop" enabled="true">
             <stringProp name="LoopController.loops">3</stringProp>
             <boolProp name="LoopController.continue_forever">false</boolProp>
           </LoopController>
@@ -1406,7 +1475,7 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_14_View_Case_Parties">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC01_ManageCaseFlag_14_View_Case_Parties" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -1435,11 +1504,11 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
           </hashTree>
         </hashTree>
       </hashTree>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="scriptHome" elementType="Argument">
             <stringProp name="Argument.name">scriptHome</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">/Users/priyadharsini/Desktop/apache-jmeter-5.6.3/bin/jmeterscripts/Sanity/CC/CC_ManageCaseFlag</stringProp>
             <stringProp name="Argument.desc">Optional override. Leave empty to use JMX folder. Or pass -JscriptHome=/path at runtime.</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -1522,10 +1591,10 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">${scriptHome}/Results-CreateCaseFlag.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1559,10 +1628,10 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">${scriptHome}/Summary-CreateCaseFlag.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1596,7 +1665,7 @@ log.info(&quot;[CSV] &quot; + status + &quot; | login=&quot; + username + &quot;
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">${scriptHome}/Aggregate-CreateCaseFlag.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>
