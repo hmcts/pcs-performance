@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CW_SC01_ManageAmend" enabled="true">
+      <stringProp name="TestPlan.comments">CW_SC01 Manage documents Amend - Find case by reference then amend</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL_1" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_1</stringProp>
+            <stringProp name="Argument.value">manage-case.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_2" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_2</stringProp>
+            <stringProp name="Argument.value">idam-web-public.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="encodedPassword" elementType="Argument">
+            <stringProp name="Argument.name">encodedPassword</stringProp>
+            <stringProp name="Argument.value">UGEkJHcwcmQ=</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CW_SC01_ManageAmend_ThreadGroup">
+        <intProp name="ThreadGroup.num_threads">5</intProp>
+        <intProp name="ThreadGroup.ramp_time">200</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">5</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <intProp name="HTTPSampler.connect_timeout">30000</intProp>
+          <intProp name="HTTPSampler.response_timeout">120000</intProp>
+          <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">User-Agent</stringProp>
+              <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept-Language</stringProp>
+              <stringProp name="Header.value">en-GB,en;q=0.9</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC01_ManageAmend_CSV_Users" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">CWDocumentamned_users.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">username,Case_ID</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CW_SC01_ManageAmend_CSV_PageToChoose" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">PageToChoose.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">PageToChoose</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_01_Login">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_01_Get_/auth/login">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auth/login</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_CSRF">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">csrf</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Enter_Email" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="292990123">Enter your email address</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_02_/enter-email">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/enter-email</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="email" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${username}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">email</stringProp>
+                </elementProp>
+                <elementProp name="_csrf" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${csrf}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">_csrf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net/enter-email</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_03_Get_/enter-password">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/enter-password</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_CSRF" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">csrf</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot;.*?value=&quot;([^&quot;]+)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Password_Page" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1216985755">password</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_04_/enter-password">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_2}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/enter-password</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="action" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">_submit</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">action</stringProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${password}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                </elementProp>
+                <elementProp name="_csrf" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${csrf}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">_csrf</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC01_ManageAmend_Decode_Password" enabled="true">
+              <stringProp name="cacheKey">false</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import java.util.Base64
+String encoded = vars.get(&quot;encodedPassword&quot;)
+if (encoded != null) {
+    String password = new String(Base64.getDecoder().decode(encoded), &quot;UTF-8&quot;)
+    password = password.replace(&apos;\u00A0&apos;, &apos;&apos;).trim()
+    vars.put(&quot;password&quot;, password)
+}
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://idam-web-public.perftest.platform.hmcts.net/enter-password</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_02_Search_And_Navigate_Case">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_05_Get_/api/user/details?refreshRoleAssignments=true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/api/user/details?refreshRoleAssignments=true</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_User_Details">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_06_POST_/data/internal/searchCases?ctid=PCS&amp;use_case=SEARCH&amp;view=SEARCH&amp;page=1&amp;case_reference=${Case_ID}">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/data/internal/searchCases?ctid=PCS&amp;use_case=SEARCH&amp;view=SEARCH&amp;page=1&amp;case_reference=${Case_ID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;size&quot;:25}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">experimental</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CW_SC01_ManageAmend_Extract_Case_Id" enabled="false">
+              <stringProp name="TestPlan.comments">Random case in Pending Case Issued. Change PENDING_CASE_ISSUED to CASE_ISSUED to match PR #39 pattern.</stringProp>
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">Case_id</stringProp>
+              <stringProp name="RegexExtractor.regex">case_id&quot;\s*:\s*&quot;([^&quot;]+)&quot;[\s\S]*?&quot;\[STATE\]&quot;\s*:\s*&quot;CASE_ISSUED</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">NOT FOUND</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+              <stringProp name="RegexExtractor.match_number">-1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Validate_Search_Case">
+              <stringProp name="cacheKey">false</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+def expectedCaseId = (vars.get(&quot;Case_ID&quot;) ?: &quot;&quot;).trim()
+vars.put(&quot;amendReady&quot;, &quot;false&quot;)
+vars.put(&quot;caseTryIndex&quot;, &quot;0&quot;)
+
+if (!expectedCaseId) {
+  prev.setSuccessful(false)
+  prev.setResponseMessage(&quot;Case_ID missing from CSV&quot;)
+  vars.put(&quot;caseIdListJson&quot;, &quot;[]&quot;)
+  log.error(&quot;[CWAmend] Case_ID missing from CSV&quot;)
+  return
+}
+
+def body = prev.getResponseDataAsString() ?: &quot;&quot;
+if (prev.getResponseCode() != &quot;200&quot; || !body) {
+  prev.setSuccessful(false)
+  prev.setResponseMessage(&quot;Find case search failed HTTP=&quot; + prev.getResponseCode())
+  vars.put(&quot;caseIdListJson&quot;, &quot;[]&quot;)
+  return
+}
+
+def results = []
+try {
+  results = (new JsonSlurper().parseText(body).results ?: []) as List
+} catch (Exception e) {
+  prev.setSuccessful(false)
+  prev.setResponseMessage(&quot;Find case response not JSON: &quot; + e.message)
+  vars.put(&quot;caseIdListJson&quot;, &quot;[]&quot;)
+  return
+}
+
+def found = results.any { (it?.case_id ?: &quot;&quot;).toString() == expectedCaseId }
+if (!found) {
+  prev.setSuccessful(false)
+  prev.setResponseMessage(&quot;Case &quot; + expectedCaseId + &quot; not found in Find case results (count=&quot; + results.size() + &quot;)&quot;)
+  vars.put(&quot;caseIdListJson&quot;, &quot;[]&quot;)
+  log.error(&quot;[CWAmend] Case not found via SEARCH case_reference=&quot; + expectedCaseId)
+  return
+}
+
+// Single searched case for amend flow
+vars.put(&quot;Case_id&quot;, expectedCaseId)
+vars.put(&quot;caseIdListJson&quot;, JsonOutput.toJson([expectedCaseId]))
+log.info(&quot;[CWAmend] Find case OK Case_ID=&quot; + expectedCaseId)
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Search_Results">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1659698930">&quot;results&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_07_GET_/data/internal/cases/${Case_ID}">
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">experimental</stringProp>
+                  <stringProp name="Header.value">true</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Navigate_Case">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CW_SC01_ManageAmend_03_Amend_Document">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="CW_SC01_ManageAmend_Retry_Until_Amendable">
+            <stringProp name="WhileController.condition">${__groovy(vars.get(&quot;amendReady&quot;) != &quot;true&quot; &amp;&amp; vars.get(&quot;amendReady&quot;) != &quot;done_fail&quot; &amp;&amp; ((vars.get(&quot;caseTryIndex&quot;) ?: &quot;0&quot;) as int) &lt; (new groovy.json.JsonSlurper().parseText(vars.get(&quot;caseIdListJson&quot;) ?: &quot;[]&quot;).size()),)}</stringProp>
+          </WhileController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_08_Get_/data/internal/cases/${Case_ID}">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Open_Case">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_09_GET_/data/internal/cases/${Case_ID}/event-triggers/amendDocuments?ignore-warning=false">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}/event-triggers/amendDocuments?ignore-warning=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-event-trigger.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CW_SC01_ManageAmend_Extract_Event_Token">
+                <stringProp name="JSONPostProcessor.referenceNames">event_token</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.event_token</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Pick_Folder_And_Document" enabled="true">
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+            import groovy.json.JsonOutput
+
+            def status = prev.getResponseCode() ?: &quot;&quot;
+            def body = prev.getResponseDataAsString() ?: &quot;&quot;
+            def ids = new JsonSlurper().parseText(vars.get(&quot;caseIdListJson&quot;) ?: &quot;[]&quot;) as List
+            def idx = (vars.get(&quot;caseTryIndex&quot;) ?: &quot;0&quot;).toInteger()
+
+            def advanceOrFail = { String reason -&gt;
+            def next = idx + 1
+            vars.put(&quot;caseTryIndex&quot;, next.toString())
+            if (next &lt; ids.size()) {
+            vars.put(&quot;Case_ID&quot;, ids[next].toString())
+            vars.put(&quot;Case_id&quot;, ids[next].toString())
+            vars.put(&quot;amendReady&quot;, &quot;false&quot;)
+            prev.setSuccessful(true)
+            prev.setResponseMessage(reason + &quot; | retry next case &quot; + ids[next] + &quot; (&quot; + (next + 1) + &quot;/&quot; + ids.size() + &quot;)&quot;)
+            log.warn(&quot;[CWAmend] &quot; + reason + &quot; | next=&quot; + ids[next])
+            } else {
+            vars.put(&quot;amendReady&quot;, &quot;done_fail&quot;)
+            prev.setSuccessful(false)
+            prev.setResponseMessage(reason + &quot; | no more CASE_ISSUED cases to try (&quot; + ids.size() + &quot;)&quot;)
+            log.error(&quot;[CWAmend] &quot; + reason + &quot; | exhausted &quot; + ids.size() + &quot; cases&quot;)
+            }
+            }
+
+            if (status != &quot;200&quot;) {
+            def snippet = body.replaceAll(&quot;\\s+&quot;, &quot; &quot;).take(250)
+            advanceOrFail(&quot;amendDocuments trigger HTTP &quot; + status + &quot;: &quot; + snippet)
+            return
+            }
+
+            def json
+            try {
+            json = new JsonSlurper().parseText(body)
+            } catch (Exception e) {
+            advanceOrFail(&quot;amendDocuments response not JSON: &quot; + e.message)
+            return
+            }
+
+            def fields = (json.case_fields ?: []) as List
+            def byId = fields.collectEntries { [(it.id): it] }
+
+            def folders = [
+            [code: &quot;STATEMENTS_OF_CASE&quot;, label: &quot;Statements of case&quot;, docField: &quot;statementsOfCaseDocuments&quot;, emptyField: &quot;documentAmend_StatementsOfCaseEmpty&quot;, folderId: &quot;statementsOfCase&quot;],
+            [code: &quot;PROPERTY_DOCUMENTS&quot;, label: &quot;Property documents&quot;, docField: &quot;propertyDocuments&quot;, emptyField: &quot;documentAmend_PropertyDocumentsEmpty&quot;, folderId: &quot;propertyDocuments&quot;],
+            [code: &quot;EVIDENCE&quot;, label: &quot;Evidence&quot;, docField: &quot;evidenceDocuments&quot;, emptyField: &quot;documentAmend_EvidenceEmpty&quot;, folderId: &quot;evidence&quot;],
+            [code: &quot;HEARING_DOCUMENTS&quot;, label: &quot;Hearing documents&quot;, docField: &quot;hearingDocuments&quot;, emptyField: &quot;documentAmend_HearingDocumentsEmpty&quot;, folderId: &quot;hearingDocuments&quot;],
+            [code: &quot;ORDERS_AND_NOTICE_OF_HEARINGS&quot;, label: &quot;Orders and Notice of Hearings&quot;, docField: &quot;ordersAndNoticeOfHearingsDocuments&quot;, emptyField: &quot;documentAmend_OrdersAndNoticeOfHearingsEmpty&quot;, folderId: &quot;ordersAndNoticeOfHearings&quot;],
+            [code: &quot;APPLICATIONS&quot;, label: &quot;Applications&quot;, docField: &quot;applicationsDocuments&quot;, emptyField: &quot;documentAmend_ApplicationsEmpty&quot;, folderId: &quot;applications&quot;],
+            [code: &quot;APPEALS&quot;, label: &quot;Appeals&quot;, docField: &quot;appealsDocuments&quot;, emptyField: &quot;documentAmend_AppealsEmpty&quot;, folderId: &quot;appeals&quot;],
+            [code: &quot;CORRESPONDENCE&quot;, label: &quot;Correspondence&quot;, docField: &quot;correspondenceDocuments&quot;, emptyField: &quot;documentAmend_CorrespondenceEmpty&quot;, folderId: &quot;correspondence&quot;],
+            [code: &quot;UNCATEGORISED_DOCUMENTS&quot;, label: &quot;Uncategorised documents&quot;, docField: &quot;uncategorisedDocuments&quot;, emptyField: &quot;documentAmend_UncategorisedDocumentsEmpty&quot;, folderId: &quot;uncategorisedDocuments&quot;]
+            ]
+
+            def emptyFlags = [:]
+            folders.each { f -&gt;
+            emptyFlags[f.emptyField] = (byId[f.emptyField]?.value ?: &quot;Yes&quot;).toString()
+            }
+
+            def chosen = null
+            def items = []
+            for (f in folders) {
+            def docVal = byId[f.docField]?.value
+            def listItems = (docVal?.list_items ?: []) as List
+            if (listItems) {
+            chosen = f
+            items = listItems
+            break
+            }
+            }
+
+            if (!chosen) {
+            advanceOrFail(&quot;No documents in any folder for case &quot; + vars.get(&quot;Case_ID&quot;))
+            return
+            }
+
+            def firstDoc = items[0]
+            vars.put(&quot;event_token&quot;, (json.event_token ?: vars.get(&quot;event_token&quot;) ?: &quot;&quot;).toString())
+            vars.put(&quot;propertyAddress&quot;, (byId[&quot;documentAmend_PropertyAddressSummary&quot;]?.value ?: &quot;&quot;).toString())
+            vars.put(&quot;selectedFolderCode&quot;, chosen.code)
+            vars.put(&quot;selectedFolderLabel&quot;, chosen.label)
+            vars.put(&quot;selectedFolderId&quot;, chosen.folderId)
+            vars.put(&quot;selectedDocField&quot;, chosen.docField)
+            vars.put(&quot;selectedDocCode&quot;, firstDoc.code?.toString() ?: &quot;&quot;)
+            vars.put(&quot;selectedDocLabel&quot;, firstDoc.label?.toString() ?: &quot;&quot;)
+            vars.put(&quot;selectedDocListJson&quot;, JsonOutput.toJson(items))
+            vars.put(&quot;emptyFlagsJson&quot;, JsonOutput.toJson(emptyFlags))
+            vars.put(&quot;amendReady&quot;, &quot;true&quot;)
+
+            log.info(&quot;[CWAmend] case=&quot; + vars.get(&quot;Case_ID&quot;) + &quot; folder=&quot; + chosen.code + &quot; doc=&quot; + firstDoc.label + &quot; (&quot; + firstDoc.code + &quot;)&quot;)
+            </stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CW_SC01_ManageAmend_Fail_If_No_Amendable_Case">
+            <stringProp name="IfController.condition">${__groovy(vars.get(&quot;amendReady&quot;) != &quot;true&quot;,)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="CW_SC01_ManageAmend_No_Amendable_Case">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def ids = vars.get(&quot;caseIdListJson&quot;)
+SampleResult.setSuccessful(false)
+SampleResult.setResponseCode(&quot;500&quot;)
+SampleResult.setResponseMessage(&quot;No amendable document found after trying CASE_ISSUED cases: &quot; + ids)
+log.error(&quot;[CWAmend] &quot; + SampleResult.getResponseMessage())
+</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="CW_SC01_ManageAmend_Continue_If_Case_Ready">
+            <stringProp name="IfController.condition">${__groovy(vars.get(&quot;amendReady&quot;) == &quot;true&quot;,)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_10_POST_/data/case-types/PCS/validate?pageId=amendDocumentsselectDocument">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=amendDocumentsselectDocument</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">${selectDocumentValidateBody}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="CW_SC01_ManageAmend_Build_Select_Document_Body" enabled="true">
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+  import groovy.json.JsonOutput
+
+  def emptyFlags = new JsonSlurper().parseText(vars.get(&quot;emptyFlagsJson&quot;) ?: &quot;{}&quot;)
+  def docItems = new JsonSlurper().parseText(vars.get(&quot;selectedDocListJson&quot;) ?: &quot;[]&quot;)
+  def docField = vars.get(&quot;selectedDocField&quot;)
+  def docCode = vars.get(&quot;selectedDocCode&quot;)
+  def docLabel = vars.get(&quot;selectedDocLabel&quot;)
+
+  def data = [:]
+  data.documentAmend_PropertyAddressSummary = vars.get(&quot;propertyAddress&quot;)
+  data.documentAmend_SelectedFolder = vars.get(&quot;selectedFolderCode&quot;)
+  data[docField] = [
+    value: [code: docCode, label: docLabel],
+    list_items: docItems
+  ]
+  emptyFlags.each { k, v -&gt; data[k] = v }
+  data.documentAmend_SelectedFolderId = null
+  data.documentAmend_SelectedFolderLabel = null
+  data.documentAmend_SelectedDocumentId = null
+  data.documentAmend_SelectedDocumentFileName = null
+  data.documentAmend_SelectedDocumentBaseFileName = null
+  data.documentAmend_SelectedDocumentIssueDate = null
+  data.documentAmend_RelatedPartyCode = null
+  data.documentAmend_RelatedSubmissionCode = null
+  data.documentAmend_RelatedSubmissionsDocumentTypeCode = null
+  data.documentAmend_StandaloneDocumentTypeCode = null
+
+  def event = [id: &quot;amendDocuments&quot;, summary: &quot;&quot;, description: &quot;&quot;]
+  def body = [
+    data: data,
+    event: event,
+    event_data: data,
+    event_token: vars.get(&quot;event_token&quot;),
+    ignore_warning: false,
+    case_reference: vars.get(&quot;Case_ID&quot;)
+  ]
+  vars.put(&quot;selectDocumentValidateBody&quot;, JsonOutput.toJson(body))
+  </stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CW_SC01_ManageAmend_Store_Amend_Bodies" enabled="true">
+                <stringProp name="cacheKey">false</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+  import groovy.json.JsonOutput
+
+  def body = prev.getResponseDataAsString() ?: &quot;&quot;
+  def json = new JsonSlurper().parseText(body)
+  def data = (json.data ?: [:]) as Map
+
+  def asList = { v -&gt; (v instanceof List) ? v : [] }
+
+  def pickValue = { field, preferredCode = null -&gt;
+    if (!(field instanceof Map)) return null
+    def items = asList(field.list_items)
+    def val = field.value
+    if (val instanceof Map &amp;&amp; val.code) return [value: [code: val.code, label: val.label], list_items: items]
+    if (preferredCode) {
+      def m = items.find { it.code?.toString() == preferredCode }
+      if (m) return [value: [code: m.code, label: m.label], list_items: items]
+    }
+    if (items) {
+      def first = items[0]
+      return [value: [code: first.code, label: first.label], list_items: items]
+    }
+    return [list_items: items]
+  }
+
+  def withCodes = { dyn, includeLabel = false -&gt;
+    if (!(dyn instanceof Map)) return dyn
+    def out = new LinkedHashMap(dyn)
+    if (dyn.value instanceof Map) {
+      out.valueCode = dyn.value.code
+      if (includeLabel) out.valueLabel = dyn.value.label
+    }
+    return out
+  }
+
+  def showRelated = (data.documentAmend_ShowRelatedSubmissionsList ?: &quot;NO&quot;).toString()
+  def relatedSubmission = pickValue(data.documentAmend_RelatedSubmission, &quot;NONE&quot;)
+  def relatedParty = pickValue(data.documentAmend_RelatedParty)
+  def relatedDocType = pickValue(data.documentAmend_RelatedSubmissionsDocumentType)
+  def standaloneDocType = pickValue(data.documentAmend_StandaloneDocumentType)
+  def amendedFileName = (data.documentAmend_AmendedFileName ?: vars.get(&quot;selectedDocLabel&quot;) ?: &quot;document&quot;).toString()
+
+  // Prefer values returned by callback for selected folder/doc
+  def folderCode = (data.documentAmend_SelectedFolder ?: vars.get(&quot;selectedFolderCode&quot;)).toString()
+  def folderId = (data.documentAmend_SelectedFolderId ?: vars.get(&quot;selectedFolderId&quot;)).toString()
+  def folderLabel = (data.documentAmend_SelectedFolderLabel ?: vars.get(&quot;selectedFolderLabel&quot;)).toString()
+  def docId = (data.documentAmend_SelectedDocumentId ?: vars.get(&quot;selectedDocCode&quot;)).toString()
+  def docFileName = (data.documentAmend_SelectedDocumentFileName ?: vars.get(&quot;selectedDocLabel&quot;)).toString()
+  def docBase = (data.documentAmend_SelectedDocumentBaseFileName ?: amendedFileName).toString()
+  def docField = vars.get(&quot;selectedDocField&quot;)
+  def docItems = new JsonSlurper().parseText(vars.get(&quot;selectedDocListJson&quot;) ?: &quot;[]&quot;)
+  def emptyFlags = new JsonSlurper().parseText(vars.get(&quot;emptyFlagsJson&quot;) ?: &quot;{}&quot;)
+
+  def selectedDocDyn = withCodes([
+    value: [code: docId, label: docFileName],
+    list_items: docItems
+  ], true)
+
+  def detailsData = [
+    documentAmend_AmendedFileName: amendedFileName,
+    documentAmend_ShowRelatedSubmissionsList: showRelated,
+    documentAmend_RelatedSubmission: relatedSubmission,
+    documentAmend_IssueDate: data.documentAmend_SelectedDocumentIssueDate,
+    documentAmend_RelatedParty: relatedParty
+  ]
+  if (showRelated == &quot;YES&quot;) {
+    detailsData.documentAmend_RelatedSubmissionsDocumentType = relatedDocType
+  } else {
+    detailsData.documentAmend_StandaloneDocumentType = standaloneDocType
+  }
+
+  def event = [id: &quot;amendDocuments&quot;, summary: &quot;&quot;, description: &quot;&quot;]
+  def detailsBody = [
+    data: detailsData,
+    event: event,
+    event_data: detailsData,
+    event_token: vars.get(&quot;event_token&quot;),
+    ignore_warning: false,
+    case_reference: vars.get(&quot;Case_ID&quot;)
+  ]
+  vars.put(&quot;amendDetailsValidateBody&quot;, JsonOutput.toJson(detailsBody))
+
+  def relatedPartyCode = relatedParty?.value?.code
+  def relatedSubmissionCode = relatedSubmission?.value?.code
+  def relatedDocTypeCode = (showRelated == &quot;YES&quot;) ? relatedDocType?.value?.code : null
+  def standaloneDocTypeCode = (showRelated == &quot;YES&quot;) ? null : standaloneDocType?.value?.code
+
+  def eventData = [:]
+  eventData.documentAmend_PropertyAddressSummary = data.documentAmend_PropertyAddressSummary ?: vars.get(&quot;propertyAddress&quot;)
+  eventData.documentAmend_SelectedFolder = folderCode
+  eventData[docField] = selectedDocDyn
+  emptyFlags.each { k, v -&gt; eventData[k] = data[k] ?: v }
+  eventData.documentAmend_SelectedFolderId = folderId
+  eventData.documentAmend_SelectedFolderLabel = folderLabel
+  eventData.documentAmend_SelectedDocumentId = docId
+  eventData.documentAmend_SelectedDocumentFileName = docFileName
+  eventData.documentAmend_SelectedDocumentBaseFileName = docBase
+  eventData.documentAmend_SelectedDocumentIssueDate = data.documentAmend_SelectedDocumentIssueDate
+  eventData.documentAmend_RelatedPartyCode = relatedPartyCode
+  eventData.documentAmend_RelatedSubmissionCode = relatedSubmissionCode
+  eventData.documentAmend_RelatedSubmissionsDocumentTypeCode = relatedDocTypeCode
+  eventData.documentAmend_StandaloneDocumentTypeCode = standaloneDocTypeCode
+  eventData.documentAmend_AmendedFileName = amendedFileName
+  eventData.documentAmend_ShowRelatedSubmissionsList = showRelated
+  eventData.documentAmend_RelatedSubmission = withCodes(relatedSubmission, false)
+  if (showRelated == &quot;YES&quot;) {
+    eventData.documentAmend_RelatedSubmissionsDocumentType = withCodes(relatedDocType, false)
+    eventData.documentAmend_StandaloneDocumentType = null
+  } else {
+    eventData.documentAmend_StandaloneDocumentType = withCodes(standaloneDocType, false)
+    eventData.documentAmend_RelatedSubmissionsDocumentType = null
+  }
+  eventData.documentAmend_IssueDate = data.documentAmend_SelectedDocumentIssueDate
+  eventData.documentAmend_RelatedParty = withCodes(relatedParty, true)
+
+  def eventBody = [
+    data: eventData,
+    event: event,
+    event_token: vars.get(&quot;event_token&quot;),
+    ignore_warning: false
+  ]
+  vars.put(&quot;amendEventBody&quot;, JsonOutput.toJson(eventBody))
+
+  log.info(&quot;[CWAmend] details fileName=&quot; + amendedFileName + &quot; showRelated=&quot; + showRelated + &quot; party=&quot; + relatedPartyCode)
+  </stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Select_Document" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_11_POST_/data/case-types/PCS/validate?pageId=amendDocumentsamendDocumentDetails">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/case-types/PCS/validate?pageId=amendDocumentsamendDocumentDetails</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">${amendDetailsValidateBody}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Amend_Details" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_12_POST_/data/cases/${Case_ID}/events">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/cases/${Case_ID}/events</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">${amendEventBody}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.create-event.v2+json;charset=UTF-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Submit_Amend" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49587">201</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CW_SC01_ManageAmend_13_GET_/data/internal/cases/${Case_ID}">
+              <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">/data/internal/cases/${Case_ID}</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-case-view.v2+json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">experimental</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CW_SC01_ManageAmend_Assert_Case_After_Amend" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate_Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary_Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
