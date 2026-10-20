@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="setUp_CCNotes_Init (from Latest_New_LoadTest_11Sep)">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+<CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <collectionProp name="CookieManager.cookies"/>
+        <stringProp name="TestPlan.comments">s%3AGcBDmINQ3rbkYz4OGOCCco6-OKfu1yC0.sL6n7QLy%2B6vcfPjNKFKH6MBbcFaIUyDRheDkp2q%2FSig</stringProp>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+<hashTree/>
+<ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <boolProp name="HTTPSampler.image_parser">true</boolProp>
+        <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.implementation"></stringProp>
+      </ConfigTestElement>
+<hashTree/>
+<Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="baseDir" elementType="Argument">
+            <stringProp name="Argument.name">baseDir</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir())}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PcsXUI" elementType="Argument">
+            <stringProp name="Argument.name">PcsXUI</stringProp>
+            <stringProp name="Argument.value">manage-case.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="IdamApiUrl" elementType="Argument">
+            <stringProp name="Argument.name">IdamApiUrl</stringProp>
+            <stringProp name="Argument.value">idam-api.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PcsApiUrl" elementType="Argument">
+            <stringProp name="Argument.name">PcsApiUrl</stringProp>
+            <stringProp name="Argument.value">ccd-data-store-api-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="IdamURL" elementType="Argument">
+            <stringProp name="Argument.name">IdamURL</stringProp>
+            <stringProp name="Argument.value">idam-web-public.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="s2sUrl" elementType="Argument">
+            <stringProp name="Argument.name">s2sUrl</stringProp>
+            <stringProp name="Argument.value">rpe-service-auth-provider-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="redirect_uri" elementType="Argument">
+            <stringProp name="Argument.name">redirect_uri</stringProp>
+            <stringProp name="Argument.value">https://civil-citizen-ui.perftest.platform.hmcts.net/oauth2/callback</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="scheme" elementType="Argument">
+            <stringProp name="Argument.name">scheme</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PCS-1074" elementType="Argument">
+            <stringProp name="Argument.name">PCS-1074</stringProp>
+            <stringProp name="Argument.value">PCS</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="resultFileName" elementType="Argument">
+            <stringProp name="Argument.name">resultFileName</stringProp>
+            <stringProp name="Argument.value">CreateCasePerf_${__time(yyyyMMdd-HHmmss)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="resultFileName" elementType="Argument">
+            <stringProp name="Argument.name">resultFileName</stringProp>
+            <stringProp name="Argument.value">GetCourtsPostcodePerf_${__time(ddMMyyyy-HHmm)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="resultFileName" elementType="Argument">
+            <stringProp name="Argument.name">resultFileName</stringProp>
+            <stringProp name="Argument.value">CreateCase2_Perf_${__time(yyyyMMdd-HHmmss)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FILEPATH" elementType="Argument">
+            <stringProp name="Argument.name">FILEPATH</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FILEPATH" elementType="Argument">
+            <stringProp name="Argument.name">FILEPATH</stringProp>
+            <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RandomDelay" elementType="Argument">
+            <stringProp name="Argument.name">RandomDelay</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ConstDelay" elementType="Argument">
+            <stringProp name="Argument.name">ConstDelay</stringProp>
+            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="Thinktime" elementType="Argument">
+            <stringProp name="Argument.name">Thinktime</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ConstantTimer" elementType="Argument">
+            <stringProp name="Argument.name">ConstantTimer</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="APIThinktime" elementType="Argument">
+            <stringProp name="Argument.name">APIThinktime</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="APIRandomDelay" elementType="Argument">
+            <stringProp name="Argument.name">APIRandomDelay</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="APIConstDelay" elementType="Argument">
+            <stringProp name="Argument.name">APIConstDelay</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FlowControlAction" elementType="Argument">
+            <stringProp name="Argument.name">FlowControlAction</stringProp>
+            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ViewThinkTime" elementType="Argument">
+            <stringProp name="Argument.name">ViewThinkTime</stringProp>
+            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PcsCUI" elementType="Argument">
+            <stringProp name="Argument.name">PcsCUI</stringProp>
+            <stringProp name="Argument.value">pcs.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__base64Decode(${encodedPassword})}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_1" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_1</stringProp>
+            <stringProp name="Argument.value">manage-case.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BASE_URL_2" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL_2</stringProp>
+            <stringProp name="Argument.value">idam-web-public.perftest.platform.hmcts.net</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="encodedPassword" elementType="Argument">
+            <stringProp name="Argument.name">encodedPassword</stringProp>
+            <stringProp name="Argument.value">UGEkJHcwcmQ=</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="hearing_CancellationReason" elementType="Argument">
+            <stringProp name="Argument.name">hearing_CancellationReason</stringProp>
+            <stringProp name="Argument.value">Cancel hearing</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="hearingSummaryMarkdownJson" elementType="Argument">
+            <stringProp name="Argument.name">hearingSummaryMarkdownJson</stringProp>
+            <stringProp name="Argument.value">null</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="partyListItemsJson" elementType="Argument">
+            <stringProp name="Argument.name">partyListItemsJson</stringProp>
+            <stringProp name="Argument.value">[]</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="partyListValueJson" elementType="Argument">
+            <stringProp name="Argument.name">partyListValueJson</stringProp>
+            <stringProp name="Argument.value">[]</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="Password" elementType="Argument">
+            <stringProp name="Argument.name">Password</stringProp>
+            <stringProp name="Argument.value">${__base64Decode(${encodedPassword})}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+<hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp - CCNotes Init">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">3600</longProp>
+        <longProp name="ThreadGroup.delay">10</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Init Timestamped Run Results CSV" enabled="true">
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import java.text.SimpleDateFormat
+
+def resolveScriptHome = {
+    def override = (props.get(&quot;scriptHome&quot;) ?: vars.get(&quot;scriptHome&quot;) ?: &quot;&quot;).trim()
+    if (override) {
+        return new File(override).getAbsolutePath()
+    }
+    return new File(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir()).getAbsolutePath()
+}
+
+def scriptHome = resolveScriptHome()
+props.put(&quot;SCRIPT_HOME&quot;, scriptHome)
+vars.put(&quot;scriptHome&quot;, scriptHome)
+
+def errorPath = new File(scriptHome, vars.get(&quot;errorLogPath&quot;) ?: &quot;CCNotes_errors.log&quot;).absolutePath
+props.put(&quot;__CC_ERROR_LOG_PATH__&quot;, errorPath)
+new File(errorPath).write(&quot;=== CCNotes Error Log | started &quot; + new Date() + &quot; ===\n\n&quot;, &quot;UTF-8&quot;)
+
+[&apos;__CC_NOTES_USED_CASE_IDS__&apos;, &apos;__CC_USED_CASE_IDS__&apos;, &apos;__CC_RUN_RESULTS_CSV_PATH__&apos;, &apos;__CC_RUN_RESULTS_CSV_NAME__&apos;, &apos;ccNotesApiLogStarted&apos;].each { props.remove(it) }
+props.keySet().findAll { k -&gt;
+    k.startsWith(&apos;__cc_iteration_&apos;) || k.startsWith(&apos;cc_csv_row_&apos;) || k.startsWith(&apos;cc_run_complete_&apos;)
+}.each { props.remove(it) }
+
+def csvFile = new File(scriptHome, &quot;CCNotes_run-results_Output.csv&quot;)
+def header = &quot;timestamp,thread,solicitor_username,admin_username,iteration,Case_ID,noteText,status,http_code\n&quot;
+
+csvFile.write(header, &quot;UTF-8&quot;)
+props.put(&quot;__CC_RUN_RESULTS_CSV_PATH__&quot;, csvFile.absolutePath)
+props.put(&quot;__CC_RUN_RESULTS_CSV_NAME__&quot;, csvFile.name)
+
+log.info(&quot;[SETUP] SCRIPT_HOME=&quot; + scriptHome)
+log.info(&quot;[SETUP] Error log file: &quot; + errorPath)
+log.info(&quot;[SETUP] Global pair/csv state reset for new run&quot;)
+log.info(&quot;[CSV] Run results file created: &quot; + csvFile.absolutePath)
+</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+<ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>true</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
