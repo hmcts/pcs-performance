@@ -5,15 +5,17 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">false</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <stringProp name="HTTPSampler.domain">www.example.com</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -28,7 +30,7 @@
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="baseDir" elementType="Argument">
             <stringProp name="Argument.name">baseDir</stringProp>
@@ -175,7 +177,7 @@
         <stringProp name="variableNames">PageToChoose</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Username">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Username" enabled="true">
         <stringProp name="filename">Caseworker_UserFile.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">Username</stringProp>
@@ -187,7 +189,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="ChangeStateTo">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="ChangeStateTo" enabled="true">
         <stringProp name="filename">ChangeStateTo.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">ChangeStateTo</stringProp>
@@ -199,7 +201,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -234,7 +236,7 @@
         <stringProp name="filename">~/TreeResult-CancelCase${resultFileName}.xml</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -271,7 +273,7 @@
         <stringProp name="filename">~/Summary-NEW_CancelCase${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -311,15 +313,17 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
         <intProp name="ThreadGroup.num_threads">5</intProp>
         <intProp name="ThreadGroup.ramp_time">200</intProp>
+        <longProp name="ThreadGroup.duration">1800</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">5</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_01_Launch">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_01_Launch" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -401,7 +405,7 @@
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_02_Enteremail">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_02_Enteremail" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -1227,7 +1231,7 @@
           </TestAction>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_03_EnterPassword">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_03_EnterPassword" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -2055,11 +2059,11 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
-        <RunTime guiclass="RunTimeGui" testclass="RunTime" testname="Runtime Controller">
+        <RunTime guiclass="RunTimeGui" testclass="RunTime" testname="Runtime Controller" enabled="true">
           <stringProp name="RunTime.seconds">1800</stringProp>
         </RunTime>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_04_SelectCaseIssuedCase">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_04_SelectCaseIssuedCase" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -3226,12 +3230,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_05_SelectchangeCsaeStateDrpDown">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_05_SelectchangeCsaeStateDrpDown" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-292">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-292" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3245,7 +3249,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3299,7 +3303,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-295">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-295" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3321,7 +3325,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3378,7 +3382,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="event_token">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="event_token" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">event_token</stringProp>
                 <stringProp name="RegexExtractor.regex">event_token&quot;:&quot;(.*?)&quot;,&quot;wizard_pages</stringProp>
@@ -3390,7 +3394,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-294">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-294" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3404,7 +3408,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3458,7 +3462,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-298">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select drop down of change case state-298" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3472,7 +3476,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3522,19 +3526,19 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
               <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_06_AnswerToSelectCaseSatateTochnageTo">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_06_AnswerToSelectCaseSatateTochnageTo" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-310">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-310" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3548,7 +3552,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3589,7 +3593,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN10">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN10" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                 <stringProp name="RegexExtractor.refname">XSRF-TOKEN10</stringProp>
                 <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
@@ -3601,7 +3605,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-322">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-322" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3621,7 +3625,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3691,7 +3695,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-324">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="select case satte to change to-324" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3705,7 +3709,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3755,19 +3759,19 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
               <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_07_ClickSubmit">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_07_ClickSubmit" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-334">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-334" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3781,7 +3785,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3822,7 +3826,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN4">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN4" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                 <stringProp name="RegexExtractor.refname">XSRF-TOKEN4</stringProp>
                 <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
@@ -3834,7 +3838,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-335">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-335" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3854,7 +3858,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3924,7 +3928,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-340">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-340" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -3938,7 +3942,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -3992,7 +3996,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-343">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik submit-343" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4006,7 +4010,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4056,19 +4060,19 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
               <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_08_clcik close and return to case details apge">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_08_clcik close and return to case details apge" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-362">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-362" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4082,7 +4086,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4124,7 +4128,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-366">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-366" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4138,7 +4142,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4192,7 +4196,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-364">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-364" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4206,7 +4210,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4259,7 +4263,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN5">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN5" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                 <stringProp name="RegexExtractor.refname">XSRF-TOKEN5</stringProp>
                 <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
@@ -4271,7 +4275,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-363">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-363" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -4291,7 +4295,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4357,7 +4361,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-369">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-369" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4371,7 +4375,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4420,7 +4424,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN6">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XSRF-TOKEN6" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">true</stringProp>
                 <stringProp name="RegexExtractor.refname">XSRF-TOKEN6</stringProp>
                 <stringProp name="RegexExtractor.regex">XSRF-TOKEN=(.*?);</stringProp>
@@ -4432,7 +4436,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-368">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik close and return to case details apge-368" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4452,7 +4456,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4521,12 +4525,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_09_clcik history tab">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_09_clcik history tab" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik history tab-383">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="clcik history tab-383" enabled="true">
               <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4540,7 +4544,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -4594,18 +4598,18 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">15000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_10_singout">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_017_CaseWorkerChangeCaseState_10_singout" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-395">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-395" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4666,7 +4670,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-397">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-397" enabled="true">
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -4728,7 +4732,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-396">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-396" enabled="true">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -4797,7 +4801,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-398">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="singout-398" enabled="true">
             <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
