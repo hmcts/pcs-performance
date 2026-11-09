@@ -269,7 +269,7 @@
         <stringProp name="filename">~/Summary-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -3664,15 +3664,11 @@ System.out.println(&quot;selectedCaseId = &quot; + selectedCaseId);</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime" enabled="false">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">${Thinktime}</stringProp>
           </TestAction>
-          <hashTree/>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
-            <stringProp name="ConstantTimer.delay">32000</stringProp>
-          </ConstantTimer>
           <hashTree/>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CC_SC03_GlobalSearch_08_Signout" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
