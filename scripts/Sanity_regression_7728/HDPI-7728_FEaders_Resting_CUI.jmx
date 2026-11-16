@@ -14,7 +14,7 @@
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="baseDir" elementType="Argument">
             <stringProp name="Argument.name">baseDir</stringProp>
@@ -184,6 +184,12 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">true</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
@@ -311,8 +317,8 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CUI-CancelCaseHearing-Payment">
         <stringProp name="TestPlan.comments">2 users 80 </stringProp>
         <intProp name="ThreadGroup.num_threads">5</intProp>
-        <intProp name="ThreadGroup.ramp_time">50</intProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <intProp name="ThreadGroup.ramp_time">30</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">10</stringProp>
@@ -345,7 +351,7 @@
         </CSVDataSet>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_01_Launch">
@@ -353,7 +359,7 @@
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/claims">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/claims" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -495,7 +501,7 @@
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login">
               <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -615,7 +621,7 @@
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -625,7 +631,7 @@
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login?client_id=pcs-frontend&amp;redirect_uri=${scheme}%3A%2F%2F${PcsCUI}%2Foauth2%2Fcallback&amp;nonce=${noncex}&amp;response_type=code&amp;scope=openid+profile+roles&amp;code_challenge=${codex}&amp;code_challenge_method=S256">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login?client_id=pcs-frontend&amp;redirect_uri=${scheme}%3A%2F%2F${PcsCUI}%2Foauth2%2Fcallback&amp;nonce=${noncex}&amp;response_type=code&amp;scope=openid+profile+roles&amp;code_challenge=${codex}&amp;code_challenge_method=S256" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">idam-web-public.perftest.platform.hmcts.net</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -669,7 +675,7 @@
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Sec-Fetch-Mode" elementType="Header">
                     <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
@@ -749,7 +755,7 @@ vars.put(&quot;password&quot;, decodedPwd);
 log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </BeanShellPreProcessor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Your Possession Claims account" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Your Possession Claims account">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-2077162667">Your Possession Claims account</stringProp>
                 </collectionProp>
@@ -760,17 +766,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_03_Access_Your_Case">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_03_Access_Your_Case" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/claims" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/claims">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -844,7 +850,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 <stringProp name="Sample.scope">all</stringProp>
               </RegexExtractor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Your Possession Claims account" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Your Possession Claims account">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-2077162667">Your Possession Claims account</stringProp>
                 </collectionProp>
@@ -911,17 +917,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_04_Openclaim">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_04_Openclaim" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/dashboard">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/dashboard" enabled="true">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -984,9 +990,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="505741544">The best place to find government services and information</stringProp>
+                  <stringProp name="-1450396695">Possession Claims Dashboard</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.custom_message"></stringProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -1051,7 +1057,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -1061,7 +1067,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/choose-an-application">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/choose-an-application" enabled="true">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -1134,9 +1140,9 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
               </RegexExtractor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Choose an application" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Choose an application">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1470090522">Choose an application</stringProp>
+                  <stringProp name="1422188460">Choose your application</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.custom_message"></stringProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -1211,12 +1217,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_06_Ask_The_Court_To_Set_Aside_The_Order">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_06_Ask_The_Court_To_Set_Aside_The_Order" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -1315,7 +1321,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="1104419520">Ask the court to set aside</stringProp>
                 </collectionProp>
@@ -1446,12 +1452,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_07_Start_Now">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_07_Start_Now" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -1674,17 +1680,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_08_Do_You_Need_Help_Paying_The_Fee">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_08_Do_You_Need_Help_Paying_The_Fee" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/do-you-need-help-paying-the-fee">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/do-you-need-help-paying-the-fee" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -1779,7 +1785,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/have-the-other-parties-agreed-to-this-application">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/have-the-other-parties-agreed-to-this-application" enabled="true">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -1909,17 +1915,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_09_Have_The_Other_Parties_Agreed_To_This_Application">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_09_Have_The_Other_Parties_Agreed_To_This_Application" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/have-the-other-parties-agreed-to-this-application">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/have-the-other-parties-agreed-to-this-application" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2014,7 +2020,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/what-order-do-you-want-the-court-to-make-and-why">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/what-order-do-you-want-the-court-to-make-and-why" enabled="true">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -2144,17 +2150,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_10_What_Order_Do_You_Want_make">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_10_What_Order_Do_You_Want_make" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/what-order-do-you-want-the-court-to-make-and-why">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/what-order-do-you-want-the-court-to-make-and-why" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2249,7 +2255,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="what order do you want the court to make-304/case/${Caseid}/make-an-application/do-you-want-to-upload-documents-to-support-your-application">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="what order do you want the court to make-304/case/${Caseid}/make-an-application/do-you-want-to-upload-documents-to-support-your-application" enabled="true">
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -2312,7 +2318,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Have you already applied for help with your application fee?">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Have you already applied for help with your application fee?" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1291026846">Do you want to upload documents to support your application?</stringProp>
                 </collectionProp>
@@ -2379,17 +2385,17 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_11_Do_You_Want_To_Upload_Documents">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_11_Do_You_Want_To_Upload_Documents" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/do-you-want-to-upload-documents-to-support-your-application">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/${Caseid}/make-an-application/do-you-want-to-upload-documents-to-support-your-application" enabled="true">
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2614,12 +2620,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_12_AddDocumnet To Upload(Upload) ">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_12_AddDocumnet To Upload(Upload) " enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -2927,12 +2933,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_13_Select_Language_And_Continue">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_13_Select_Language_And_Continue" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -3162,12 +3168,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_14_CheckAnswers&amp; Pay">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_14_CheckAnswers&amp; Pay" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -3424,12 +3430,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_15_ContinuePayment">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_15_ContinuePayment" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -3750,12 +3756,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_16_EnterCardDetails">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC04_01_CancelCase_Pay_16_EnterCardDetails" enabled="true">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -4124,7 +4130,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">8000</stringProp>
             </ConstantTimer>
             <hashTree/>
