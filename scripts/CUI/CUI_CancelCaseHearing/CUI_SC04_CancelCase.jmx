@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="PcsApiUrl" elementType="Argument">
             <stringProp name="Argument.name">PcsApiUrl</stringProp>
-            <stringProp name="Argument.value">ccd-data-store-api-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.value">${__P(ccdDataStoreHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="IdamURL" elementType="Argument">
@@ -55,7 +55,7 @@
           </elementProp>
           <elementProp name="s2sUrl" elementType="Argument">
             <stringProp name="Argument.name">s2sUrl</stringProp>
-            <stringProp name="Argument.value">rpe-service-auth-provider-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.value">${__P(s2sHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="redirect_uri" elementType="Argument">

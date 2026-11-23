@@ -67,22 +67,39 @@ To execute the scripts with multiple users:
 
 •	Add a CSV file containing user details.
 •	Configure the CSV Data Set Config element in JMeter to reference the CSV file.
+
+The userdetails CSV files in this repository contain only the header row.
+Add test user rows locally before running, and do not commit them.
+```
+Environment Configuration
+```text
+Backend service host names are not stored in the scripts. They are read from
+JMeter properties (s2sHost, pcsApiHost, ccdDataStoreHost, dmStoreHost).
+
+1.	Copy config/env.properties.example to config/env.properties (git-ignored).
+2.	Fill in the host names for the target environment.
+3.	Pass the file to JMeter with -q (see below).
 ```
 Running the Tests
 ```text
 GUI Mode
-Run the scripts directly from the JMeter GUI for debugging and validation.
+Run the scripts directly from the JMeter GUI for debugging and validation:
+
+**jmeter -q config/env.properties**
 
 Non-GUI Mode (Recommended)
 Execute the following command from the terminal or command prompt:
 
-**jmeter -n -t <test_plan>.jmx -l results.jtl**
+**jmeter -q config/env.properties -n -t <test_plan>.jmx -l results.jtl**
 
 Command Line Parameters
 
+•	-q – Additional JMeter properties file (environment host names)
 •	-n – Runs JMeter in non-GUI mode (faster and more reliable)
 •	-t – Path to the JMeter test plan (.jmx) file
 •	-l – Output results file (.jtl)
+
+Results files (.jtl, Results folders) are git-ignored and should not be committed.
 ```
 Notes
 ```text

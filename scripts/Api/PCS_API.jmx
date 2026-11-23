@@ -20,12 +20,12 @@
           </elementProp>
           <elementProp name="s2sUrl" elementType="Argument">
             <stringProp name="Argument.name">s2sUrl</stringProp>
-            <stringProp name="Argument.value">rpe-service-auth-provider-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.value">${__P(s2sHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="PcsApiUrl" elementType="Argument">
             <stringProp name="Argument.name">PcsApiUrl</stringProp>
-            <stringProp name="Argument.value">ccd-data-store-api-perftest.service.core-compute-perftest.internal</stringProp>
+            <stringProp name="Argument.value">${__P(ccdDataStoreHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Thinktime" elementType="Argument">
@@ -193,7 +193,7 @@
         </TransactionController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S2S Token" enabled="true">
-            <stringProp name="TestPlan.comments">http://rpe-service-auth-provider-aat.service.core-compute-aat.internal/testing-support/lease</stringProp>
+            <stringProp name="TestPlan.comments">http://${__P(s2sHost)}/testing-support/lease</stringProp>
             <stringProp name="HTTPSampler.domain">${s2sUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.path">/testing-support/lease</stringProp>
@@ -714,7 +714,7 @@ try {
   &quot;claimAgainstTrespassers&quot;: &quot;NO&quot;,&#xd;
   &quot;claimantName&quot;: &quot;Possession Claims Solicitor Org&quot;,&#xd;
   &quot;isClaimantNameCorrect&quot;: &quot;YES&quot;,&#xd;
-  &quot;claimantContactEmail&quot;: &quot;pcs-solicitor1@test.com&quot;,&#xd;
+  &quot;claimantContactEmail&quot;: &quot;claimant-contact@example.com&quot;,&#xd;
   &quot;isCorrectClaimantContactEmail&quot;: &quot;YES&quot;,&#xd;
   &quot;orgAddressFound&quot;: &quot;Yes&quot;,&#xd;
   &quot;organisationAddress&quot;: {&#xd;
