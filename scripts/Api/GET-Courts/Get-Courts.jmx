@@ -30,12 +30,12 @@
           </elementProp>
           <elementProp name="s2sUrl" elementType="Argument">
             <stringProp name="Argument.name">s2sUrl</stringProp>
-            <stringProp name="Argument.value">rpe-service-auth-provider-aat.service.core-compute-aat.internal</stringProp>
+            <stringProp name="Argument.value">${__P(s2sHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="PcsApiUrl" elementType="Argument">
             <stringProp name="Argument.name">PcsApiUrl</stringProp>
-            <stringProp name="Argument.value">pcs-api-aat.service.core-compute-aat.internal</stringProp>
+            <stringProp name="Argument.value">${__P(pcsApiHost)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Thinktime" elementType="Argument">
@@ -351,7 +351,7 @@ if ( AccessToken != null &amp;&amp; !AccessToken.isEmpty()) {
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="TestPlan.comments">http://rpe-service-auth-provider-aat.service.core-compute-aat.internal/testing-support/lease</stringProp>
+            <stringProp name="TestPlan.comments">http://${__P(s2sHost)}/testing-support/lease</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">

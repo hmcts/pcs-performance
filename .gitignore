@@ -1,0 +1,13 @@
+# Local environment config (backend host names) - see config/env.properties.example
+config/env.properties
+
+# JMeter run output
+*.jtl
+jmeter.log
+**/Results/
+
+# OS files
+.DS_Store
+
+# JMeter automatic backups of test plans
+apache-jmeter-5.6.3/backups/
