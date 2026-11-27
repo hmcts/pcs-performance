@@ -22,7 +22,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="DashboardNavigation" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="DashboardNavigation">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">DashboardNavigation_New.csv</stringProp>
@@ -339,7 +339,7 @@
                   <elementProp name="username" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">username</stringProp>
-                    <stringProp name="Argument.value">${username}@test.com</stringProp>
+                    <stringProp name="Argument.value">${username}@test.perftest</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
@@ -598,7 +598,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_03_Access_Case" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_03_Access_Case">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -2341,12 +2341,12 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_20_Back_To_Dashboard" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_20_Back_To_Dashboard">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/&lt;Caseid&gt;/dashboard" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/case/&lt;Caseid&gt;/dashboard">
               <boolProp name="HTTPSampler.image_parser">true</boolProp>
               <stringProp name="HTTPSampler.domain">${PcsCUI}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -2427,7 +2427,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_21_Signout" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CUI_SC01_DashboardNavigation_21_Signout">
             <boolProp name="TransactionController.parent">true</boolProp>
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
@@ -2573,14 +2573,14 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         </ConstantTimer>
         <hashTree/>
       </hashTree>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
         <collectionProp name="CookieManager.cookies"/>
         <stringProp name="TestPlan.comments">s%3AGcBDmINQ3rbkYz4OGOCCco6-OKfu1yC0.sL6n7QLy%2B6vcfPjNKFKH6MBbcFaIUyDRheDkp2q%2FSig</stringProp>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
         <boolProp name="HTTPSampler.image_parser">true</boolProp>
         <stringProp name="HTTPSampler.domain">manage-case.perftest.platform.hmcts.net</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -2874,7 +2874,7 @@ log.info(&quot;Decoded Password: &quot; + decodedPwd);</stringProp>
         <stringProp name="TestPlan.comments">~/Aggregate-NEW${resultFileName}.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
         <boolProp name="clearEachIteration">true</boolProp>
         <boolProp name="useExpires">true</boolProp>
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
